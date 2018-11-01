@@ -16,6 +16,7 @@
 
 
 #define GAME_MACHINE_DELAY	125		//time in milliseconds of delay for game machine thread
+#define LEVEL_PUBLISH_COUNTS 3		//number of times through game machine loop to publish water levels on AWS
 
 #define GAME_WIN_LEVEL	70			//percent water level for a win to be triggered
 

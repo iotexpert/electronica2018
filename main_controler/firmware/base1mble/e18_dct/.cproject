@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149" name="Debug" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug" postbuildStep="${cy_sdk_install_dir}/tools/modus-shell-1.0/bin/bash --norc ${cy_sdk_install_dir}/tools/wiced-scripts-1.0/process_elf.bash ${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/bin ${workspace_loc:/e18_dct}/${config_name:e18_dct} ${workspace_loc:/e18_dct}/${config_name:e18_dct}/e18_dct.elf" prebuildStep="">
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149." name="/" resourcePath="">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.1721791436" name="ARM Cross GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.870886884" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting.1771796271" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting" useByScannerDiscovery="false"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.614419092" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1781937978" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.1507181781" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.211969200" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.232951043" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.536467200" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1631859716" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1324402599" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.1370742987" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name" value="GNU MCU Eclipse ARM Embedded GCC" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1477865687" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture" value="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.arm" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.385428361" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m4" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.1831424885" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.thumb" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.823815537" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.305817992" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c" value="gcc" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.920871400" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp" value="g++" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.663194413" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar" value="ar" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.317817209" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy" value="objcopy" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.2084056010" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump" value="objdump" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.1217827135" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size" value="size" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.832281867" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make" value="make" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.744892230" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm" value="rm" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.2019269450" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.little" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.978768898" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon.432340806" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork.1874664712" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork" value="true" valueType="boolean"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.737777253" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/e18_dct}/Debug" command="${cy_tools_path:modus-shell}/bin/make" id="ilg.gnuarmeclipse.managedbuild.cross.builder.745080545" name="Gnu Make Builder.Debug" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.626876315" name="GNU ARM Cross Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.103307316" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1580332339" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT-INT-FLASH&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="NETWORK_NoNS=1"/>
+									<listOptionValue builtIn="false" value="RTOS_NoOS=1"/>
+									<listOptionValue builtIn="false" value="NoOS_FIQ_STACK=0"/>
+									<listOptionValue builtIn="false" value="NoOS_IRQ_STACK=256"/>
+									<listOptionValue builtIn="false" value="NoOS_SYS_STACK=0"/>
+									<listOptionValue builtIn="false" value="DCT_CRC32_CALCULATION_SIZE_ON_STACK=1024"/>
+									<listOptionValue builtIn="false" value="WIFI_CONFIG_APPLICATION_DEFINED"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths.48828039" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other.657605439" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1561680088" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1844574638" name="GNU ARM Cross C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1915053821" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT-INT-FLASH&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="NETWORK_NoNS=1"/>
+									<listOptionValue builtIn="false" value="RTOS_NoOS=1"/>
+									<listOptionValue builtIn="false" value="NoOS_FIQ_STACK=0"/>
+									<listOptionValue builtIn="false" value="NoOS_IRQ_STACK=256"/>
+									<listOptionValue builtIn="false" value="NoOS_SYS_STACK=0"/>
+									<listOptionValue builtIn="false" value="DCT_CRC32_CALCULATION_SIZE_ON_STACK=1024"/>
+									<listOptionValue builtIn="false" value="WIFI_CONFIG_APPLICATION_DEFINED"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1035400286" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other.346645161" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other" useByScannerDiscovery="true" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.118838631" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.655867238" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler"/>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.89447569" name="GNU ARM Cross C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections.2108081986" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.1802230143" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" value="-Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb" valueType="string"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile.1340239390" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7/dct.ld&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths.99150179" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/lib"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.1219947550" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs.912914084" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;m&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c&quot;"/>
+								</option>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input.1223601529" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.1089654425" name="GNU ARM Cross C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.448892419" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1314431507" name="GNU ARM Cross Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1407629679" name="GNU ARM Cross Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.485435976" name="GNU ARM Cross Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source.1497032060" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders.1932327452" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle.352131894" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers.2061687469" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide.1638198408" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.31263857" name="GNU ARM Cross Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.181614944" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format" useByScannerDiscovery="false"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="e18_resources;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.254742393" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178" name="Release" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release" postbuildStep="${cy_sdk_install_dir}/tools/modus-shell-1.0/bin/bash --norc ${cy_sdk_install_dir}/tools/wiced-scripts-1.0/process_elf.bash ${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/bin ${workspace_loc:/e18_dct}/${config_name:e18_dct} ${workspace_loc:/e18_dct}/${config_name:e18_dct}/e18_dct.elf" prebuildStep="">
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178." name="/" resourcePath="">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.release.1892249450" name="ARM Cross GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.release">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.273743520" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting.1295306780" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting" useByScannerDiscovery="false"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1506005441" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.336549358" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.1514877649" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1095551546" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1814802253" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.572394187" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.752794125" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.2136491161" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.1160337526" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name" value="GNU MCU Eclipse ARM Embedded GCC" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1926427946" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture" value="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.arm" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.1164348299" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m4" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.721366578" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.thumb" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.1307417686" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.1641134158" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c" value="gcc" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.842790105" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp" value="g++" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.1910233222" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar" value="ar" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.501687695" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy" value="objcopy" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.1938372825" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump" value="objdump" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.1869742946" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size" value="size" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.854515856" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make" value="make" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.825874416" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm" value="rm" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.2075192047" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.little" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.59536512" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon.22254977" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork.1090722384" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork" value="true" valueType="boolean"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.731183018" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/e18_dct}/Release" command="${cy_tools_path:modus-shell}/bin/make" id="ilg.gnuarmeclipse.managedbuild.cross.builder.1638542685" name="Gnu Make Builder.Release" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1479005465" name="GNU ARM Cross Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.1570625230" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1415486561" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT-INT-FLASH&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="NETWORK_NoNS=1"/>
+									<listOptionValue builtIn="false" value="RTOS_NoOS=1"/>
+									<listOptionValue builtIn="false" value="NoOS_FIQ_STACK=0"/>
+									<listOptionValue builtIn="false" value="NoOS_IRQ_STACK=256"/>
+									<listOptionValue builtIn="false" value="NoOS_SYS_STACK=0"/>
+									<listOptionValue builtIn="false" value="DCT_CRC32_CALCULATION_SIZE_ON_STACK=1024"/>
+									<listOptionValue builtIn="false" value="WIFI_CONFIG_APPLICATION_DEFINED"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths.382558893" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other.1614939101" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1280080095" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.906814216" name="GNU ARM Cross C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1445399922" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT-INT-FLASH&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="NETWORK_NoNS=1"/>
+									<listOptionValue builtIn="false" value="RTOS_NoOS=1"/>
+									<listOptionValue builtIn="false" value="NoOS_FIQ_STACK=0"/>
+									<listOptionValue builtIn="false" value="NoOS_IRQ_STACK=256"/>
+									<listOptionValue builtIn="false" value="NoOS_SYS_STACK=0"/>
+									<listOptionValue builtIn="false" value="DCT_CRC32_CALCULATION_SIZE_ON_STACK=1024"/>
+									<listOptionValue builtIn="false" value="WIFI_CONFIG_APPLICATION_DEFINED"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1666251408" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/e18_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other.1149818909" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other" useByScannerDiscovery="true" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1478602106" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1247666357" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler"/>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.2049383947" name="GNU ARM Cross C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections.343053243" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.131686462" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" value="-Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb" valueType="string"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile.1903534519" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7/dct.ld&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths.1495949883" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/lib"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.537471860" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs.41632401" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;m&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c&quot;"/>
+								</option>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input.1413058335" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.455377862" name="GNU ARM Cross C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.1409168534" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1471101987" name="GNU ARM Cross Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.564315144" name="GNU ARM Cross Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1532746725" name="GNU ARM Cross Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source.1627493677" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders.706943229" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle.1207773211" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers.1126748737" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide.783382170" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1788075658" name="GNU ARM Cross Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.571789163" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format" useByScannerDiscovery="false"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="e18_resources;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.41817610" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="e18_dct.ilg.gnuarmeclipse.managedbuild.cross.target.modus.elf.1802664030" name="ModusToolbox IDE Application" projectType="ilg.gnuarmeclipse.managedbuild.cross.target.modus.elf"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1402211149.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1844574638;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.118838631">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.710118178.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.906814216;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1478602106">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

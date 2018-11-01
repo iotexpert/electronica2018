@@ -84,6 +84,7 @@
 #include "bt.h"
 #include "liquidlevel.h"
 #include "leduart.h"
+#include "game_console.h"
 
 /******************************************************
  *               Variable Definitions
@@ -190,8 +191,9 @@ void application_start(void)
     /* enable interrupts */
     __enable_irq();
 
-    initLevelSense();
-    initPumpHW();
+    initLevelSense();       //initialize capsense and interrupts
+    initPumpHW();           //initialize pump PWMs
+    initGameConsole();      //initialize wiced sdk based game console
 
 	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, THREAD_STACK_SIZE, NULL);
@@ -207,7 +209,11 @@ void application_start(void)
         {
             Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 1);	//enable pump h-bridge            
             Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
-            gameStateRequest = REQUEST_RESET;
+            GAME_STATE_T currentState = getGameState();
+            if(currentState == GAME_ABORT || currentState == GAME_WIN)
+            {
+                gameStateRequest = REQUEST_RESET;
+            }
         }
         else
         {
