@@ -58,25 +58,25 @@ void handleCommand(GAME_COMMAND_T command);
 
 
 
- uint16_t extractCommand(void)
- {
-	 uint16 numIncomingBytes = 0;
-	 while(rxReadPtr != rxEndPtr)
-	 {
-		 commandBuffer[numIncomingBytes] = *rxReadPtr;
-		 rxReadPtr++;
-		 if(rxReadPtr > rxBuffer + CONSOLE_RXBUFFER_SIZE) rxReadPtr = rxBuffer;
-		 numIncomingBytes++;
-		 if(numIncomingBytes == sizeof(commandBuffer))
-		 {
-			 numIncomingBytes = 0;
-			 break;					//I usually don't like to this, but break due to error
-		 }
-	 }
-
-	 incomingCommand = NO_INCOMING_CMD;
-	 return numIncomingBytes;
- }
+// uint16_t extractCommand(void)
+// {
+//	 uint16 numIncomingBytes = 0;
+//	 while(rxReadPtr != rxEndPtr)
+//	 {
+//		 commandBuffer[numIncomingBytes] = *rxReadPtr;
+//		 rxReadPtr++;
+//		 if(rxReadPtr > rxBuffer + CONSOLE_RXBUFFER_SIZE) rxReadPtr = rxBuffer;
+//		 numIncomingBytes++;
+//		 if(numIncomingBytes == sizeof(commandBuffer))
+//		 {
+//			 numIncomingBytes = 0;
+//			 break;					//I usually don't like to this, but break due to error
+//		 }
+//	 }
+//
+//	 incomingCommand = NO_INCOMING_CMD;
+//	 return numIncomingBytes;
+// }
 
 
 void consolePrintCRLF(uint8_t numNewlines)
