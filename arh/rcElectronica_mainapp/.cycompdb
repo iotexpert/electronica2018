@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component_data>
+  <File wkspFile="publisher.c" installFile="publisher.c" checksum="43C1722B7922ED6C10F8BDD6BB43F3B14D218ECF"/>
+  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" checksum="A738305655CCD8DB312D74CDBD3EE9BCE01B8376"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform.c" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform.c" checksum="AA30DCC899AE33F49F742C4D16AE9AD251630AF2"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/cycfg_qspi_memslot.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/cycfg_qspi_memslot.h" checksum="13FFF273E3A24F545CB22E88198A73A87E6502E4"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform.h" checksum="D38A7F1EEC3D1AE1B82840AA8A64E8670FFDF6C2"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform_config.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/platform_config.h" checksum="B948305DE13EB76FA67D2E385808CE6D2228A3CC"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/wifi_nvram_image.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/wifi_nvram_image.h" checksum="B08DA2D2B5D4566844B47371BC5F4308CDBEAE7D"/>
+  <File wkspFile="wifi_config_dct.h" installFile="wifi_config_dct.h" checksum="54A19B0E391F4DA8A249B349E20C18A42859DBBC"/>
+  <File wkspFile="cycfg_init.c" installFile="wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init/cycfg_init.c" checksum="95D07DA6760FB000170FDB30C94546B3FD0432C9"/>
+  <File wkspFile="publisher.cyrsc" installFile="publisher.cyrsc" checksum="B87BBEBA230FADC6531328584C1D03BBEF602DF8"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/cycfg_qspi_memslot.c" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH/cycfg_qspi_memslot.c" checksum="7949A54B0712A1C1311DB24515C52CC193D83694"/>
+  <artifact name="mainapp"/>
+</component_data>

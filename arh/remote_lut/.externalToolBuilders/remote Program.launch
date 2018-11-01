@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
+<booleanAttribute key="com.cypress.studio.launch.build" value="true"/>
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${project}"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/remote_lut"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LAUNCH_CONFIGURATION_BUILD_SCOPE" value="${none}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${cy_tools_path:modus-shell}/bin/bash${cy_exe_platform_ext}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="&quot;--norc&quot; &quot;--noprofile&quot; &quot;${cy_tools_path:wiced-scripts}/program.bash&quot; &quot;-kit&quot; &quot;PSoC6-4343W&quot; &quot;-wks&quot; &quot;${workspace_loc}&quot; &quot;-cfg&quot; &quot;${config_name:remote_mainapp}&quot; &quot;-shell&quot; &quot;${cy_tools_path:modus-shell}&quot; &quot;-scripts&quot; &quot;${cy_tools_path:wiced-scripts}&quot; &quot;-openocd&quot; &quot;${cy_tools_path:openocd}&quot;             &quot;-external_flash_cfg&quot; &quot;${workspace_loc:/remote_lut}/program.cfg&quot;             &quot;-dct&quot; &quot;${workspace_loc:/remote_dct}/${config_name:remote_dct}/remote_dct.stripped.elf&quot;             &quot;-lut&quot; &quot;-start_sector=0&quot; &quot;${workspace_loc:/remote_lut}/${config_name:remote_lut}/remote_lut.bin&quot;             &quot;-boot&quot; &quot;${workspace_loc:/remote_bootloader}/${config_name:remote_bootloader}/remote_bootloader.stripped.elf&quot;             &quot;-app0&quot; &quot;${workspace_loc:/remote_mainapp_cm0p}/${config_name:remote_mainapp_cm0p}/remote_mainapp_cm0p.stripped.elf&quot;             &quot;-app1&quot; &quot;${workspace_loc:/remote_mainapp}/${config_name:remote_mainapp}/remote_mainapp.stripped.elf&quot;             &quot;-flashloader&quot; &quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/sflash_write.elf&quot; &quot;-reset&quot; &quot;-gdbinit&quot; &quot;${workspace_loc:/remote_mainapp}/.gdbinit&quot;"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/remote_mainapp}"/>
+</launchConfiguration>
