@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562" name="Debug" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug" postbuildStep="${cy_sdk_install_dir}/tools/modus-shell-1.0/bin/bash --norc ${cy_sdk_install_dir}/tools/wiced-scripts-1.0/process_app.bash ${cy_sdk_install_dir}/tools/modus-shell-1.0 ${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/bin ${cy_sdk_install_dir}/tools/wiced-scripts-1.0 ${workspace_loc:/remote_mainapp}/${config_name:remote_mainapp} ${workspace_loc:/remote_mainapp}/${config_name:remote_mainapp}/remote_mainapp.elf" prebuildStep="">
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562." name="/" resourcePath="">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.205625617" name="ARM Cross GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.225825171" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting.1619905895" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting" useByScannerDiscovery="false"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1664666707" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1076147469" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.651792243" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.1614261904" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1405667276" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.1051715015" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.895831225" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.max" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.1805929908" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.960005256" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name" value="GNU MCU Eclipse ARM Embedded GCC" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1626173937" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture" value="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.arm" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.2042865101" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m4" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.496506451" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.thumb" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.26835789" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.1872260483" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c" value="gcc" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.1962384083" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp" value="g++" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.776709227" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar" value="ar" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1556942910" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy" value="objcopy" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.391860191" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump" value="objdump" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.1998807622" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size" value="size" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.932523956" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make" value="make" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.1746024743" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm" value="rm" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.723673265" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.little" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.169252644" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon.2116991442" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork.810908381" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork" value="true" valueType="boolean"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.1423564578" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/remote_mainapp}/Debug" command="${cy_tools_path:modus-shell}/bin/make" id="ilg.gnuarmeclipse.managedbuild.cross.builder.713233732" name="Gnu Make Builder.Debug" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.879059996" name="GNU ARM Cross Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.1122849720" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths.1610882682" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}/GeneratedSource&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/PostgreSQL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/TLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/P2P&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/DTLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/crypto_internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/supplicant&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/host/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/mbedtls_open/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/ver5.10_sp3&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/CM3_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/DNS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SMTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SNTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/HTTP_client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/Xively&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/JSON_parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/gki/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/udrv/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/brcm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/btm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Projects/bte/main&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/bt_logmsg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/proto_disp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/ARM_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/CapSense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/creator&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/sdio&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/spi_flash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WAF&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/daemons/DHCP_server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/base64&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/linked_list&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/mini_printf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/TLV&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wiced_log&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/bufmgr&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/button_manager&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/gpio_button&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/test/TraceX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/source&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/cm4_high&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols/SDIO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/softfp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/low_energy&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/firmware&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1234108166" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="NETWORK_NetX_Duo=1"/>
+									<listOptionValue builtIn="false" value="NetX_Duo_VERSION='&quot;ver5.10_sp3&quot;'"/>
+									<listOptionValue builtIn="false" value="RTOS_ThreadX=1"/>
+									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ThreadX_VERSION='&quot;ver5.8&quot;'"/>
+									<listOptionValue builtIn="false" value="Lib_USBX_VERSION='&quot;v5.7&quot;'"/>
+									<listOptionValue builtIn="false" value="ADD_NETX_EAPOL_SUPPORT"/>
+									<listOptionValue builtIn="false" value="NXD_EXTENDED_BSD_SOCKET_SUPPORT"/>
+									<listOptionValue builtIn="false" value="__TARGET_ARCH_ARM=7"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK"/>
+									<listOptionValue builtIn="false" value="APP_NAME=remote"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other.311751897" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other" value="-g3 -fomit-frame-pointer -Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.420782389" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1521038463" name="GNU ARM Cross C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.437655428" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}/GeneratedSource&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/PostgreSQL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/TLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/P2P&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/DTLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/crypto_internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/supplicant&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/host/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/mbedtls_open/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/ver5.10_sp3&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/CM3_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/DNS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SMTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SNTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/HTTP_client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/Xively&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/JSON_parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/gki/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/udrv/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/brcm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/btm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Projects/bte/main&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/bt_logmsg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/proto_disp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/ARM_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/CapSense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/creator&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/sdio&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/spi_flash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WAF&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/daemons/DHCP_server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/base64&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/linked_list&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/mini_printf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/TLV&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wiced_log&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/bufmgr&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/button_manager&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/gpio_button&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/test/TraceX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/source&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/cm4_high&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols/SDIO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/softfp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/low_energy&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/firmware&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1606664289" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="NETWORK_NetX_Duo=1"/>
+									<listOptionValue builtIn="false" value="NetX_Duo_VERSION='&quot;ver5.10_sp3&quot;'"/>
+									<listOptionValue builtIn="false" value="RTOS_ThreadX=1"/>
+									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ThreadX_VERSION='&quot;ver5.8&quot;'"/>
+									<listOptionValue builtIn="false" value="Lib_USBX_VERSION='&quot;v5.7&quot;'"/>
+									<listOptionValue builtIn="false" value="ADD_NETX_EAPOL_SUPPORT"/>
+									<listOptionValue builtIn="false" value="NXD_EXTENDED_BSD_SOCKET_SUPPORT"/>
+									<listOptionValue builtIn="false" value="__TARGET_ARCH_ARM=7"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK"/>
+									<listOptionValue builtIn="false" value="APP_NAME=remote"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other.1852711388" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other" useByScannerDiscovery="true" value="-g3 -fomit-frame-pointer -Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1633891694" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1025511982" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler"/>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.870178719" name="GNU ARM Cross C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections.1100939063" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.otherobjs.1060213351" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.otherobjs" valueType="userObjs">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/NetX_Duo.ThreadX.ARM_CM4.debug.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/ThreadX.ARM_CM4.debug.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}/${config_name:remote_resources}/libremote_resources.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_psoc6pdl}/${config_name:remote_mainapp_psoc6pdl}/libremote_mainapp_psoc6pdl.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_PROTOCOLS}/${config_name:remote_mainapp_PROTOCOLS}/libremote_mainapp_PROTOCOLS.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_BESLMBEDTLS}/${config_name:remote_mainapp_BESLMBEDTLS}/libremote_mainapp_BESLMBEDTLS.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/BESL_generic.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/PostgreSQL.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_NETXDuoLib}/${config_name:remote_mainapp_NETXDuoLib}/libremote_mainapp_NETXDuoLib.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_CJSONJSON}/${config_name:remote_mainapp_CJSONJSON}/libremote_mainapp_CJSONJSON.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/lib/cy_capsense_gcc.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_BRDRVRLOWNRG}/${config_name:remote_mainapp_BRDRVRLOWNRG}/libremote_mainapp_BRDRVRLOWNRG.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/bluetooth_low_energy.ThreadX.NetX_Duo.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_FIRMWARE}/${config_name:remote_mainapp_FIRMWARE}/libremote_mainapp_FIRMWARE.a&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.1024595837" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" value="-Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0" valueType="string"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile.1155493659" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths.1987054406" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/lib"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.1070067589" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs.793121384" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;m&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c&quot;"/>
+								</option>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input.830258346" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.1016923731" name="GNU ARM Cross C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.1615816460" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1285590357" name="GNU ARM Cross Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.1034677284" name="GNU ARM Cross Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.259653905" name="GNU ARM Cross Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source.748284442" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders.1745091078" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle.811870512" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers.1206832006" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide.1727630892" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.2132946283" name="GNU ARM Cross Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.245276786" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format" useByScannerDiscovery="false"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="remote_resources;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1476018471" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_bootloader;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1280902809" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_dct;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1378183125" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_cm0p;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1920958783" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_psoc6pdl;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.176146339" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_PROTOCOLS;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1126651135" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_BESLMBEDTLS;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1606845954" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_NETXDuoLib;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1982178627" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_CJSONJSON;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1795098974" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_BRDRVRLOWNRG;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.1507902617" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_FIRMWARE;ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.181901817" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883" name="Release" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release" postbuildStep="${cy_sdk_install_dir}/tools/modus-shell-1.0/bin/bash --norc ${cy_sdk_install_dir}/tools/wiced-scripts-1.0/process_app.bash ${cy_sdk_install_dir}/tools/modus-shell-1.0 ${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/bin ${cy_sdk_install_dir}/tools/wiced-scripts-1.0 ${workspace_loc:/remote_mainapp}/${config_name:remote_mainapp} ${workspace_loc:/remote_mainapp}/${config_name:remote_mainapp}/remote_mainapp.elf" prebuildStep="">
+					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883." name="/" resourcePath="">
+						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.release.1452660798" name="ARM Cross GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.release">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.918742367" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting.36216866" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createlisting" useByScannerDiscovery="false"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1492694318" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.1137964545" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.size" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength.40765811" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.messagelength" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar.654797730" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.signedchar" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections.1463773013" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections.222464186" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level.1178838550" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.level" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format.474692322" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.debugging.format" useByScannerDiscovery="true"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name.1436472791" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.toolchain.name" value="GNU MCU Eclipse ARM Embedded GCC" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.1491111569" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.architecture" value="ilg.gnuarmeclipse.managedbuild.cross.option.architecture.arm" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family.36137461" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.family" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.mcpu.cortex-m4" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.931738650" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.instructionset.thumb" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix.1751760812" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.prefix" value="arm-none-eabi-" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.c.213990838" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.c" value="gcc" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp.788702465" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.cpp" value="g++" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar.1095093854" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.ar" value="ar" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy.1222595507" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objcopy" value="objcopy" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump.744336146" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.objdump" value="objdump" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.size.2146935198" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.size" value="size" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.make.366106593" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.make" value="make" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm.1868917664" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.command.rm" value="rm" valueType="string"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.545010545" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness" value="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.endianness.little" valueType="enumerated"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn.1428181368" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.warnings.allwarn" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon.416042801" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.nocommon" value="true" valueType="boolean"/>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork.1560874315" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.arm.target.thumbinterwork" value="true" valueType="boolean"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.1376175959" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
+							<builder buildPath="${workspace_loc:/remote_mainapp}/Release" command="${cy_tools_path:modus-shell}/bin/make" id="ilg.gnuarmeclipse.managedbuild.cross.builder.1905204338" name="Gnu Make Builder.Release" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.2064183669" name="GNU ARM Cross Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.712529347" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths.28159400" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}/GeneratedSource&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/PostgreSQL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/TLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/P2P&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/DTLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/crypto_internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/supplicant&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/host/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/mbedtls_open/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/ver5.10_sp3&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/CM3_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/DNS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SMTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SNTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/HTTP_client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/Xively&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/JSON_parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/gki/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/udrv/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/brcm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/btm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Projects/bte/main&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/bt_logmsg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/proto_disp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/ARM_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/CapSense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/creator&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/sdio&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/spi_flash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WAF&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/daemons/DHCP_server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/base64&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/linked_list&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/mini_printf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/TLV&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wiced_log&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/bufmgr&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/button_manager&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/gpio_button&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/test/TraceX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/source&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/cm4_high&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols/SDIO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/softfp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/low_energy&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/firmware&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.726613625" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="NETWORK_NetX_Duo=1"/>
+									<listOptionValue builtIn="false" value="NetX_Duo_VERSION='&quot;ver5.10_sp3&quot;'"/>
+									<listOptionValue builtIn="false" value="RTOS_ThreadX=1"/>
+									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ThreadX_VERSION='&quot;ver5.8&quot;'"/>
+									<listOptionValue builtIn="false" value="Lib_USBX_VERSION='&quot;v5.7&quot;'"/>
+									<listOptionValue builtIn="false" value="ADD_NETX_EAPOL_SUPPORT"/>
+									<listOptionValue builtIn="false" value="NXD_EXTENDED_BSD_SOCKET_SUPPORT"/>
+									<listOptionValue builtIn="false" value="__TARGET_ARCH_ARM=7"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK"/>
+									<listOptionValue builtIn="false" value="APP_NAME=remote"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other.558746959" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.other" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1671628518" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1071333586" name="GNU ARM Cross C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.642750716" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}/GeneratedSource&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_dct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/PostgreSQL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/TLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/P2P&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/DTLS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/crypto_internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/supplicant&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/host/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/mbedtls_open/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wifi&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security/BESL/WPS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/network&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/ver5.10_sp3&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/CM3_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4/GCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP/server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/COAP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/DNS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SMTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/SNTP&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/HTTP_client&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/Xively&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/JSON_parser&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/gki/common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/udrv/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/hcis/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/brcm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/btm&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt/legattdb/inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Components/fw2/mpaf/components/stack/gatt&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/Projects/bte/main&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/bt_logmsg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/BTE/proto_disp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/ARM_CM4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/CapSense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/creator&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/libraries/sdio&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/peripherals/spi_flash&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WAF&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/WWD&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/daemons/DHCP_server&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/base64&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/crc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/linked_list&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/mini_printf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/ring_buffer&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/TLV&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/wiced_log&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/bufmgr&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/button_manager&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs/gpio_button&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/test/TraceX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/ver5.8/Cortex_M3_M4&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/source&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/cm4_high&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CKIT_062_IFLASH&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/chips/4343x&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/bus_protocols/SDIO&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/inputs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/security&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/filesystems/wicedfs&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/softfp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/low_energy&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/firmware&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.766383504" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="CY8C6247BZI_D54"/>
+									<listOptionValue builtIn="false" value="WICED_DISABLE_MCU_POWERSAVE"/>
+									<listOptionValue builtIn="false" value="HSE_VALUE=26000000"/>
+									<listOptionValue builtIn="false" value="BUS='&quot;SDIO&quot;'"/>
+									<listOptionValue builtIn="false" value="BOOTLOADER_MAGIC_NUMBER=0x4d435242"/>
+									<listOptionValue builtIn="false" value="SFLASH_APPS_HEADER_LOC=0x0000"/>
+									<listOptionValue builtIn="false" value="WWD_STARTUP_DELAY=10"/>
+									<listOptionValue builtIn="false" value="WWD_BUS_SDIO_AFTER_RESET_DELAY=1000"/>
+									<listOptionValue builtIn="false" value="MAX_WATCHDOG_TIMEOUT_SECONDS=2.5"/>
+									<listOptionValue builtIn="false" value="DEFAULT_SYSTEM_MONITOR_PERIOD=2500"/>
+									<listOptionValue builtIn="false" value="PLATFORM='&quot;CY8CKIT-062-WIFI-BT&quot;'"/>
+									<listOptionValue builtIn="false" value="APPS_CHIP_REVISION='&quot;&quot;'"/>
+									<listOptionValue builtIn="false" value="PLATFORM_POWER_DOWN_THREAD_PREEMPTION_ALLOWED"/>
+									<listOptionValue builtIn="false" value="WICED"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP_FAMILY=4343W"/>
+									<listOptionValue builtIn="false" value="WLAN_CHIP=4343W"/>
+									<listOptionValue builtIn="false" value="CRLF_STDIO_REPLACEMENT"/>
+									<listOptionValue builtIn="false" value="WICED_USE_BESL"/>
+									<listOptionValue builtIn="false" value="WWD_DOWNLOAD_CLM_BLOB"/>
+									<listOptionValue builtIn="false" value="USING_WICEDFS"/>
+									<listOptionValue builtIn="false" value="WWD_DIRECT_RESOURCES"/>
+									<listOptionValue builtIn="false" value="UDB_SDIO"/>
+									<listOptionValue builtIn="false" value="MODUSTOOLBOX=1"/>
+									<listOptionValue builtIn="false" value="BCM_WICED"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_image=resources_firmware_DIR_4343W_DIR_4343WA1_bin"/>
+									<listOptionValue builtIn="false" value="wifi_firmware_clm_blob=resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob"/>
+									<listOptionValue builtIn="false" value="NX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="NETWORK_NetX_Duo=1"/>
+									<listOptionValue builtIn="false" value="NetX_Duo_VERSION='&quot;ver5.10_sp3&quot;'"/>
+									<listOptionValue builtIn="false" value="RTOS_ThreadX=1"/>
+									<listOptionValue builtIn="false" value="TX_INCLUDE_USER_DEFINE_FILE"/>
+									<listOptionValue builtIn="false" value="ThreadX_VERSION='&quot;ver5.8&quot;'"/>
+									<listOptionValue builtIn="false" value="Lib_USBX_VERSION='&quot;v5.7&quot;'"/>
+									<listOptionValue builtIn="false" value="ADD_NETX_EAPOL_SUPPORT"/>
+									<listOptionValue builtIn="false" value="NXD_EXTENDED_BSD_SOCKET_SUPPORT"/>
+									<listOptionValue builtIn="false" value="__TARGET_ARCH_ARM=7"/>
+									<listOptionValue builtIn="false" value="__THUMB_INTERWORK"/>
+									<listOptionValue builtIn="false" value="APP_NAME=remote"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other.1982793310" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.other" useByScannerDiscovery="true" value="-Wno-strict-aliasing -std=gnu11 -std=gnu11 -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include&quot; -isystem &quot;${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/arm-none-eabi/lib/include-fixed&quot;" valueType="string"/>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1606005450" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1234632935" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler"/>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.1239537601" name="GNU ARM Cross C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections.261249532" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.gcsections" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.otherobjs.1032852428" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.otherobjs" valueType="userObjs">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/NetX_Duo.ThreadX.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/ThreadX.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_resources}/${config_name:remote_resources}/libremote_resources.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_psoc6pdl}/${config_name:remote_mainapp_psoc6pdl}/libremote_mainapp_psoc6pdl.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_PROTOCOLS}/${config_name:remote_mainapp_PROTOCOLS}/libremote_mainapp_PROTOCOLS.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_BESLMBEDTLS}/${config_name:remote_mainapp_BESLMBEDTLS}/libremote_mainapp_BESLMBEDTLS.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/BESL_generic.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/PostgreSQL.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_NETXDuoLib}/${config_name:remote_mainapp_NETXDuoLib}/libremote_mainapp_NETXDuoLib.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_CJSONJSON}/${config_name:remote_mainapp_CJSONJSON}/libremote_mainapp_CJSONJSON.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/psoc6sw-1.0/components/psoc6mw/capsense/lib/cy_capsense_gcc.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_BRDRVRLOWNRG}/${config_name:remote_mainapp_BRDRVRLOWNRG}/libremote_mainapp_BRDRVRLOWNRG.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/prebuilt/bluetooth_low_energy.ThreadX.NetX_Duo.ARM_CM4.release.a&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/remote_mainapp_FIRMWARE}/${config_name:remote_mainapp_FIRMWARE}/libremote_mainapp_FIRMWARE.a&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.1161261888" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" value="-Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0" valueType="string"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile.51806327" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile" valueType="stringList">
+									<listOptionValue builtIn="false" value="&quot;${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld&quot;"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths.1130402085" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/tools/gcc-7.2.1-1.0/lib"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC"/>
+									<listOptionValue builtIn="false" value="${cy_sdk_install_dir}/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7"/>
+								</option>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.583123262" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs.1176746134" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;m&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c&quot;"/>
+								</option>
+								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input.1657084736" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} -Wl,--start-group ${INPUTS} -Wl,--end-group" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.1497082542" name="GNU ARM Cross C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.1746986983" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver.1367850851" name="GNU ARM Cross Archiver" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.archiver"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash.630076572" name="GNU ARM Cross Create Flash Image" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createflash"/>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting.1403099537" name="GNU ARM Cross Create Listing" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.createlisting">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source.1383649396" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.source" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders.296065922" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.allheaders" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle.784873714" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.demangle" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers.656365225" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.linenumbers" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide.1267360726" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.createlisting.wide" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.2060314363" name="GNU ARM Cross Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.2041390557" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format" useByScannerDiscovery="false"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="remote_resources;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1833339338" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_bootloader;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1232357770" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_dct;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.424749937" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_cm0p;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.605976973" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_psoc6pdl;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1312137592" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_PROTOCOLS;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1204474432" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_BESLMBEDTLS;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.213796577" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_NETXDuoLib;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.958119139" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_CJSONJSON;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1252274014" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_BRDRVRLOWNRG;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1158018615" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="remote_mainapp_FIRMWARE;ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1650433474" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="remote_mainapp.ilg.gnuarmeclipse.managedbuild.cross.target.modus.elf.1087479683" name="ModusToolbox IDE Application" projectType="ilg.gnuarmeclipse.managedbuild.cross.target.modus.elf"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.839007883.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1071333586;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1606005450">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.436463562.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1521038463;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1633891694">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+</cproject>
