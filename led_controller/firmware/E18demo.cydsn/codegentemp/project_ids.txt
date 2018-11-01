@@ -1,0 +1,10 @@
+C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj|5e96cb7e-4652-43cd-8119-c8664bf3b3d7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|8c52c2a6-a21b-47f7-8210-3b16d30576da
+C:\Users\kmwh\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|378c4119-054d-40a5-b5a6-70b34124f5b8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3b8d14e9-cfca-429e-b215-381b391ea937
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|68520ea5-118e-45ac-973a-b4893f0e9a69
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|36800dc3-81b8-436e-a092-847c2fd1fe11
+C:\Users\kmwh\Documents\PSoC Creator\FunWithLEDs\FunWithLEDs\WS281xLib.cylib\WS281xLib.cyprj|899f8afd-db4f-4ea6-864b-c1940365be11
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|e8f20e80-b2e3-4ab2-abbe-202d2b9dd603
+C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\WS281xLib.cyprj|efaad3e7-4393-4ccb-938d-1904fbe53805
+C:\Users\kmwh\Documents\electronica-demo\FunWithLEDs\FunWithLEDs\WS281xLib.cylib\WS281xLib.cyprj|127807c1-9780-4865-a001-93e7ca564dbe
