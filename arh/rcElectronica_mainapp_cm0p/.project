@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>rcElectronica_mainapp_cm0p</name>
+	<comment></comment>
+	<projects>
+		<project>rcElectronica_config</project>
+		<project>rcElectronica_mainapp_cm0p_psoc6pdl</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>com.cypress.studio.app.cymodusnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>modus.mk</name>
+			<type>1</type>
+			<locationURI>WORKSPACE_LOC/rcElectronica_mainapp/modus.mk</locationURI>
+		</link>
+		<link>
+			<name>rcElectronica_config/GeneratedSource</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/rcElectronica_config/GeneratedSource</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

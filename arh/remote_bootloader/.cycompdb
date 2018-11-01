@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component_data>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/wifi_nvram_image.h" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/wifi_nvram_image.h" checksum="B08DA2D2B5D4566844B47371BC5F4308CDBEAE7D"/>
+  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" checksum="A738305655CCD8DB312D74CDBD3EE9BCE01B8376"/>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/cycfg_qspi_memslot.c" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/cycfg_qspi_memslot.c" checksum="7949A54B0712A1C1311DB24515C52CC193D83694"/>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform.h" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform.h" checksum="D38A7F1EEC3D1AE1B82840AA8A64E8670FFDF6C2"/>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/cycfg_qspi_memslot.h" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/cycfg_qspi_memslot.h" checksum="13FFF273E3A24F545CB22E88198A73A87E6502E4"/>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform.c" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform.c" checksum="7A29A652C958AE2CC2EBEEF6BF2EAA76B6BE7103"/>
+  <File wkspFile="cycfg_init.c" installFile="wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init/cycfg_init.c" checksum="95D07DA6760FB000170FDB30C94546B3FD0432C9"/>
+  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform_config.h" installFile="wiced_base-1.0/components/WIFI-SDK/platforms/CY8CKIT_062/platform_config.h" checksum="B948305DE13EB76FA67D2E385808CE6D2228A3CC"/>
+  <artifact name="bootloader"/>
+</component_data>
