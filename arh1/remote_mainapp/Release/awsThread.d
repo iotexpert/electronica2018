@@ -192,7 +192,7 @@ awsThread.o: ../awsThread.c \
  /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_xip.h \
  /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/wiced_aws.h \
  /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_common.h \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_resources/resources.h \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_resources/resources.h \
  /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h
 
 /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced.h:
@@ -581,6 +581,6 @@ awsThread.o: ../awsThread.c \
 
 /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_common.h:
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_resources/resources.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_resources/resources.h:
 
 /Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h:
