@@ -67,20 +67,25 @@ endif
 all: e18_mainapp.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/kmwh/e18new2890/e18_resources/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_bootloader/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_dct/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_mainapp_cm0p/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_mainapp_psoc6pdl/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_mainapp_PROTOCOLS/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_mainapp_BESLMBEDTLS/Debug && $(MAKE) all
-	-cd C:/Users/kmwh/e18new2890/e18_mainapp_NETXDuoLib/Debug && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_resources/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_bootloader/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_dct/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_psoc6pdl/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_PROTOCOLS/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BESLMBEDTLS/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_NETXDuoLib/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_COMMAND_CONSOLE/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BRDRVRLOWNRG/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_WIFIConsole/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_CJSONJSON/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_FIRMWARE/Debug && $(MAKE) clean all
 
 # Tool invocations
-e18_mainapp.elf: $(OBJS) $(USER_OBJS) C:/Users/kmwh/e18new2890/e18_resources/Debug/libe18_resources.a C:/Users/kmwh/e18new2890/e18_bootloader/Debug/e18_bootloader.elf C:/Users/kmwh/e18new2890/e18_dct/Debug/e18_dct.elf C:/Users/kmwh/e18new2890/e18_mainapp_cm0p/Debug/e18_mainapp_cm0p.elf C:/Users/kmwh/e18new2890/e18_mainapp_psoc6pdl/Debug/libe18_mainapp_psoc6pdl.a C:/Users/kmwh/e18new2890/e18_mainapp_PROTOCOLS/Debug/libe18_mainapp_PROTOCOLS.a C:/Users/kmwh/e18new2890/e18_mainapp_BESLMBEDTLS/Debug/libe18_mainapp_BESLMBEDTLS.a C:/Users/kmwh/e18new2890/e18_mainapp_NETXDuoLib/Debug/libe18_mainapp_NETXDuoLib.a
+e18_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_resources/Debug/libe18_resources.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_bootloader/Debug/e18_bootloader.elf /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_dct/Debug/e18_dct.elf /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p/Debug/e18_mainapp_cm0p.elf /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_psoc6pdl/Debug/libe18_mainapp_psoc6pdl.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_PROTOCOLS/Debug/libe18_mainapp_PROTOCOLS.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BESLMBEDTLS/Debug/libe18_mainapp_BESLMBEDTLS.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_NETXDuoLib/Debug/libe18_mainapp_NETXDuoLib.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_COMMAND_CONSOLE/Debug/libe18_mainapp_COMMAND_CONSOLE.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BRDRVRLOWNRG/Debug/libe18_mainapp_BRDRVRLOWNRG.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_WIFIConsole/Debug/libe18_mainapp_WIFIConsole.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_CJSONJSON/Debug/libe18_mainapp_CJSONJSON.a /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_FIRMWARE/Debug/libe18_mainapp_FIRMWARE.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g3 -T "C:/Users/kmwh/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld" -nostartfiles -LC:/Users/kmwh/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -LC:/Users/kmwh/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC -LC:/Users/kmwh/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"e18_mainapp.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0 -o "e18_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g3 -T "/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld" -nostartfiles -L/Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -L/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC -L/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"e18_mainapp.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0 -o "e18_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -91,19 +96,24 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/Users/kmwh/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/kmwh/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/kmwh/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/kmwh/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/kmwh/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Users\kmwh\e18new2890\e18_mainapp/Debug C:\Users\kmwh\e18new2890\e18_mainapp/Debug/e18_mainapp.elf
+	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash /Applications/ModusToolbox_1.0/tools/modus-shell-1.0 /Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0 /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp/Debug /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp/Debug/e18_mainapp.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-C:/Users/kmwh/e18new2890/e18_resources/Debug/libe18_resources.a:
-C:/Users/kmwh/e18new2890/e18_bootloader/Debug/e18_bootloader.elf:
-C:/Users/kmwh/e18new2890/e18_dct/Debug/e18_dct.elf:
-C:/Users/kmwh/e18new2890/e18_mainapp_cm0p/Debug/e18_mainapp_cm0p.elf:
-C:/Users/kmwh/e18new2890/e18_mainapp_psoc6pdl/Debug/libe18_mainapp_psoc6pdl.a:
-C:/Users/kmwh/e18new2890/e18_mainapp_PROTOCOLS/Debug/libe18_mainapp_PROTOCOLS.a:
-C:/Users/kmwh/e18new2890/e18_mainapp_BESLMBEDTLS/Debug/libe18_mainapp_BESLMBEDTLS.a:
-C:/Users/kmwh/e18new2890/e18_mainapp_NETXDuoLib/Debug/libe18_mainapp_NETXDuoLib.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_resources/Debug/libe18_resources.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_bootloader/Debug/e18_bootloader.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_dct/Debug/e18_dct.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p/Debug/e18_mainapp_cm0p.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_psoc6pdl/Debug/libe18_mainapp_psoc6pdl.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_PROTOCOLS/Debug/libe18_mainapp_PROTOCOLS.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BESLMBEDTLS/Debug/libe18_mainapp_BESLMBEDTLS.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_NETXDuoLib/Debug/libe18_mainapp_NETXDuoLib.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_COMMAND_CONSOLE/Debug/libe18_mainapp_COMMAND_CONSOLE.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_BRDRVRLOWNRG/Debug/libe18_mainapp_BRDRVRLOWNRG.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_WIFIConsole/Debug/libe18_mainapp_WIFIConsole.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_CJSONJSON/Debug/libe18_mainapp_CJSONJSON.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_FIRMWARE/Debug/libe18_mainapp_FIRMWARE.a:
 
 -include ../makefile.targets

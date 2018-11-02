@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component_data>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform_config.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform_config.h" checksum="E069B899715011DE479725B50007D60E38997A1B"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/cycfg_qspi_memslot.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/cycfg_qspi_memslot.h" checksum="13FFF273E3A24F545CB22E88198A73A87E6502E4"/>
+  <File wkspFile="publisher.c" installFile="publisher.c" checksum="43C1722B7922ED6C10F8BDD6BB43F3B14D218ECF"/>
+  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm4.c" checksum="A738305655CCD8DB312D74CDBD3EE9BCE01B8376"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/wifi_nvram_image.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/wifi_nvram_image.h" checksum="91ADC23D540D9A4F3D3B1ED6463CE10BAD53C757"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform.h" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform.h" checksum="D55744F75B33F49901ADD41F581022E5F79A096D"/>
+  <File wkspFile="wifi_config_dct.h" installFile="wifi_config_dct.h" checksum="54A19B0E391F4DA8A249B349E20C18A42859DBBC"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/cycfg_qspi_memslot.c" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/cycfg_qspi_memslot.c" checksum="7949A54B0712A1C1311DB24515C52CC193D83694"/>
+  <File wkspFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform.c" installFile="wiced_electronica18-1.0/components/WIFI-SDK/platforms/CY8CPROTO_062_4343W_IFLASH/platform.c" checksum="D462E2F50BB21BCCCBFEF8807024F475B8A3A6DF"/>
+  <File wkspFile="cycfg_init.c" installFile="wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/init/cycfg_init.c" checksum="95D07DA6760FB000170FDB30C94546B3FD0432C9"/>
+  <File wkspFile="publisher.cyrsc" installFile="publisher.cyrsc" checksum="B87BBEBA230FADC6531328584C1D03BBEF602DF8"/>
+  <artifact name="mainapp"/>
+</component_data>

@@ -1,7 +1,7 @@
 remote_config/GeneratedSource/cycfg_peripherals.o: \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.c \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.h \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_notices.h \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.c \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.h \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_notices.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_common.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_device.h \
@@ -81,9 +81,9 @@ remote_config/GeneratedSource/cycfg_peripherals.o: \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_smif.h
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_peripherals.h:
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_notices.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_notices.h:
 
 /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h:
 

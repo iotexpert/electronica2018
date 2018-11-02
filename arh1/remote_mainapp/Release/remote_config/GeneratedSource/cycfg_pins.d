@@ -1,7 +1,7 @@
 remote_config/GeneratedSource/cycfg_pins.o: \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_pins.c \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_pins.h \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_notices.h \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_pins.c \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_pins.h \
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_notices.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_gpio.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_device.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_cpuss.h \
@@ -76,11 +76,11 @@ remote_config/GeneratedSource/cycfg_pins.o: \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_pdm.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/gpio_psoc6_01_124_bga.h \
  /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syslib.h \
- /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_connectivity.h
+ /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_connectivity.h
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_pins.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_pins.h:
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_notices.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_notices.h:
 
 /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_gpio.h:
 
@@ -230,4 +230,4 @@ remote_config/GeneratedSource/cycfg_pins.o: \
 
 /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syslib.h:
 
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_config/GeneratedSource/cycfg_connectivity.h:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_config/GeneratedSource/cycfg_connectivity.h:
