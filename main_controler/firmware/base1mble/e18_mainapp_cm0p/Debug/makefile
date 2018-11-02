@@ -35,13 +35,13 @@ endif
 all: e18_mainapp_cm0p.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/kmwh/e18ble/e18_mainapp_cm0p_psoc6pdl/Debug && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p_psoc6pdl/Debug && $(MAKE) clean all
 
 # Tool invocations
-e18_mainapp_cm0p.elf: $(OBJS) $(USER_OBJS) C:/Users/kmwh/e18ble/e18_mainapp_cm0p_psoc6pdl/Debug/libe18_mainapp_cm0p_psoc6pdl.a
+e18_mainapp_cm0p.elf: $(OBJS) $(USER_OBJS) /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p_psoc6pdl/Debug/libe18_mainapp_cm0p_psoc6pdl.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -Os -ffunction-sections -Wall  -g3 -T "C:/Users/kmwh/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/linker/gcc/wiced_cm0plus.ld" -Xlinker --gc-sections -Wl,-Map,"e18_mainapp_cm0p.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -o "e18_mainapp_cm0p.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -Os -ffunction-sections -Wall  -g3 -T "/Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/linker/gcc/wiced_cm0plus.ld" -Xlinker --gc-sections -Wl,-Map,"e18_mainapp_cm0p.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -o "e18_mainapp_cm0p.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -52,12 +52,12 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/Users/kmwh/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/kmwh/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/kmwh/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/kmwh/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/kmwh/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Users\kmwh\e18ble\e18_mainapp_cm0p/Release C:\Users\kmwh\e18ble\e18_mainapp_cm0p/Release/e18_mainapp_cm0p.elf
+	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash /Applications/ModusToolbox_1.0/tools/modus-shell-1.0 /Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0 /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p/Debug /Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p/Debug/e18_mainapp_cm0p.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-C:/Users/kmwh/e18ble/e18_mainapp_cm0p_psoc6pdl/Debug/libe18_mainapp_cm0p_psoc6pdl.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/main_controler/firmware/base1mble/e18_mainapp_cm0p_psoc6pdl/Debug/libe18_mainapp_cm0p_psoc6pdl.a:
 
 -include ../makefile.targets

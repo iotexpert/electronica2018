@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component_data>
+  <File wkspFile="design.modus" installFile="wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/config_2m/design.modus" checksum="0C62DC9F9FD14B75D536A5A8A6D2A6F1AFBFC8B9"/>
+  <artifact name="config"/>
+</component_data>
