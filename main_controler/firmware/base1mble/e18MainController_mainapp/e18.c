@@ -201,12 +201,12 @@ void application_start(void)
 
     initLevelSense();
 
-    while(1)
-         {
-        			WPRINT_APP_INFO(("Hi\n"));
-         		Cy_GPIO_Inv(BLUE_LED_PORT,BLUE_LED_PIN);
-         		wiced_rtos_delay_milliseconds(500);
-         }
+//    while(1)
+//         {
+//        			WPRINT_APP_INFO(("Hi\n"));
+//         		Cy_GPIO_Inv(BLUE_LED_PORT,BLUE_LED_PIN);
+//         		wiced_rtos_delay_milliseconds(500);
+//         }
 
     initPumpHW();
 

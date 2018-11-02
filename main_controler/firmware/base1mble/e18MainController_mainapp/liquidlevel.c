@@ -1,9 +1,9 @@
 #include "cy_pdl.h"
 #include "cycfg.h"
-//#include "cy_capsense.h"
+#include "cy_capsense.h"
 #include "cycfg_capsense.h"
 #include "game_console.h"
-//#include "cy_csd.h"
+#include "cy_csd.h"
 #include "stdio.h"
 #include "game.h"
 #include "liquidlevel.h"
@@ -40,27 +40,18 @@
 /*******************************************************************************
 * Interrupt configuration
 *******************************************************************************/
+static void CapSense_Interrupt(void);
+
+extern void csd_interrupt_IRQn_Handler(void);
+
 
 #define CY_CSD_NONE_KEY 0U
 
 const cy_stc_sysint_t CapSense_ISR_cfg =
 {
     .intrSrc = csd_interrupt_IRQn,
-    .intrPriority = 6u,
+    .intrPriority = 7u,
 };
-
-/*******************************************************************************
-* Function Name: CapSense_Interrupt
-****************************************************************************//**
-*
-* \brief
-*   CapSense (CSD) interrupt handler.
-*
-*******************************************************************************/
-void CapSense_Interrupt(void)
-{
-    Cy_CapSense_InterruptHandler(CapSense_HW, &cy_capsense_context);
-}
 
 
 //local static variables
@@ -76,7 +67,7 @@ void initLevelSense(void)
 {
     /* Initialize CapSense */
     Cy_CapSense_Init(&cy_capsense_context);
-    Cy_SysInt_Init(&CapSense_ISR_cfg, &CapSense_Interrupt);
+    Cy_SysInt_Init(&CapSense_ISR_cfg, &csd_interrupt_IRQn_Handler);
     NVIC_ClearPendingIRQ(CapSense_ISR_cfg.intrSrc);
     NVIC_EnableIRQ(CapSense_ISR_cfg.intrSrc);
     Cy_CapSense_Enable(&cy_capsense_context);
@@ -221,6 +212,19 @@ void determineLevels(void)
 // }
 
 
+/*******************************************************************************
+* Function Name: CapSense_Interrupt
+****************************************************************************//**
+*
+* \brief
+*   CapSense (CSD) interrupt handler.
+*
+*******************************************************************************/
+//void platform_csd_irq(void)
+void csd_interrupt_IRQn_Handler(void)
+{
+    Cy_CapSense_InterruptHandler(CSD0, &cy_capsense_context);
+}
 
 
 //globally available output functions

@@ -52,10 +52,8 @@ extern "C" {
 
 //defines to make development in various locations easier
 
-//#define USE_KMWH_NETWORK
-//#define USE_THEINTERNETSG
 #define USE_TEST_NETWORK
-
+//#define USE_ORDC_TEST_NETWORK
 
 /* This is the soft AP used for device configuration */
 #define CONFIG_AP_SSID       "NOT USED FOR THIS APP"
@@ -78,30 +76,6 @@ extern "C" {
 //#define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
 #define CLIENT_AP_BSS_TYPE   WICED_BSS_TYPE_INFRASTRUCTURE
 
-
-// #define CLIENT_AP_SSID       "TheInternets"
-// #define CLIENT_AP_SECURITY 	WICED_SECURITY_WPA2_AES_PSK
-// #define CLIENT_AP_PASSPHRASE "expee41c"
-// //#define CLIENT_AP_CHANNEL    11
-// #define CLIENT_AP_CHANNEL    36
-// #define CLIENT_AP_BAND       WICED_802_11_BAND_5GHZ
-
-#ifdef USE_THEINTERNETSG
-#define CLIENT_AP_SSID       "TheInternetsG"
-#define CLIENT_AP_SECURITY 	WICED_SECURITY_WPA2_AES_PSK
-#define CLIENT_AP_PASSPHRASE "expee41c"
-#define CLIENT_AP_CHANNEL    11
-#define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
-#endif
-
-#ifdef USE_KMWH_NETWORK
-#define CLIENT_AP_SSID       "WSSID88"
-#define CLIENT_AP_SECURITY 	WICED_SECURITY_WPA2_AES_PSK
-#define CLIENT_AP_PASSPHRASE "WHE5539Z"
-#define CLIENT_AP_CHANNEL    11
-#define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
-#endif
-
 #ifdef USE_TEST_NETWORK
 #define CLIENT_AP_SSID       "CYFI_IOT_EXT"
 #define CLIENT_AP_SECURITY 	WICED_SECURITY_WPA2_AES_PSK
@@ -110,13 +84,14 @@ extern "C" {
 #define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
 #endif
 
+#ifdef USE_ORDC_TEST_NETWORK
+#define CLIENT_AP_SSID       "CYPRESS TEST"
+#define CLIENT_AP_SECURITY 	WICED_SECURITY_WPA2_AES_PSK
+#define CLIENT_AP_PASSPHRASE "alphabet123"
+#define CLIENT_AP_CHANNEL    1
+#define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
+#endif
 
-
-// #define CLIENT_AP_SSID       "CYFI_GUEST"
-// #define CLIENT_AP_SECURITY 	WICED_SECURITY_OPEN
-// #define CLIENT_AP_PASSPHRASE "YOUR_AP_PASSPHRASE"
-// #define CLIENT_AP_CHANNEL    1
-// #define CLIENT_AP_BAND       WICED_802_11_BAND_2_4GHZ
 
 /* Override default country code */
 #define WICED_COUNTRY_CODE    WICED_COUNTRY_UNITED_STATES
