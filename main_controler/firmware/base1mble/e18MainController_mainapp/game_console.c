@@ -11,32 +11,39 @@
 #include "stdio.h"
 #include "cycfg_peripherals.h"
 #include "liquidlevel.h"
+#include "command_console.h"
+#include "aws.h"
+#include "bt.h"
 
+//defines needed for wiced console
+#define GAME_COMMAND_HISTORY_LENGTH  (10)
+#define MAX_GAME_COMMAND_LENGTH      (85)
+#define MAX_ASCII_VALUE               0x7e
+#define ROLL_OVER_ASCII_VALUE         0x2f
 
-#define CONSOLE_TXBUFFER_SIZE   2048
-#define CONSOLE_RXBUFFER_SIZE   256
-#define COMMAND_BUFFER_SIZE 128
-
-
+//interrupt driven non wiced legacy
 // cy_stc_scb_uart_context_t consoleUARTcontext;
+//uint8_t rxBuffer[CONSOLE_RXBUFFER_SIZE];
+//uint8_t* rxEndPtr = rxBuffer;
+//uint8_t* rxSendPtr = rxBuffer;
+//uint8_t* rxReadPtr = rxBuffer;
+//uint8_t commandBuffer[COMMAND_BUFFER_SIZE];
 
-uint8_t rxBuffer[CONSOLE_RXBUFFER_SIZE];
-uint8_t* rxEndPtr = rxBuffer;
-uint8_t* rxSendPtr = rxBuffer;
-uint8_t* rxReadPtr = rxBuffer;
-uint8_t commandBuffer[COMMAND_BUFFER_SIZE];
+//uint8_t txBuffer[CONSOLE_TXBUFFER_SIZE];
+//uint8_t* txEndPtr = txBuffer;
+//uint8_t* txSendPtr = txBuffer;
+//uint8_t consoleTXenabled;
+//static uint8_t txWriteLock = 0;
 
-uint8_t txBuffer[CONSOLE_TXBUFFER_SIZE];
-uint8_t* txEndPtr = txBuffer;
-uint8_t* txSendPtr = txBuffer;
-uint8_t consoleTXenabled;
-static uint8_t txWriteLock = 0;
+//INCOMING_CMD_T incomingCommand = NO_INCOMING_CMD;
+
+
 
 extern uint8_t leftSpeed;
 extern uint8_t rightSpeed;
 
-INCOMING_CMD_T incomingCommand = NO_INCOMING_CMD;
-
+static char game_command_buffer[MAX_GAME_COMMAND_LENGTH];
+static char game_command_history_buffer[MAX_GAME_COMMAND_LENGTH * GAME_COMMAND_HISTORY_LENGTH];
 
 void consolePrintStatus(void);
 void consolePrintWin(void);
@@ -44,6 +51,21 @@ void consolePrintLevels(void);
 void consolePrintCRLF(uint8_t numNewlines);
 GAME_COMMAND_T determineCommand(char* incomingCommandBuffer);
 void handleCommand(GAME_COMMAND_T command);
+
+static int status_console_cmd( int argc, char *argv[] );
+static int help_console_cmd( int argc, char *argv[] );
+static int levels_console_cmd( int argc, char *argv[] );
+static int start_console_cmd( int argc, char *argv[] );
+static int pause_console_cmd( int argc, char *argv[] );
+static int resume_console_cmd( int argc, char *argv[] );
+static int abort_console_cmd( int argc, char *argv[] );
+static int reset_console_cmd( int argc, char *argv[] );
+static int leftpump_console_cmd( int argc, char *argv[] );
+static int rightpump_console_cmd( int argc, char *argv[] );
+static int wifion_console_cmd( int argc, char *argv[] );
+static int wifioff_console_cmd( int argc, char *argv[] );
+static int bleon_console_cmd( int argc, char *argv[] );
+static int bleoff_console_cmd( int argc, char *argv[] );
 
 //only needed this for non-rtos initial hardware test version, wiced sdk controls this uart
 // void initConsoleUART(void)
@@ -57,25 +79,147 @@ void handleCommand(GAME_COMMAND_T command);
 
 
 
- uint16_t extractCommand(void)
- {
-	 uint16 numIncomingBytes = 0;
-	 while(rxReadPtr != rxEndPtr)
-	 {
-		 commandBuffer[numIncomingBytes] = *rxReadPtr;
-		 rxReadPtr++;
-		 if(rxReadPtr > rxBuffer + CONSOLE_RXBUFFER_SIZE) rxReadPtr = rxBuffer;
-		 numIncomingBytes++;
-		 if(numIncomingBytes == sizeof(commandBuffer))
-		 {
-			 numIncomingBytes = 0;
-			 break;					//I usually don't like to this, but break due to error
-		 }
-	 }
+// uint16_t extractCommand(void)
+// {
+//	 uint16 numIncomingBytes = 0;
+//	 while(rxReadPtr != rxEndPtr)
+//	 {
+//		 commandBuffer[numIncomingBytes] = *rxReadPtr;
+//		 rxReadPtr++;
+//		 if(rxReadPtr > rxBuffer + CONSOLE_RXBUFFER_SIZE) rxReadPtr = rxBuffer;
+//		 numIncomingBytes++;
+//		 if(numIncomingBytes == sizeof(commandBuffer))
+//		 {
+//			 numIncomingBytes = 0;
+//			 break;					//I usually don't like to this, but break due to error
+//		 }
+//	 }
+//
+//	 incomingCommand = NO_INCOMING_CMD;
+//	 return numIncomingBytes;
+// }
 
-	 incomingCommand = NO_INCOMING_CMD;
-	 return numIncomingBytes;
- }
+
+//adding in wiced command console
+#define GAME_CONSOLE_COMMANDS \
+    { (char*) "status",  status_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game status"   }, \
+    { (char*) "gamehelp",  help_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game command list"   }, \
+    { (char*) "levels", levels_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Read liquid levels"   }, \
+    { (char*) "start", start_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Start game"   }, \
+    { (char*) "pause", pause_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Pause game"   }, \
+    { (char*) "resume", resume_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Resume game"   }, \
+    { (char*) "abort", abort_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Abort game"   }, \
+    { (char*) "reset", reset_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Reset game"   }, \
+    { (char*) "leftpump", leftpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick left pump"   }, \
+    { (char*) "rightpump", rightpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick right pump"   }, \
+    { (char*) "wifion", wifion_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable wifi and connect"   }, \
+    { (char*) "wifioff", wifioff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disconnect and disable wifi"   }, \
+    { (char*) "bleon", bleon_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable BLE"   }, \
+    { (char*) "bleoff", bleoff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disable BLE"   }, \
+
+const command_t game_console_command_table[] =
+{
+    GAME_CONSOLE_COMMANDS
+    CMD_TABLE_END
+};
+
+static int status_console_cmd( int argc, char *argv[] )
+{
+    consolePrintStatus();
+    return ERR_CMD_OK;
+}
+
+static int help_console_cmd( int argc, char *argv[] )
+{
+    consolePrintHelp();
+    return ERR_CMD_OK;
+}
+
+static int levels_console_cmd( int argc, char *argv[] )
+{
+    consolePrintLevels();
+    return ERR_CMD_OK;
+}
+
+static int start_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = 	REQUEST_START;
+    return ERR_CMD_OK;
+}
+
+static int pause_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = 	REQUEST_PAUSE;
+    return ERR_CMD_OK;
+}
+
+static int resume_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_RESUME;
+    return ERR_CMD_OK;
+}
+
+static int abort_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_ABORT;
+    return ERR_CMD_OK;
+}
+
+static int reset_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_RESET;
+    return ERR_CMD_OK;
+}
+
+static int leftpump_console_cmd( int argc, char *argv[] )
+{
+	leftPumpRequest = 10;
+    kickPumps();
+    return ERR_CMD_OK;
+}
+
+static int rightpump_console_cmd( int argc, char *argv[] )
+{
+	rightPumpRequest = 10;
+    kickPumps();
+    return ERR_CMD_OK;
+}
+
+static int wifion_console_cmd( int argc, char *argv[] )
+{
+    //awsEnableStatus = AWS_ENABLE;
+    return ERR_CMD_OK;
+}
+
+static int wifioff_console_cmd( int argc, char *argv[] )
+{
+    //awsEnableStatus = AWS_DISABLE;
+    return ERR_CMD_OK;
+}
+
+static int bleon_console_cmd( int argc, char *argv[] )
+{
+    //btEnableStatus = BT_ENABLE;
+    return ERR_CMD_OK;
+}
+
+static int bleoff_console_cmd( int argc, char *argv[] )
+{
+    //btEnableStatus = BT_DISABLE;
+    return ERR_CMD_OK;
+}
+
+void initGameConsole(void)
+{
+    wiced_result_t result;
+    result = command_console_init(STDIO_UART, sizeof(game_command_buffer), game_command_buffer,
+                GAME_COMMAND_HISTORY_LENGTH, game_command_history_buffer, " ");
+    if (result != WICED_SUCCESS)
+    {
+        WPRINT_APP_INFO(("Error starting the command console\r\n"));
+    }
+    console_add_cmd_table(game_console_command_table);
+}
 
 
 void consolePrintCRLF(uint8_t numNewlines)
@@ -143,19 +287,20 @@ void consolePrintHelp(void)
     WPRINT_APP_INFO(("Available game commands:\n"));
     WPRINT_APP_INFO(("     status     get game status\n"));
     WPRINT_APP_INFO(("     version    get firmware version\n"));
-    WPRINT_APP_INFO(("     help       print this command list\n"));
+    WPRINT_APP_INFO(("     gamehelp   print this command list\n"));
     WPRINT_APP_INFO(("     levels     get liquid levels\n"));
     WPRINT_APP_INFO(("     start      start/resume game\n"));
     WPRINT_APP_INFO(("     pause      pause game\n"));
+    WPRINT_APP_INFO(("     reset      reset game after win\n"));
     WPRINT_APP_INFO(("     leftpump   add to left pump run speed\n"));
     WPRINT_APP_INFO(("     rightpump  add to left pump run speed\n"));
     WPRINT_APP_INFO(("     abort      abort game and reset system\n"));
     WPRINT_APP_INFO(("     wifion     enable wifi\n"));
     WPRINT_APP_INFO(("     wifioff    disable wifi\n"));
-    WPRINT_APP_INFO(("     bton       enable bt\n"));
-    WPRINT_APP_INFO(("     btoff      disable bt\n"));
-    WPRINT_APP_INFO(("     demo1      run demo game one\n"));
-    WPRINT_APP_INFO(("     demo2      run demo game two\n"));
+    WPRINT_APP_INFO(("     bleon       enable ble\n"));
+    WPRINT_APP_INFO(("     bleoff      disable ble\n"));
+    //WPRINT_APP_INFO(("     demo1      run demo game one\n"));
+    //WPRINT_APP_INFO(("     demo2      run demo game two\n"));
 }
 
 
@@ -190,18 +335,21 @@ void consolePrintError(void)
     WPRINT_APP_INFO(("Unknown command\n"));
 }
 
-void handleIncomingCommand(void)
-{
-	if(extractCommand() == 0)
-	{
-		consolePrintError();
-	}
-	else
-	{
-		GAME_COMMAND_T command = determineCommand((char*) commandBuffer);
-		handleCommand(command);
-	}
-}
+//lots of legacy code from before this was transitioned to wifi/wiced project
+//now using wiced command console library
+
+//void handleIncomingCommand(void)
+//{
+//	if(extractCommand() == 0)
+//	{
+//		consolePrintError();
+//	}
+//	else
+//	{
+//		GAME_COMMAND_T command = determineCommand((char*) commandBuffer);
+//		handleCommand(command);
+//	}
+//}
 
 //preference is for single return statement in function, however
 //for a command interpreter like this, there is no sense in wasting

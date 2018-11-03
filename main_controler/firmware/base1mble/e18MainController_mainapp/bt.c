@@ -1,12 +1,13 @@
 #include "wiced.h"
 #include "bt.h"
-//#include "ble_hello_sensor.h"
 
-extern void startBLE(void);
 extern uint8_t g_hello_client_cnt;
 
+extern uint8_t leftLevel;
+extern uint8_t rightLevel;
 
 static BT_STATE_T btState = BT_UNINITIALIZED;
+extern void startBLE(void);
 
 
 wiced_result_t bt_start(void)
@@ -36,7 +37,18 @@ void btThread(wiced_thread_arg_t arg)
 			case BT_INITIALIZED:
 				if(g_hello_client_cnt)
 				{
+					//kmwh
 					//update BLE water levels
+					//have to check each connected device for subscription
+					//and then publish water levels if subscribed
+
+					//leftLevel and rightLevel
+
+					//if(connection_id != 0)
+					//{
+						//if(exo2_ble_ntfy)
+					//}
+
 				}
 				break;
 

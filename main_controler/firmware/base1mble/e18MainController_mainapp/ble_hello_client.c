@@ -107,6 +107,13 @@ uint8_t start_scan = 0;
 
 extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
 extern const wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[];
+
+//game variables
+extern uint8_t leftPumpRequest;
+extern uint8_t rightPumpRequest0;
+
+
+
 /******************************************************************************
  *                                GATT DATABASE
  ******************************************************************************/
@@ -357,6 +364,13 @@ wiced_bt_gatt_status_t hello_client_gatt_callback( wiced_bt_gatt_evt_t event, wi
         case GATT_ATTRIBUTE_REQUEST_EVT:
             p_attr_req = &p_data->attribute_request;
             if( p_attr_req->request_type == GATTS_REQ_TYPE_WRITE)
+
+            //kmwh
+            //check handle, if leftPump then add to pump request   leftPumpRequest = leftPumpRequest + bleLeftRequest
+            //if right pump, then add to right pump request
+            //otherwise ignore
+            //need to create a pump request function
+
                 WPRINT_APP_INFO(("received GATT_ATTRIBUTE_REQUEST_EVT\n" ));
             break;
 

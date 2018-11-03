@@ -84,6 +84,7 @@
 #include "bt.h"
 #include "liquidlevel.h"
 #include "leduart.h"
+#include "game_console.h"
 
 /******************************************************
  *               Variable Definitions
@@ -114,12 +115,6 @@ uint32_t systicks = 0;		    //system ticks incremented in startup thread
 #define GAME_LED_OFF_COUNTS         8
 #define GAME_LED_ON_COUNTS          12
 
-//#define CONSOLE_THREAD_PRIORITY	9
-// #define AWS_THREAD_PRIORITY		8
-// #define GAME_THREAD_PRIORITY	10
-// #define BT_THREAD_PRIORITY		11
-// #define SOUND_THREAD_PRIORITY	12
-
 #define AWS_THREAD_PRIORITY		4
 #define GAME_THREAD_PRIORITY	7
 #define BT_THREAD_PRIORITY		7
@@ -128,6 +123,8 @@ uint32_t systicks = 0;		    //system ticks incremented in startup thread
 #define THREAD_STACK_SIZE 6144
 #define GAME_STACK_SIZE 4096
 #define SOUND_THREAD_STACK_SIZE 512
+
+#define TEST_HARDWARE_ON_STARTUP
 
 /******************************************************
  *                   Enumerations
@@ -181,12 +178,14 @@ void application_start(void)
     /* Initialise the device */
     wiced_init();
     WPRINT_APP_INFO(("Starting project\n"));
+    initGameConsole();
 
 //    wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
 
 
 
     //init_cycfg_all();             //don't do this!!!
+
 
     initAudioHW();
 
@@ -209,6 +208,21 @@ void application_start(void)
 //         }
 
     initPumpHW();
+
+	#ifdef TEST_HARDWARE_ON_STARTUP
+    Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+    Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+    setPumpSpeed(LEFT_PUMP, 100);
+    setPumpSpeed(RIGHT_PUMP, 100);
+    wiced_rtos_delay_milliseconds(1500);
+    Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
+    Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
+    setPumpSpeed(LEFT_PUMP, 0);
+    setPumpSpeed(RIGHT_PUMP, 0);
+	#endif
+
+
+
 
 	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, THREAD_STACK_SIZE, NULL);

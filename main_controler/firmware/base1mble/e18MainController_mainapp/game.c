@@ -23,10 +23,6 @@ extern uint8_t rightPumpRequest;
 START_PRESS_T startButtonPress = START_PRESS_NONE;
 
 GAME_STATE_REQUEST_T gameStateRequest = REQUEST_NONE;
-//extern GAME_STATE_REQUEST_T gameStateRequest;
-
-//static void pumpIncrement(uint8 counts, PUMP_SELECT_T whichPump);
-//void getGameStateString(uint8_t* stateString);
 
 //game state machine thread
 void gameStateMachine(wiced_thread_arg_t arg)
@@ -147,7 +143,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				}
 
 				//sound test
-				#ifdef IDLE_TEST_MODE
+				#ifdef IDLE_SOUND_TEST_MODE
 				if(getSoundState() == SOUND_IDLE)
 				{
 					playSound(resources_fight_wav_data);

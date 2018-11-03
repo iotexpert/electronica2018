@@ -3,15 +3,16 @@
 	<name>e18MainController_mainapp</name>
 	<comment></comment>
 	<projects>
+		<project>e18MainController_mainapp_COMMAND_CONSOLE</project>
 		<project>e18MainController_config</project>
 		<project>e18MainController_mainapp_CJSONJSON</project>
-		<project>e18MainController_mainapp_PROTOCOLS</project>
-		<project>e18MainController_mainapp_cm0p</project>
 		<project>e18MainController_mainapp_FIRMWARE</project>
 		<project>e18MainController_bootloader</project>
 		<project>e18MainController_mainapp_BESLMBEDTLS</project>
-		<project>e18MainController_mainapp_psoc6pdl</project>
 		<project>e18MainController_dct</project>
+		<project>e18MainController_mainapp_PROTOCOLS</project>
+		<project>e18MainController_mainapp_cm0p</project>
+		<project>e18MainController_mainapp_psoc6pdl</project>
 		<project>e18MainController_resources</project>
 		<project>e18MainController_mainapp_NETXDuoLib</project>
 		<project>e18MainController_mainapp_BRDRVRLOWNRG</project>

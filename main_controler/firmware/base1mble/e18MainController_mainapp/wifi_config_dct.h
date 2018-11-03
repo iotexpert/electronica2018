@@ -52,8 +52,8 @@ extern "C" {
 
 //defines to make development in various locations easier
 
-#define USE_TEST_NETWORK
-//#define USE_ORDC_TEST_NETWORK
+//#define USE_TEST_NETWORK
+#define USE_ORDC_TEST_NETWORK
 
 /* This is the soft AP used for device configuration */
 #define CONFIG_AP_SSID       "NOT USED FOR THIS APP"

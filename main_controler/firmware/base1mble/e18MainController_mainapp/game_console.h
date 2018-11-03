@@ -63,4 +63,6 @@ extern void consolePrintWin(void);
 
 extern void handleIncomingCommand(void);
 
+extern void initGameConsole(void);
+
 #endif /* SOURCE_COMMAND_CONSOLE_H_ */

@@ -136,9 +136,10 @@ CY_APP_SOURCE = \
 # NOTE: This variable cannot be renamed or moved to a different file.
 # It is updated by the Modus IDE middleware editor.
 CY_MAINAPP_SWCOMP_USED= \
-    wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON \
-    psoc6sw-1.0/components/psoc6mw/capsense/softfp \
+    wiced_base-1.0/components/WIFI-SDK/libraries/utilities/command_console \
     wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/low_energy \
+    psoc6sw-1.0/components/psoc6mw/capsense/softfp \
+    wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON \
     wiced_base-1.0/components/WIFI-SDK/libraries/drivers/bluetooth/firmware
 
 #
