@@ -1,6 +1,6 @@
 // ======================================================================
 // E18demo.v generated from TopDesign.cysch
-// 11/01/2018 at 09:54
+// 11/02/2018 at 12:58
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -120,11 +120,11 @@
 `endif
 
 `ifdef WARP
-`define CY_BLK_DIR "C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3"
-`include "C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v"
+`define CY_BLK_DIR "C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3"
+`include "C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v"
 `else
-`define CY_BLK_DIR "C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3"
-`include "C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v"
+`define CY_BLK_DIR "C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3"
+`include "C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v"
 `endif
 
 // Component: CyControlReg_v1_80
@@ -571,7 +571,7 @@ module StripLights_v3_0_0 (
 		  .divisor(2),
 		  .period("0"),
 		  .is_direct(0),
-		  .is_digital(1))
+		  .is_digital(0))
 		Clock_1
 		 (.clock_out(Net_18));
 

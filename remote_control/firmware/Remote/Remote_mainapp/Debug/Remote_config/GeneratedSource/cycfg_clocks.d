@@ -1,7 +1,7 @@
 Remote_config/GeneratedSource/cycfg_clocks.o: \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_clocks.c \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_clocks.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_clocks.c \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_clocks.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_device.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_cpuss.h \
@@ -78,9 +78,9 @@ Remote_config/GeneratedSource/cycfg_clocks.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syslib.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syspm.h
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_clocks.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_clocks.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h:
 

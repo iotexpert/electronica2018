@@ -35,10 +35,10 @@ endif
 all: Remote_mainapp_cm0p.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/gjl.CYSEMI/mtw/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug && $(MAKE) clean all
 
 # Tool invocations
-Remote_mainapp_cm0p.elf: $(OBJS) $(USER_OBJS) C:/Users/gjl.CYSEMI/mtw/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug/libRemote_mainapp_cm0p_psoc6pdl.a
+Remote_mainapp_cm0p.elf: $(OBJS) $(USER_OBJS) C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug/libRemote_mainapp_cm0p_psoc6pdl.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
 	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -Os -ffunction-sections -Wall  -g3 -T "C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/linker/gcc/wiced_cm0plus.ld" -Xlinker --gc-sections -Wl,-Map,"Remote_mainapp_cm0p.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -o "Remote_mainapp_cm0p.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
@@ -52,12 +52,12 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Users\gjl.CYSEMI\mtw\Remote\Remote_mainapp_cm0p/Debug C:\Users\gjl.CYSEMI\mtw\Remote\Remote_mainapp_cm0p/Debug/Remote_mainapp_cm0p.elf
+	-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Git\electronica2018\remote_control\firmware\Remote\Remote_mainapp_cm0p/Debug C:\Git\electronica2018\remote_control\firmware\Remote\Remote_mainapp_cm0p/Debug/Remote_mainapp_cm0p.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug/libRemote_mainapp_cm0p_psoc6pdl.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p_psoc6pdl/Debug/libRemote_mainapp_cm0p_psoc6pdl.a:
 
 -include ../makefile.targets

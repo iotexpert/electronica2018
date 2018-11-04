@@ -1,4 +1,4 @@
-aws_app.o: ../aws_app.c \
+aws_app.o: ../aws_app.c ../global.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_utilities.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/GCC/platform_toolchain.h \
@@ -192,10 +192,12 @@ aws_app.o: ../aws_app.c \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_xip.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/wiced_aws.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_common.h \
- C:\Users\gjl.CYSEMI\mtw\Remote\Remote_resources/resources.h \
+ C:\Git\electronica2018\remote_control\firmware\Remote\Remote_resources/resources.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON/cJSON.h \
- ../global.h
+ ../capsense_app.h
+
+../global.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced.h:
 
@@ -583,10 +585,10 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SD
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_common.h:
 
-C:\Users\gjl.CYSEMI\mtw\Remote\Remote_resources/resources.h:
+C:\Git\electronica2018\remote_control\firmware\Remote\Remote_resources/resources.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/utilities/cJSON/cJSON.h:
 
-../global.h:
+../capsense_app.h:

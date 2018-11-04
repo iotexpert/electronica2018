@@ -2,12 +2,13 @@
 Thread to handle AWS operations
  */
 
+#include "global.h"
 #include "wiced.h"
 #include "wiced_aws.h"
 #include "aws_common.h"
 #include "resources.h"
 #include "cJSON.h"
-#include "global.h"
+#include "capsense_app.h"
 
 /******************************************************
  *                      Macros
@@ -18,8 +19,6 @@ Thread to handle AWS operations
 #define AWS_IOT_MQTT_BROKER_ADDRESS                	"amk6m51qrxr2u-ats.iot.us-east-1.amazonaws.com"
 #define PUMP_PUBLISH_TOPIC                          "PumpAWS"
 #define SHADOW_UPDATE_SUBSCRIBE_TOPIC				"$aws/things/Electronica2018/shadow/update/accepted"
-#define SHADOW_GET_PUBLISH_TOPIC					"$aws/things/Electronica2018/shadow/get"
-#define SHADOW_GET_SUBSCRIBE_TOPIC					"$aws/things/Electronica2018/shadow/get/accepted"
 
 #define APP_PUBLISH_RETRY_COUNT                    (5)
 
@@ -155,7 +154,6 @@ static void my_publisher_aws_callback( wiced_aws_handle_t aws, wiced_aws_event_t
             break;
 
         case WICED_AWS_EVENT_SUBSCRIBED:
-            WPRINT_APP_INFO( ( "GJL SUBSCRIPTION EVENT\n") ); // GJL - never get this callback ????
             break;
 
         case WICED_AWS_EVENT_PAYLOAD_RECEIVED:
@@ -183,18 +181,19 @@ void awsThread( void )
     wiced_result_t ret = WICED_SUCCESS;
     int pub_retries;
     char msg[18]; /* This will hold the JSON message to be published */
-    uint16_t queueMessage[2]; /* This is the message send from the slider via the RTOS queue */
+    uint8_t queueMessage[SWIPE_MESSAGE_SIZE] = {0}; /* This is the message send from the slider via the RTOS queue */
     char thingName[] = "remote001122334455"; /* This gets replaced with the MAC address */
+
+    //GJL send display message to go to the WIFI screen
 
     wiced_rtos_init_semaphore(&aws_semaphore_handle);
 
     /* Bring up the network interface */
-    ret = wiced_network_up( WICED_AWS_DEFAULT_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
-    if ( ret != WICED_SUCCESS )
+    do
     {
-        WPRINT_APP_INFO( ( "[Application/AWS] Not able to join the requested AP\n\n" ) );
-        return;
-    }
+    	ret = wiced_network_up( WICED_AWS_DEFAULT_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
+    	wiced_rtos_delay_milliseconds(200); /* Wait if connection didn't happen before trying again */
+    } while (ret != WICED_SUCCESS);
 
 
     /* Set Thing name to device MAC address */
@@ -240,24 +239,18 @@ void awsThread( void )
     }
 
     /* Wait until connection is done */
-    wiced_rtos_get_semaphore(&aws_semaphore_handle, WICED_WAIT_FOREVER); //GJL might want a timeout here
+    wiced_rtos_get_semaphore(&aws_semaphore_handle, WICED_WAIT_FOREVER);
 
-    /* Subscribe to the shadow update topic (to get water level updates) and shadow/get/accepted to get initial water levels */
+    /* Subscribe to the shadow update topic (to get water level updates) */
     ret = wiced_aws_subscribe( aws_connection, SHADOW_UPDATE_SUBSCRIBE_TOPIC,   WICED_AWS_QOS_ATLEAST_ONCE);
-    ret = wiced_aws_subscribe( aws_connection, SHADOW_GET_SUBSCRIBE_TOPIC, 		WICED_AWS_QOS_ATLEAST_ONCE);
 
-    wiced_rtos_delay_milliseconds(1000); // GJL TEMP - need to wait for subscription to finish - never get a callback for the subscribes
-
-    /* Get starting water levels by publishing to shadow/get - this causes a message to be published to shadow/get/accepted with the shadow state */
-	wiced_aws_publish( aws_connection, SHADOW_GET_PUBLISH_TOPIC, (uint8_t*)"{}", strlen(msg),  WICED_AWS_QOS_ATLEAST_ONCE );
-
-    nextState = CONNECTED; // Indicate to main that the connection is now active
+    //GJL send message to display that game has started
 
     while ( 1 )
     {
     	/* Wait for a new message in the queue */
 		wiced_rtos_pop_from_queue(&swipe_queue_handle, &queueMessage, WICED_WAIT_FOREVER);
-		if(queueMessage[0] == RIGHT)
+		if(queueMessage[0] == SWIPE_RIGHT)
 		{
 			snprintf(msg, sizeof(msg), "{\"Right\" : %.0d}", queueMessage[1]);
 		}

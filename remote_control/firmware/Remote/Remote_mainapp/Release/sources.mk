@@ -18,6 +18,7 @@ Remote_config/GeneratedSource \
 . \
 psoc6sw-1.0/components/psoc6mw/capsense \
 psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup \
+u8g2/csrc \
 wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED \
 wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/CM3_CM4 \
 wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD \

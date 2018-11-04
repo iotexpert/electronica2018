@@ -1,12 +1,12 @@
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\TopDesign\TopDesign.cysch
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\WS2812String_v1_0\WS2812String_v1_0.cysym
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\StripLights_v3_0.cysym
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\StripLights_v3_0.pdf
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\SLights.c
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\SLights.h
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\fonts.c
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\fonts.h
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\PSoC4\PSoC 4200 BLE\StripLights_v3_0.cysch
+C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\TopDesign\TopDesign.cysch
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\WS2812String_v1_0\WS2812String_v1_0.cysym
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\StripLights_v3_0.cysym
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\StripLights_v3_0.pdf
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\SLights.c
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\SLights.h
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\fonts.c
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\API\fonts.h
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\StripLights_v3_0\PSoC4\PSoC 4200 BLE\StripLights_v3_0.cysch
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.pdf
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v
@@ -25,8 +25,8 @@ C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrim
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\demux_v1_10.pdf
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\version.cypatch
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\Custom\custom.cs
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.cysym
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.cysym
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cyprimitive
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.pdf
@@ -199,9 +199,7 @@ C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrim
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\or_v1_0\Custom\custom.cs
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_m0s8_scb_v2_0\cy_m0s8_scb_v2_0.cysym
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_m0s8_scb_v2_0\PSoC4\cy_m0s8_scb_v2_0.cyprimitive
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cydwr
-C:\Users\kmwh\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Em_EEPROM_Dynamic_v2_20\API\cy_em_eeprom.c
-C:\Users\kmwh\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Em_EEPROM_Dynamic_v2_20\API\cy_em_eeprom.h
+C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cydwr
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\cm0gcc.ld
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\Cm0RealView.scat
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\cy_boot_v5_60\PSoC4\API\Cm0Start.c

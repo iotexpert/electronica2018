@@ -4,21 +4,13 @@
 #include "wiced.h"
 
 /***************************************************************************
-* Global constants
+* Constants and types
 ***************************************************************************/
-/* States for the remote state machine */
-#define INITSTATE (0)
-#define CONNECTING (1)
-#define CONNECTED (2)
-
-/* Swipe directions */
-#define RIGHT (0)
-#define LEFT  (1)
+/* LED states - LEDs are active low */
+typedef enum{LED_OFF = 1u, LED_ON = 0u} LED_STATE;
 
 /*******************************************************************************
 * External Variables
 *******************************************************************************/
-extern wiced_bool_t   	nextState;
-extern wiced_queue_t  	swipe_queue_handle;
 extern wiced_mac_t 		mac; 	/* Device MAC address */
 

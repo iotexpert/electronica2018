@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
   28:Generated_Source\PSoC4/StripLights.c **** 
   29:Generated_Source\PSoC4/StripLights.c **** uint8  StripLights_initvar = 0;
   30:Generated_Source\PSoC4/StripLights.c **** 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 2
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 2
 
 
   31:Generated_Source\PSoC4/StripLights.c **** #if(StripLights_MEMORY_TYPE == StripLights_MEMORY_RGB)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
   85:Generated_Source\PSoC4/StripLights.c **** 
   86:Generated_Source\PSoC4/StripLights.c **** #if((StripLights_CHIP == StripLights_CHIP_WS2812) || (StripLights_CHIP == StripLights_CHIP_SF2812RG
   87:Generated_Source\PSoC4/StripLights.c **** const uint32 StripLights_CLUT[ ] = {
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 3
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 3
 
 
   88:Generated_Source\PSoC4/StripLights.c **** //xxBBRRGG (WS2812)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  142:Generated_Source\PSoC4/StripLights.c **** 0x00FF8000,  // VIOLET
  143:Generated_Source\PSoC4/StripLights.c **** 0x0080FF00,  // RASPBERRY
  144:Generated_Source\PSoC4/StripLights.c **** 0x000000FF,  // GREEN
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 4
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 4
 
 
  145:Generated_Source\PSoC4/StripLights.c **** 0x00202020,  // DIM WHITE
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  199:Generated_Source\PSoC4/StripLights.c **** 0x0000FF55, 0x0055FF55, 0x00AAFF55, 0x00FFFF55,  // 28,
  200:Generated_Source\PSoC4/StripLights.c **** 
  201:Generated_Source\PSoC4/StripLights.c **** 0x000000AA, 0x005500AA, 0x00AA00AA, 0x00FF00AA,  // 32, MRed
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 5
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 5
 
 
  202:Generated_Source\PSoC4/StripLights.c **** 0x000055AA, 0x005555AA, 0x00AA55AA, 0x00FF55AA,  // 36, 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  256:Generated_Source\PSoC4/StripLights.c **** 
  257:Generated_Source\PSoC4/StripLights.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
  258:Generated_Source\PSoC4/StripLights.c ****         int32   StripLights_realClock; 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 6
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 6
 
 
  259:Generated_Source\PSoC4/StripLights.c ****         int16   StripLights_period;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  313:Generated_Source\PSoC4/StripLights.c ****            StripLights_CONTROL = StripLights_ENABLE;    
  314:Generated_Source\PSoC4/StripLights.c ****        }
  315:Generated_Source\PSoC4/StripLights.c ****     }
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 7
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 7
 
 
  316:Generated_Source\PSoC4/StripLights.c ****     StripLights_refreshComplete = 1;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  370:Generated_Source\PSoC4/StripLights.c ****     
  371:Generated_Source\PSoC4/StripLights.c ****     while(toCount < (delay*10)) 
  372:Generated_Source\PSoC4/StripLights.c ****     {
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 8
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 8
 
 
  373:Generated_Source\PSoC4/StripLights.c ****         toCount++;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  427:Generated_Source\PSoC4/StripLights.c **** ********************************************************************************
  428:Generated_Source\PSoC4/StripLights.c **** * Summary:
  429:Generated_Source\PSoC4/StripLights.c **** *   Update the LEDs with graphics memory.
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 9
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 9
 
 
  430:Generated_Source\PSoC4/StripLights.c **** *
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  484:Generated_Source\PSoC4/StripLights.c **** /*******************************************************************************
  485:Generated_Source\PSoC4/StripLights.c **** * Function Name: StripLights_Ready
  486:Generated_Source\PSoC4/StripLights.c **** ********************************************************************************
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 10
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 10
 
 
  487:Generated_Source\PSoC4/StripLights.c **** * Summary:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  541:Generated_Source\PSoC4/StripLights.c **** * Summary:
  542:Generated_Source\PSoC4/StripLights.c **** *  Increment color throught the color lookup table.
  543:Generated_Source\PSoC4/StripLights.c **** *
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 11
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 11
 
 
  544:Generated_Source\PSoC4/StripLights.c **** * Parameters:  
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  588:Generated_Source\PSoC4/StripLights.c ****     uint32 static color;
  589:Generated_Source\PSoC4/StripLights.c ****    
  590:Generated_Source\PSoC4/StripLights.c ****     #if(StripLights_MEMORY_TYPE == StripLights_MEMORY_RGB)
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 12
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 12
 
 
  591:Generated_Source\PSoC4/StripLights.c ****         color = StripLights_ledArray[StripLights_row][StripLights_ledIndex];
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  606:Generated_Source\PSoC4/StripLights.c ****             color = color >> 8;
  607:Generated_Source\PSoC4/StripLights.c ****             StripLights_DATA = StripLights_gamma[color & 0x000000FF];  // Write White 
  608:Generated_Source\PSoC4/StripLights.c ****         #endif
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 13
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 13
 
 
  609:Generated_Source\PSoC4/StripLights.c ****     #else
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  628:Generated_Source\PSoC4/StripLights.c **** 
  629:Generated_Source\PSoC4/StripLights.c **** /*****************************************************************************
  630:Generated_Source\PSoC4/StripLights.c **** * Function Name: StripLights_CISR
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 14
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 14
 
 
  631:Generated_Source\PSoC4/StripLights.c **** ******************************************************************************
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  660:Generated_Source\PSoC4/StripLights.c ****              color = StripLights_ledArray[StripLights_row][0];
  137              		.loc 1 660 0
  138 001a 144A     		ldr	r2, .L8+4
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 15
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 15
 
 
  139 001c 1368     		ldr	r3, [r2]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  681:Generated_Source\PSoC4/StripLights.c ****             color = color >> 8;
  682:Generated_Source\PSoC4/StripLights.c ****             StripLights_DATA = (uint8)(color & 0x000000FF);  // Write Blue  
  683:Generated_Source\PSoC4/StripLights.c ****             #if(StripLights_CHIP == StripLights_CHIP_SF2812RGBW)
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 16
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 16
 
 
  684:Generated_Source\PSoC4/StripLights.c ****                 color = color >> 8;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  213              		.loc 1 333 0
  214              		.cfi_startproc
  215              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 17
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 17
 
 
  216              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  449:Generated_Source\PSoC4/StripLights.c ****     #else  /* Else use lookup table */
  263              		.loc 1 449 0
  264 0010 124D     		ldr	r5, .L15
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 18
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 18
 
 
  265 0012 2B68     		ldr	r3, [r5]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  311 004e 0A4B     		ldr	r3, .L15+28
  312 0050 1A70     		strb	r2, [r3]
  481:Generated_Source\PSoC4/StripLights.c **** }
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 19
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 19
 
 
  313              		.loc 1 481 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  361              		@ sp needed
  362 0010 7047     		bx	lr
  363              	.L20:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 20
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 20
 
 
  364 0012 C046     		.align	2
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  411              		.loc 1 366 0
  412 0018 FA23     		movs	r3, #250
  413 001a DB00     		lsls	r3, r3, #3
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 21
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 21
 
 
  414 001c 9C42     		cmp	r4, r3
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  459              	.L29:
  460              		.align	2
  461              	.L28:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 22
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 22
 
 
  462 0050 00000000 		.word	.LANCHOR0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  509 0024 9847     		blx	r3
  510              	.LVL27:
  511              	.L30:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 23
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 23
 
 
  422:Generated_Source\PSoC4/StripLights.c **** 
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  561              		@ frame_needed = 0, uses_anonymous_args = 0
  562              		@ link register save eliminated.
  563              	.LVL29:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 24
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 24
 
 
  532:Generated_Source\PSoC4/StripLights.c ****     #endif
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  612 0016 C858     		ldr	r0, [r1, r3]
  613              	.LVL35:
  566:Generated_Source\PSoC4/StripLights.c **** /*****************************************************************************
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 25
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 25
 
 
  614              		.loc 1 566 0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  732:Generated_Source\PSoC4/StripLights.c **** {
  633              		.loc 1 732 0
  634              		.cfi_startproc
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 26
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 26
 
 
  635              		@ args = 0, pretend = 0, frame = 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  743:Generated_Source\PSoC4/StripLights.c ****             #endif
  744:Generated_Source\PSoC4/StripLights.c ****         }
  745:Generated_Source\PSoC4/StripLights.c ****     }
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 27
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 27
 
 
  746:Generated_Source\PSoC4/StripLights.c **** }
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  747:Generated_Source\PSoC4/StripLights.c **** 
  748:Generated_Source\PSoC4/StripLights.c **** 
  749:Generated_Source\PSoC4/StripLights.c **** 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 28
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 28
 
 
  750:Generated_Source\PSoC4/StripLights.c **** /*******************************************************************************
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  774:Generated_Source\PSoC4/StripLights.c ****         color = color >> 8;
  775:Generated_Source\PSoC4/StripLights.c ****         StripLights_DATA = (uint8)(color & 0x000000FF);  // Write White 
  776:Generated_Source\PSoC4/StripLights.c ****     #endif 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 29
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 29
 
 
  777:Generated_Source\PSoC4/StripLights.c **** }
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  806:Generated_Source\PSoC4/StripLights.c ****     #if (StripLights_COORD_WRAP & StripLights_COORD_XAXIS )
  807:Generated_Source\PSoC4/StripLights.c ****         x = x % (StripLights_MAX_X+1);
  808:Generated_Source\PSoC4/StripLights.c ****     #endif
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 30
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 30
 
 
  809:Generated_Source\PSoC4/StripLights.c ****     
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  800 001c C250     		str	r2, [r0, r3]
  801              	.L57:
  842:Generated_Source\PSoC4/StripLights.c ****         #else  /* Else use lookup table */
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 31
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 31
 
 
  843:Generated_Source\PSoC4/StripLights.c ****             StripLights_ledArray[y][x] = (uint8)color;
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  873:Generated_Source\PSoC4/StripLights.c ****     #endif
  874:Generated_Source\PSoC4/StripLights.c ****     
  875:Generated_Source\PSoC4/StripLights.c ****     if((x>=0) && (y>=0) && (x < StripLights_ARRAY_COLS) && (y < StripLights_ARRAY_ROWS))
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 32
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 32
 
 
  826              		.loc 1 875 0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  864              	.LVL64:
  865 002a 00E0     		b	.L62
  866              	.LVL65:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 33
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 33
 
 
  867              	.L66:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  893              	.LVL67:
  894 0000 F0B5     		push	{r4, r5, r6, r7, lr}
  895              		.cfi_def_cfa_offset 20
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 34
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 34
 
 
  896              		.cfi_offset 4, -20
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  942 0032 2A00     		movs	r2, r5
  943 0034 5846     		mov	r0, fp
  944 0036 FFF7FEFF 		bl	StripLights_Pixel
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 35
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 35
 
 
  945              	.LVL76:
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  938:Generated_Source\PSoC4/StripLights.c **** 		x++;
  986              		.loc 1 938 0
  987 0068 0136     		adds	r6, r6, #1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 36
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 36
 
 
  988              	.LVL85:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1034 00b0 6718     		adds	r7, r4, r1
  1035 00b2 4146     		mov	r1, r8
  1036 00b4 8D19     		adds	r5, r1, r6
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 37
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 37
 
 
  1037 00b6 019A     		ldr	r2, [sp, #4]
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1084 00f6 A246     		mov	r10, r4
  1085 00f8 AB46     		mov	fp, r5
  1086 00fa F0BD     		pop	{r4, r5, r6, r7, pc}
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 38
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 38
 
 
  1087              		.cfi_endproc
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1121              		.cfi_def_cfa_offset 48
  1122 000e 0400     		movs	r4, r0
  1123 0010 0D00     		movs	r5, r1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 39
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 39
 
 
  1124 0012 0192     		str	r2, [sp, #4]
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1160 0034 5242     		rsbs	r2, r2, #0
  1161 0036 9146     		mov	r9, r2
  1162 0038 01E0     		b	.L75
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 40
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 40
 
 
  1163              	.LVL113:
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
 1006:Generated_Source\PSoC4/StripLights.c **** 			{
 1007:Generated_Source\PSoC4/StripLights.c **** 				y0 += stepy;
  1201              		.loc 1 1007 0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 41
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 41
 
 
  1202 005e 5544     		add	r5, r5, r10
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
 1022:Generated_Source\PSoC4/StripLights.c **** 				x0 += stepx;
  1241              		.loc 1 1022 0
  1242 0084 4C44     		add	r4, r4, r9
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 42
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 42
 
 
  1243              	.LVL129:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1288              		.align	2
  1289              		.global	StripLights_DrawRect
  1290              		.code	16
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 43
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 43
 
 
  1291              		.thumb_func
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1319              		.loc 1 1056 0
  1320 0014 9042     		cmp	r0, r2
  1321 0016 01DD     		ble	.L88
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 44
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 44
 
 
 1057:Generated_Source\PSoC4/StripLights.c **** 		{
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1357              	.L89:
 1066:Generated_Source\PSoC4/StripLights.c **** 		{
  1358              		.loc 1 1066 0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 45
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 45
 
 
  1359 003a 002D     		cmp	r5, #0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1402 0078 F0BD     		pop	{r4, r5, r6, r7, pc}
  1403              		.cfi_endproc
  1404              	.LFE53:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 46
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 46
 
 
  1405              		.size	StripLights_DrawRect, .-StripLights_DrawRect
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1435 0016 124A     		ldr	r2, .L103
  1436 0018 124B     		ldr	r3, .L103+4
  1437 001a 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 47
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 47
 
 
 1111:Generated_Source\PSoC4/StripLights.c ****            StripLights_DimShift = 1;
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1475              		.loc 1 1127 0
  1476 004c 06E0     		b	.L95
  1477              	.L96:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 48
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 48
 
 
 1128:Generated_Source\PSoC4/StripLights.c ****            
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  279:Generated_Source\PSoC4/StripLights.c ****         StripLights_Compare0 = (uint8)StripLights_COMPARE_ZERO;
  1523              		.loc 1 279 0
  1524 0008 0B32     		adds	r2, r2, #11
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 49
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 49
 
 
  1525 000a 184B     		ldr	r3, .L107+4
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  304:Generated_Source\PSoC4/StripLights.c ****         
  1569              		.loc 1 304 0
  1570 004e 0D48     		ldr	r0, .L107+28
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 50
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 50
 
 
  1571 0050 FFF7FEFF 		bl	StripLights_fisr_StartEx
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
 1144:Generated_Source\PSoC4/StripLights.c **** *    x, y:  The upper left corner of the image location
 1145:Generated_Source\PSoC4/StripLights.c **** *  bitMap:  A pointer to an image array.  The first two values is the X and Y
 1146:Generated_Source\PSoC4/StripLights.c **** *           size of the bitmap.
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 51
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 51
 
 
 1147:Generated_Source\PSoC4/StripLights.c **** *  update:  If not 0 update the display after drawing image.
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1650              	.LVL174:
  1651              	.L111:
 1163:Generated_Source\PSoC4/StripLights.c ****     {
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 52
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 52
 
 
 1164:Generated_Source\PSoC4/StripLights.c **** 		for(dx = x; dx < maxX; dx++)
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1695              		.loc 1 1170 0 is_stmt 1
  1696 0050 03B0     		add	sp, sp, #12
  1697              	.LVL184:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 53
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 53
 
 
  1698              		@ sp needed
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1732 0006 C0B4     		push	{r6, r7}
  1733              		.cfi_def_cfa_offset 28
  1734              		.cfi_offset 8, -28
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 54
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 54
 
 
  1735              		.cfi_offset 11, -24
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1776              	.LVL198:
  1777              	.L120:
  1778 003a 019C     		ldr	r4, [sp, #4]
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 55
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 55
 
 
  1779              	.LVL199:
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1826              		.type	StripLights_RgbBlend, %function
  1827              	StripLights_RgbBlend:
  1828              	.LFB57:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 56
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 56
 
 
 1207:Generated_Source\PSoC4/StripLights.c **** 
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1856              	.LVL211:
  1857 0014 2840     		ands	r0, r5
  1858 0016 5043     		muls	r0, r2
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 57
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 57
 
 
  1859 0018 6423     		movs	r3, #100
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
 1238:Generated_Source\PSoC4/StripLights.c **** }
  1909              		.loc 1 1238 0
  1910              		@ sp needed
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 58
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 58
 
 
  1911              	.LVL221:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  1965 001b 00       		.byte	0
  1966 001c 01       		.byte	1
  1967 001d 01       		.byte	1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 59
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 59
 
 
  1968 001e 01       		.byte	1
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2022 0054 0B       		.byte	11
  2023 0055 0C       		.byte	12
  2024 0056 0C       		.byte	12
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 60
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 60
 
 
  2025 0057 0D       		.byte	13
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2079 008d 31       		.byte	49
  2080 008e 32       		.byte	50
  2081 008f 32       		.byte	50
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 61
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 61
 
 
  2082 0090 33       		.byte	51
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2136 00c6 7E       		.byte	126
  2137 00c7 7F       		.byte	127
  2138 00c8 81       		.byte	-127
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 62
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 62
 
 
  2139 00c9 83       		.byte	-125
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2193 00ff FF       		.byte	-1
  2194              		.type	StripLights_CLUT, %object
  2195              		.size	StripLights_CLUT, 480
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 63
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 63
 
 
  2196              	StripLights_CLUT:
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2250 01d4 FF555500 		.word	5592575
  2251 01d8 FF55AA00 		.word	11163135
  2252 01dc FF55FF00 		.word	16733695
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 64
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 64
 
 
  2253 01e0 00AA0000 		.word	43520
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2307 02b8 0060A000 		.word	10510336
  2308 02bc 00709000 		.word	9465856
  2309 02c0 00808000 		.word	8421376
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 65
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 65
 
 
  2310 02c4 00907000 		.word	7376896
@@ -3859,13 +3859,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2325              		.size	StripLights_ledIndex, 4
  2326              	StripLights_ledIndex:
  2327 0004 00000000 		.space	4
- 2328              		.type	color.6038, %object
- 2329              		.size	color.6038, 4
- 2330              	color.6038:
+ 2328              		.type	color.5997, %object
+ 2329              		.size	color.5997, 4
+ 2330              	color.5997:
  2331 0008 00000000 		.space	4
- 2332              		.type	color.6046, %object
- 2333              		.size	color.6046, 4
- 2334              	color.6046:
+ 2332              		.type	color.6005, %object
+ 2333              		.size	color.6005, 4
+ 2334              	color.6005:
  2335 000c 00000000 		.space	4
  2336              		.type	StripLights_EnterCritical, %object
  2337              		.size	StripLights_EnterCritical, 4
@@ -3875,9 +3875,9 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2341              		.size	StripLights_ExitCritical, 4
  2342              	StripLights_ExitCritical:
  2343 0014 00000000 		.space	4
- 2344              		.type	colorIndex.6031, %object
- 2345              		.size	colorIndex.6031, 4
- 2346              	colorIndex.6031:
+ 2344              		.type	colorIndex.5990, %object
+ 2345              		.size	colorIndex.5990, 4
+ 2346              	colorIndex.5990:
  2347 0018 00000000 		.space	4
  2348              		.type	StripLights_initvar, %object
  2349              		.size	StripLights_initvar, 1
@@ -3898,13 +3898,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2364 0006 00000000 		.4byte	.Ldebug_abbrev0
  2365 000a 04       		.byte	0x4
  2366 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 66
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 66
 
 
  2367 000c 12010000 		.4byte	.LASF81
  2368 0010 0C       		.byte	0xc
  2369 0011 88000000 		.4byte	.LASF82
- 2370 0015 63050000 		.4byte	.LASF83
+ 2370 0015 C8020000 		.4byte	.LASF83
  2371 0019 00000000 		.4byte	.Ldebug_ranges0+0
  2372 001d 00000000 		.4byte	0
  2373 0021 00000000 		.4byte	.Ldebug_line0
@@ -3923,7 +3923,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2386 003a 02       		.uleb128 0x2
  2387 003b 02       		.byte	0x2
  2388 003c 07       		.byte	0x7
- 2389 003d D0030000 		.4byte	.LASF3
+ 2389 003d 0D040000 		.4byte	.LASF3
  2390 0041 02       		.uleb128 0x2
  2391 0042 04       		.byte	0x4
  2392 0043 05       		.byte	0x5
@@ -3931,7 +3931,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2394 0048 02       		.uleb128 0x2
  2395 0049 04       		.byte	0x4
  2396 004a 07       		.byte	0x7
- 2397 004b 38030000 		.4byte	.LASF5
+ 2397 004b 75030000 		.4byte	.LASF5
  2398 004f 02       		.uleb128 0x2
  2399 0050 08       		.byte	0x8
  2400 0051 05       		.byte	0x5
@@ -3939,7 +3939,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2402 0056 02       		.uleb128 0x2
  2403 0057 08       		.byte	0x8
  2404 0058 07       		.byte	0x7
- 2405 0059 EF020000 		.4byte	.LASF7
+ 2405 0059 2C030000 		.4byte	.LASF7
  2406 005d 03       		.uleb128 0x3
  2407 005e 04       		.byte	0x4
  2408 005f 05       		.byte	0x5
@@ -3947,22 +3947,22 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2410 0064 02       		.uleb128 0x2
  2411 0065 04       		.byte	0x4
  2412 0066 07       		.byte	0x7
- 2413 0067 2B030000 		.4byte	.LASF8
+ 2413 0067 68030000 		.4byte	.LASF8
  2414 006b 04       		.uleb128 0x4
  2415 006c D3010000 		.4byte	.LASF9
  2416 0070 02       		.byte	0x2
  2417 0071 D201     		.2byte	0x1d2
  2418 0073 2C000000 		.4byte	0x2c
  2419 0077 04       		.uleb128 0x4
- 2420 0078 3B040000 		.4byte	.LASF10
+ 2420 0078 78040000 		.4byte	.LASF10
  2421 007c 02       		.byte	0x2
  2422 007d D401     		.2byte	0x1d4
  2423 007f 48000000 		.4byte	0x48
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 67
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 67
 
 
  2424 0083 04       		.uleb128 0x4
- 2425 0084 6C040000 		.4byte	.LASF11
+ 2425 0084 A9040000 		.4byte	.LASF11
  2426 0088 02       		.byte	0x2
  2427 0089 D701     		.2byte	0x1d7
  2428 008b 41000000 		.4byte	0x41
@@ -3973,13 +3973,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2433 0096 02       		.uleb128 0x2
  2434 0097 08       		.byte	0x8
  2435 0098 04       		.byte	0x4
- 2436 0099 1B050000 		.4byte	.LASF13
+ 2436 0099 58050000 		.4byte	.LASF13
  2437 009d 02       		.uleb128 0x2
  2438 009e 01       		.byte	0x1
  2439 009f 08       		.byte	0x8
  2440 00a0 20000000 		.4byte	.LASF14
  2441 00a4 04       		.uleb128 0x4
- 2442 00a5 48040000 		.4byte	.LASF15
+ 2442 00a5 85040000 		.4byte	.LASF15
  2443 00a9 02       		.byte	0x2
  2444 00aa 7C02     		.2byte	0x27c
  2445 00ac B0000000 		.4byte	0xb0
@@ -3990,7 +3990,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2450 00b7 BB000000 		.4byte	0xbb
  2451 00bb 07       		.uleb128 0x7
  2452 00bc 08       		.uleb128 0x8
- 2453 00bd 4B050000 		.4byte	.LASF16
+ 2453 00bd 88050000 		.4byte	.LASF16
  2454 00c1 03       		.byte	0x3
  2455 00c2 12       		.byte	0x12
  2456 00c3 B5000000 		.4byte	0xb5
@@ -4001,12 +4001,12 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2461 00ce 02       		.uleb128 0x2
  2462 00cf 04       		.byte	0x4
  2463 00d0 07       		.byte	0x7
- 2464 00d1 03050000 		.4byte	.LASF18
+ 2464 00d1 40050000 		.4byte	.LASF18
  2465 00d5 06       		.uleb128 0x6
  2466 00d6 04       		.byte	0x4
  2467 00d7 6B000000 		.4byte	0x6b
  2468 00db 09       		.uleb128 0x9
- 2469 00dc A7040000 		.4byte	.LASF21
+ 2469 00dc E4040000 		.4byte	.LASF21
  2470 00e0 01       		.byte	0x1
  2471 00e1 4802     		.2byte	0x248
  2472 00e3 00000000 		.4byte	.LFB44
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2478 00f2 A0010000 		.4byte	.LASF19
  2479 00f6 01       		.byte	0x1
  2480 00f7 4A02     		.2byte	0x24a
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 68
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 68
 
 
  2481 00f9 77000000 		.4byte	0x77
@@ -4034,10 +4034,10 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2491 0111 77000000 		.4byte	0x77
  2492 0115 05       		.uleb128 0x5
  2493 0116 03       		.byte	0x3
- 2494 0117 08000000 		.4byte	color.6038
+ 2494 0117 08000000 		.4byte	color.5997
  2495 011b 00       		.byte	0
  2496 011c 09       		.uleb128 0x9
- 2497 011d 85040000 		.4byte	.LASF22
+ 2497 011d C2040000 		.4byte	.LASF22
  2498 0121 01       		.byte	0x1
  2499 0122 8602     		.2byte	0x286
  2500 0124 00000000 		.4byte	.LFB45
@@ -4062,15 +4062,15 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2519 0152 77000000 		.4byte	0x77
  2520 0156 05       		.uleb128 0x5
  2521 0157 03       		.byte	0x3
- 2522 0158 0C000000 		.4byte	color.6046
+ 2522 0158 0C000000 		.4byte	color.6005
  2523 015c 0A       		.uleb128 0xa
- 2524 015d 53030000 		.4byte	.LASF24
+ 2524 015d 90030000 		.4byte	.LASF24
  2525 0161 01       		.byte	0x1
  2526 0162 8B02     		.2byte	0x28b
  2527 0164 77000000 		.4byte	0x77
  2528 0168 00       		.byte	0
  2529 0169 09       		.uleb128 0x9
- 2530 016a 05040000 		.4byte	.LASF25
+ 2530 016a 42040000 		.4byte	.LASF25
  2531 016e 01       		.byte	0x1
  2532 016f 4C01     		.2byte	0x14c
  2533 0171 00000000 		.4byte	.LFB36
@@ -4078,11 +4078,11 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2535 0179 01       		.uleb128 0x1
  2536 017a 9C       		.byte	0x9c
  2537 017b 9C010000 		.4byte	0x19c
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 69
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 69
 
 
  2538 017f 0C       		.uleb128 0xc
- 2539 0180 0C050000 		.4byte	.LASF26
+ 2539 0180 49050000 		.4byte	.LASF26
  2540 0184 01       		.byte	0x1
  2541 0185 4C01     		.2byte	0x14c
  2542 0187 BC000000 		.4byte	0xbc
@@ -4119,7 +4119,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2573 01ce 21000000 		.4byte	.LLST1
  2574 01d2 00       		.byte	0
  2575 01d3 0F       		.uleb128 0xf
- 2576 01d4 A9030000 		.4byte	.LASF84
+ 2576 01d4 E6030000 		.4byte	.LASF84
  2577 01d8 01       		.byte	0x1
  2578 01d9 F101     		.2byte	0x1f1
  2579 01db 77000000 		.4byte	0x77
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2592 01fb 60020000 		.4byte	0x260
  2593 01ff 11       		.uleb128 0x11
  2594 0200 DB000000 		.4byte	.LASF30
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 70
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 70
 
 
  2595 0204 01       		.byte	0x1
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2649 0276 0D       		.uleb128 0xd
  2650 0277 72737400 		.ascii	"rst\000"
  2651 027b 01       		.byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 71
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 71
 
 
  2652 027c 9001     		.2byte	0x190
@@ -4220,7 +4220,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2668 029f D3010000 		.4byte	0x1d3
  2669 02a3 00       		.byte	0
  2670 02a4 16       		.uleb128 0x16
- 2671 02a5 96040000 		.4byte	.LASF85
+ 2671 02a5 D3040000 		.4byte	.LASF85
  2672 02a9 01       		.byte	0x1
  2673 02aa 0C02     		.2byte	0x20c
  2674 02ac 00000000 		.4byte	.LFB41
@@ -4228,7 +4228,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2676 02b4 01       		.uleb128 0x1
  2677 02b5 9C       		.byte	0x9c
  2678 02b6 17       		.uleb128 0x17
- 2679 02b7 BB030000 		.4byte	.LASF33
+ 2679 02b7 F8030000 		.4byte	.LASF33
  2680 02bb 01       		.byte	0x1
  2681 02bc 1102     		.2byte	0x211
  2682 02be 77000000 		.4byte	0x77
@@ -4255,10 +4255,10 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2703 02f6 9C       		.byte	0x9c
  2704 02f7 38030000 		.4byte	0x338
  2705 02fb 11       		.uleb128 0x11
- 2706 02fc FC030000 		.4byte	.LASF35
+ 2706 02fc 39040000 		.4byte	.LASF35
  2707 0300 01       		.byte	0x1
  2708 0301 2702     		.2byte	0x227
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 72
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 72
 
 
  2709 0303 77000000 		.4byte	0x77
@@ -4276,13 +4276,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2721 031f 2A02     		.2byte	0x22a
  2722 0321 4D030000 		.4byte	0x34d
  2723 0325 0B       		.uleb128 0xb
- 2724 0326 DF020000 		.4byte	.LASF37
+ 2724 0326 1C030000 		.4byte	.LASF37
  2725 032a 01       		.byte	0x1
  2726 032b 2B02     		.2byte	0x22b
  2727 032d 77000000 		.4byte	0x77
  2728 0331 05       		.uleb128 0x5
  2729 0332 03       		.byte	0x3
- 2730 0333 18000000 		.4byte	colorIndex.6031
+ 2730 0333 18000000 		.4byte	colorIndex.5990
  2731 0337 00       		.byte	0
  2732 0338 19       		.uleb128 0x19
  2733 0339 48030000 		.4byte	0x348
@@ -4296,7 +4296,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2741 034d 1B       		.uleb128 0x1b
  2742 034e 38030000 		.4byte	0x338
  2743 0352 09       		.uleb128 0x9
- 2744 0353 D5040000 		.4byte	.LASF38
+ 2744 0353 12050000 		.4byte	.LASF38
  2745 0357 01       		.byte	0x1
  2746 0358 DB02     		.2byte	0x2db
  2747 035a 00000000 		.4byte	.LFB47
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2763 037e 77000000 		.4byte	0x77
  2764 0382 49010000 		.4byte	.LLST7
  2765 0386 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 73
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 73
 
 
  2766 0387 636F6C00 		.ascii	"col\000"
@@ -4328,7 +4328,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2770 0392 68010000 		.4byte	.LLST8
  2771 0396 00       		.byte	0
  2772 0397 09       		.uleb128 0x9
- 2773 0398 E3030000 		.4byte	.LASF39
+ 2773 0398 20040000 		.4byte	.LASF39
  2774 039c 01       		.byte	0x1
  2775 039d C802     		.2byte	0x2c8
  2776 039f 00000000 		.4byte	.LFB46
@@ -4378,13 +4378,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2820 03fd 01       		.byte	0x1
  2821 03fe FB02     		.2byte	0x2fb
  2822 0400 77000000 		.4byte	0x77
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 74
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 74
 
 
  2823 0404 A7010000 		.4byte	.LLST10
  2824 0408 00       		.byte	0
  2825 0409 09       		.uleb128 0x9
- 2826 040a F1040000 		.4byte	.LASF41
+ 2826 040a 2E050000 		.4byte	.LASF41
  2827 040e 01       		.byte	0x1
  2828 040f 1A03     		.2byte	0x31a
  2829 0411 00000000 		.4byte	.LFB49
@@ -4438,14 +4438,14 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2877 0481 59000000 		.4byte	.LASF23
  2878 0485 01       		.byte	0x1
  2879 0486 6303     		.2byte	0x363
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 75
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 75
 
 
  2880 0488 77000000 		.4byte	0x77
  2881 048c F0020000 		.4byte	.LLST15
  2882 0490 00       		.byte	0
  2883 0491 09       		.uleb128 0x9
- 2884 0492 C8020000 		.4byte	.LASF43
+ 2884 0492 05030000 		.4byte	.LASF43
  2885 0496 01       		.byte	0x1
  2886 0497 9503     		.2byte	0x395
  2887 0499 00000000 		.4byte	.LFB51
@@ -4466,7 +4466,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2902 04bd 83000000 		.4byte	0x83
  2903 04c1 52030000 		.4byte	.LLST17
  2904 04c5 11       		.uleb128 0x11
- 2905 04c6 34050000 		.4byte	.LASF44
+ 2905 04c6 71050000 		.4byte	.LASF44
  2906 04ca 01       		.byte	0x1
  2907 04cb 9503     		.2byte	0x395
  2908 04cd 83000000 		.4byte	0x83
@@ -4484,7 +4484,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2920 04eb 83000000 		.4byte	0x83
  2921 04ef D4030000 		.4byte	.LLST20
  2922 04f3 0E       		.uleb128 0xe
- 2923 04f4 66040000 		.4byte	.LASF45
+ 2923 04f4 A3040000 		.4byte	.LASF45
  2924 04f8 01       		.byte	0x1
  2925 04f9 9803     		.2byte	0x398
  2926 04fb 83000000 		.4byte	0x83
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2934 0513 1C       		.uleb128 0x1c
  2935 0514 7800     		.ascii	"x\000"
  2936 0516 01       		.byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 76
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 76
 
 
  2937 0517 9A03     		.2byte	0x39a
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  2991 056e 13       		.uleb128 0x13
  2992 056f 01       		.uleb128 0x1
  2993 0570 52       		.byte	0x52
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 77
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 77
 
 
  2994 0571 02       		.uleb128 0x2
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3048 05b9 00       		.sleb128 0
  3049 05ba 00       		.byte	0
  3050 05bb 12       		.uleb128 0x12
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 78
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 78
 
 
  3051 05bc 86000000 		.4byte	.LVL89
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3105 060d 01       		.uleb128 0x1
  3106 060e 50       		.byte	0x50
  3107 060f 02       		.uleb128 0x2
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 79
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 79
 
 
  3108 0610 77       		.byte	0x77
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3162 0658 51       		.byte	0x51
  3163 0659 02       		.uleb128 0x2
  3164 065a 75       		.byte	0x75
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 80
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 80
 
 
  3165 065b 00       		.sleb128 0
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3219 06a3 91       		.byte	0x91
  3220 06a4 4C       		.sleb128 -52
  3221 06a5 06       		.byte	0x6
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 81
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 81
 
 
  3222 06a6 00       		.byte	0
@@ -4828,7 +4828,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3246 06c4 00       		.byte	0
  3247 06c5 00       		.byte	0
  3248 06c6 09       		.uleb128 0x9
- 3249 06c7 B2050000 		.4byte	.LASF47
+ 3249 06c7 A0050000 		.4byte	.LASF47
  3250 06cb 01       		.byte	0x1
  3251 06cc CA03     		.2byte	0x3ca
  3252 06ce 00000000 		.4byte	.LFB52
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3276 070a 793100   		.ascii	"y1\000"
  3277 070d 01       		.byte	0x1
  3278 070e CA03     		.2byte	0x3ca
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 82
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 82
 
 
  3279 0710 83000000 		.4byte	0x83
@@ -4884,13 +4884,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3299 073d 83000000 		.4byte	0x83
  3300 0741 60050000 		.4byte	.LLST30
  3301 0745 0E       		.uleb128 0xe
- 3302 0746 9D030000 		.4byte	.LASF48
+ 3302 0746 DA030000 		.4byte	.LASF48
  3303 074a 01       		.byte	0x1
  3304 074b CE03     		.2byte	0x3ce
  3305 074d 83000000 		.4byte	0x83
  3306 0751 73050000 		.4byte	.LLST31
  3307 0755 0E       		.uleb128 0xe
- 3308 0756 A3030000 		.4byte	.LASF49
+ 3308 0756 E0030000 		.4byte	.LASF49
  3309 075a 01       		.byte	0x1
  3310 075b CE03     		.2byte	0x3ce
  3311 075d 83000000 		.4byte	0x83
@@ -4900,7 +4900,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3315 076a 26000000 		.4byte	.LBE2-.LBB2
  3316 076e A0070000 		.4byte	0x7a0
  3317 0772 0E       		.uleb128 0xe
- 3318 0773 94030000 		.4byte	.LASF50
+ 3318 0773 D1030000 		.4byte	.LASF50
  3319 0777 01       		.byte	0x1
  3320 0778 EA03     		.2byte	0x3ea
  3321 077a 5D000000 		.4byte	0x5d
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3333 0792 01       		.uleb128 0x1
  3334 0793 51       		.byte	0x51
  3335 0794 02       		.uleb128 0x2
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 83
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 83
 
 
  3336 0795 75       		.byte	0x75
@@ -4937,7 +4937,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3349 07a5 24000000 		.4byte	.LBE3-.LBB3
  3350 07a9 DB070000 		.4byte	0x7db
  3351 07ad 0E       		.uleb128 0xe
- 3352 07ae 94030000 		.4byte	.LASF50
+ 3352 07ae D1030000 		.4byte	.LASF50
  3353 07b2 01       		.byte	0x1
  3354 07b3 F903     		.2byte	0x3f9
  3355 07b5 5D000000 		.4byte	0x5d
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3390 07ea 13       		.uleb128 0x13
  3391 07eb 01       		.uleb128 0x1
  3392 07ec 51       		.byte	0x51
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 84
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 84
 
 
  3393 07ed 02       		.uleb128 0x2
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3447 085b 59000000 		.4byte	.LASF23
  3448 085f 01       		.byte	0x1
  3449 0860 1904     		.2byte	0x419
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 85
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 85
 
 
  3450 0862 77000000 		.4byte	0x77
@@ -5046,7 +5046,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3452 0867 91       		.byte	0x91
  3453 0868 04       		.sleb128 4
  3454 0869 0E       		.uleb128 0xe
- 3455 086a 42040000 		.4byte	.LASF53
+ 3455 086a 7F040000 		.4byte	.LASF53
  3456 086e 01       		.byte	0x1
  3457 086f 1B04     		.2byte	0x41b
  3458 0871 5D000000 		.4byte	0x5d
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3504 08b7 51       		.byte	0x51
  3505 08b8 02       		.uleb128 0x2
  3506 08b9 75       		.byte	0x75
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 86
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 86
 
 
  3507 08ba 00       		.sleb128 0
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3561 08f9 68000000 		.4byte	.LVL156
  3562 08fd C6060000 		.4byte	0x6c6
  3563 0901 26090000 		.4byte	0x926
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 87
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 87
 
 
  3564 0905 13       		.uleb128 0x13
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3618 0941 13       		.uleb128 0x13
  3619 0942 01       		.uleb128 0x1
  3620 0943 53       		.byte	0x53
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 88
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 88
 
 
  3621 0944 03       		.uleb128 0x3
@@ -5235,7 +5235,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3632 094f 00       		.byte	0
  3633 0950 00       		.byte	0
  3634 0951 09       		.uleb128 0x9
- 3635 0952 84030000 		.4byte	.LASF54
+ 3635 0952 C1030000 		.4byte	.LASF54
  3636 0956 01       		.byte	0x1
  3637 0957 4E04     		.2byte	0x44e
  3638 0959 00000000 		.4byte	.LFB54
@@ -5244,7 +5244,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3641 0962 9C       		.byte	0x9c
  3642 0963 8E090000 		.4byte	0x98e
  3643 0967 0C       		.uleb128 0xc
- 3644 0968 4A030000 		.4byte	.LASF55
+ 3644 0968 87030000 		.4byte	.LASF55
  3645 096c 01       		.byte	0x1
  3646 096d 4E04     		.2byte	0x44e
  3647 096f 77000000 		.4byte	0x77
@@ -5262,7 +5262,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3659 0989 77000000 		.4byte	0x77
  3660 098d 00       		.byte	0
  3661 098e 1E       		.uleb128 0x1e
- 3662 098f 22050000 		.4byte	.LASF56
+ 3662 098f 5F050000 		.4byte	.LASF56
  3663 0993 01       		.byte	0x1
  3664 0994 FC       		.byte	0xfc
  3665 0995 00000000 		.4byte	.LFB35
@@ -5276,9 +5276,9 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3673 09a9 FE       		.byte	0xfe
  3674 09aa 6B000000 		.4byte	0x6b
  3675 09ae 1F       		.uleb128 0x1f
- 3676 09af 53030000 		.4byte	.LASF24
+ 3676 09af 90030000 		.4byte	.LASF24
  3677 09b3 01       		.byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 89
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 89
 
 
  3678 09b4 FF       		.byte	0xff
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3732 0a23 03       		.byte	0x3
  3733 0a24 00000000 		.4byte	StripLights_FISR
  3734 0a28 00       		.byte	0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 90
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 90
 
 
  3735 0a29 12       		.uleb128 0x12
@@ -5362,7 +5362,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3753 0a4a 00       		.byte	0
  3754 0a4b 00       		.byte	0
  3755 0a4c 09       		.uleb128 0x9
- 3756 0a4d 72040000 		.4byte	.LASF58
+ 3756 0a4d AF040000 		.4byte	.LASF58
  3757 0a51 01       		.byte	0x1
  3758 0a52 8104     		.2byte	0x481
  3759 0a54 00000000 		.4byte	.LFB55
@@ -5383,7 +5383,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3774 0a76 83000000 		.4byte	0x83
  3775 0a7a E1060000 		.4byte	.LLST41
  3776 0a7e 11       		.uleb128 0x11
- 3777 0a7f 5C050000 		.4byte	.LASF59
+ 3777 0a7f 99050000 		.4byte	.LASF59
  3778 0a83 01       		.byte	0x1
  3779 0a84 8104     		.2byte	0x481
  3780 0a86 D5000000 		.4byte	0xd5
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3789 0a9f 647800   		.ascii	"dx\000"
  3790 0aa2 01       		.byte	0x1
  3791 0aa3 8304     		.2byte	0x483
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 91
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 91
 
 
  3792 0aa5 83000000 		.4byte	0x83
@@ -5410,7 +5410,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3798 0ab4 83000000 		.4byte	0x83
  3799 0ab8 8E070000 		.4byte	.LLST45
  3800 0abc 0E       		.uleb128 0xe
- 3801 0abd EA040000 		.4byte	.LASF61
+ 3801 0abd 27050000 		.4byte	.LASF61
  3802 0ac1 01       		.byte	0x1
  3803 0ac2 8404     		.2byte	0x484
  3804 0ac4 83000000 		.4byte	0x83
@@ -5422,7 +5422,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3810 0ad4 83000000 		.4byte	0x83
  3811 0ad8 11080000 		.4byte	.LLST47
  3812 0adc 0E       		.uleb128 0xe
- 3813 0add EA020000 		.4byte	.LASF63
+ 3813 0add 27030000 		.4byte	.LASF63
  3814 0ae1 01       		.byte	0x1
  3815 0ae2 8504     		.2byte	0x485
  3816 0ae4 83000000 		.4byte	0x83
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3846 0b17 09       		.uleb128 0x9
  3847 0b18 76020000 		.4byte	.LASF64
  3848 0b1c 01       		.byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 92
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 92
 
 
  3849 0b1d A504     		.2byte	0x4a5
@@ -5480,7 +5480,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3865 0b41 83000000 		.4byte	0x83
  3866 0b45 56080000 		.4byte	.LLST50
  3867 0b49 11       		.uleb128 0x11
- 3868 0b4a 5C050000 		.4byte	.LASF59
+ 3868 0b4a 99050000 		.4byte	.LASF59
  3869 0b4e 01       		.byte	0x1
  3870 0b4f A504     		.2byte	0x4a5
  3871 0b51 E20B0000 		.4byte	0xbe2
@@ -5504,7 +5504,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3889 0b7f 83000000 		.4byte	0x83
  3890 0b83 03090000 		.4byte	.LLST54
  3891 0b87 0E       		.uleb128 0xe
- 3892 0b88 EA040000 		.4byte	.LASF61
+ 3892 0b88 27050000 		.4byte	.LASF61
  3893 0b8c 01       		.byte	0x1
  3894 0b8d A804     		.2byte	0x4a8
  3895 0b8f 83000000 		.4byte	0x83
@@ -5516,9 +5516,9 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3901 0b9f 83000000 		.4byte	0x83
  3902 0ba3 86090000 		.4byte	.LLST56
  3903 0ba7 0E       		.uleb128 0xe
- 3904 0ba8 EA020000 		.4byte	.LASF63
+ 3904 0ba8 27030000 		.4byte	.LASF63
  3905 0bac 01       		.byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 93
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 93
 
 
  3906 0bad A904     		.2byte	0x4a9
@@ -5556,7 +5556,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3938 0be3 04       		.byte	0x4
  3939 0be4 77000000 		.4byte	0x77
  3940 0be8 18       		.uleb128 0x18
- 3941 0be9 C7050000 		.4byte	.LASF65
+ 3941 0be9 B5050000 		.4byte	.LASF65
  3942 0bed 01       		.byte	0x1
  3943 0bee C604     		.2byte	0x4c6
  3944 0bf0 77000000 		.4byte	0x77
@@ -5572,13 +5572,13 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3954 0c0a 77000000 		.4byte	0x77
  3955 0c0e AC090000 		.4byte	.LLST58
  3956 0c12 11       		.uleb128 0x11
- 3957 0c13 06030000 		.4byte	.LASF67
+ 3957 0c13 43030000 		.4byte	.LASF67
  3958 0c17 01       		.byte	0x1
  3959 0c18 C604     		.2byte	0x4c6
  3960 0c1a 77000000 		.4byte	0x77
  3961 0c1e D8090000 		.4byte	.LLST59
  3962 0c22 0D       		.uleb128 0xd
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 94
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 94
 
 
  3963 0c23 70637400 		.ascii	"pct\000"
@@ -5587,7 +5587,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3966 0c2a 77000000 		.4byte	0x77
  3967 0c2e 040A0000 		.4byte	.LLST60
  3968 0c32 0E       		.uleb128 0xe
- 3969 0c33 53050000 		.4byte	.LASF68
+ 3969 0c33 90050000 		.4byte	.LASF68
  3970 0c37 01       		.byte	0x1
  3971 0c38 C804     		.2byte	0x4c8
  3972 0c3a 77000000 		.4byte	0x77
@@ -5609,7 +5609,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  3988 0c5c 04       		.byte	0x4
  3989 0c5d 430C0000 		.4byte	0xc43
  3990 0c61 22       		.uleb128 0x22
- 3991 0c62 22040000 		.4byte	.LASF70
+ 3991 0c62 5F040000 		.4byte	.LASF70
  3992 0c66 01       		.byte	0x1
  3993 0c67 1A       		.byte	0x1a
  3994 0c68 5B0C0000 		.4byte	0xc5b
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4017 0c9a AD000000 		.4byte	.LASF71
  4018 0c9e 01       		.byte	0x1
  4019 0c9f 20       		.byte	0x20
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 95
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 95
 
 
  4020 0ca0 830C0000 		.4byte	0xc83
@@ -5646,7 +5646,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4022 0ca5 03       		.byte	0x3
  4023 0ca6 00000000 		.4byte	StripLights_ledArray
  4024 0caa 22       		.uleb128 0x22
- 4025 0cab 6F030000 		.4byte	.LASF72
+ 4025 0cab AC030000 		.4byte	.LASF72
  4026 0caf 01       		.byte	0x1
  4027 0cb0 25       		.byte	0x25
  4028 0cb1 77000000 		.4byte	0x77
@@ -5654,7 +5654,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4030 0cb6 03       		.byte	0x3
  4031 0cb7 00000000 		.4byte	StripLights_ledIndex
  4032 0cbb 22       		.uleb128 0x22
- 4033 0cbc 3B050000 		.4byte	.LASF73
+ 4033 0cbc 78050000 		.4byte	.LASF73
  4034 0cc0 01       		.byte	0x1
  4035 0cc1 26       		.byte	0x26
  4036 0cc2 77000000 		.4byte	0x77
@@ -5662,7 +5662,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4038 0cc7 03       		.byte	0x3
  4039 0cc8 00000000 		.4byte	StripLights_row
  4040 0ccc 23       		.uleb128 0x23
- 4041 0ccd 53030000 		.4byte	.LASF24
+ 4041 0ccd 90030000 		.4byte	.LASF24
  4042 0cd1 01       		.byte	0x1
  4043 0cd2 8B02     		.2byte	0x28b
  4044 0cd4 77000000 		.4byte	0x77
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4074 0d18 FB000000 		.4byte	.LASF74
  4075 0d1c 01       		.byte	0x1
  4076 0d1d 2D       		.byte	0x2d
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 96
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 96
 
 
  4077 0d1e 280D0000 		.4byte	0xd28
@@ -5733,18 +5733,18 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4106 0d62 06       		.byte	0x6
  4107 0d63 18       		.byte	0x18
  4108 0d64 24       		.uleb128 0x24
- 4109 0d65 4D040000 		.4byte	.LASF78
- 4110 0d69 4D040000 		.4byte	.LASF78
+ 4109 0d65 8A040000 		.4byte	.LASF78
+ 4110 0d69 8A040000 		.4byte	.LASF78
  4111 0d6d 07       		.byte	0x7
  4112 0d6e 18       		.byte	0x18
  4113 0d6f 24       		.uleb128 0x24
- 4114 0d70 0E030000 		.4byte	.LASF79
- 4115 0d74 0E030000 		.4byte	.LASF79
+ 4114 0d70 4B030000 		.4byte	.LASF79
+ 4115 0d74 4B030000 		.4byte	.LASF79
  4116 0d78 06       		.byte	0x6
  4117 0d79 20       		.byte	0x20
  4118 0d7a 24       		.uleb128 0x24
- 4119 0d7b B8040000 		.4byte	.LASF80
- 4120 0d7f B8040000 		.4byte	.LASF80
+ 4119 0d7b F5040000 		.4byte	.LASF80
+ 4120 0d7f F5040000 		.4byte	.LASF80
  4121 0d83 07       		.byte	0x7
  4122 0d84 20       		.byte	0x20
  4123 0d85 00       		.byte	0
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4131 0005 13       		.uleb128 0x13
  4132 0006 0B       		.uleb128 0xb
  4133 0007 03       		.uleb128 0x3
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 97
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 97
 
 
  4134 0008 0E       		.uleb128 0xe
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4188 003e 0F       		.uleb128 0xf
  4189 003f 00       		.byte	0
  4190 0040 0B       		.uleb128 0xb
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 98
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 98
 
 
  4191 0041 0B       		.uleb128 0xb
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4245 0078 0E       		.uleb128 0xe
  4246 0079 3A       		.uleb128 0x3a
  4247 007a 0B       		.uleb128 0xb
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 99
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 99
 
 
  4248 007b 3B       		.uleb128 0x3b
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4302 00b1 00       		.byte	0
  4303 00b2 0E       		.uleb128 0xe
  4304 00b3 34       		.uleb128 0x34
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 100
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 100
 
 
  4305 00b4 00       		.byte	0
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4359 00eb 06       		.uleb128 0x6
  4360 00ec 40       		.uleb128 0x40
  4361 00ed 18       		.uleb128 0x18
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 101
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 101
 
 
  4362 00ee 9642     		.uleb128 0x2116
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4416 012e 01       		.uleb128 0x1
  4417 012f 31       		.uleb128 0x31
  4418 0130 13       		.uleb128 0x13
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 102
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 102
 
 
  4419 0131 00       		.byte	0
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4473 0169 01       		.byte	0x1
  4474 016a 3F       		.uleb128 0x3f
  4475 016b 19       		.uleb128 0x19
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 103
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 103
 
 
  4476 016c 03       		.uleb128 0x3
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4530 01a3 3B       		.uleb128 0x3b
  4531 01a4 05       		.uleb128 0x5
  4532 01a5 49       		.uleb128 0x49
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 104
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 104
 
 
  4533 01a6 13       		.uleb128 0x13
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4587 01dd 3C       		.uleb128 0x3c
  4588 01de 19       		.uleb128 0x19
  4589 01df 00       		.byte	0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 105
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 105
 
 
  4590 01e0 00       		.byte	0
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4644 0216 6E       		.uleb128 0x6e
  4645 0217 0E       		.uleb128 0xe
  4646 0218 03       		.uleb128 0x3
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 106
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 106
 
 
  4647 0219 0E       		.uleb128 0xe
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4701 0063 3C000000 		.4byte	.LVL7
  4702 0067 42000000 		.4byte	.LVL8
  4703 006b 0500     		.2byte	0x5
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 107
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 107
 
 
  4704 006d 73       		.byte	0x73
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4758 00f1 01       		.uleb128 0x1
  4759 00f2 50       		.byte	0x50
  4760 00f3 9F       		.byte	0x9f
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 108
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 108
 
 
  4761 00f4 00000000 		.4byte	0
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4815 017d 51       		.byte	0x51
  4816 017e 00000000 		.4byte	0
  4817 0182 00000000 		.4byte	0
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 109
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 109
 
 
  4818              	.LLST9:
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4872 0204 F3       		.byte	0xf3
  4873 0205 01       		.uleb128 0x1
  4874 0206 50       		.byte	0x50
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 110
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 110
 
 
  4875 0207 9F       		.byte	0x9f
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4929 0286 50       		.byte	0x50
  4930 0287 2A000000 		.4byte	.LVL64
  4931 028b 2C000000 		.4byte	.LVL65
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 111
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 111
 
 
  4932 028f 0400     		.2byte	0x4
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  4986 030b 2E000000 		.4byte	.LVL66
  4987 030f 0200     		.2byte	0x2
  4988 0311 30       		.byte	0x30
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 112
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 112
 
 
  4989 0312 9F       		.byte	0x9f
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5043 039c 0400     		.2byte	0x4
  5044 039e F3       		.byte	0xf3
  5045 039f 01       		.uleb128 0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 113
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 113
 
 
  5046 03a0 52       		.byte	0x52
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5100 042e EA000000 		.4byte	.LVL97
  5101 0432 0200     		.2byte	0x2
  5102 0434 91       		.byte	0x91
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 114
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 114
 
 
  5103 0435 50       		.sleb128 -48
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5157 04c6 9E000000 		.4byte	.LVL136
  5158 04ca 0100     		.2byte	0x1
  5159 04cc 55       		.byte	0x55
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 115
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 115
 
 
  5160 04cd 00000000 		.4byte	0
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5214 0558 00000000 		.4byte	0
  5215 055c 00000000 		.4byte	0
  5216              	.LLST30:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 116
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 116
 
 
  5217 0560 1A000000 		.4byte	.LVL106
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5271 05ee 54       		.byte	0x54
  5272 05ef 40000000 		.4byte	.LVL152
  5273 05f3 4B000000 		.4byte	.LVL154-1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 117
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 117
 
 
  5274 05f7 0100     		.2byte	0x1
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5328 0681 00000000 		.4byte	0
  5329              	.LLST38:
  5330 0685 00000000 		.4byte	.LVL142
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 118
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 118
 
 
  5331 0689 10000000 		.4byte	.LVL143
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5385 0715 0100     		.2byte	0x1
  5386 0717 57       		.byte	0x57
  5387 0718 52000000 		.4byte	.LVL186
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 119
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 119
 
 
  5388 071c 5A000000 		.4byte	.LFE55
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5442 07a4 00       		.sleb128 0
  5443 07a5 32000000 		.4byte	.LVL178
  5444 07a9 34000000 		.4byte	.LVL179
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 120
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 120
 
 
  5445 07ad 0100     		.2byte	0x1
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5499 0837 00000000 		.4byte	.LVL189
  5500 083b 26000000 		.4byte	.LVL194
  5501 083f 0100     		.2byte	0x1
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 121
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 121
 
 
  5502 0841 50       		.byte	0x50
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5556 08c8 5A000000 		.4byte	.LVL208
  5557 08cc 0100     		.2byte	0x1
  5558 08ce 5B       		.byte	0x5b
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 122
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 122
 
 
  5559 08cf 5A000000 		.4byte	.LVL208
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5613 0959 0200     		.2byte	0x2
  5614 095b 32       		.byte	0x32
  5615 095c 9F       		.byte	0x9f
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 123
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 123
 
 
  5616 095d 26000000 		.4byte	.LVL194
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5670 09ed 56       		.byte	0x56
  5671 09ee 6C000000 		.4byte	.LVL221
  5672 09f2 74000000 		.4byte	.LFE57
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 124
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 124
 
 
  5673 09f6 0400     		.2byte	0x4
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5727 0024 0C000000 		.4byte	.LFE36-.LFB36
  5728 0028 00000000 		.4byte	.LFB39
  5729 002c 80000000 		.4byte	.LFE39-.LFB39
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 125
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 125
 
 
  5730 0030 00000000 		.4byte	.LFB40
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5784 0030 00000000 		.4byte	.LFB38
  5785 0034 2C000000 		.4byte	.LFE38
  5786 0038 00000000 		.4byte	.LFB41
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 126
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 126
 
 
  5787 003c 0C000000 		.4byte	.LFE41
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5829              	.LASF42:
  5830 0025 53747269 		.ascii	"StripLights_GetPixel\000"
  5830      704C6967 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 127
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 127
 
 
  5830      6874735F 
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5850      72437269 
  5851              	.LASF74:
  5852 00fb 53747269 		.ascii	"StripLights_gamma\000"
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 128
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 128
 
 
  5852      704C6967 
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5872 020a 53747269 		.ascii	"StripLights_Trigger\000"
  5872      704C6967 
  5872      6874735F 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 129
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 129
 
 
  5872      54726967 
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5898      20636861 
  5898      7200
  5899              	.LASF34:
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 130
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 130
 
 
  5900 02b3 53747269 		.ascii	"StripLights_ColorInc\000"
@@ -7746,249 +7746,248 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 1
  5900      6874735F 
  5900      436F6C6F 
  5900      72496E63 
- 5901              	.LASF43:
- 5902 02c8 53747269 		.ascii	"StripLights_DrawCircle\000"
- 5902      704C6967 
- 5902      6874735F 
- 5902      44726177 
- 5902      43697263 
- 5903              	.LASF37:
- 5904 02df 636F6C6F 		.ascii	"colorIndex\000"
- 5904      72496E64 
- 5904      657800
- 5905              	.LASF63:
- 5906 02ea 6D617859 		.ascii	"maxY\000"
- 5906      00
- 5907              	.LASF7:
- 5908 02ef 6C6F6E67 		.ascii	"long long unsigned int\000"
- 5908      206C6F6E 
- 5908      6720756E 
- 5908      7369676E 
- 5908      65642069 
- 5909              	.LASF67:
- 5910 0306 746F436F 		.ascii	"toColor\000"
- 5910      6C6F7200 
- 5911              	.LASF79:
- 5912 030e 53747269 		.ascii	"StripLights_cisr_SetPriority\000"
- 5912      704C6967 
- 5912      6874735F 
- 5912      63697372 
- 5912      5F536574 
- 5913              	.LASF8:
- 5914 032b 756E7369 		.ascii	"unsigned int\000"
- 5914      676E6564 
- 5914      20696E74 
- 5914      00
- 5915              	.LASF5:
- 5916 0338 6C6F6E67 		.ascii	"long unsigned int\000"
- 5916      20756E73 
- 5916      69676E65 
- 5916      6420696E 
- 5916      7400
- 5917              	.LASF55:
- 5918 034a 64696D4C 		.ascii	"dimLevel\000"
- 5918      6576656C 
- 5918      00
- 5919              	.LASF24:
- 5920 0353 53747269 		.ascii	"StripLights_refreshComplete\000"
- 5920      704C6967 
- 5920      6874735F 
- 5920      72656672 
- 5920      65736843 
- 5921              	.LASF72:
- 5922 036f 53747269 		.ascii	"StripLights_ledIndex\000"
- 5922      704C6967 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 131
+ 5901              	.LASF83:
+ 5902 02c8 433A5C47 		.ascii	"C:\\Git\\electronica2018\\led_controller\\firmware\\"
+ 5902      69745C65 
+ 5902      6C656374 
+ 5902      726F6E69 
+ 5902      63613230 
+ 5903 02f7 45313864 		.ascii	"E18demo.cydsn\000"
+ 5903      656D6F2E 
+ 5903      63796473 
+ 5903      6E00
+ 5904              	.LASF43:
+ 5905 0305 53747269 		.ascii	"StripLights_DrawCircle\000"
+ 5905      704C6967 
+ 5905      6874735F 
+ 5905      44726177 
+ 5905      43697263 
+ 5906              	.LASF37:
+ 5907 031c 636F6C6F 		.ascii	"colorIndex\000"
+ 5907      72496E64 
+ 5907      657800
+ 5908              	.LASF63:
+ 5909 0327 6D617859 		.ascii	"maxY\000"
+ 5909      00
+ 5910              	.LASF7:
+ 5911 032c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 5911      206C6F6E 
+ 5911      6720756E 
+ 5911      7369676E 
+ 5911      65642069 
+ 5912              	.LASF67:
+ 5913 0343 746F436F 		.ascii	"toColor\000"
+ 5913      6C6F7200 
+ 5914              	.LASF79:
+ 5915 034b 53747269 		.ascii	"StripLights_cisr_SetPriority\000"
+ 5915      704C6967 
+ 5915      6874735F 
+ 5915      63697372 
+ 5915      5F536574 
+ 5916              	.LASF8:
+ 5917 0368 756E7369 		.ascii	"unsigned int\000"
+ 5917      676E6564 
+ 5917      20696E74 
+ 5917      00
+ 5918              	.LASF5:
+ 5919 0375 6C6F6E67 		.ascii	"long unsigned int\000"
+ 5919      20756E73 
+ 5919      69676E65 
+ 5919      6420696E 
+ 5919      7400
+ 5920              	.LASF55:
+ 5921 0387 64696D4C 		.ascii	"dimLevel\000"
+ 5921      6576656C 
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 131
 
 
- 5922      6874735F 
- 5922      6C656449 
- 5922      6E646578 
- 5923              	.LASF54:
- 5924 0384 53747269 		.ascii	"StripLights_Dim\000"
- 5924      704C6967 
- 5924      6874735F 
- 5924      44696D00 
- 5925              	.LASF50:
- 5926 0394 66726163 		.ascii	"fraction\000"
- 5926      74696F6E 
- 5926      00
- 5927              	.LASF48:
- 5928 039d 73746570 		.ascii	"stepx\000"
- 5928      7800
- 5929              	.LASF49:
- 5930 03a3 73746570 		.ascii	"stepy\000"
- 5930      7900
- 5931              	.LASF84:
- 5932 03a9 53747269 		.ascii	"StripLights_Ready\000"
- 5932      704C6967 
- 5932      6874735F 
- 5932      52656164 
- 5932      7900
- 5933              	.LASF33:
- 5934 03bb 53747269 		.ascii	"StripLights_getColor\000"
- 5934      704C6967 
- 5934      6874735F 
- 5934      67657443 
- 5934      6F6C6F72 
- 5935              	.LASF3:
- 5936 03d0 73686F72 		.ascii	"short unsigned int\000"
- 5936      7420756E 
- 5936      7369676E 
- 5936      65642069 
- 5936      6E7400
- 5937              	.LASF39:
- 5938 03e3 53747269 		.ascii	"StripLights_DisplayClear\000"
- 5938      704C6967 
- 5938      6874735F 
- 5938      44697370 
- 5938      6C617943 
- 5939              	.LASF35:
- 5940 03fc 696E6356 		.ascii	"incValue\000"
- 5940      616C7565 
- 5940      00
- 5941              	.LASF25:
- 5942 0405 53747269 		.ascii	"StripLights_SetCriticalFuncs\000"
- 5942      704C6967 
- 5942      6874735F 
- 5942      53657443 
- 5942      72697469 
- 5943              	.LASF70:
- 5944 0422 53747269 		.ascii	"StripLights_ExitCritical\000"
- 5944      704C6967 
- 5944      6874735F 
- 5944      45786974 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 132
+ 5921      00
+ 5922              	.LASF24:
+ 5923 0390 53747269 		.ascii	"StripLights_refreshComplete\000"
+ 5923      704C6967 
+ 5923      6874735F 
+ 5923      72656672 
+ 5923      65736843 
+ 5924              	.LASF72:
+ 5925 03ac 53747269 		.ascii	"StripLights_ledIndex\000"
+ 5925      704C6967 
+ 5925      6874735F 
+ 5925      6C656449 
+ 5925      6E646578 
+ 5926              	.LASF54:
+ 5927 03c1 53747269 		.ascii	"StripLights_Dim\000"
+ 5927      704C6967 
+ 5927      6874735F 
+ 5927      44696D00 
+ 5928              	.LASF50:
+ 5929 03d1 66726163 		.ascii	"fraction\000"
+ 5929      74696F6E 
+ 5929      00
+ 5930              	.LASF48:
+ 5931 03da 73746570 		.ascii	"stepx\000"
+ 5931      7800
+ 5932              	.LASF49:
+ 5933 03e0 73746570 		.ascii	"stepy\000"
+ 5933      7900
+ 5934              	.LASF84:
+ 5935 03e6 53747269 		.ascii	"StripLights_Ready\000"
+ 5935      704C6967 
+ 5935      6874735F 
+ 5935      52656164 
+ 5935      7900
+ 5936              	.LASF33:
+ 5937 03f8 53747269 		.ascii	"StripLights_getColor\000"
+ 5937      704C6967 
+ 5937      6874735F 
+ 5937      67657443 
+ 5937      6F6C6F72 
+ 5938              	.LASF3:
+ 5939 040d 73686F72 		.ascii	"short unsigned int\000"
+ 5939      7420756E 
+ 5939      7369676E 
+ 5939      65642069 
+ 5939      6E7400
+ 5940              	.LASF39:
+ 5941 0420 53747269 		.ascii	"StripLights_DisplayClear\000"
+ 5941      704C6967 
+ 5941      6874735F 
+ 5941      44697370 
+ 5941      6C617943 
+ 5942              	.LASF35:
+ 5943 0439 696E6356 		.ascii	"incValue\000"
+ 5943      616C7565 
+ 5943      00
+ 5944              	.LASF25:
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 132
 
 
- 5944      43726974 
- 5945              	.LASF10:
- 5946 043b 75696E74 		.ascii	"uint32\000"
- 5946      333200
- 5947              	.LASF53:
- 5948 0442 78446966 		.ascii	"xDiff\000"
- 5948      6600
- 5949              	.LASF15:
- 5950 0448 72656738 		.ascii	"reg8\000"
- 5950      00
- 5951              	.LASF78:
- 5952 044d 53747269 		.ascii	"StripLights_fisr_StartEx\000"
- 5952      704C6967 
- 5952      6874735F 
- 5952      66697372 
- 5952      5F537461 
- 5953              	.LASF45:
- 5954 0466 6464465F 		.ascii	"ddF_x\000"
- 5954      7800
- 5955              	.LASF11:
- 5956 046c 696E7433 		.ascii	"int32\000"
- 5956      3200
- 5957              	.LASF58:
- 5958 0472 53747269 		.ascii	"StripLights_Bplot8\000"
- 5958      704C6967 
- 5958      6874735F 
- 5958      42706C6F 
- 5958      743800
- 5959              	.LASF22:
- 5960 0485 53747269 		.ascii	"StripLights_CISR\000"
- 5960      704C6967 
- 5960      6874735F 
- 5960      43495352 
- 5960      00
- 5961              	.LASF85:
- 5962 0496 53747269 		.ascii	"StripLights_Stop\000"
- 5962      704C6967 
- 5962      6874735F 
- 5962      53746F70 
- 5962      00
- 5963              	.LASF21:
- 5964 04a7 53747269 		.ascii	"StripLights_FISR\000"
- 5964      704C6967 
- 5964      6874735F 
- 5964      46495352 
- 5964      00
- 5965              	.LASF80:
- 5966 04b8 53747269 		.ascii	"StripLights_fisr_SetPriority\000"
- 5966      704C6967 
- 5966      6874735F 
- 5966      66697372 
- 5966      5F536574 
- 5967              	.LASF38:
- 5968 04d5 53747269 		.ascii	"StripLights_MemClear\000"
- 5968      704C6967 
- 5968      6874735F 
- 5968      4D656D43 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 133
+ 5945 0442 53747269 		.ascii	"StripLights_SetCriticalFuncs\000"
+ 5945      704C6967 
+ 5945      6874735F 
+ 5945      53657443 
+ 5945      72697469 
+ 5946              	.LASF70:
+ 5947 045f 53747269 		.ascii	"StripLights_ExitCritical\000"
+ 5947      704C6967 
+ 5947      6874735F 
+ 5947      45786974 
+ 5947      43726974 
+ 5948              	.LASF10:
+ 5949 0478 75696E74 		.ascii	"uint32\000"
+ 5949      333200
+ 5950              	.LASF53:
+ 5951 047f 78446966 		.ascii	"xDiff\000"
+ 5951      6600
+ 5952              	.LASF15:
+ 5953 0485 72656738 		.ascii	"reg8\000"
+ 5953      00
+ 5954              	.LASF78:
+ 5955 048a 53747269 		.ascii	"StripLights_fisr_StartEx\000"
+ 5955      704C6967 
+ 5955      6874735F 
+ 5955      66697372 
+ 5955      5F537461 
+ 5956              	.LASF45:
+ 5957 04a3 6464465F 		.ascii	"ddF_x\000"
+ 5957      7800
+ 5958              	.LASF11:
+ 5959 04a9 696E7433 		.ascii	"int32\000"
+ 5959      3200
+ 5960              	.LASF58:
+ 5961 04af 53747269 		.ascii	"StripLights_Bplot8\000"
+ 5961      704C6967 
+ 5961      6874735F 
+ 5961      42706C6F 
+ 5961      743800
+ 5962              	.LASF22:
+ 5963 04c2 53747269 		.ascii	"StripLights_CISR\000"
+ 5963      704C6967 
+ 5963      6874735F 
+ 5963      43495352 
+ 5963      00
+ 5964              	.LASF85:
+ 5965 04d3 53747269 		.ascii	"StripLights_Stop\000"
+ 5965      704C6967 
+ 5965      6874735F 
+ 5965      53746F70 
+ 5965      00
+ 5966              	.LASF21:
+ 5967 04e4 53747269 		.ascii	"StripLights_FISR\000"
+ 5967      704C6967 
+ 5967      6874735F 
+ 5967      46495352 
+ 5967      00
+ 5968              	.LASF80:
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 133
 
 
- 5968      6C656172 
- 5969              	.LASF61:
- 5970 04ea 61696E64 		.ascii	"aindex\000"
- 5970      657800
- 5971              	.LASF41:
- 5972 04f1 53747269 		.ascii	"StripLights_Pixel\000"
- 5972      704C6967 
- 5972      6874735F 
- 5972      50697865 
- 5972      6C00
- 5973              	.LASF18:
- 5974 0503 73697A65 		.ascii	"sizetype\000"
- 5974      74797065 
- 5974      00
- 5975              	.LASF26:
- 5976 050c 456E4372 		.ascii	"EnCriticalFunc\000"
- 5976      69746963 
- 5976      616C4675 
- 5976      6E6300
- 5977              	.LASF13:
- 5978 051b 646F7562 		.ascii	"double\000"
- 5978      6C6500
- 5979              	.LASF56:
- 5980 0522 53747269 		.ascii	"StripLights_Start\000"
- 5980      704C6967 
- 5980      6874735F 
- 5980      53746172 
- 5980      7400
- 5981              	.LASF44:
- 5982 0534 72616469 		.ascii	"radius\000"
- 5982      757300
- 5983              	.LASF73:
- 5984 053b 53747269 		.ascii	"StripLights_row\000"
- 5984      704C6967 
- 5984      6874735F 
- 5984      726F7700 
- 5985              	.LASF16:
- 5986 054b 66756E63 		.ascii	"funcPtr\000"
- 5986      50747200 
- 5987              	.LASF68:
- 5988 0553 6E657743 		.ascii	"newColor\000"
- 5988      6F6C6F72 
- 5988      00
- 5989              	.LASF59:
- 5990 055c 6269744D 		.ascii	"bitMap\000"
- 5990      617000
- 5991              	.LASF83:
- 5992 0563 433A5C55 		.ascii	"C:\\Users\\kmwh\\Documents\\electronica-demo\\FunWi"
- 5992      73657273 
- 5992      5C6B6D77 
- 5992      685C446F 
- 5992      63756D65 
- 5993 0591 74684C45 		.ascii	"thLEDs\\FunWithLEDs\\E18demo.cydsn\000"
- 5993      44735C46 
- 5993      756E5769 
- 5993      74684C45 
- 5993      44735C45 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\cc2S50Xm.s 			page 134
-
-
+ 5969 04f5 53747269 		.ascii	"StripLights_fisr_SetPriority\000"
+ 5969      704C6967 
+ 5969      6874735F 
+ 5969      66697372 
+ 5969      5F536574 
+ 5970              	.LASF38:
+ 5971 0512 53747269 		.ascii	"StripLights_MemClear\000"
+ 5971      704C6967 
+ 5971      6874735F 
+ 5971      4D656D43 
+ 5971      6C656172 
+ 5972              	.LASF61:
+ 5973 0527 61696E64 		.ascii	"aindex\000"
+ 5973      657800
+ 5974              	.LASF41:
+ 5975 052e 53747269 		.ascii	"StripLights_Pixel\000"
+ 5975      704C6967 
+ 5975      6874735F 
+ 5975      50697865 
+ 5975      6C00
+ 5976              	.LASF18:
+ 5977 0540 73697A65 		.ascii	"sizetype\000"
+ 5977      74797065 
+ 5977      00
+ 5978              	.LASF26:
+ 5979 0549 456E4372 		.ascii	"EnCriticalFunc\000"
+ 5979      69746963 
+ 5979      616C4675 
+ 5979      6E6300
+ 5980              	.LASF13:
+ 5981 0558 646F7562 		.ascii	"double\000"
+ 5981      6C6500
+ 5982              	.LASF56:
+ 5983 055f 53747269 		.ascii	"StripLights_Start\000"
+ 5983      704C6967 
+ 5983      6874735F 
+ 5983      53746172 
+ 5983      7400
+ 5984              	.LASF44:
+ 5985 0571 72616469 		.ascii	"radius\000"
+ 5985      757300
+ 5986              	.LASF73:
+ 5987 0578 53747269 		.ascii	"StripLights_row\000"
+ 5987      704C6967 
+ 5987      6874735F 
+ 5987      726F7700 
+ 5988              	.LASF16:
+ 5989 0588 66756E63 		.ascii	"funcPtr\000"
+ 5989      50747200 
+ 5990              	.LASF68:
+ 5991 0590 6E657743 		.ascii	"newColor\000"
+ 5991      6F6C6F72 
+ 5991      00
+ 5992              	.LASF59:
+ 5993 0599 6269744D 		.ascii	"bitMap\000"
+ 5993      617000
  5994              	.LASF47:
- 5995 05b2 53747269 		.ascii	"StripLights_DrawLine\000"
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccFq4sXY.s 			page 134
+
+
+ 5995 05a0 53747269 		.ascii	"StripLights_DrawLine\000"
  5995      704C6967 
  5995      6874735F 
  5995      44726177 
  5995      4C696E65 
  5996              	.LASF65:
- 5997 05c7 53747269 		.ascii	"StripLights_RgbBlend\000"
+ 5997 05b5 53747269 		.ascii	"StripLights_RgbBlend\000"
  5997      704C6967 
  5997      6874735F 
  5997      52676242 

@@ -4,7 +4,7 @@ E18demo.ctl
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v
 E18demo.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\demux_v1_10.v
-C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v
+C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cy_psoc3_inc.v
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\CyControlReg_v1_80\CyControlReg_v1_80.v

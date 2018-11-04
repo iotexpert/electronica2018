@@ -19,6 +19,7 @@
 #include "cycfg_notices.h"
 #include "cy_sysclk.h"
 #include "cy_csd.h"
+#include "cy_scb_i2c.h"
 #include "cy_scb_uart.h"
 #include "cy_smif.h"
 
@@ -51,6 +52,8 @@ extern "C" {
 #define Cmod_PORT_NUM 7u
 #define CapSense_HW CSD0
 #define CapSense_IRQ csd_interrupt_IRQn
+#define I2C_HW SCB3
+#define I2C_IRQ scb_3_interrupt_IRQn
 #define scb_5_HW SCB5
 #define scb_5_IRQ scb_5_interrupt_IRQn
 #define smif_HW SMIF0
@@ -72,6 +75,7 @@ extern "C" {
 #define smif_DESELECT_DELAY 7
 
 extern cy_stc_csd_context_t cy_csd_0_context;
+extern const cy_stc_scb_i2c_config_t I2C_config;
 extern const cy_stc_scb_uart_config_t scb_5_config;
 extern const cy_stc_smif_config_t smif_config;
 

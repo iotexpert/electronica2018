@@ -6,7 +6,7 @@ wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/wwd_clm.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/wwd_constants.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/ARM_CM4/platform_assert.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/wwd_debug.h \
- C:\Users\gjl.CYSEMI\mtw\Remote\Remote_resources/resources.h \
+ C:\Git\electronica2018\remote_control\firmware\Remote\Remote_resources/resources.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/internal/wwd_sdpcm.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/network/NetX_Duo/WWD/wwd_buffer.h \
@@ -43,7 +43,7 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SD
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/WWD/include/wwd_debug.h:
 
-C:\Users\gjl.CYSEMI\mtw\Remote\Remote_resources/resources.h:
+C:\Git\electronica2018\remote_control\firmware\Remote\Remote_resources/resources.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/include/wiced_resource.h:
 

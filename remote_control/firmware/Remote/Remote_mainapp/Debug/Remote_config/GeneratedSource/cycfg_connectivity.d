@@ -1,5 +1,5 @@
 Remote_config/GeneratedSource/cycfg_connectivity.o: \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_connectivity.c \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_connectivity.c \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy_device_headers.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy8c6247bzi_d54.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include/core_cm4.h \
@@ -74,8 +74,8 @@ Remote_config/GeneratedSource/cycfg_connectivity.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_lcd.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_sdhc.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_smartio.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_connectivity.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_connectivity.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy_device_headers.h:
 
@@ -225,6 +225,6 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/d
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_smartio.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_connectivity.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_connectivity.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h:

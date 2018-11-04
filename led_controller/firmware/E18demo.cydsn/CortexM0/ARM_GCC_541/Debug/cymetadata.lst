@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
   51              		.text
   52              	.Letext0:
   53              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 2
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 2
 
 
   54              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
@@ -70,15 +70,15 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
   60 0006 00000000 		.4byte	.Ldebug_abbrev0
   61 000a 04       		.byte	0x4
   62 000b 01       		.uleb128 0x1
-  63 000c CE000000 		.4byte	.LASF15
+  63 000c FF000000 		.4byte	.LASF15
   64 0010 0C       		.byte	0xc
-  65 0011 44000000 		.4byte	.LASF16
-  66 0015 86010000 		.4byte	.LASF17
+  65 0011 75000000 		.4byte	.LASF16
+  66 0015 1E000000 		.4byte	.LASF17
   67 0019 00000000 		.4byte	.Ldebug_line0
   68 001d 02       		.uleb128 0x2
   69 001e 01       		.byte	0x1
   70 001f 06       		.byte	0x6
-  71 0020 2A000000 		.4byte	.LASF0
+  71 0020 B7010000 		.4byte	.LASF0
   72 0024 03       		.uleb128 0x3
   73 0025 00000000 		.4byte	.LASF9
   74 0029 01       		.byte	0x1
@@ -87,44 +87,44 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
   77 002f 02       		.uleb128 0x2
   78 0030 01       		.byte	0x1
   79 0031 08       		.byte	0x8
-  80 0032 36000000 		.4byte	.LASF1
+  80 0032 67000000 		.4byte	.LASF1
   81 0036 02       		.uleb128 0x2
   82 0037 02       		.byte	0x2
   83 0038 05       		.byte	0x5
-  84 0039 73010000 		.4byte	.LASF2
+  84 0039 A4010000 		.4byte	.LASF2
   85 003d 02       		.uleb128 0x2
   86 003e 02       		.byte	0x2
   87 003f 07       		.byte	0x7
-  88 0040 7A000000 		.4byte	.LASF3
+  88 0040 AB000000 		.4byte	.LASF3
   89 0044 02       		.uleb128 0x2
   90 0045 04       		.byte	0x4
   91 0046 05       		.byte	0x5
-  92 0047 7D010000 		.4byte	.LASF4
+  92 0047 AE010000 		.4byte	.LASF4
   93 004b 02       		.uleb128 0x2
   94 004c 04       		.byte	0x4
   95 004d 07       		.byte	0x7
-  96 004e 68000000 		.4byte	.LASF5
+  96 004e 99000000 		.4byte	.LASF5
   97 0052 02       		.uleb128 0x2
   98 0053 08       		.byte	0x8
   99 0054 05       		.byte	0x5
- 100 0055 65010000 		.4byte	.LASF6
+ 100 0055 96010000 		.4byte	.LASF6
  101 0059 02       		.uleb128 0x2
  102 005a 08       		.byte	0x8
  103 005b 07       		.byte	0x7
- 104 005c 9A000000 		.4byte	.LASF7
+ 104 005c CB000000 		.4byte	.LASF7
  105 0060 04       		.uleb128 0x4
  106 0061 04       		.byte	0x4
  107 0062 05       		.byte	0x5
  108 0063 696E7400 		.ascii	"int\000"
  109 0067 02       		.uleb128 0x2
  110 0068 04       		.byte	0x4
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 3
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 3
 
 
  111 0069 07       		.byte	0x7
- 112 006a 8D000000 		.4byte	.LASF8
+ 112 006a BE000000 		.4byte	.LASF8
  113 006e 03       		.uleb128 0x3
- 114 006f B1000000 		.4byte	.LASF10
+ 114 006f E2000000 		.4byte	.LASF10
  115 0073 02       		.byte	0x2
  116 0074 18       		.byte	0x18
  117 0075 24000000 		.4byte	0x24
@@ -138,11 +138,11 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  125 0089 02       		.uleb128 0x2
  126 008a 04       		.byte	0x4
  127 008b 07       		.byte	0x7
- 128 008c 5C010000 		.4byte	.LASF11
+ 128 008c 8D010000 		.4byte	.LASF11
  129 0090 07       		.uleb128 0x7
  130 0091 6E000000 		.4byte	0x6e
  131 0095 08       		.uleb128 0x8
- 132 0096 B9000000 		.4byte	.LASF12
+ 132 0096 EA000000 		.4byte	.LASF12
  133 009a 03       		.byte	0x3
  134 009b 1F       		.byte	0x1f
  135 009c A6000000 		.4byte	0xa6
@@ -159,7 +159,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  146 00b9 0B       		.byte	0xb
  147 00ba 00       		.byte	0
  148 00bb 08       		.uleb128 0x8
- 149 00bc 1E000000 		.4byte	.LASF13
+ 149 00bc 5B000000 		.4byte	.LASF13
  150 00c0 03       		.byte	0x3
  151 00c1 3C       		.byte	0x3c
  152 00c2 CC000000 		.4byte	0xcc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  165 00e1 08       		.uleb128 0x8
  166 00e2 0A000000 		.4byte	.LASF14
  167 00e6 03       		.byte	0x3
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 4
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 4
 
 
  168 00e7 4B       		.byte	0x4b
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  222 002c 3E       		.uleb128 0x3e
  223 002d 0B       		.uleb128 0xb
  224 002e 03       		.uleb128 0x3
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 5
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 5
 
 
  225 002f 08       		.uleb128 0x8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  279 0010 00000000 		.4byte	0
  280 0014 00000000 		.4byte	0
  281              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 6
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 6
 
 
  282              	.Ldebug_line0:
@@ -317,102 +317,101 @@ ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 1
  287      63686970 
  287      70726F74 
  287      65637400 
- 288              	.LASF13:
- 289 001e 63795F6D 		.ascii	"cy_metadata\000"
- 289      65746164 
- 289      61746100 
- 290              	.LASF0:
- 291 002a 7369676E 		.ascii	"signed char\000"
- 291      65642063 
- 291      68617200 
- 292              	.LASF1:
- 293 0036 756E7369 		.ascii	"unsigned char\000"
- 293      676E6564 
- 293      20636861 
- 293      7200
- 294              	.LASF16:
- 295 0044 47656E65 		.ascii	"Generated_Source\\PSoC4\\cymetadata.c\000"
- 295      72617465 
- 295      645F536F 
- 295      75726365 
- 295      5C50536F 
- 296              	.LASF5:
- 297 0068 6C6F6E67 		.ascii	"long unsigned int\000"
- 297      20756E73 
- 297      69676E65 
- 297      6420696E 
- 297      7400
- 298              	.LASF3:
- 299 007a 73686F72 		.ascii	"short unsigned int\000"
- 299      7420756E 
- 299      7369676E 
- 299      65642069 
- 299      6E7400
- 300              	.LASF8:
- 301 008d 756E7369 		.ascii	"unsigned int\000"
- 301      676E6564 
- 301      20696E74 
- 301      00
- 302              	.LASF7:
- 303 009a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 303      206C6F6E 
- 303      6720756E 
- 303      7369676E 
-ARM GAS  C:\Users\kmwh\AppData\Local\Temp\ccaziY7g.s 			page 7
+ 288              	.LASF17:
+ 289 001e 433A5C47 		.ascii	"C:\\Git\\electronica2018\\led_controller\\firmware\\"
+ 289      69745C65 
+ 289      6C656374 
+ 289      726F6E69 
+ 289      63613230 
+ 290 004d 45313864 		.ascii	"E18demo.cydsn\000"
+ 290      656D6F2E 
+ 290      63796473 
+ 290      6E00
+ 291              	.LASF13:
+ 292 005b 63795F6D 		.ascii	"cy_metadata\000"
+ 292      65746164 
+ 292      61746100 
+ 293              	.LASF1:
+ 294 0067 756E7369 		.ascii	"unsigned char\000"
+ 294      676E6564 
+ 294      20636861 
+ 294      7200
+ 295              	.LASF16:
+ 296 0075 47656E65 		.ascii	"Generated_Source\\PSoC4\\cymetadata.c\000"
+ 296      72617465 
+ 296      645F536F 
+ 296      75726365 
+ 296      5C50536F 
+ 297              	.LASF5:
+ 298 0099 6C6F6E67 		.ascii	"long unsigned int\000"
+ 298      20756E73 
+ 298      69676E65 
+ 298      6420696E 
+ 298      7400
+ 299              	.LASF3:
+ 300 00ab 73686F72 		.ascii	"short unsigned int\000"
+ 300      7420756E 
+ 300      7369676E 
+ 300      65642069 
+ 300      6E7400
+ 301              	.LASF8:
+ 302 00be 756E7369 		.ascii	"unsigned int\000"
+ 302      676E6564 
+ 302      20696E74 
+ARM GAS  C:\Users\GJL~1.CYS\AppData\Local\Temp\ccLnNw4O.s 			page 7
 
 
- 303      65642069 
- 304              	.LASF10:
- 305 00b1 75696E74 		.ascii	"uint8_t\000"
- 305      385F7400 
- 306              	.LASF12:
- 307 00b9 63795F6D 		.ascii	"cy_meta_flashprotect\000"
- 307      6574615F 
- 307      666C6173 
- 307      6870726F 
- 307      74656374 
- 308              	.LASF15:
- 309 00ce 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 309      43313120 
- 309      352E342E 
- 309      31203230 
- 309      31363036 
- 310 0101 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 310      20726576 
- 310      6973696F 
- 310      6E203233 
- 310      37373135 
- 311 0134 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 311      66756E63 
- 311      74696F6E 
- 311      2D736563 
- 311      74696F6E 
- 312              	.LASF11:
- 313 015c 73697A65 		.ascii	"sizetype\000"
- 313      74797065 
- 313      00
- 314              	.LASF6:
- 315 0165 6C6F6E67 		.ascii	"long long int\000"
- 315      206C6F6E 
- 315      6720696E 
- 315      7400
- 316              	.LASF2:
- 317 0173 73686F72 		.ascii	"short int\000"
- 317      7420696E 
- 317      7400
- 318              	.LASF4:
- 319 017d 6C6F6E67 		.ascii	"long int\000"
- 319      20696E74 
- 319      00
- 320              	.LASF17:
- 321 0186 433A5C55 		.ascii	"C:\\Users\\kmwh\\Documents\\electronica-demo\\FunWi"
- 321      73657273 
- 321      5C6B6D77 
- 321      685C446F 
- 321      63756D65 
- 322 01b4 74684C45 		.ascii	"thLEDs\\FunWithLEDs\\E18demo.cydsn\000"
- 322      44735C46 
- 322      756E5769 
- 322      74684C45 
- 322      44735C45 
+ 302      00
+ 303              	.LASF7:
+ 304 00cb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 304      206C6F6E 
+ 304      6720756E 
+ 304      7369676E 
+ 304      65642069 
+ 305              	.LASF10:
+ 306 00e2 75696E74 		.ascii	"uint8_t\000"
+ 306      385F7400 
+ 307              	.LASF12:
+ 308 00ea 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 308      6574615F 
+ 308      666C6173 
+ 308      6870726F 
+ 308      74656374 
+ 309              	.LASF15:
+ 310 00ff 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 310      43313120 
+ 310      352E342E 
+ 310      31203230 
+ 310      31363036 
+ 311 0132 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 311      20726576 
+ 311      6973696F 
+ 311      6E203233 
+ 311      37373135 
+ 312 0165 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 312      66756E63 
+ 312      74696F6E 
+ 312      2D736563 
+ 312      74696F6E 
+ 313              	.LASF11:
+ 314 018d 73697A65 		.ascii	"sizetype\000"
+ 314      74797065 
+ 314      00
+ 315              	.LASF6:
+ 316 0196 6C6F6E67 		.ascii	"long long int\000"
+ 316      206C6F6E 
+ 316      6720696E 
+ 316      7400
+ 317              	.LASF2:
+ 318 01a4 73686F72 		.ascii	"short int\000"
+ 318      7420696E 
+ 318      7400
+ 319              	.LASF4:
+ 320 01ae 6C6F6E67 		.ascii	"long int\000"
+ 320      20696E74 
+ 320      00
+ 321              	.LASF0:
+ 322 01b7 7369676E 		.ascii	"signed char\000"
+ 322      65642063 
+ 322      68617200 
  323              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

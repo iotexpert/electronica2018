@@ -1,6 +1,6 @@
-#pragma once
+/* Electronic game remote Amazon Web Services */
 
-#include "wiced.h"
+#pragma once
 
 /***************************************
 * Function Prototypes
