@@ -1,7 +1,7 @@
 Remote_config/GeneratedSource/cycfg_peripherals.o: \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_peripherals.c \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_peripherals.c \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_device.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_cpuss.h \
@@ -78,13 +78,14 @@ Remote_config/GeneratedSource/cycfg_peripherals.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syslib.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syspm.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_csd.h \
- C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h \
+ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_i2c.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_common.h \
+ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_smif.h
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h:
 
@@ -238,8 +239,10 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/d
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_csd.h:
 
-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h:
+C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_i2c.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_common.h:
+
+C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_smif.h:

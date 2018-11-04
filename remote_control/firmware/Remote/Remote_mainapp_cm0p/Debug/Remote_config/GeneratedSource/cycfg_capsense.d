@@ -1,6 +1,6 @@
 Remote_config/GeneratedSource/cycfg_capsense.o: \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_capsense.c \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_capsense.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_capsense.c \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_capsense.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy_device_headers.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy8c6247bzi_d54.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/cmsis/include/core_cm0plus.h \
@@ -44,8 +44,8 @@ Remote_config/GeneratedSource/cycfg_capsense.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_i2s.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_pdm.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/gpio_psoc6_01_124_bga.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h \
- C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h \
+ C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_device.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/ip/cyip_cpuss.h \
@@ -79,11 +79,12 @@ Remote_config/GeneratedSource/cycfg_capsense.o: \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syslib.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_syspm.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_csd.h \
- C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h \
+ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_i2c.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_common.h \
+ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h \
  C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_smif.h
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_capsense.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_capsense.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/cy_device_headers.h:
 
@@ -171,9 +172,9 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/d
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/devices/psoc6/include/gpio_psoc6_01_124_bga.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_peripherals.h:
 
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_config/GeneratedSource/cycfg_notices.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_sysclk.h:
 
@@ -241,8 +242,10 @@ C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/d
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_csd.h:
 
-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h:
+C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_i2c.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_common.h:
+
+C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_scb_uart.h:
 
 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/psoc6sw-1.0/components/psoc6pdl/drivers/include/cy_smif.h:

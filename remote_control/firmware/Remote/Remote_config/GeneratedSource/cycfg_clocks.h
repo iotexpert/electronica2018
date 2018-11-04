@@ -29,6 +29,8 @@ extern "C" {
 #define peri_0_div_8_0_NUM 0U
 #define peri_0_div_8_1_HW CY_SYSCLK_DIV_8_BIT
 #define peri_0_div_8_1_NUM 1U
+#define peri_0_div_8_4_HW CY_SYSCLK_DIV_8_BIT
+#define peri_0_div_8_4_NUM 4U
 
 void init_cycfg_clocks(void);
 

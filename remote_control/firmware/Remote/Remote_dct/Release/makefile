@@ -32,10 +32,10 @@ endif
 all: Remote_dct.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/gjl.CYSEMI/mtw/Remote/Remote_resources/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release && $(MAKE) all
 
 # Tool invocations
-Remote_dct.elf: $(OBJS) $(USER_OBJS) C:/Users/gjl.CYSEMI/mtw/Remote/Remote_resources/Release/libRemote_resources.a
+Remote_dct.elf: $(OBJS) $(USER_OBJS) C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release/libRemote_resources.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
 	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g -T "C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7/dct.ld" -nostartfiles -LC:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -LC:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"Remote_dct.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -o "Remote_dct.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
@@ -49,12 +49,12 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_elf.bash C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:\Users\gjl.CYSEMI\mtw\Remote\Remote_dct/Debug C:\Users\gjl.CYSEMI\mtw\Remote\Remote_dct/Debug/Remote_dct.elf
+	-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_elf.bash C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:\Git\electronica2018\remote_control\firmware\Remote\Remote_dct/Release C:\Git\electronica2018\remote_control\firmware\Remote\Remote_dct/Release/Remote_dct.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-C:/Users/gjl.CYSEMI/mtw/Remote/Remote_resources/Release/libRemote_resources.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release/libRemote_resources.a:
 
 -include ../makefile.targets

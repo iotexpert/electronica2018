@@ -19,6 +19,20 @@ cy_stc_csd_context_t cy_csd_0_context =
 {
 	.lockKey = CY_CSD_NONE_KEY,
 };
+const cy_stc_scb_i2c_config_t I2C_config = 
+{
+	.i2cMode = CY_SCB_I2C_MASTER,
+	.useRxFifo = true,
+	.useTxFifo = true,
+	.slaveAddress = 0U,
+	.slaveAddressMask = 0U,
+	.acceptAddrInFifo = false,
+	.ackGeneralAddr = false,
+	.enableWakeFromSleep = false,
+	.enableDigitalFilter = false,
+	.lowPhaseDutyCycle = 10,
+	.highPhaseDutyCycle = 10,
+};
 const cy_stc_scb_uart_config_t scb_5_config = 
 {
 	.uartMode = CY_SCB_UART_STANDARD,
@@ -59,6 +73,8 @@ const cy_stc_smif_config_t smif_config =
 void init_cycfg_peripherals(void)
 {
 	Cy_SysClk_PeriphAssignDivider(PCLK_CSD_CLOCK, CY_SYSCLK_DIV_16_BIT, 0U);
+
+	Cy_SysClk_PeriphAssignDivider(PCLK_SCB3_CLOCK, CY_SYSCLK_DIV_8_BIT, 4U);
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_SCB5_CLOCK, CY_SYSCLK_DIV_8_BIT, 1U);
 

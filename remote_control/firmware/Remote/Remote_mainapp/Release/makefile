@@ -41,6 +41,7 @@ RM := rm -rf
 -include wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WWD/subdir.mk
 -include wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/ThreadX/WICED/subdir.mk
 -include wiced_base-1.0/components/WIFI-SDK/WICED/RTOS/subdir.mk
+-include u8g2/csrc/subdir.mk
 -include psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/subdir.mk
 -include psoc6sw-1.0/components/psoc6mw/capsense/subdir.mk
 -include Remote_config/GeneratedSource/subdir.mk
@@ -67,23 +68,23 @@ endif
 all: Remote_mainapp.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/gjl/mtw/Remote/Remote_resources/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_cm0p/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_bootloader/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_dct/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_psoc6pdl/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_PROTOCOLS/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_BESLMBEDTLS/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_NETXDuoLib/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_BRDRVRLOWNRG/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_CJSONJSON/Release && $(MAKE) all
-	-cd C:/Users/gjl/mtw/Remote/Remote_mainapp_FIRMWARE/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_bootloader/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_dct/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_psoc6pdl/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_PROTOCOLS/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BESLMBEDTLS/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_NETXDuoLib/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BRDRVRLOWNRG/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_CJSONJSON/Release && $(MAKE) all
+	-cd C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_FIRMWARE/Release && $(MAKE) all
 
 # Tool invocations
-Remote_mainapp.elf: $(OBJS) $(USER_OBJS) C:/Users/gjl/mtw/Remote/Remote_resources/Release/libRemote_resources.a C:/Users/gjl/mtw/Remote/Remote_mainapp_cm0p/Release/Remote_mainapp_cm0p.elf C:/Users/gjl/mtw/Remote/Remote_bootloader/Release/Remote_bootloader.elf C:/Users/gjl/mtw/Remote/Remote_dct/Release/Remote_dct.elf C:/Users/gjl/mtw/Remote/Remote_mainapp_psoc6pdl/Release/libRemote_mainapp_psoc6pdl.a C:/Users/gjl/mtw/Remote/Remote_mainapp_PROTOCOLS/Release/libRemote_mainapp_PROTOCOLS.a C:/Users/gjl/mtw/Remote/Remote_mainapp_BESLMBEDTLS/Release/libRemote_mainapp_BESLMBEDTLS.a C:/Users/gjl/mtw/Remote/Remote_mainapp_NETXDuoLib/Release/libRemote_mainapp_NETXDuoLib.a C:/Users/gjl/mtw/Remote/Remote_mainapp_BRDRVRLOWNRG/Release/libRemote_mainapp_BRDRVRLOWNRG.a C:/Users/gjl/mtw/Remote/Remote_mainapp_CJSONJSON/Release/libRemote_mainapp_CJSONJSON.a C:/Users/gjl/mtw/Remote/Remote_mainapp_FIRMWARE/Release/libRemote_mainapp_FIRMWARE.a
+Remote_mainapp.elf: $(OBJS) $(USER_OBJS) C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release/libRemote_resources.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p/Release/Remote_mainapp_cm0p.elf C:/Git/electronica2018/remote_control/firmware/Remote/Remote_bootloader/Release/Remote_bootloader.elf C:/Git/electronica2018/remote_control/firmware/Remote/Remote_dct/Release/Remote_dct.elf C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_psoc6pdl/Release/libRemote_mainapp_psoc6pdl.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_PROTOCOLS/Release/libRemote_mainapp_PROTOCOLS.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BESLMBEDTLS/Release/libRemote_mainapp_BESLMBEDTLS.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_NETXDuoLib/Release/libRemote_mainapp_NETXDuoLib.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BRDRVRLOWNRG/Release/libRemote_mainapp_BRDRVRLOWNRG.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_CJSONJSON/Release/libRemote_mainapp_CJSONJSON.a C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_FIRMWARE/Release/libRemote_mainapp_FIRMWARE.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g -T "C:/Users/gjl/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld" -nostartfiles -LC:/Users/gjl/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -LC:/Users/gjl/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC -LC:/Users/gjl/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"Remote_mainapp.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0 -o "Remote_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g -T "C:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld" -nostartfiles -LC:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -LC:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC -LC:/Users/gjl.CYSEMI/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"Remote_mainapp.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0 -o "Remote_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -94,22 +95,22 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/Users/gjl/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/gjl/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/gjl/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/gjl/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Users\gjl\mtw\Remote\Remote_mainapp/Release C:\Users\gjl\mtw\Remote\Remote_mainapp/Release/Remote_mainapp.elf
+	-C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/modus-shell-1.0 C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin C:/Users/gjl.CYSEMI/ModusToolbox_1.0/tools/wiced-scripts-1.0 C:\Git\electronica2018\remote_control\firmware\Remote\Remote_mainapp/Release C:\Git\electronica2018\remote_control\firmware\Remote\Remote_mainapp/Release/Remote_mainapp.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-C:/Users/gjl/mtw/Remote/Remote_resources/Release/libRemote_resources.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_cm0p/Release/Remote_mainapp_cm0p.elf:
-C:/Users/gjl/mtw/Remote/Remote_bootloader/Release/Remote_bootloader.elf:
-C:/Users/gjl/mtw/Remote/Remote_dct/Release/Remote_dct.elf:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_psoc6pdl/Release/libRemote_mainapp_psoc6pdl.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_PROTOCOLS/Release/libRemote_mainapp_PROTOCOLS.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_BESLMBEDTLS/Release/libRemote_mainapp_BESLMBEDTLS.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_NETXDuoLib/Release/libRemote_mainapp_NETXDuoLib.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_BRDRVRLOWNRG/Release/libRemote_mainapp_BRDRVRLOWNRG.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_CJSONJSON/Release/libRemote_mainapp_CJSONJSON.a:
-C:/Users/gjl/mtw/Remote/Remote_mainapp_FIRMWARE/Release/libRemote_mainapp_FIRMWARE.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_resources/Release/libRemote_resources.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_cm0p/Release/Remote_mainapp_cm0p.elf:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_bootloader/Release/Remote_bootloader.elf:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_dct/Release/Remote_dct.elf:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_psoc6pdl/Release/libRemote_mainapp_psoc6pdl.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_PROTOCOLS/Release/libRemote_mainapp_PROTOCOLS.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BESLMBEDTLS/Release/libRemote_mainapp_BESLMBEDTLS.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_NETXDuoLib/Release/libRemote_mainapp_NETXDuoLib.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_BRDRVRLOWNRG/Release/libRemote_mainapp_BRDRVRLOWNRG.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_CJSONJSON/Release/libRemote_mainapp_CJSONJSON.a:
+C:/Git/electronica2018/remote_control/firmware/Remote/Remote_mainapp_FIRMWARE/Release/libRemote_mainapp_FIRMWARE.a:
 
 -include ../makefile.targets
