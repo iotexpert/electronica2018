@@ -32,6 +32,8 @@ GAME_STATE_REQUEST_T gameStateRequest = REQUEST_NONE;
 void gameStateMachine(wiced_thread_arg_t arg)
 {
 	static uint16_t stateTicks = 0;
+	static uint8_t waterLevelTicks = 0;
+
 	uint8_t gamePrintBfr[80];
 	static volatile GAME_STATE_T previousState = GAME_UNKNOWN;
 
@@ -58,6 +60,11 @@ void gameStateMachine(wiced_thread_arg_t arg)
 
 		//always check water levels
 		//determineLevels();
+		if(waterLevelTicks == LEVEL_PUBLISH_COUNTS)
+		{
+			levelPublishRequest = AWS_PUBLISH_REQUEST;		//publish the water levels every loop iteration
+			waterLevelTicks = 0;
+		}
 
 		//and run the game state machine
 		switch(gameState)
@@ -162,17 +169,21 @@ void gameStateMachine(wiced_thread_arg_t arg)
 					#ifdef GAME_HARDWARE_TEST
 					leftPumpRequest = 10;
 					rightPumpRequest = 10;
+					#else
+					leftPumpRequest = 0;
+					rightPumpRequest = 0;					
 					#endif
+					gameStateRequest = REQUEST_NONE;
 				}
 				break;
 
 			case GAME_START:
-				levelPublishRequest = AWS_PUBLISH_REQUEST;		//publish the water levels every loop iteration
 				if(getSoundState() == SOUND_IDLE) gameState = GAME_RUNNING;
 
 				if(gameStateRequest == REQUEST_ABORT)
 				{
 					gameState = GAME_ABORT;
+					gameStateRequest = REQUEST_NONE;
 				}
 				break;
 
@@ -192,6 +203,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 					stopAllPumps();
 					gameState = GAME_PAUSE;
 					startButtonPress = START_PRESS_NONE;
+					gameStateRequest = REQUEST_NONE;
 				}
 
 				if(leftLevel > GAME_WIN_LEVEL || rightLevel > GAME_WIN_LEVEL)
@@ -204,6 +216,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				if(gameStateRequest == REQUEST_ABORT)
 				{
 					gameState = GAME_ABORT;					
+					gameStateRequest = REQUEST_NONE;
 				}
 
 				break;
@@ -215,11 +228,12 @@ void gameStateMachine(wiced_thread_arg_t arg)
 					rightPumpRequest = 0;
 					gameState = GAME_RUNNING;
 					startButtonPress = START_PRESS_NONE;
+					gameStateRequest = REQUEST_NONE;
 				}
 
-				//if(abortButtonPress || gameStateRequest == REQUEST_ABORT)
 				if(gameStateRequest == REQUEST_ABORT)
 				{
+					gameStateRequest = REQUEST_NONE;
 					gameState = GAME_ABORT;
 				}
 				break;
@@ -252,8 +266,6 @@ void gameStateMachine(wiced_thread_arg_t arg)
 							}
 							break;
 
-
-
 						default:
 								ledUARTsendColorValues(100, 100);			//set LED strips
 							break;
@@ -275,9 +287,6 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				stateTicks++;
 				break;
 
-
-
-
 			default:
 			case GAME_UNKNOWN:
 			case GAME_ABORT:
@@ -297,7 +306,6 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				}				
 				break;
 		}
-		gameStateRequest = REQUEST_NONE;
 		wiced_rtos_delay_milliseconds(GAME_MACHINE_DELAY);
 	}
 }

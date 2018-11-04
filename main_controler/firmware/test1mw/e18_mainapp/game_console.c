@@ -16,7 +16,14 @@
 
 //#define CONSOLE_TXBUFFER_SIZE   2048
 //#define CONSOLE_RXBUFFER_SIZE   256
-#define COMMAND_BUFFER_SIZE 128
+//#define COMMAND_BUFFER_SIZE 128
+
+
+#define GAME_COMMAND_HISTORY_LENGTH  (10)
+#define MAX_GAME_COMMAND_LENGTH              (85)
+#define MAX_ASCII_VALUE                              0x7e
+#define ROLL_OVER_ASCII_VALUE                        0x2f
+
 
 
 // cy_stc_scb_uart_context_t consoleUARTcontext;
@@ -25,7 +32,7 @@
 //uint8_t* rxEndPtr = rxBuffer;
 //uint8_t* rxSendPtr = rxBuffer;
 //uint8_t* rxReadPtr = rxBuffer;
-uint8_t commandBuffer[COMMAND_BUFFER_SIZE];
+//uint8_t commandBuffer[COMMAND_BUFFER_SIZE];
 
 //uint8_t txBuffer[CONSOLE_TXBUFFER_SIZE];
 //uint8_t* txEndPtr = txBuffer;
@@ -36,8 +43,10 @@ uint8_t commandBuffer[COMMAND_BUFFER_SIZE];
 extern uint8_t leftSpeed;
 extern uint8_t rightSpeed;
 
-INCOMING_CMD_T incomingCommand = NO_INCOMING_CMD;
+//INCOMING_CMD_T incomingCommand = NO_INCOMING_CMD;
 
+static char game_command_buffer[MAX_GAME_COMMAND_LENGTH];
+static char game_command_history_buffer[MAX_GAME_COMMAND_LENGTH * GAME_COMMAND_HISTORY_LENGTH];
 
 void consolePrintStatus(void);
 void consolePrintWin(void);
@@ -45,6 +54,17 @@ void consolePrintLevels(void);
 void consolePrintCRLF(uint8_t numNewlines);
 GAME_COMMAND_T determineCommand(char* incomingCommandBuffer);
 void handleCommand(GAME_COMMAND_T command);
+
+static int status_console_cmd( int argc, char *argv[] );
+static int help_console_cmd( int argc, char *argv[] );
+static int levels_console_cmd( int argc, char *argv[] );
+static int start_console_cmd( int argc, char *argv[] );
+static int pause_console_cmd( int argc, char *argv[] );
+static int resume_console_cmd( int argc, char *argv[] );
+static int abort_console_cmd( int argc, char *argv[] );
+static int reset_console_cmd( int argc, char *argv[] );
+
+
 
 //only needed this for non-rtos initial hardware test version, wiced sdk controls this uart
 // void initConsoleUART(void)
@@ -77,6 +97,89 @@ void handleCommand(GAME_COMMAND_T command);
 //	 incomingCommand = NO_INCOMING_CMD;
 //	 return numIncomingBytes;
 // }
+
+
+//adding in wiced command console
+#define GAME_CONSOLE_COMMANDS \
+    { (char*) "status",  status_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game status"   }, \
+    { (char*) "gamehelp",  help_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game command list"   }, \
+    { (char*) "levels", levels_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Read liquid levels"   }, \
+    { (char*) "start", start_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Start game"   }, \
+    { (char*) "pause", pause_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Pause game"   }, \
+    { (char*) "resume", resume_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Resume game"   }, \
+    { (char*) "abort", abort_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Abort game"   }, \
+    { (char*) "reset", reset_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Reset game"   }, \
+
+
+const command_t game_console_command_table[] =
+{
+    GAME_CONSOLE_COMMANDS
+    CMD_TABLE_END
+};
+
+static int status_console_cmd( int argc, char *argv[] )
+{
+    consolePrintStatus();
+    return ERR_CMD_OK;
+}
+
+static int help_console_cmd( int argc, char *argv[] )
+{
+    consolePrintHelp();
+    return ERR_CMD_OK;
+}
+
+static int levels_console_cmd( int argc, char *argv[] )
+{
+    consolePrintLevels();
+    return ERR_CMD_OK;
+}
+
+static int start_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = 	REQUEST_START;
+    return ERR_CMD_OK;
+}
+
+static int pause_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = 	REQUEST_PAUSE;
+    return ERR_CMD_OK;
+}
+
+static int resume_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_RESUME;
+    return ERR_CMD_OK;
+}
+
+static int abort_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_ABORT;
+    return ERR_CMD_OK;
+}
+
+static int reset_console_cmd( int argc, char *argv[] )
+{
+    gameStateRequest = REQUEST_RESET;
+    return ERR_CMD_OK;
+}
+
+
+void initGameConsole(void)
+{
+    wiced_result_t result;
+    result = command_console_init(STDIO_UART, sizeof(game_command_buffer), game_command_buffer,
+                GAME_COMMAND_HISTORY_LENGTH, game_command_history_buffer, " ");
+    if (result != WICED_SUCCESS)
+    {
+        WPRINT_APP_INFO(("Error starting the command console\r\n"));
+    }
+    console_add_cmd_table(game_console_command_table);
+}
+
+
+
 
 
 void consolePrintCRLF(uint8_t numNewlines)
@@ -144,10 +247,11 @@ void consolePrintHelp(void)
     WPRINT_APP_INFO(("Available game commands:\n"));
     WPRINT_APP_INFO(("     status     get game status\n"));
     WPRINT_APP_INFO(("     version    get firmware version\n"));
-    WPRINT_APP_INFO(("     help       print this command list\n"));
+    WPRINT_APP_INFO(("     gamehelp   print this command list\n"));
     WPRINT_APP_INFO(("     levels     get liquid levels\n"));
     WPRINT_APP_INFO(("     start      start/resume game\n"));
     WPRINT_APP_INFO(("     pause      pause game\n"));
+    WPRINT_APP_INFO(("     reset      reset game after win"));
     WPRINT_APP_INFO(("     leftpump   add to left pump run speed\n"));
     WPRINT_APP_INFO(("     rightpump  add to left pump run speed\n"));
     WPRINT_APP_INFO(("     abort      abort game and reset system\n"));
@@ -155,8 +259,8 @@ void consolePrintHelp(void)
     WPRINT_APP_INFO(("     wifioff    disable wifi\n"));
     WPRINT_APP_INFO(("     bton       enable bt\n"));
     WPRINT_APP_INFO(("     btoff      disable bt\n"));
-    WPRINT_APP_INFO(("     demo1      run demo game one\n"));
-    WPRINT_APP_INFO(("     demo2      run demo game two\n"));
+    //WPRINT_APP_INFO(("     demo1      run demo game one\n"));
+    //WPRINT_APP_INFO(("     demo2      run demo game two\n"));
 }
 
 
@@ -191,18 +295,18 @@ void consolePrintError(void)
     WPRINT_APP_INFO(("Unknown command\n"));
 }
 
-void handleIncomingCommand(void)
-{
-	if(extractCommand() == 0)
-	{
-		consolePrintError();
-	}
-	else
-	{
-		GAME_COMMAND_T command = determineCommand((char*) commandBuffer);
-		handleCommand(command);
-	}
-}
+//void handleIncomingCommand(void)
+//{
+//	if(extractCommand() == 0)
+//	{
+//		consolePrintError();
+//	}
+//	else
+//	{
+//		GAME_COMMAND_T command = determineCommand((char*) commandBuffer);
+//		handleCommand(command);
+//	}
+//}
 
 //preference is for single return statement in function, however
 //for a command interpreter like this, there is no sense in wasting

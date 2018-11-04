@@ -67,20 +67,20 @@ endif
 all: remote_mainapp.elf secondary-outputs
 
 dependents:
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_resources/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_bootloader/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_dct/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_cm0p/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_psoc6pdl/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_PROTOCOLS/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BESLMBEDTLS/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_NETXDuoLib/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_CJSONJSON/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release && $(MAKE) clean all
-	-cd /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_FIRMWARE/Release && $(MAKE) clean all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_resources/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_bootloader/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_dct/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_cm0p/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_psoc6pdl/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_PROTOCOLS/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BESLMBEDTLS/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_NETXDuoLib/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_CJSONJSON/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release && $(MAKE) all
+	-cd /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_FIRMWARE/Release && $(MAKE) all
 
 # Tool invocations
-remote_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_resources/Release/libremote_resources.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_bootloader/Release/remote_bootloader.elf /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_dct/Release/remote_dct.elf /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_cm0p/Release/remote_mainapp_cm0p.elf /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_psoc6pdl/Release/libremote_mainapp_psoc6pdl.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_PROTOCOLS/Release/libremote_mainapp_PROTOCOLS.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BESLMBEDTLS/Release/libremote_mainapp_BESLMBEDTLS.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_NETXDuoLib/Release/libremote_mainapp_NETXDuoLib.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_CJSONJSON/Release/libremote_mainapp_CJSONJSON.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release/libremote_mainapp_BRDRVRLOWNRG.a /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_FIRMWARE/Release/libremote_mainapp_FIRMWARE.a
+remote_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_resources/Release/libremote_resources.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_bootloader/Release/remote_bootloader.elf /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_dct/Release/remote_dct.elf /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_cm0p/Release/remote_mainapp_cm0p.elf /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_psoc6pdl/Release/libremote_mainapp_psoc6pdl.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_PROTOCOLS/Release/libremote_mainapp_PROTOCOLS.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BESLMBEDTLS/Release/libremote_mainapp_BESLMBEDTLS.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_NETXDuoLib/Release/libremote_mainapp_NETXDuoLib.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_CJSONJSON/Release/libremote_mainapp_CJSONJSON.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release/libremote_mainapp_BRDRVRLOWNRG.a /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_FIRMWARE/Release/libremote_mainapp_FIRMWARE.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
 	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mthumb-interwork -mlittle-endian -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wall  -g -T "/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/app_with_bootloader.ld" -nostartfiles -L/Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/lib -L/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC -L/Applications/ModusToolbox_1.0/libraries/wiced_base-1.0/components/WIFI-SDK/WICED/platform/MCU/PSoC6_Modus/GCC/cy8c6x7 -Wl,-Map,"remote_mainapp.map" -Wno-strict-aliasing -Xlinker --gc-sections -std=gnu11 -Wl,-A,thumb -Wl,--defsym,__STACKSIZE__=8000 -Wl,--defsym,FIQ_STACK_SIZE=0 -Wl,--defsym,IRQ_STACK_SIZE=1024 -Wl,--defsym,SYS_STACK_SIZE=0 -o "remote_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
@@ -94,22 +94,22 @@ clean:
 	-@echo ' '
 
 post-build:
-	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash /Applications/ModusToolbox_1.0/tools/modus-shell-1.0 /Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0 /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp/Release /Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp/Release/remote_mainapp.elf
+	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0/process_app.bash /Applications/ModusToolbox_1.0/tools/modus-shell-1.0 /Applications/ModusToolbox_1.0/tools/gcc-7.2.1-1.0/bin /Applications/ModusToolbox_1.0/tools/wiced-scripts-1.0 /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp/Release /Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp/Release/remote_mainapp.elf
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_resources/Release/libremote_resources.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_bootloader/Release/remote_bootloader.elf:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_dct/Release/remote_dct.elf:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_cm0p/Release/remote_mainapp_cm0p.elf:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_psoc6pdl/Release/libremote_mainapp_psoc6pdl.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_PROTOCOLS/Release/libremote_mainapp_PROTOCOLS.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BESLMBEDTLS/Release/libremote_mainapp_BESLMBEDTLS.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_NETXDuoLib/Release/libremote_mainapp_NETXDuoLib.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_CJSONJSON/Release/libremote_mainapp_CJSONJSON.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release/libremote_mainapp_BRDRVRLOWNRG.a:
-/Users/arh/Documents/iotexpert-projects/emb2018/arh1/remote_mainapp_FIRMWARE/Release/libremote_mainapp_FIRMWARE.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_resources/Release/libremote_resources.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_bootloader/Release/remote_bootloader.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_dct/Release/remote_dct.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_cm0p/Release/remote_mainapp_cm0p.elf:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_psoc6pdl/Release/libremote_mainapp_psoc6pdl.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_PROTOCOLS/Release/libremote_mainapp_PROTOCOLS.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BESLMBEDTLS/Release/libremote_mainapp_BESLMBEDTLS.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_NETXDuoLib/Release/libremote_mainapp_NETXDuoLib.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_CJSONJSON/Release/libremote_mainapp_CJSONJSON.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_BRDRVRLOWNRG/Release/libremote_mainapp_BRDRVRLOWNRG.a:
+/Users/arh/Documents/iotexpert-projects/electronica2018/arh1/remote_mainapp_FIRMWARE/Release/libremote_mainapp_FIRMWARE.a:
 
 -include ../makefile.targets

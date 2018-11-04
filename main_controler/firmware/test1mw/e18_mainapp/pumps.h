@@ -30,7 +30,6 @@ typedef enum{
     PUMP_STOP
 }PUMP_CONTROL_T;
 
-
 extern void initPumpHW(void);
 extern void kickPump(PUMP_SELECT_T whichPump, uint8_t counts);
 extern void stopAllPumps(void);
