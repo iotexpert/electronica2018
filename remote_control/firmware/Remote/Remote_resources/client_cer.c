@@ -1,6 +1,6 @@
 #include "wiced_resource.h"
 
-const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer_data[1225] = "-----BEGIN CERTIFICATE-----\n" \
+const char resources_client_cer_data[1225] = "-----BEGIN CERTIFICATE-----\n" \
 "MIIDWjCCAkKgAwIBAgIVAMRltUwHRNF8Rh3Gbzz4W+5Kz3MFMA0GCSqGSIb3DQEB\n" \
 "CwUAME0xSzBJBgNVBAsMQkFtYXpvbiBXZWIgU2VydmljZXMgTz1BbWF6b24uY29t\n" \
 "IEluYy4gTD1TZWF0dGxlIFNUPVdhc2hpbmd0b24gQz1VUzAeFw0xODAzMjExMzI4\n" \
@@ -21,4 +21,4 @@ const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer_data[1225
 "dEjSIvQ1lrT63BpkmX6HoFg84vT6WYJjJcrntIkkjEYyTSaEA2N4Lrkd/aQofQ==\n" \
 "-----END CERTIFICATE-----\n" \
 "";
-const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer = { RESOURCE_IN_MEMORY, 1224, { .mem = { resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer_data }}};
+const resource_hnd_t resources_client_cer = { RESOURCE_IN_MEMORY, 1224, { .mem = { resources_client_cer_data }}};

@@ -9,9 +9,9 @@
  *                      Macros
  ******************************************************/
 /* Thread parameters */
-#define CAPSENSE_PRIORITY (5)
+#define CAPSENSE_PRIORITY (6)
 #define CAPSENSE_THREAD_STACK_SIZE (5*1024UL)
-#define DISPLAY_PRIORITY (6)
+#define DISPLAY_PRIORITY (7)
 #define DISPLAY_THREAD_STACK_SIZE (5*1024UL)
 
 /******************************************************

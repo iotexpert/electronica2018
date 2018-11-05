@@ -15,7 +15,7 @@
 #define DISPLAY_VAL1   2
 #define DISPLAY_VAL2   3
 
-/* Display Command - used in the queue */
+/* Display Command - first byte in the queue */
 enum {
 	BLE_SCREEN,
 	WIFI_SCREEN,
@@ -23,15 +23,18 @@ enum {
 	SWIPE_VALUE
 };
 
-/* Type of update to make to the display - the exact update depends on the screen - value passed in queue */
+/* Type of update to make to the display second byte in the queue */
 enum {
-	INIT,
-	ADVERTISE,
+	BLE_START,
+	BLE_ADVERTISE,
 	BLE_CONNECT,
 	REGISTER_NOTIFY,
 	WIFI_CONNECT,
-	MQTT_CONNECT,
+	AWS_RESOURCES,
+	AWS_CONNECT,
 	SUBSCRIBE_SHADOW,
+	INIT_WIFI,
+	INIT_BLE,
 	WATER_VALUE
 };
 

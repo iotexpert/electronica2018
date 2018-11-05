@@ -7,7 +7,6 @@
 // Note: Do not use '-' character in path or file names. Use '_' instead.
 
 // Common resources
-// Resource:resources/apps/aws/iot/aws_config.html
-// Resource:resources/apps/aws/iot/publisher/client.cer
-// Resource:resources/apps/aws/iot/publisher/privkey.cer
-// Resource:resources/apps/aws/iot/rootca.cer
+// Local:resources/client.cer
+// Local:resources/privkey.cer
+// Local:resources/rootca.cer

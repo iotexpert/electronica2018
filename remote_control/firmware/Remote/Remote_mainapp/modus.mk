@@ -126,9 +126,9 @@ CY_VALID_DEVICES=
 # The source code for the application
 #
 CY_APP_SOURCE = \
-	publisher.c \
+	main.c \
 	wifi_config_dct.h \
-	publisher.cyrsc
+	main.cyrsc
 
 #
 # The Optional set of software components used by the application.
