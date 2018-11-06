@@ -144,14 +144,6 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
             displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
             displayCommand[DISPLAY_TYPE] = INIT_BLE;
             wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
-
-            /* Start thread to get messages from the swipe queue and push them to BLE */
-			wiced_rtos_create_thread( &ble_swipe_thread_handle,
-									  BLE_SWIPE_PRIORITY,
-									  "BLW Swipe thread",
-									  (wiced_thread_function_t) bleSwipeThread,
-									  BLE_SWIPE_THREAD_STACK_SIZE,
-									  NULL );
         }
         else
         {
@@ -234,6 +226,14 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         	/* Start Advertising */
             ble_adv_set_advertisement_data();
             wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);
+
+            /* Start thread to get messages from the swipe queue and push them to BLE */
+			wiced_rtos_create_thread( &ble_swipe_thread_handle,
+									  BLE_SWIPE_PRIORITY,
+									  "BLW Swipe thread",
+									  (wiced_thread_function_t) bleSwipeThread,
+									  BLE_SWIPE_THREAD_STACK_SIZE,
+									  NULL );
         }
         break;
 
