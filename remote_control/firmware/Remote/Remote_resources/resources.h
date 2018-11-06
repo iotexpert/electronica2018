@@ -7,13 +7,11 @@ extern const resource_hnd_t resources_firmware_DIR_4343W_DIR_4343WA1_bin;
 extern const char resources_firmware_DIR_4343W_DIR_4343WA1_bin_data[413722];
 extern const resource_hnd_t resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob;
 extern const char resources_firmware_DIR_4343W_DIR_4343WA1_clm_blob_data[7222];
-extern const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_aws_config_html;
-extern const char resources_apps_DIR_aws_DIR_iot_DIR_aws_config_html_data[11164];
-extern const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer;
-extern const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer_data[1225];
-extern const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer;
-extern const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer_data[1676];
-extern const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_rootca_cer;
-extern const char resources_apps_DIR_aws_DIR_iot_DIR_rootca_cer_data[1189];
+extern const resource_hnd_t resources_client_cer;
+extern const char resources_client_cer_data[1225];
+extern const resource_hnd_t resources_privkey_cer;
+extern const char resources_privkey_cer_data[1676];
+extern const resource_hnd_t resources_rootca_cer;
+extern const char resources_rootca_cer_data[1189];
 
 #endif /* ifndef INCLUDED_RESOURCES_H_ */

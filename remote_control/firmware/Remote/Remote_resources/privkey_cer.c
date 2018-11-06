@@ -1,6 +1,6 @@
 #include "wiced_resource.h"
 
-const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer_data[1676] = "-----BEGIN RSA PRIVATE KEY-----\n" \
+const char resources_privkey_cer_data[1676] = "-----BEGIN RSA PRIVATE KEY-----\n" \
 "MIIEowIBAAKCAQEAs41spQrjfGMhKp/3XCDPCQHdqInqW639ruvQnwV0Qhwy1Twt\n" \
 "g0AcUJheJq/4A4JtkH+BZD6On+8dU4pwmwJUvc6XruQf4YRcQZU3+fUEGqwMjAPN\n" \
 "bRmcNiPDxzSWweUBbLhPNgAlVAKxhbZCIzi/567Wxelpw3PN33H6k92ssNMTmFZe\n" \
@@ -28,4 +28,4 @@ const char resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer_data[167
 "JKtADdFVI8f4jaxsPthfRV9I4R2uM5Nv0j7Z9+VSdYVZnHf39DcS\n" \
 "-----END RSA PRIVATE KEY-----\n" \
 "";
-const resource_hnd_t resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer = { RESOURCE_IN_MEMORY, 1675, { .mem = { resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer_data }}};
+const resource_hnd_t resources_privkey_cer = { RESOURCE_IN_MEMORY, 1675, { .mem = { resources_privkey_cer_data }}};

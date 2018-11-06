@@ -9,6 +9,7 @@ Thread to handle AWS operations
 #include "resources.h"
 #include "cJSON.h"
 #include "capsense_app.h"
+#include "display_app.h"
 
 /******************************************************
  *                      Macros
@@ -47,11 +48,14 @@ static wiced_aws_endpoint_info_t my_publisher_aws_iot_endpoint = {
 
 static wiced_aws_handle_t my_app_aws_handle;
 
-wiced_semaphore_t aws_semaphore_handle;
+static wiced_semaphore_t aws_semaphore_handle;
 
 /* Water level % pulled from AWS */
-uint8_t waterLeft  = 0;
-uint8_t waterRight = 0;
+static uint8_t waterLeft  = 0;
+static uint8_t waterRight = 0;
+
+/* Array to send messages to the display thread */
+static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0};
 
 /******************************************************
  *                Function Definitions
@@ -70,8 +74,8 @@ static wiced_result_t get_aws_credentials_from_resources( void )
         return WICED_SUCCESS;
     }
 
-    /* Get AWS Root CA certificate filename: 'rootca.cer' located @ resources/apps/aws/iot folder */
-    result = resource_get_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_rootca_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) root_ca_certificate);
+    /* Get AWS Root CA certificate filename: 'rootca.cer' located @ resources folder */
+    result = resource_get_readonly_buffer( &resources_rootca_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) root_ca_certificate);
     if( result != WICED_SUCCESS )
     {
         goto _fail_aws_certificate;
@@ -79,14 +83,14 @@ static wiced_result_t get_aws_credentials_from_resources( void )
     if( size_out < 64 )
     {
         WPRINT_APP_INFO( ( "\n[Application/AWS] Invalid Root CA Certificate! Replace the dummy certificate with AWS one[<YOUR_WICED_SDK>/resources/app/aws/iot/'rootca.cer']\n\n" ) );
-        resource_free_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_rootca_cer, (const void *)*root_ca_certificate );
+        resource_free_readonly_buffer( &resources_rootca_cer, (const void *)*root_ca_certificate );
         goto _fail_aws_certificate;
     }
 
     my_publisher_aws_iot_endpoint.root_ca_length = size_out;
 
     /* Get Publisher's Certificate filename: 'client.cer' located @ resources/apps/aws/iot/pubisher folder */
-    result = resource_get_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) &security->certificate );
+    result = resource_get_readonly_buffer( &resources_client_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) &security->certificate );
     if( result != WICED_SUCCESS )
     {
         goto _fail_client_certificate;
@@ -94,14 +98,14 @@ static wiced_result_t get_aws_credentials_from_resources( void )
     if(size_out < 64)
     {
         WPRINT_APP_INFO( ( "\n[Application/AWS] Invalid Device Certificate! Replace the dummy certificate with AWS one[<YOUR_WICED_SDK>/resources/app/aws/iot/publisher/'client.cer']\n\n" ) );
-        resource_free_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer, (const void *)security->certificate );
+        resource_free_readonly_buffer( &resources_client_cer, (const void *)security->certificate );
         goto _fail_client_certificate;
     }
 
     security->certificate_length = size_out;
 
     /* Get Publisher's Private Key filename: 'privkey.cer' located @ resources/apps/aws/iot/publisher folder */
-    result = resource_get_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) &security->private_key );
+    result = resource_get_readonly_buffer( &resources_privkey_cer, 0, PUBLISHER_CERTIFICATES_MAX_SIZE, &size_out, (const void **) &security->private_key );
     if( result != WICED_SUCCESS )
     {
         goto _fail_private_key;
@@ -109,7 +113,7 @@ static wiced_result_t get_aws_credentials_from_resources( void )
     if(size_out < 64)
     {
         WPRINT_APP_INFO( ( "\n[Application/AWS] Invalid Device Private-Key! Replace the dummy Private-key with AWS one[<YOUR_WICED_SDK>/resources/app/aws/iot/publisher/'privkey.cer'\n\n" ) );
-        resource_free_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_privkey_cer, (const void *)security->private_key );
+        resource_free_readonly_buffer( &resources_privkey_cer, (const void *)security->private_key );
         goto _fail_private_key;
     }
     security->key_length = size_out;
@@ -117,9 +121,9 @@ static wiced_result_t get_aws_credentials_from_resources( void )
     return WICED_SUCCESS;
 
 _fail_private_key:
-    resource_free_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_publisher_DIR_client_cer, (const void *)security->certificate );
+    resource_free_readonly_buffer( &resources_client_cer, (const void *)security->certificate );
 _fail_client_certificate:
-    resource_free_readonly_buffer( &resources_apps_DIR_aws_DIR_iot_DIR_rootca_cer, (const void *)*root_ca_certificate );
+    resource_free_readonly_buffer( &resources_rootca_cer, (const void *)*root_ca_certificate );
 _fail_aws_certificate:
     return WICED_ERROR;
 }
@@ -165,6 +169,12 @@ static void my_publisher_aws_callback( wiced_aws_handle_t aws, wiced_aws_event_t
             waterRight = (uint8_t) cJSON_GetObjectItem(reported,"WaterLevelRightAWS")->valuedouble;
         	cJSON_Delete(root); /* Free up memory */
             WPRINT_APP_INFO( ( "Water Left: %d\t Water Right: %d\n", waterLeft, waterRight) );
+            /* Print Water Levels */
+            displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
+            displayCommand[DISPLAY_TYPE] = WATER_VALUE;
+            displayCommand[DISPLAY_VAL1] = waterLeft;
+            displayCommand[DISPLAY_VAL2] = waterRight;
+        	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
             break;
 
         case WICED_AWS_EVENT_PUBLISHED:
@@ -181,26 +191,33 @@ void awsThread( void )
     wiced_result_t ret = WICED_SUCCESS;
     int pub_retries;
     char msg[18]; /* This will hold the JSON message to be published */
-    uint8_t queueMessage[SWIPE_MESSAGE_SIZE] = {0}; /* This is the message send from the slider via the RTOS queue */
+    uint8_t queueMessage[SWIPE_MESSAGE_SIZE] = {0}; /* This is the message sent from the CapSense queue */
     char thingName[] = "remote001122334455"; /* This gets replaced with the MAC address */
 
-    //GJL send display message to go to the WIFI screen
-
     wiced_rtos_init_semaphore(&aws_semaphore_handle);
+
+    /* Set up WiFi Screen */
+    displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
+    displayCommand[DISPLAY_TYPE] = WIFI_CONNECT;
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
     /* Bring up the network interface */
     do
     {
     	ret = wiced_network_up( WICED_AWS_DEFAULT_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
-    	wiced_rtos_delay_milliseconds(200); /* Wait if connection didn't happen before trying again */
+    	wiced_rtos_delay_milliseconds(100); /* Wait if connection didn't happen before trying again */
     } while (ret != WICED_SUCCESS);
-
 
     /* Set Thing name to device MAC address */
     snprintf(thingName, sizeof(thingName),
     		"remote%02X%02X%02X%02X%02X%02X",
 			mac.octet[0], mac.octet[1], mac.octet[2],
 			mac.octet[3], mac.octet[4], mac.octet[5]);
+
+    /* Display message */
+    displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
+    displayCommand[DISPLAY_TYPE] = AWS_RESOURCES;
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
     wiced_aws_thing_info_t my_publisher_aws_config = {
         .name            = thingName,
@@ -213,6 +230,11 @@ void awsThread( void )
         WPRINT_APP_INFO( ("[Application/AWS] Error fetching credentials from resources\n" ) );
         return;
     }
+
+    /* Display message */
+    displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
+    displayCommand[DISPLAY_TYPE] = AWS_CONNECT;
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
     ret = wiced_aws_init( &my_publisher_aws_config , my_publisher_aws_callback );
     if( ret != WICED_SUCCESS )
@@ -241,10 +263,19 @@ void awsThread( void )
     /* Wait until connection is done */
     wiced_rtos_get_semaphore(&aws_semaphore_handle, WICED_WAIT_FOREVER);
 
+    /* Display message */
+    displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
+    displayCommand[DISPLAY_TYPE] = SUBSCRIBE_SHADOW;
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+
     /* Subscribe to the shadow update topic (to get water level updates) */
     ret = wiced_aws_subscribe( aws_connection, SHADOW_UPDATE_SUBSCRIBE_TOPIC,   WICED_AWS_QOS_ATLEAST_ONCE);
 
-    //GJL send message to display that game has started
+    /* Display message */
+    wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
+    displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
+    displayCommand[DISPLAY_TYPE] = INIT_WIFI;
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
     while ( 1 )
     {
@@ -254,7 +285,7 @@ void awsThread( void )
 		{
 			snprintf(msg, sizeof(msg), "{\"Right\" : %.0d}", queueMessage[1]);
 		}
-		else
+		else /* SWIPE_LEFT */
 		{
 			snprintf(msg, sizeof(msg), "{\"Left\" : %.0d}",  queueMessage[1]);
 		}

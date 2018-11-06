@@ -1,4 +1,6 @@
-.metadata
+.metadata/
+Release/
+Debug/
 *.o
 .DS_Store
 *.cyfit

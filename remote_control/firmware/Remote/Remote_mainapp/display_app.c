@@ -31,9 +31,8 @@ u8x8_t u8x8; /* Display structure */
 /* RTOS structures */
 static wiced_timer_t  ble_led_timer_handle;
 static wiced_timer_t  wifi_led_timer_handle;
-wiced_queue_t	      display_queue_handle;
 
-char msg[10];   /* Array to hold snprintf output for display */
+char msg[20];   /* Array to hold snprintf output for display */
 
 /*******************************************************************************
 * Function Definitions
@@ -169,43 +168,111 @@ void drawSplash( void )
 {
 	u8x8_ClearDisplay(&u8x8);
 	snprintf(msg, sizeof(msg), " Cypress");
-	u8x8_DrawString(&u8x8,0,0,msg);
+	u8x8_DrawString(&u8x8,3,0,msg);
 	snprintf(msg, sizeof(msg), " Choose");
-	u8x8_DrawString(&u8x8,0,2,msg);
+	u8x8_DrawString(&u8x8,3,2,msg);
 	snprintf(msg, sizeof(msg), "Bluetooth");
-	u8x8_DrawString(&u8x8,0,3,msg);
+	u8x8_DrawString(&u8x8,3,3,msg);
 	snprintf(msg, sizeof(msg), " or WiFi");
-	u8x8_DrawString(&u8x8,0,4,msg);
+	u8x8_DrawString(&u8x8,3,4,msg);
 }
 
 
-void drawBle( uint8_t type )
+void drawBle( int8_t type )
 {
-
+	switch (type)
+	{
+	case BLE_START:
+	    wiced_rtos_stop_timer(&wifi_led_timer_handle);
+		Cy_GPIO_Write(WIFI_LED_PORT, WIFI_LED_NUM, LED_OFF);
+	    u8x8_ClearDisplay(&u8x8);
+		snprintf(msg, sizeof(msg), "Start BLE");
+		u8x8_DrawString(&u8x8,3,0,msg);
+		break;
+	case BLE_ADVERTISE:
+		snprintf(msg, sizeof(msg), "Start Advertise");
+		u8x8_DrawString(&u8x8,0,1,msg);
+		break;
+	case BLE_CONNECT:
+		snprintf(msg, sizeof(msg), "Wait For Connect");
+		u8x8_DrawString(&u8x8,0,2,msg);
+		break;
+	case REGISTER_NOTIFY:
+		snprintf(msg, sizeof(msg), "Register Notify");
+		u8x8_DrawString(&u8x8,0,3,msg);
+		break;
+	}
 }
 
 
-void drawWiFi( uint8_t type )
+void drawWiFi( int8_t type )
 {
+	switch (type)
+	{
+	case WIFI_CONNECT:
+	    wiced_rtos_stop_timer(&ble_led_timer_handle);
+		Cy_GPIO_Write(BT_LED_PORT, BT_LED_NUM, LED_OFF);
+	    u8x8_ClearDisplay(&u8x8);
+		snprintf(msg, sizeof(msg), "Connecting WiFi");
+		u8x8_DrawString(&u8x8,0,0,msg);
 
+		break;
+	case AWS_RESOURCES:
+		snprintf(msg, sizeof(msg), "Loading Resources");
+		u8x8_DrawString(&u8x8,0,1,msg);
+		break;
+	case AWS_CONNECT:
+		snprintf(msg, sizeof(msg), "Connecting AWS");
+		u8x8_DrawString(&u8x8,0,2,msg);
+		break;
+	case SUBSCRIBE_SHADOW:
+		snprintf(msg, sizeof(msg), "Subscribing");
+		u8x8_DrawString(&u8x8,0,3,msg);
+		break;
+	}
 }
 
 
-void drawGame( uint8_t* message )
+void drawGame( int8_t* message )
 {
-
+	switch(message[DISPLAY_TYPE])
+	{
+	case INIT_BLE:
+	case INIT_WIFI:
+		u8x8_ClearDisplay(&u8x8);
+		snprintf(msg, sizeof(msg), "Game On!");
+		u8x8_DrawString(&u8x8,3,0,msg);
+		snprintf(msg, sizeof(msg), "Water Level");
+		u8x8_DrawString(&u8x8,2,3,msg);
+		if(message[DISPLAY_TYPE] == INIT_BLE)
+		{
+			wiced_rtos_stop_timer(&ble_led_timer_handle);
+			Cy_GPIO_Write(BT_LED_PORT, BT_LED_NUM, LED_ON);
+		}
+		else /* INIT_WIFI */
+		{
+			wiced_rtos_stop_timer(&wifi_led_timer_handle);
+			Cy_GPIO_Write(WIFI_LED_PORT, WIFI_LED_NUM, LED_ON);
+		}
+		break;
+	case WATER_VALUE:
+		snprintf(msg, sizeof(msg), "L:%3d R:%3d",message[DISPLAY_VAL1], message[DISPLAY_VAL2]);
+		u8x8_DrawString(&u8x8,3,4,msg);
+		break;
+	}
 }
 
 
-void drawSwipe( uint8_t* message )
+void drawSwipe( int8_t* message )
 {
-
+	snprintf(msg, sizeof(msg), "Swipe: %4d", message[DISPLAY_VAL1]);
+	u8x8_DrawString(&u8x8,2,6,msg);
 }
 
 
 void displayThread( void )
 {
-	uint8_t displayMessage[DISPLAY_MESSAGE_SIZE] = {0};
+	int8_t displayMessage[DISPLAY_MESSAGE_SIZE] = {0};
 
 	/* Initialize Button LEDs */
 	Cy_GPIO_Pin_Init(BT_LED_PORT, BT_LED_PIN, &BT_LED_config);
@@ -228,18 +295,9 @@ void displayThread( void )
     u8x8_Setup(&u8x8, u8x8_d_ssd1306_128x64_noname, u8x8_cad_ssd13xx_i2c, u8x8_byte_hw_i2c, psoc_gpio_and_delay_cb);
     u8x8_InitDisplay(&u8x8);
     u8x8_SetPowerSave(&u8x8,0);
-    //github.com/olikraus/u8g2/wiki/fntlistmono
-    //u8x8_font_amstrad_cpc_extended_f  - works
-    //u8x8_font_torussansbold8_n
-    //u8g2_font_profont15_mn -- 9 pixel
-    //u8g2_font_8x13B_mr -- 10 pixel
-    //u8g2_font_t0_17b_me -- 11 pixel
     u8x8_SetFont(&u8x8,u8x8_font_amstrad_cpc_extended_f);
 
     drawSplash();
-
-    /* Start queue to accept messages. The messages are 1 byte command, 1 byte type, and 1 or 2 bytes data */
-    wiced_rtos_init_queue(&display_queue_handle, "displayQueue", DISPLAY_MESSAGE_SIZE, DISPLAY_QUEUE_SIZE);
 
     while(1)
     {

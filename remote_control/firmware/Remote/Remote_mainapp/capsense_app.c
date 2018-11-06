@@ -6,23 +6,24 @@
 #include "cy_syslib.h"
 #include "cycfg.h"
 #include "cycfg_capsense.h"
+#include "ble_app.h"
 #include "aws_app.h"
 #include "capsense_app.h"
+#include "display_app.h"
 
 /* Thread parameters */
-#define AWS_PRIORITY (4)
+#define AWS_PRIORITY (7)
 #define AWS_THREAD_STACK_SIZE (5*1024UL)
-#define BLE_PRIORITY (4)
-#define BLE_THREAD_STACK_SIZE (5*1024UL)
 
 /******************************************************
  *               Variable Definitions
  ******************************************************/
 /* RTOS structures */
 static wiced_thread_t aws_thread_handle;
-static wiced_thread_t ble_thread_handle;
-wiced_semaphore_t capsense_semaphore_handle;
-wiced_queue_t  swipe_queue_handle;
+static wiced_semaphore_t capsense_semaphore_handle;
+
+/* Array to send messages to the display thread */
+static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0};
 
 /*******************************************************************************
 * CapSense Interrupt configuration
@@ -64,8 +65,6 @@ void capSenseThread( void )
 
 	/* Semaphore is used to alert the thread when a scan is done */
 	wiced_rtos_init_semaphore(&capsense_semaphore_handle);
-    /* Queue will be used to push swipe values. They will be read by either the BLE or WiFi thread depending on which is active */
-	wiced_rtos_init_queue(&swipe_queue_handle, "swipeQueue", SWIPE_MESSAGE_SIZE, SWIPE_QUEUE_SIZE);
 
 	/* Initialize/Enable CapSense and CapSense Interrupt */
 	Cy_CapSense_Init(&cy_capsense_context);
@@ -91,13 +90,7 @@ void capSenseThread( void )
 			{
 				WPRINT_APP_INFO(("Connecting to BLE\n"));
 				initialTouch = WICED_TRUE;
-				/* Start up Bluetooth thread */
-				wiced_rtos_create_thread( &ble_thread_handle,
-										  BLE_PRIORITY,
-										  "BLE thread",
-										  (wiced_thread_function_t) awsThread, //GJL TEMP
-										  BLE_THREAD_STACK_SIZE,
-										  NULL );
+				startBle(); /* Start up Bluetooth */
 			}
 			else if(Cy_CapSense_IsWidgetActive(CY_CAPSENSE_WIFIBTN_WDGT_ID, &cy_capsense_context)) /* WiFi Button */
 			{
@@ -131,7 +124,7 @@ void capSenseThread( void )
 		}
 		else /* Slider is not being touched */
 		{
-			Cy_GPIO_Write(WIFI_LED_PORT, SLD_LED_NUM, LED_OFF);
+			Cy_GPIO_Write(SLD_LED_PORT, SLD_LED_NUM, LED_OFF);
 			if(WICED_TRUE == activeTouch)  /* This is the lift off event - need to send the swipe value */
 			{
 				  swipe = (int16_t)endCoord - (int16_t)startCoord;
@@ -144,18 +137,20 @@ void capSenseThread( void )
 				  {
 					  swipe = -50;
 				  }
+				  /* Display swipe message on screen */
+				  displayCommand[DISPLAY_CMD] =  SWIPE_VALUE;
+				  displayCommand[DISPLAY_VAL1] = (int8_t)swipe;
+				  wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 				  if(swipe > 0) /* Swipe Right */
 				  {
 					  swipeMessage[0] = SWIPE_RIGHT;
 					  WPRINT_APP_INFO(("Right Swipe: %d\n", swipe));
-					  //GJL send swipe to display
 				  }
 				  else /* Swipe Left */
 				  {
 					  swipeMessage[0] = SWIPE_LEFT;
 					  swipe = -swipe;
 					  WPRINT_APP_INFO(("Left Swipe: %d\n", swipe));
-					  //GJL send swipe to display
 				  }
 				  swipeMessage[1] = swipe;
 				  wiced_rtos_push_to_queue(&swipe_queue_handle, &swipeMessage, WICED_NO_WAIT);
