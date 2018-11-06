@@ -5,6 +5,7 @@
  *      Author: kmwh
  */
 
+#include "wiced.h"
 #include "game.h"
 #include "game_console.h"
 #include "string.h"
@@ -14,6 +15,7 @@
 #include "command_console.h"
 #include "aws.h"
 #include "bt.h"
+#include "pumps.h"
 
 //defines needed for wiced console
 #define GAME_COMMAND_HISTORY_LENGTH  (10)
@@ -45,10 +47,9 @@ extern uint8_t rightSpeed;
 static char game_command_buffer[MAX_GAME_COMMAND_LENGTH];
 static char game_command_history_buffer[MAX_GAME_COMMAND_LENGTH * GAME_COMMAND_HISTORY_LENGTH];
 
-void consolePrintStatus(void);
-void consolePrintWin(void);
-void consolePrintLevels(void);
+
 void consolePrintCRLF(uint8_t numNewlines);
+
 GAME_COMMAND_T determineCommand(char* incomingCommandBuffer);
 void handleCommand(GAME_COMMAND_T command);
 
@@ -66,38 +67,8 @@ static int wifion_console_cmd( int argc, char *argv[] );
 static int wifioff_console_cmd( int argc, char *argv[] );
 static int bleon_console_cmd( int argc, char *argv[] );
 static int bleoff_console_cmd( int argc, char *argv[] );
-
-//only needed this for non-rtos initial hardware test version, wiced sdk controls this uart
-// void initConsoleUART(void)
-// {
-//     kitprog linked UART
-//     Cy_SCB_UART_Init(consoleUART_HW, &consoleUART_config, &consoleUARTcontext);
-//     Cy_SCB_UART_Enable(consoleUART_HW);
-//     Cy_SysInt_Init(&consoleUartIntrCfg, &consoleUARTinterrupt);
-//     NVIC_EnableIRQ(consoleUartIntrCfg.intrSrc);
-// }
-
-
-
-// uint16_t extractCommand(void)
-// {
-//	 uint16 numIncomingBytes = 0;
-//	 while(rxReadPtr != rxEndPtr)
-//	 {
-//		 commandBuffer[numIncomingBytes] = *rxReadPtr;
-//		 rxReadPtr++;
-//		 if(rxReadPtr > rxBuffer + CONSOLE_RXBUFFER_SIZE) rxReadPtr = rxBuffer;
-//		 numIncomingBytes++;
-//		 if(numIncomingBytes == sizeof(commandBuffer))
-//		 {
-//			 numIncomingBytes = 0;
-//			 break;					//I usually don't like to this, but break due to error
-//		 }
-//	 }
-//
-//	 incomingCommand = NO_INCOMING_CMD;
-//	 return numIncomingBytes;
-// }
+static int pumpenable_console_cmd( int argc, char *argv[] );
+static int pumpdisable_console_cmd( int argc, char *argv[] );
 
 
 //adding in wiced command console
@@ -173,15 +144,33 @@ static int reset_console_cmd( int argc, char *argv[] )
 
 static int leftpump_console_cmd( int argc, char *argv[] )
 {
-	leftPumpRequest = 10;
-    kickPumps();
+    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+    {
+        PUMP_REQUEST_T pumpRequest;
+
+        pumpRequest.pumpBytes.leftPumpRequest = 200;
+        pumpRequest.pumpBytes.rightPumpRequest = 0;
+        pumpRequest.pumpBytes.dummya = 0;
+        pumpRequest.pumpBytes.dummyb = 0;
+
+        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
+    }
     return ERR_CMD_OK;
 }
 
 static int rightpump_console_cmd( int argc, char *argv[] )
 {
-	rightPumpRequest = 10;
-    kickPumps();
+    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+    {
+        PUMP_REQUEST_T pumpRequest;
+
+        pumpRequest.pumpBytes.leftPumpRequest = 0;
+        pumpRequest.pumpBytes.rightPumpRequest = 200;
+        pumpRequest.pumpBytes.dummya = 0;
+        pumpRequest.pumpBytes.dummyb = 0;
+
+        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
+    }
     return ERR_CMD_OK;
 }
 
@@ -208,6 +197,27 @@ static int bleoff_console_cmd( int argc, char *argv[] )
     //btEnableStatus = BT_DISABLE;
     return ERR_CMD_OK;
 }
+
+static int pumpenable_console_cmd( int argc, char *argv[] )
+{
+    uint32_t pumpCommand;
+	pumpCommand = (uint32_t) PUMPS_ENABLED;
+	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
+    return ERR_CMD_OK;
+}
+
+static int pumpdisable_console_cmd( int argc, char *argv[] )
+{
+    uint32_t pumpCommand;
+	pumpCommand = (uint32_t) PUMPS_DISABLED;
+	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
+    return ERR_CMD_OK;
+}
+
+
+
+
+
 
 void initGameConsole(void)
 {
@@ -244,6 +254,7 @@ void consolePrintWelcome(void)
 
 void consolePrintSystick(void)
 {
+	uint32_t systicks = 0x00;     //tx_get_time();
     WPRINT_APP_INFO(("System tick count: %lu\n", systicks));
 }
 
@@ -272,8 +283,7 @@ void consolePrintGameState(void)
 
 void consolePrintLevels(void)
 {
-    WPRINT_APP_INFO(("Left liquid level: %u\n", leftLevel));
-    WPRINT_APP_INFO(("Right liquid level: %u\n", rightLevel));
+    reportLevels();
 }
 
 extern void consolePrintPumpSpeed(void)
@@ -318,14 +328,14 @@ void consolePrintWin(void)
 {
     WPRINT_APP_INFO(("*********************************************\n"));
     WPRINT_APP_INFO((" GAME WIN\n"));
-    if(leftLevel > rightLevel)
-    {
-        WPRINT_APP_INFO(( "    Left team wins!\n"));
-    }
-    else
-    {
-        WPRINT_APP_INFO(( "    Right team wins!\n"));
-    }
+   if(leftLevel > rightLevel)
+   {
+       WPRINT_APP_INFO(( "    Left team wins!\n"));
+   }
+   else
+   {
+       WPRINT_APP_INFO(( "    Right team wins!\n"));
+   }
     consolePrintStatus();    
 }
 
@@ -335,22 +345,7 @@ void consolePrintError(void)
     WPRINT_APP_INFO(("Unknown command\n"));
 }
 
-//lots of legacy code from before this was transitioned to wifi/wiced project
-//now using wiced command console library
-
-//void handleIncomingCommand(void)
-//{
-//	if(extractCommand() == 0)
-//	{
-//		consolePrintError();
-//	}
-//	else
-//	{
-//		GAME_COMMAND_T command = determineCommand((char*) commandBuffer);
-//		handleCommand(command);
-//	}
-//}
-
+//legacy, no longer used
 //preference is for single return statement in function, however
 //for a command interpreter like this, there is no sense in wasting
 //cycles once a command has been found...easy to debate/change
@@ -424,12 +419,12 @@ void handleCommand(GAME_COMMAND_T command)
             break;
 
         case LEFT_PUMP_CMD:
-        	if(leftPumpRequest != 255) leftPumpRequest++;
+        	//if(leftPumpRequest != 255) leftPumpRequest++;
 
             break;
 
         case RIGHT_PUMP_CMD:
-        	if(rightPumpRequest != 255) rightPumpRequest++;
+        	//if(rightPumpRequest != 255) rightPumpRequest++;
             break;
 
         case ENABLEWIFI_CMD:
@@ -476,31 +471,3 @@ void handleCommand(GAME_COMMAND_T command)
             break;
     }
 }
-
-// void kickConsoleTX(void)
-// {
-//     // consoleTXenabled = 1;
-//     // Cy_SCB_UART_Put(consoleUART_HW, *txSendPtr);
-//     // txSendPtr++;
-// }
-
-
-
-
-// void addToTXbuffer(char* string)
-// {
-//     uint8_t index;
-//     while(txWriteLock);
-//     for(index = 0; index < strlen(string); index++)
-//     {
-//         *txEndPtr = string[index];
-//         txEndPtr++;
-//         if(txEndPtr == (txBuffer + CONSOLE_TXBUFFER_SIZE)) txEndPtr = txBuffer;
-//     }
-
-//     if(!consoleTXenabled)
-//     {
-//         kickConsoleTX();
-//     }
-// }
-

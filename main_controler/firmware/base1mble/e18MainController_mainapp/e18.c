@@ -93,15 +93,11 @@ static wiced_thread_t gameThreadHandle;
 static wiced_thread_t awsThreadHandle;
 static wiced_thread_t btThreadHandle;
 static wiced_thread_t soundThreadHandle;
-//static wiced_thread_t consoleThreadHandle;
+static wiced_thread_t pumpThreadHandle;
+static wiced_thread_t levelThreadHandle;
 
-//globals for game
-uint8_t leftLevel;
-uint8_t rightLevel;
-uint8_t leftPumpRequest = 0;
-uint8_t rightPumpRequest = 0;
-uint32_t systicks = 0;		    //system ticks incremented in startup thread
-
+wiced_queue_t pumpRequestQueueHandle;
+wiced_queue_t pumpCommandQueueHandle;
 
 /******************************************************
  *                      Macros
@@ -116,13 +112,22 @@ uint32_t systicks = 0;		    //system ticks incremented in startup thread
 #define GAME_LED_ON_COUNTS          12
 
 #define AWS_THREAD_PRIORITY		4
+#define LEVEL_THREAD_PRIORITY   6
+#define PUMP_THREAD_PRIORITY    6
 #define GAME_THREAD_PRIORITY	7
 #define BT_THREAD_PRIORITY		7
 #define SOUND_THREAD_PRIORITY	8
 
-#define THREAD_STACK_SIZE 6144
+#define AWS_STACK_SIZE 6144
 #define GAME_STACK_SIZE 4096
-#define SOUND_THREAD_STACK_SIZE 512
+#define BT_STACK_SIZE 4096
+#define LEVEL_STACK_SIZE 1024
+#define PUMP_STACK_SIZE 1024
+#define SOUND_STACK_SIZE 512
+
+/* The queue messages will be 4 bytes each (a 32 bit integer) */
+#define MESSAGE_SIZE		(4)
+#define QUEUE_SIZE			(10)
 
 #define TEST_HARDWARE_ON_STARTUP
 
@@ -165,6 +170,7 @@ typedef enum{
 /******************************************************
  *               Local Function Prototypes
  ******************************************************/
+void handleLiquidLevels(void);
 void handleRunLED(void);
 void handleHeartBeatLED(void);
 
@@ -182,23 +188,14 @@ void application_start(void)
 
 //    wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
 
-
-
     //init_cycfg_all();             //don't do this!!!
-
-
     initAudioHW();
-
-
 
     //initConsoleUART();        //was using this in the bare metal version, but WICED handles this UART
     ledUARTinit();
 
-
     /* enable interrupts */
     __enable_irq();
-
-    initLevelSense();
 
 //    while(1)
 //         {
@@ -207,28 +204,32 @@ void application_start(void)
 //         		wiced_rtos_delay_milliseconds(500);
 //         }
 
-    initPumpHW();
 
+    //initialize the pump queues
+	wiced_rtos_init_queue(&pumpRequestQueueHandle, "pumpRequestQueue", MESSAGE_SIZE, QUEUE_SIZE); /* Setup the queue for pump run requests  */
+	wiced_rtos_init_queue(&pumpCommandQueueHandle, "blinkQueue", MESSAGE_SIZE, QUEUE_SIZE); /* Setup the queue for pump commands */
+
+    //start the various threads
+	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
+    wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, AWS_STACK_SIZE, NULL);
+	wiced_rtos_create_thread(&btThreadHandle, BT_THREAD_PRIORITY, "btThread", btThread, BT_STACK_SIZE, NULL);
+	wiced_rtos_create_thread(&soundThreadHandle, SOUND_THREAD_PRIORITY, "soundThread", soundThread, SOUND_STACK_SIZE, NULL);
+    wiced_rtos_create_thread(&levelThreadHandle, LEVEL_THREAD_PRIORITY, "levelThread", levelThread, LEVEL_STACK_SIZE, NULL);
+    wiced_rtos_create_thread(&pumpThreadHandle, PUMP_THREAD_PRIORITY, "pumpThread", pumpThread, PUMP_STACK_SIZE, NULL);
+
+    //needs to happen after pump thread is inited for pumps to work
 	#ifdef TEST_HARDWARE_ON_STARTUP
     Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
     Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+    wiced_rtos_delay_milliseconds(500);
     setPumpSpeed(LEFT_PUMP, 100);
     setPumpSpeed(RIGHT_PUMP, 100);
-    wiced_rtos_delay_milliseconds(1500);
+    wiced_rtos_delay_milliseconds(750);
     Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
     Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
     setPumpSpeed(LEFT_PUMP, 0);
     setPumpSpeed(RIGHT_PUMP, 0);
 	#endif
-
-
-
-
-	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
-    wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, THREAD_STACK_SIZE, NULL);
-	//wiced_rtos_create_thread(&btThreadHandle, BT_THREAD_PRIORITY, "btThread", btThread, THREAD_STACK_SIZE, NULL);
-	wiced_rtos_create_thread(&soundThreadHandle, SOUND_THREAD_PRIORITY, "soundThread", soundThread, SOUND_THREAD_STACK_SIZE, NULL);
-	//wiced_rtos_create_thread(&consoleThreadHandle, CONSOLE_THREAD_PRIORITY, "consoleThread", consoleThread, THREAD_STACK_SIZE, NULL);    
 
 	WPRINT_APP_INFO(("Initializing stuff done\n"));
 
@@ -267,11 +268,8 @@ void application_start(void)
             }
         }
 
-        handleLevelSense();                 //perform the low level capsense read
-        determineLevels();                  //calculate the water levels
         handleHeartBeatLED();               //handle the heartbeat LED
         handleRunLED();                      //handle the game run status LED
-		pumpDecay();                        //during game play the pump speed decays
         wiced_rtos_delay_milliseconds(50);  //sleep for 50ms
     }
 }

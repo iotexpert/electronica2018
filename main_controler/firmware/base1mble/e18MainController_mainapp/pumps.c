@@ -5,18 +5,23 @@
  *      Author: kmwh
  */
 
+#include "wiced.h"
 #include "cycfg_peripherals.h"
 #include "pumps.h"
 #include "cycfg_pins.h"
 #include "game.h"
+#include "liquidlevel.h"
 
 
-static uint8_t leftSpeed = 0;
+#define MAX_WATER_LEVEL 90          //if water level exceeds this amount kill the pumps
+
+static uint8_t leftSpeed = 0;       //pump speed in PWM percentage
 static uint8_t rightSpeed = 0;
 
-
-void initPumpHW(void)
+void pumpThread(wiced_thread_arg_t arg)
 {
+    static uint8_t pumpEnableState = PUMPS_DISABLED;
+
     //left pump pwm hardware
     Cy_TCPWM_PWM_Init(leftPump_HW, leftPump_NUM, &leftPump_config);
     Cy_TCPWM_PWM_Enable(leftPump_HW, leftPump_NUM);
@@ -30,67 +35,85 @@ void initPumpHW(void)
     //set correct h-bridge control outputs
     pumpControl(LEFT_PUMP, PUMP_CW);
     pumpControl(RIGHT_PUMP, PUMP_CW);
-}
 
-// kickPumps for testing
-// void kickPumps(void)
-// {
-//     if(leftPumpRequest)
-//     {
-//         leftSpeed = 100;
-//         leftPumpRequest = 0;
-//     }
-    
-//     if(rightPumpRequest)
-//     {
-//         rightSpeed = 100;
-//         rightPumpRequest = 0;
-//     }
-
-//     setPumpSpeed(LEFT_PUMP, leftSpeed);
-//     setPumpSpeed(RIGHT_PUMP, rightSpeed);
-// }
-
-void kickPumps(void)
-{
-    while(leftPumpRequest)
+    while(1)
     {
-        if(leftSpeed < 30)
+        uint32_t message;
+        if(wiced_rtos_is_queue_empty(&pumpCommandQueueHandle) == WICED_ERROR)      //if queue is not empty...
         {
-            leftSpeed = 30;
+            wiced_rtos_pop_from_queue(&pumpCommandQueueHandle, &message, WICED_NO_WAIT);
+            pumpEnableState = (uint8_t) message;
+        }
+
+        if(pumpEnableState == PUMPS_ENABLED)
+        {
+            if(wiced_rtos_is_queue_empty(&pumpRequestQueueHandle) == WICED_ERROR)      //if queue is not empty...)
+            {
+                wiced_rtos_pop_from_queue(&pumpRequestQueueHandle, &message, WICED_NO_WAIT);
+                PUMP_REQUEST_T pumpRequest;
+                pumpRequest.pumpWord = message;
+                kickPumps(&pumpRequest);
+            }
         }
         else
         {
-            if(leftSpeed < 100 - PUMP_KICK_FACTOR)
+            stopAllPumps();                        
+        }
+
+        if(leftLevel > MAX_WATER_LEVEL || rightLevel > MAX_WATER_LEVEL)
+        {
+            pumpEnableState = PUMPS_DISABLED;
+            stopAllPumps();            
+        }
+
+		pumpDecay();                        //during game play the pump speed decays
+        wiced_rtos_delay_milliseconds(50);  //sleep for 50ms        
+    }
+}
+
+
+//void kickPumps(void)
+void kickPumps(PUMP_REQUEST_T* pumpRequest)
+{
+	uint8_t leftPumpRequest = (pumpRequest->pumpBytes.leftPumpRequest)/PUMP_DIVISOR_FACTOR;
+	uint8_t rightPumpRequest = (pumpRequest->pumpBytes.rightPumpRequest)/PUMP_DIVISOR_FACTOR;
+
+    if(leftPumpRequest)
+    {
+        if(leftSpeed < PUMP_MINIMUM_SPEED)
+        {
+            leftSpeed = PUMP_MINIMUM_SPEED;
+        }
+        else
+        {
+            if(leftSpeed < 100 - leftPumpRequest)
             {
-                leftSpeed = leftSpeed + PUMP_KICK_FACTOR;
+                leftSpeed += leftPumpRequest;
             }
             else
             {
                 leftSpeed = 100;
             }
         }
-        leftPumpRequest--;
     }
 
-    while(rightPumpRequest)
+    if(rightPumpRequest)
     {
-        if(rightSpeed < 30)
+        if(rightSpeed < PUMP_MINIMUM_SPEED)
         {
-            rightSpeed = 30;
+            rightSpeed = PUMP_MINIMUM_SPEED;
         }
         else
         {
-            if(rightSpeed < 100 - PUMP_KICK_FACTOR)
+            if(rightSpeed < 100 - rightPumpRequest)
             {
-                rightSpeed = rightSpeed + PUMP_KICK_FACTOR;
+                rightSpeed += rightPumpRequest;
             }
             else
             {
                 rightSpeed = 100;
             }
         }
-        rightPumpRequest--;
     }
 
     setPumpSpeed(LEFT_PUMP, leftSpeed);

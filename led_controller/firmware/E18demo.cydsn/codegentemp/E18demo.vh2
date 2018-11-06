@@ -2,7 +2,7 @@
 --	Conversion of E18demo.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Nov 02 12:58:14 2018
+--	Mon Nov 05 14:10:53 2018
 --
 
 USE cypress.cypress.all;
@@ -623,7 +623,7 @@ WS2812LEDs_1:cy_annotation_universal_v1_0
 		divisor=>2,
 		period=>"0",
 		is_direct=>'0',
-		is_digital=>'0')
+		is_digital=>'1')
 	PORT MAP(clock_out=>\StripLights:Net_18\,
 		dig_domain_out=>open);
 \StripLights:StringSel:Sync:ctrl_reg\:cy_psoc3_control

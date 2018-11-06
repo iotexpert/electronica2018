@@ -8,8 +8,10 @@
 #ifndef SOURCE_PUMPS_H_
 #define SOURCE_PUMPS_H_
 
-#define PUMP_KICK_FACTOR 10
-#define PUMP_DECAY_FACTOR 5
+//#define PUMP_KICK_FACTOR 10
+#define PUMP_DIVISOR_FACTOR 4
+#define PUMP_DECAY_FACTOR 2
+#define PUMP_MINIMUM_SPEED 50
 
 typedef enum{
 	PUMP_BRAKE,
@@ -30,11 +32,34 @@ typedef enum{
     PUMP_STOP
 }PUMP_CONTROL_T;
 
+typedef union{
+    struct{
+        uint8_t leftPumpRequest;
+        uint8_t rightPumpRequest;
+        uint8_t dummya;
+        uint8_t dummyb;
+    }pumpBytes;
+        uint32_t pumpWord;
+}PUMP_REQUEST_T;
 
-extern void initPumpHW(void);
-extern void kickPump(PUMP_SELECT_T whichPump, uint8_t counts);
+enum{
+	PUMPS_DISABLED,
+	PUMPS_ENABLED
+};
+
+//global queues for game 
+extern wiced_queue_t pumpRequestQueueHandle;
+extern wiced_queue_t pumpCommandQueueHandle;
+
+extern void pumpThread(wiced_thread_arg_t arg);
+
+
+void initPumpHW(void);
+//void kickPump(PUMP_SELECT_T whichPump, uint8_t counts);
 extern void stopAllPumps(void);
 extern void pumpDecay(void);
+void kickPumps(PUMP_REQUEST_T* pumpRequest);
+
 
 void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay);
 void stopPump(PUMP_SELECT_T whichPump);

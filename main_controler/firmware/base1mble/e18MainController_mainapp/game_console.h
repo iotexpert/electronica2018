@@ -48,8 +48,6 @@ extern INCOMING_CMD_T incomingCommand;
 
 //low level exposed functions
 extern void initConsoleUART(void);
-//extern void consoleUARTinterrupt(void);
-//extern void addToTXbuffer(char* string);
 
 //high level exposed functions
 extern void consolePrintWelcome(void);
@@ -60,6 +58,8 @@ extern void consolePrintPumpSpeed(void);
 extern void consolePrintGameAbort(void);
 extern void consolePrintGameState(void);
 extern void consolePrintWin(void);
+extern void consolePrintStatus(void);
+extern void consolePrintLevels(void);
 
 extern void handleIncomingCommand(void);
 

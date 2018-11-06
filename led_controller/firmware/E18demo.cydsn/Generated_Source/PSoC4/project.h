@@ -42,6 +42,7 @@
 #include "UART_DEB_tx_aliases.h"
 #include "UART_DEB_rx.h"
 #include "UART_DEB_rx_aliases.h"
+#include "cy_em_eeprom.h"
 #include "core_cm0_psoc4.h"
 #include "CyFlash.h"
 #include "CyLib.h"

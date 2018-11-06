@@ -14,11 +14,10 @@
 #include "game_console.h"
 #include "leduart.h"
 #include "resources.h"
+#include "liquidlevel.h"
+
 
 static volatile GAME_STATE_T gameState = GAME_INIT;
-
-extern uint8_t leftPumpRequest;
-extern uint8_t rightPumpRequest;
 
 START_PRESS_T startButtonPress = START_PRESS_NONE;
 
@@ -30,12 +29,32 @@ void gameStateMachine(wiced_thread_arg_t arg)
 	static uint16_t stateTicks = 0;
 	uint8_t gamePrintBfr[80];
 	static volatile GAME_STATE_T previousState = GAME_UNKNOWN;
+	uint32_t pumpCommand;
 
 	//game state machine thread loop
 	while(1)
 	{
-		//uncommenting this causes the application to crash
-		//levelPublishRequest = AWS_PUBLISH_REQUEST;		//publish the water levels every loop iteration
+//		handleLevelSense();                 //perform the low level capsense read
+//		determineLevels(&leftLevel, &rightLevel);                  //calculate the water levels
+//
+//		if((previousLeftLevel != leftLevel) || (previousLeftLevel != leftLevel))
+//		{
+//			previousLeftLevel = leftLevel;
+//			previousRightLevel = rightLevel;
+//			WATER_LEVEL_T waterLevels;
+//			waterLevels.levelBytes.leftLevel = leftLevel;
+//			waterLevels.levelBytes.rightLevel = rightLevel;
+//			waterLevels.levelBytes.dummya = leftLevel;
+//			waterLevels.levelBytes.dummyb = rightLevel;
+//			if(wiced_rtos_is_queue_full(&awsLevelQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+//			{
+//				wiced_rtos_push_to_queue(&awsLevelQueueHandle, &waterLevels, WICED_NO_WAIT); /* Push value onto queue*/
+//			}
+//			if(wiced_rtos_is_queue_full(&btLevelQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+//			{
+//				wiced_rtos_push_to_queue(&btLevelQueueHandle, &waterLevels, WICED_NO_WAIT); /* Push value onto queue*/
+//			}
+//		}
 
 		//check to see if a state change has occurred, if so dump to serial port
 		if(previousState != gameState)
@@ -49,11 +68,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 			//using this instead of the above causes the application to crash! why?
 			//consolePrintGameState();
 			//previousState = gameState;
-
 		}
-
-		//always check water levels
-		//determineLevels();
 
 		//and run the game state machine
 		switch(gameState)
@@ -62,6 +77,8 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				switch(stateTicks)
 				{
 					case 0:
+						pumpCommand = (uint32_t) PUMPS_DISABLED;
+						wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 						consolePrintWelcome();
 						leftColor.blue = 0xFF;
 						leftColor.red = 0xFF;
@@ -136,7 +153,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				{
 					stateTicks = 0;
 					WPRINT_APP_INFO(("Still alive\n"));
-					//reportLevels();
+					reportLevels();
 					//reportRawRightLevels();
 					//reportRawLeftLevels();
 					//reportRawLevels();
@@ -155,15 +172,12 @@ void gameStateMachine(wiced_thread_arg_t arg)
 					playSound(resources_fight_wav_data);
 					gameState = GAME_START;
 					startButtonPress = START_PRESS_NONE;
-					#ifdef GAME_HARDWARE_TEST
-					leftPumpRequest = 10;
-					rightPumpRequest = 10;
-					#endif
+					pumpCommand = (uint32_t) PUMPS_ENABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 				}
 				break;
 
 			case GAME_START:
-				levelPublishRequest = AWS_PUBLISH_REQUEST;		//publish the water levels every loop iteration
 				if(getSoundState() == SOUND_IDLE) gameState = GAME_RUNNING;
 
 				if(gameStateRequest == REQUEST_ABORT)
@@ -173,7 +187,6 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				break;
 
 			case GAME_RUNNING:
-				levelPublishRequest = AWS_PUBLISH_REQUEST;		//publish the water levels every loop iteration
 				leftColor.blue = 0xFF;
 				leftColor.red = 0x00;
 				leftColor.green = 0x00;
@@ -181,24 +194,29 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				rightColor.red = 0x00;
 				rightColor.green = 0xFF;
 				ledUARTsendColorValues(leftLevel, rightLevel);			//set LED strips
-				kickPumps();
 
 				if(startButtonPress || gameStateRequest == REQUEST_PAUSE)
 				{
-					stopAllPumps();
+					pumpCommand = (uint32_t) PUMPS_DISABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+					//stopAllPumps();
 					gameState = GAME_PAUSE;
 					startButtonPress = START_PRESS_NONE;
 				}
 
 				if(leftLevel > GAME_WIN_LEVEL || rightLevel > GAME_WIN_LEVEL)
 				{
+					pumpCommand = (uint32_t) PUMPS_DISABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 					stateTicks = 0;
-					stopAllPumps();
+					//stopAllPumps();
 					gameState = GAME_WIN;
 				}
 
 				if(gameStateRequest == REQUEST_ABORT)
 				{
+					pumpCommand = (uint32_t) PUMPS_DISABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 					gameState = GAME_ABORT;					
 				}
 
@@ -207,15 +225,17 @@ void gameStateMachine(wiced_thread_arg_t arg)
 			case GAME_PAUSE:
 				if(startButtonPress || gameStateRequest == REQUEST_RESUME)
 				{
-					leftPumpRequest = 0;
-					rightPumpRequest = 0;
 					gameState = GAME_RUNNING;
 					startButtonPress = START_PRESS_NONE;
+					pumpCommand = (uint32_t) PUMPS_ENABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 				}
 
 				//if(abortButtonPress || gameStateRequest == REQUEST_ABORT)
 				if(gameStateRequest == REQUEST_ABORT)
 				{
+					pumpCommand = (uint32_t) PUMPS_DISABLED;
+					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
 					gameState = GAME_ABORT;
 				}
 				break;
@@ -228,9 +248,9 @@ void gameStateMachine(wiced_thread_arg_t arg)
 							playSound(resources_winner_wav_data);
 							if(leftLevel > rightLevel)
 							{
-								leftColor.blue = 0x00;
+								leftColor.blue = 0xFF;
 								leftColor.red = 0x00;
-								leftColor.green = 0xFF;
+								leftColor.green = 0x00;
 								rightColor.blue = 0x00;
 								rightColor.red = 0x00;
 								rightColor.green = 0x00;
@@ -271,13 +291,10 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				stateTicks++;
 				break;
 
-
-
-
 			default:
 			case GAME_UNKNOWN:
 			case GAME_ABORT:
-				stopAllPumps();
+				//stopAllPumps();
 				leftColor.blue = 0x00;
 				leftColor.red = 0x00;
 				leftColor.green = 0x00;

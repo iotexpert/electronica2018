@@ -36,6 +36,9 @@
 #define SENSOR_D_WEIGHT     83
 //with this weighting, max full is 99.6%
 
+#define LEVEL_THREAD_DELAY 100
+
+
 
 /*******************************************************************************
 * Interrupt configuration
@@ -54,16 +57,22 @@ const cy_stc_sysint_t CapSense_ISR_cfg =
 };
 
 
+//global liquid levels, reported as 0 to 100 (percent)
+uint8_t leftLevel = 0;
+uint8_t rightLevel = 0;
+
+
 //local static variables
 static uint32_t rawDataLeft[NUM_LEVEL_SENSORS];
 static uint32_t rawDataRight[NUM_LEVEL_SENSORS];
 
 
-//local function
+//local function prototypes
 void getRawSensorValues(void);
+void determineLevels(void);
 
 //
-void initLevelSense(void)
+void levelThread(wiced_thread_arg_t arg)
 {
     /* Initialize CapSense */
     Cy_CapSense_Init(&cy_capsense_context);
@@ -71,11 +80,9 @@ void initLevelSense(void)
     NVIC_ClearPendingIRQ(CapSense_ISR_cfg.intrSrc);
     NVIC_EnableIRQ(CapSense_ISR_cfg.intrSrc);
     Cy_CapSense_Enable(&cy_capsense_context);
-}
 
-
-void handleLevelSense(void)
-{
+    while(1)
+    {
         if(CY_CAPSENSE_NOT_BUSY == Cy_CapSense_IsBusy(&cy_capsense_context))
         {
             /* Process all widgets */
@@ -84,6 +91,86 @@ void handleLevelSense(void)
             /* Start next scan */
             Cy_CapSense_ScanAllWidgets(&cy_capsense_context);
         }
+
+        determineLevels();      //take capsense readings and translate to liquid levels
+
+        wiced_rtos_delay_milliseconds(LEVEL_THREAD_DELAY);
+    }
+}
+
+
+
+
+// void initLevelSense(void)
+// {
+// }
+
+
+// void handleLevelSense(void)
+// {
+// }
+
+
+void determineLevels(void)
+{
+    uint16_t leftHold = 0;
+    uint16_t rightHold = 0;
+    uint8_t index;
+    uint16_t weight;
+    WATER_LEVEL_T calculatedLevels;
+
+    getRawSensorValues();
+
+    //kind of clunky, but the end sensors behave differently
+    weight = 0;
+    if(rawDataLeft[0] < BOTTOM_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+    if(rawDataLeft[0] < BOTTOM_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+    if(rawDataLeft[0] < BOTTOM_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+    if(rawDataLeft[0] < BOTTOM_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+    leftHold = leftHold + weight;
+
+    weight = 0;
+    if(rawDataRight[0] < BOTTOM_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+    if(rawDataRight[0] < BOTTOM_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+    if(rawDataRight[0] < BOTTOM_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+    if(rawDataRight[0] < BOTTOM_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+    rightHold = rightHold + weight;
+
+    //middle sensors behave close enough that this works
+    for(index = 1; index < NUM_LEVEL_SENSORS - 1; index++)  //exclude the end sensors
+    {
+        weight = 0;
+        if(rawDataLeft[index] < THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+        if(rawDataLeft[index] < THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+        if(rawDataLeft[index] < THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+        if(rawDataLeft[index] < THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+        leftHold = leftHold + weight;
+
+        weight = 0;
+        if(rawDataRight[index] < THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+        if(rawDataRight[index] < THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+        if(rawDataRight[index] < THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+        if(rawDataRight[index] < THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+        rightHold = rightHold + weight;
+    }
+
+    //again kind of clunky, but the end sensors behave differently
+    weight = 0;
+    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+    leftHold = leftHold + weight;
+
+    weight = 0;
+    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
+    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
+    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
+    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
+    rightHold = rightHold + weight;
+
+    leftLevel = (uint8_t) (leftHold/10);
+    rightLevel = (uint8_t) (rightHold/10);
 }
 
 //Note: previous versions of capsense "components" supplied a Cy_GetRaw... function which was
@@ -119,98 +206,6 @@ void getRawSensorValues(void)
 	rawDataRight[11] = cy_capsense_context.ptrWdConfig[CY_CAPSENSE_RIGHTSENSE11_WDGT_ID].ptrSnsContext[CY_CAPSENSE_RIGHTSENSE11_SNS0_ID].raw;
 }
 
-//crude method of determing levels, works for first order testing
-// void determineLevelsOld(void)
-// {
-//     uint8_t leftHold = 0;
-//     uint8_t rightHold = 0;
-//     uint8_t index;
-
-//     getRawSensorValues();
-
-//     for(index = 0; index < NUM_LEVEL_SENSORS; index++)
-//     {
-//         if(rawDataLeft[index] < THRESHOLD_LEVEL) leftHold = leftHold + SENSOR_STEP_VALUE;
-//         if(rawDataRight[index] < THRESHOLD_LEVEL) rightHold = rightHold + SENSOR_STEP_VALUE;
-//     }
-    
-//     leftLevel = leftHold;
-//     rightLevel = rightHold;
-// }
-
-void determineLevels(void)
-{
-    uint16_t leftHold = 0;
-    uint16_t rightHold = 0;
-    uint8_t index;
-    uint16_t weight;
-
-    getRawSensorValues();
-
-    //kind of clunky, but the end sensors behave differently
-        weight = 0;
-        if(rawDataLeft[0] < BOTTOM_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-        if(rawDataLeft[0] < BOTTOM_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-        if(rawDataLeft[0] < BOTTOM_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-        if(rawDataLeft[0] < BOTTOM_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-        leftHold = leftHold + weight;
-
-        weight = 0;
-        if(rawDataRight[0] < BOTTOM_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-        if(rawDataRight[0] < BOTTOM_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-        if(rawDataRight[0] < BOTTOM_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-        if(rawDataRight[0] < BOTTOM_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-        rightHold = rightHold + weight;
-
-    for(index = 1; index < NUM_LEVEL_SENSORS - 1; index++)  //exclude the end sensors
-    {
-        weight = 0;
-        if(rawDataLeft[index] < THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-        if(rawDataLeft[index] < THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-        if(rawDataLeft[index] < THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-        if(rawDataLeft[index] < THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-        leftHold = leftHold + weight;
-
-        weight = 0;
-        if(rawDataRight[index] < THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-        if(rawDataRight[index] < THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-        if(rawDataRight[index] < THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-        if(rawDataRight[index] < THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-        rightHold = rightHold + weight;
-    }
-
-    weight = 0;
-    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-    if(rawDataLeft[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-    leftHold = leftHold + weight;
-
-    weight = 0;
-    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_A_LEVEL) weight = SENSOR_A_WEIGHT;
-    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_B_LEVEL) weight = SENSOR_B_WEIGHT;
-    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_C_LEVEL) weight = SENSOR_C_WEIGHT;
-    if(rawDataRight[NUM_LEVEL_SENSORS - 1] < TOP_THRESHOLD_D_LEVEL) weight = SENSOR_D_WEIGHT;
-    rightHold = rightHold + weight;
-
-    leftLevel = leftHold/10;
-    rightLevel = rightHold/10;
-}
-
-
-/*******************************************************************************
-* Function Name: CapSense_Interrupt
-****************************************************************************//**
-*
-* \brief
-*   CapSense (CSD) interrupt handler.
-*
-*******************************************************************************/
-// static void CapSense_Interrupt(void)
-// {
-//     Cy_CapSense_InterruptHandler(CSD0, &cy_capsense_context);
-// }
-
 
 /*******************************************************************************
 * Function Name: CapSense_Interrupt
@@ -230,8 +225,6 @@ void csd_interrupt_IRQn_Handler(void)
 //globally available output functions
 void reportLevels(void)
 {
-    determineLevels();
-
     WPRINT_APP_INFO(("***Left level***%d\n", leftLevel));
     WPRINT_APP_INFO(("***Right level***%u\n", rightLevel));
 }

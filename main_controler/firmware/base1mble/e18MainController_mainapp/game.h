@@ -20,7 +20,7 @@
 #define GAME_WIN_LEVEL	70			//percent water level for a win to be triggered
 
 //#define GAME_HARDWARE_TEST			//define this to start the pumps on game start for hardware test
-//#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
+#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
 
 
 typedef enum{
@@ -51,12 +51,6 @@ typedef enum{
 	START_PRESS_TRUE
 }START_PRESS_T;
 
-
-extern uint8_t leftLevel;
-extern uint8_t rightLevel;
-extern uint8_t leftPumpRequest;
-extern uint8_t rightPumpRequest;
-extern uint32_t systicks;
 extern GAME_STATE_REQUEST_T gameStateRequest;
 extern START_PRESS_T startButtonPress;
 

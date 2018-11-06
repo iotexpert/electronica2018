@@ -60,11 +60,14 @@ int main(void)
 
 //    incomingCmd[0] = 'L';
 //    incomingCmd[1] = 0x30;
-//    incomingCmd[2] = 0x00;
-//    incomingCmd[3] = 0x00;
-//    incomingCmd[4] = 0xFF;
+//    incomingCmd[2] = 0x00;  //G
+//    incomingCmd[3] = 0x00;  //B
+//    incomingCmd[4] = 0xFF;  //R
 //    incomingCmd[5] = 'R';
-//    incomingCmd[6] = 0x00;
+//    incomingCmd[6] = 0x30;
+//    incomingCmd[7] = 0x00;
+//    incomingCmd[8] = 0xFF;
+//    incomingCmd[9] = 0x00;
 //    
 //    readLEDcommand();
     

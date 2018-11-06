@@ -12,8 +12,7 @@
 #include "cycfg.h"
 #include "cycfg_pins.h"
 
-#include "platform_isr_interface.h"			//needed for interrupt definition
-
+//#include "platform_isr_interface.h"			//needed for interrupt definition
 
 #define BIT8_SOUND
 
@@ -27,19 +26,18 @@ static uint8_t* soundStartPtr;
 static uint8_t* soundEndPtr;
 #endif
 
- cy_stc_sysint_t audioIntrCfg =
-    {
-            .intrSrc = tcpwm_1_interrupts_0_IRQn, /* Interrupt source is GPIO port 0 interrupt */
-            .intrPriority = 7UL                     /* Interrupt priority is 2 */
-    };
-
-
+//  cy_stc_sysint_t audioIntrCfg =
+//     {
+//             .intrSrc = tcpwm_1_interrupts_0_IRQn, /* Interrupt source is GPIO port 0 interrupt */
+//             .intrPriority = 7UL                     /* Interrupt priority is 2 */
+//     };
 
 SOUND_STATE_T soundPlayerState = SOUND_IDLE;
 
 
 void initAudioHW(void)
 {
+	Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 0);	//mute amplifier
     //audio pwm
     Cy_TCPWM_PWM_Init(audioPWM_HW, audioPWM_NUM, &audioPWM_config);
     Cy_TCPWM_PWM_Enable(audioPWM_HW, audioPWM_NUM);
@@ -107,18 +105,11 @@ SOUND_STATE_T getSoundState(void)
 }
 
 
-
-void tcpwm_1_interrupts_0_IRQn_Handler(void)
-{
-//	soundTimerInterrupt();
-}
-
-
 void soundThread(wiced_thread_arg_t arg)
 {
 	while(1)
 	{
-		Cy_GPIO_Inv(BLUE_LED_PORT, BLUE_LED_PIN);
+		//Cy_GPIO_Inv(BLUE_LED_PORT, BLUE_LED_PIN);
 		if(soundPlayerState == SOUND_PLAYING)
 		{
 #ifdef SOUND_16BIT
@@ -145,44 +136,6 @@ void soundThread(wiced_thread_arg_t arg)
 }
 
 
-//this interrupt needs to happen at the wave sample rate
-void soundTimerInterrupt(void)
-{
-	uint32_t intr = Cy_TCPWM_GetInterruptStatusMasked(audioSampleInt_HW, audioSampleInt_NUM);
-//	if(intr > 0)
-//	{
-//		Cy_SCB_UART_Put(SCB5, intr + 0x30);
-//	}
-
-	if(intr == CY_TCPWM_INT_ON_TC)
-	{
-		//Cy_GPIO_Inv(GREEN_LED_PORT, GREEN_LED_PIN);
-		if(soundPlayerState == SOUND_PLAYING)
-		{
-
-			//pwmValue = *soundStartPtr >> 6;
-#ifdef SOUND_16BIT
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, *soundStartPtr >> 7);
-#endif
-
-#ifdef BIT8_SOUND
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, *soundStartPtr);
-#endif
-			 //soundPWM = *soundStartPtr;
-			soundStartPtr++;
-			if(soundStartPtr == soundEndPtr)
-			{
-				Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 1);		//mute amplifier
-
-#ifdef BIT8_SOUND
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, 128);
-#endif
-				soundPlayerState = SOUND_IDLE;
-			}
-		}
-	}
-	Cy_TCPWM_ClearInterrupt(audioSampleInt_HW, audioSampleInt_NUM, intr);
-}
 
 void readWavHeader(WAV_HEADER_T* header, const uint8_t* soundArray)
 {

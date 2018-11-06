@@ -19,7 +19,8 @@ wiced_result_t bt_start(void)
 
 void btThread(wiced_thread_arg_t arg)
 {
-    uint8_t threadTicks = 0;
+    static uint8_t previousLeftLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
+    static uint8_t previousRightLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
 
     while(1)
 	{
@@ -41,13 +42,11 @@ void btThread(wiced_thread_arg_t arg)
 					//update BLE water levels
 					//have to check each connected device for subscription
 					//and then publish water levels if subscribed
-
-					//leftLevel and rightLevel
-
-					//if(connection_id != 0)
-					//{
-						//if(exo2_ble_ntfy)
-					//}
+					if((previousLeftLevel != leftLevel) || (previousRightLevel != rightLevel))
+					{
+						previousLeftLevel = leftLevel;
+						previousRightLevel = rightLevel;
+					}
 
 				}
 				break;
@@ -58,6 +57,5 @@ void btThread(wiced_thread_arg_t arg)
 				break;
 		}
 		wiced_rtos_delay_milliseconds(BT_THREAD_DELAY);
-        threadTicks++;
 	}
 }

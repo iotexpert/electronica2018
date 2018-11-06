@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.202ms
+Loading plugins phase: Elapsed time ==> 0s.968ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -d CY8C4247LQI-BL483 -s C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -d CY8C4247LQI-BL483 -s C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.627ms
+Elaboration phase: Elapsed time ==> 8s.250ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.082ms
+HDL generation phase: Elapsed time ==> 0s.073ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.082ms
 ======================================================================
 Compiling:  E18demo.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  E18demo.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  E18demo.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Fri Nov 02 12:58:13 2018
+Mon Nov 05 14:10:52 2018
 
 
 ======================================================================
@@ -51,11 +51,11 @@ Options  :    -yv2 -q10 E18demo.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Fri Nov 02 12:58:13 2018
+Mon Nov 05 14:10:52 2018
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\demux_v1_10.v'
-Flattening file 'C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'
+Flattening file 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\CyControlReg_v1_80\CyControlReg_v1_80.v'
@@ -78,7 +78,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
 Using control file 'E18demo.ctl'.
-C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v (line 165, col 50):  Note: Substituting module 'add_vv_vv' for '+'.
+C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v (line 165, col 50):  Note: Substituting module 'add_vv_vv' for '+'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
@@ -88,11 +88,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  E18demo.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Fri Nov 02 12:58:13 2018
+Mon Nov 05 14:10:52 2018
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -103,11 +103,11 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.ctl'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.v'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\demux_v1_10.v'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\CyControlReg_v1_80\CyControlReg_v1_80.v'.
@@ -123,11 +123,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  E18demo.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 -verilog E18demo.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Fri Nov 02 12:58:13 2018
+Mon Nov 05 14:10:53 2018
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -138,11 +138,11 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.ctl'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.v'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\codegentemp\E18demo.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\demux_v1_10\demux_v1_10.v'.
-Linking 'C:\Git\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'.
+Linking 'C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\WS281xLib.cylib\B_WS2811_v1_3\B_WS2811_v1_3.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\CyControlReg_v1_80\CyControlReg_v1_80.v'.
@@ -408,13 +408,13 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -dcpsoc3 E18demo.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.774ms
+Warp synthesis phase: Elapsed time ==> 1s.450ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Friday, 02 November 2018 12:58:14
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Git\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -d CY8C4247LQI-BL483 E18demo.v -verilog
+cyp3fit: V4.2.0.641, Family: PSoC3, Started at: Monday, 05 November 2018 14:10:53
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\kmwh\Documents\electronica-demo\electronica2018\led_controller\firmware\E18demo.cydsn\E18demo.cyprj -d CY8C4247LQI-BL483 E18demo.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
 Design parsing phase: Elapsed time ==> 0s.012ms
@@ -1093,8 +1093,8 @@ DAC                           :      :      :      :
   7-bit IDAC                  :    0 :    1 :    1 :  0.00 %
   8-bit IDAC                  :    0 :    1 :    1 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.110ms
-Tech Mapping phase: Elapsed time ==> 0s.145ms
+Technology Mapping: Elapsed time ==> 0s.063ms
+Tech Mapping phase: Elapsed time ==> 0s.088ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 <CYPRESSTAG name="FFB & IO Pre Placement">
@@ -1113,13 +1113,13 @@ ClockGenBlock                       : CLK_GEN_[FFB(CLK_GEN,0)]
 </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Real Analog Placement">
-Elapsed time ==> 0.1871270s
+Elapsed time ==> 0.1511531s
 </CYPRESSTAG>
-Analog Placement phase: Elapsed time ==> 0s.395ms
+Analog Placement phase: Elapsed time ==> 0s.376ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 <CYPRESSTAG name="Analog Routing">
-Route success=True, Iterations=1 Elapsed=0.0015257 secs
+Route success=True, Iterations=1 Elapsed=0.0011954 secs
 </CYPRESSTAG>
 Analog Routing phase: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
@@ -1132,11 +1132,11 @@ Map of item to net {
 }
 Mux Info {
 }
-Analog Code Generation phase: Elapsed time ==> 0s.025ms
+Analog Code Generation phase: Elapsed time ==> 0s.044ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 0.5 sec.
+I2076: Total run-time: 0.4 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -1160,14 +1160,14 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.004ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.011ms
+Partitioning: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -1927,33 +1927,33 @@ Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connectio
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.035ms
-Digital Placement phase: Elapsed time ==> 0s.942ms
+Digital component placer commit/Report: Elapsed time ==> 0s.021ms
+Digital Placement phase: Elapsed time ==> 0s.750ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc4/3/128k/route_arch-rrg.cydata" --vh2-path "E18demo_r.vh2" --pcf-path "E18demo.pco" --des-name "E18demo" --dsf-path "E18demo.dsf" --sdc-path "E18demo.sdc" --lib-path "E18demo_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.935ms
+Digital Routing phase: Elapsed time ==> 0s.789ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.290ms
+Bitstream Generation phase: Elapsed time ==> 0s.294ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.036ms
+Bitstream Verification phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in E18demo_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.380ms
+Static timing analysis phase: Elapsed time ==> 0s.303ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.216ms
+Design database save phase: Elapsed time ==> 0s.208ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 3s.443ms
+cydsfit: Elapsed time ==> 2s.950ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 3s.444ms
-API generation phase: Elapsed time ==> 2s.833ms
-Dependency generation phase: Elapsed time ==> 0s.048ms
+Fitter phase: Elapsed time ==> 2s.952ms
+API generation phase: Elapsed time ==> 2s.791ms
+Dependency generation phase: Elapsed time ==> 0s.032ms
 Cleanup phase: Elapsed time ==> 0s.001ms
