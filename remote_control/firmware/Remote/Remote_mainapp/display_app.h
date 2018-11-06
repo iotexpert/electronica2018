@@ -5,11 +5,8 @@
 /***************************************************************************
 * Constants and types
 ***************************************************************************/
-/* Constants for the queue to pass  messages. Start queue to accept messages. */
-#define DISPLAY_MESSAGE_SIZE	(4)
-#define DISPLAY_QUEUE_SIZE		(10)
 
-/* The messages are 1 byte command, 1 byte type, and 1 or 2 bytes data */
+/* Display queue messages. 1 byte command, 1 byte type, and 1 or 2 bytes data */
 #define DISPLAY_CMD    0
 #define DISPLAY_TYPE   1
 #define DISPLAY_VAL1   2
@@ -37,11 +34,6 @@ enum {
 	INIT_BLE,
 	WATER_VALUE
 };
-
-/*******************************************************************************
-* External Variables
-*******************************************************************************/
-extern wiced_queue_t	display_queue_handle;
 
 /*******************************************************************************
 * External Functions

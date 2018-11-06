@@ -12,20 +12,15 @@
 #include "display_app.h"
 
 /* Thread parameters */
-#define AWS_PRIORITY (5)
+#define AWS_PRIORITY (7)
 #define AWS_THREAD_STACK_SIZE (5*1024UL)
-#define BLE_PRIORITY (5)
-#define BLE_THREAD_STACK_SIZE (25*1024UL)
 
 /******************************************************
  *               Variable Definitions
  ******************************************************/
 /* RTOS structures */
 static wiced_thread_t aws_thread_handle;
-static wiced_thread_t ble_thread_handle;
 static wiced_semaphore_t capsense_semaphore_handle;
-
-wiced_queue_t  swipe_queue_handle;
 
 /* Array to send messages to the display thread */
 static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0};
@@ -70,8 +65,6 @@ void capSenseThread( void )
 
 	/* Semaphore is used to alert the thread when a scan is done */
 	wiced_rtos_init_semaphore(&capsense_semaphore_handle);
-    /* Queue will be used to push swipe values. They will be read by either the BLE or WiFi thread depending on which is active */
-	wiced_rtos_init_queue(&swipe_queue_handle, "swipeQueue", SWIPE_MESSAGE_SIZE, SWIPE_QUEUE_SIZE);
 
 	/* Initialize/Enable CapSense and CapSense Interrupt */
 	Cy_CapSense_Init(&cy_capsense_context);
@@ -97,13 +90,7 @@ void capSenseThread( void )
 			{
 				WPRINT_APP_INFO(("Connecting to BLE\n"));
 				initialTouch = WICED_TRUE;
-				/* Start up Bluetooth thread */
-				wiced_rtos_create_thread( &ble_thread_handle,
-										  BLE_PRIORITY,
-										  "BLE thread",
-										  (wiced_thread_function_t) bleThread,
-										  BLE_THREAD_STACK_SIZE,
-										  NULL );
+				startBle(); /* Start up Bluetooth */
 			}
 			else if(Cy_CapSense_IsWidgetActive(CY_CAPSENSE_WIFIBTN_WDGT_ID, &cy_capsense_context)) /* WiFi Button */
 			{

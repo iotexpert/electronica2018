@@ -17,6 +17,9 @@ Thread to handle BLE operations
 /******************************************************
  *                      Macros
  ******************************************************/
+/* Thread parameters */
+#define BLE_SWIPE_PRIORITY (7)
+#define BLE_SWIPE_THREAD_STACK_SIZE (1*1024UL)
 
 /******************************************************
  *               Variable Definitions
@@ -27,7 +30,8 @@ static uint16_t conn_id=0; /* Connection ID */
 static uint8_t waterLeft  = 0;
 static uint8_t waterRight = 0;
 
-static uint8_t queueMessage[SWIPE_MESSAGE_SIZE] = {0}; /* This is the message sent from the CapSense queue */
+static wiced_thread_t ble_swipe_thread_handle;
+
 static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0}; /* Array to send messages to the display thread */
 
 /******************************************************
@@ -36,7 +40,8 @@ static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0}; /* Array to send messa
 /* Set Advertisement Data */
 void ble_adv_set_advertisement_data( void )
 {
-    wiced_bt_ble_advert_elem_t adv_elem[3] = { 0 };
+    wiced_result_t result;
+	wiced_bt_ble_advert_elem_t adv_elem[3] = { 0 };
     uint8_t adv_flag = BTM_BLE_GENERAL_DISCOVERABLE_FLAG | BTM_BLE_BREDR_NOT_SUPPORTED;
     uint8_t num_elem = 0;
     uint8_t manuf_data[] = {0x31, 0x01, 0x2A}; /* Cypress Manuf ID in Little Endian format followed by code of 0x2A (42) */
@@ -60,7 +65,9 @@ void ble_adv_set_advertisement_data( void )
     num_elem++;
 
     /* Set Raw Advertisement Data */
-    wiced_bt_ble_set_raw_advertisement_data(num_elem, adv_elem);
+    result = wiced_bt_ble_set_raw_advertisement_data(num_elem, adv_elem);
+
+    WPRINT_APP_INFO( ( "wiced_bt_ble_set_advertisement_data %d\n", result ) );
 }
 
 
@@ -86,6 +93,26 @@ void writeVal( uint16_t handle, void* pval, uint8_t len )
 }
 
 
+void bleSwipeThread( void )
+{
+	uint8_t queueMessage[SWIPE_MESSAGE_SIZE] = {0}; /* This is the message sent from the CapSense queue */
+
+	while(1)
+	{
+		/* Wait for a new message in the queue */
+		wiced_rtos_pop_from_queue(&swipe_queue_handle, &queueMessage, WICED_WAIT_FOREVER);
+
+		if(queueMessage[0] == SWIPE_RIGHT)
+		{
+			writeVal(HDLC_CONTROLLER_PUMPRIGHTBLE_VALUE, &queueMessage[1], sizeof(queueMessage[1]));
+		}
+		else /* SWIPE_LEFT */
+		{
+			writeVal(HDLC_CONTROLLER_PUMPLEFTBLE_VALUE, &queueMessage[1], sizeof(queueMessage[1]));
+		}
+	}
+}
+
 wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_event_data_t *p_data)
 {
     wiced_bt_gatt_status_t result = WICED_BT_SUCCESS;
@@ -100,6 +127,9 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
             conn_id         =  p_conn_status->conn_id;
             WPRINT_APP_INFO(("Connection ID=%d\r\n",conn_id));
 
+            /* Stop advertisements */
+        	wiced_bt_start_advertisements(BTM_BLE_ADVERT_OFF, 0, NULL);
+
         	/* Send Notify Message to Screen and enable notifications  */
         	displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
 			displayCommand[DISPLAY_TYPE] = REGISTER_NOTIFY;
@@ -110,15 +140,25 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
 			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  &cccdNotify, sizeof(GATT_CLIENT_CONFIG_NOTIFICATION));
 
             /* Display message */
-            wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
+			wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
             displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
             displayCommand[DISPLAY_TYPE] = INIT_BLE;
-        	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+
+            /* Start thread to get messages from the swipe queue and push them to BLE */
+			wiced_rtos_create_thread( &ble_swipe_thread_handle,
+									  BLE_SWIPE_PRIORITY,
+									  "BLW Swipe thread",
+									  (wiced_thread_function_t) bleSwipeThread,
+									  BLE_SWIPE_THREAD_STACK_SIZE,
+									  NULL );
         }
         else
         {
         	WPRINT_APP_INFO(("Disconnected\r\n"));
             conn_id = 0;
+            /* Restart advertising */
+            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);
         }
         break;
 
@@ -146,7 +186,7 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
         displayCommand[DISPLAY_TYPE] = WATER_VALUE;
         displayCommand[DISPLAY_VAL1] = waterLeft;
         displayCommand[DISPLAY_VAL2] = waterRight;
-    	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+        wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
         break;
 
     default:
@@ -186,21 +226,14 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         	/* Set up BLE Screen */
             displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
             displayCommand[DISPLAY_TYPE] = BLE_ADVERTISE;
-        	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
             /* Register callback function for GATT events */
             wiced_bt_gatt_register( gatt_callback );
 
         	/* Start Advertising */
             ble_adv_set_advertisement_data();
-
-            WPRINT_APP_INFO(("GJL at 5\n"));
-
-            //wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);
-            wiced_bt_start_advertisements(BTM_BLE_ADVERT_NONCONN_HIGH, 0, NULL);
-
-            WPRINT_APP_INFO(("GJL at 6\n"));
-
+            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);
         }
         break;
 
@@ -218,8 +251,8 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
 
     case BTM_PAIRING_COMPLETE_EVT:
         /* Pairing is Complete */
-    	WPRINT_APP_INFO(("Pairing Complete %d.\r\n", p_ble_info->reason));
         p_ble_info = &p_event_data->pairing_complete.pairing_complete_info.ble;
+    	WPRINT_APP_INFO(("Pairing Complete %d.\r\n", p_ble_info->reason));
         break;
 
     case BTM_SECURITY_REQUEST_EVT:
@@ -233,10 +266,14 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
     	status = WICED_BT_ERROR; /* No keys stored in NVRAM so indicate that there are no keys */
     	break;
 
+    case BTM_LOCAL_IDENTITY_KEYS_UPDATE_EVT:
+    	/* No keys stored in NVRAM so no need to do anything here */
+    	break;
+
     case BTM_BLE_ADVERT_STATE_CHANGED_EVT:
         /* Advertisement State Changed */
-    	WPRINT_APP_INFO(("Advertisement State Change: %d\n", *p_adv_mode));
     	p_adv_mode = &p_event_data->ble_advert_state_changed;
+    	WPRINT_APP_INFO(("Advertisement State Change: %d\n", *p_adv_mode));
         if(*p_adv_mode == BTM_BLE_ADVERT_UNDIRECTED_HIGH)
         {
         	/* Send Advertising Message to Screen */
@@ -246,6 +283,10 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         }
         break;
 
+    case BTM_LPM_STATE_LOW_POWER:
+    	/* No low power implementation */
+    	break;
+
     default:
     	WPRINT_APP_INFO(("Unhandled Bluetooth Management Event: 0x%x (%d)\n", event, event));
         break;
@@ -254,27 +295,13 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
 }
 
 
-void bleThread( void )
+void startBle( void )
 {
 	/* Set up BLE Screen */
     displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
     displayCommand[DISPLAY_TYPE] = BLE_START;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+    wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
+    /* Start BLE stack - this starts 2 threads to manage BLE */
 	wiced_bt_stack_init( ble_management_callback, &wiced_bt_cfg_settings, wiced_bt_cfg_buf_pools);
-
-	while(1)
-	{
-		/* Wait for a new message in the queue */
-		wiced_rtos_pop_from_queue(&swipe_queue_handle, &queueMessage, WICED_WAIT_FOREVER);
-
-		if(queueMessage[0] == SWIPE_RIGHT)
-		{
-			writeVal(HDLC_CONTROLLER_PUMPRIGHTBLE_VALUE, &queueMessage[1], sizeof(queueMessage[1]));
-		}
-		else /* SWIPE_LEFT */
-		{
-			writeVal(HDLC_CONTROLLER_PUMPLEFTBLE_VALUE, &queueMessage[1], sizeof(queueMessage[1]));
-		}
-	}
 }

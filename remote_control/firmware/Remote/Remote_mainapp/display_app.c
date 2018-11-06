@@ -31,7 +31,6 @@ u8x8_t u8x8; /* Display structure */
 /* RTOS structures */
 static wiced_timer_t  ble_led_timer_handle;
 static wiced_timer_t  wifi_led_timer_handle;
-wiced_queue_t	      display_queue_handle;
 
 char msg[20];   /* Array to hold snprintf output for display */
 
@@ -257,8 +256,8 @@ void drawGame( int8_t* message )
 		}
 		break;
 	case WATER_VALUE:
-		snprintf(msg, sizeof(msg), "L: %3d   R: %3d",message[DISPLAY_VAL1], message[DISPLAY_VAL2]);
-		u8x8_DrawString(&u8x8,0,4,msg);
+		snprintf(msg, sizeof(msg), "L:%3d R:%3d",message[DISPLAY_VAL1], message[DISPLAY_VAL2]);
+		u8x8_DrawString(&u8x8,3,4,msg);
 		break;
 	}
 }
@@ -299,9 +298,6 @@ void displayThread( void )
     u8x8_SetFont(&u8x8,u8x8_font_amstrad_cpc_extended_f);
 
     drawSplash();
-
-    /* Start queue to accept messages. The messages are 1 byte command, 1 byte type, and 1 or 2 bytes data */
-    wiced_rtos_init_queue(&display_queue_handle, "displayQueue", DISPLAY_MESSAGE_SIZE, DISPLAY_QUEUE_SIZE);
 
     while(1)
     {

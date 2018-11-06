@@ -10,4 +10,4 @@ extern wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[WICED_BT_CFG_NUM_BUF_POOLS
 /***************************************
 * Function Prototypes
 **************************************/
-void bleThread( void );
+void startBle( void );
