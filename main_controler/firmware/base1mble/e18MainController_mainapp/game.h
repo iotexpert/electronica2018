@@ -20,7 +20,7 @@
 #define GAME_WIN_LEVEL	70			//percent water level for a win to be triggered
 
 //#define GAME_HARDWARE_TEST			//define this to start the pumps on game start for hardware test
-#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
+//#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
 
 
 typedef enum{
