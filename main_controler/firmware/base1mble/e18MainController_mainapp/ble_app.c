@@ -199,7 +199,6 @@ static void game_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, 
 
 wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_event_data_t *p_data)
 {
-    wiced_bt_gatt_status_t result = WICED_BT_SUCCESS;
     wiced_bt_gatt_attribute_request_t *p_attr_req = NULL;
     wiced_bt_gatt_connection_status_t *p_conn_status = NULL;
     uint8_t remote_id;
@@ -221,8 +220,6 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                     p_conn_status->bd_addr[0], p_conn_status->bd_addr[1], p_conn_status->bd_addr[2],
                     p_conn_status->bd_addr[3], p_conn_status->bd_addr[4], p_conn_status->bd_addr[5]));
                 WPRINT_APP_INFO(( "Number of connected Remotes: %d\n", remote_cnt ));
-
-                result = WICED_BT_GATT_SUCCESS;
             }
             else
             {
@@ -238,7 +235,6 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                 {
                     wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_TRUE, game_scan_result_cback );
                 }
-                result = WICED_BT_GATT_SUCCESS;
             }
             break;
 
@@ -246,8 +242,8 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
             p_attr_req = &p_data->attribute_request;
             if( p_attr_req->request_type == GATTS_REQ_TYPE_WRITE)
             {
-                WPRINT_APP_INFO(("received GATT_ATTRIBUTE_REQUEST_EVT for handle %04X, bytes: %d, value: 0x",
-                        p_attr_req->data.write_req.handle, p_attr_req->data.write_req.val_len));
+                WPRINT_APP_INFO(("received GATT_ATTRIBUTE_REQUEST_EVT for ID %d, handle %04X, bytes: %d, value: 0x",
+                        p_attr_req->conn_id, p_attr_req->data.write_req.handle, p_attr_req->data.write_req.val_len));
                 for(i=0; i < p_attr_req->data.write_req.val_len; i++)
                 {
                     WPRINT_APP_INFO(("%02X" ,p_attr_req->data.write_req.p_val[i]));
@@ -256,7 +252,6 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                 switch(p_attr_req->data.write_req.handle)
                 {
                 case HDLC_CONTROLLER_PUMPLEFTBLE:
-                    //GJL TODO - push p_attr_req->data.write_req.p_val[0] to PumpLeft queue
                     if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
                     {
                         pumpRequest.pumpBytes.leftPumpRequest = p_attr_req->data.write_req.p_val[0];
@@ -264,7 +259,6 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                     }
                     break;
                 case HDLC_CONTROLLER_PUMPRIGHTBLE:
-                    //GJL TODO - push p_attr_req->data.write_req.p_val[0] to PumpRight queue
                     if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
                     {
                         pumpRequest.pumpBytes.rightPumpRequest = p_attr_req->data.write_req.p_val[0];
@@ -295,7 +289,7 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
             break;
     }
 
-    return result;
+    return WICED_BT_GATT_SUCCESS;
 }
 
 
