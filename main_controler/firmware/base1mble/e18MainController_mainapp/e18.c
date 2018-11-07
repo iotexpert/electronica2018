@@ -31,47 +31,6 @@
  * so agrees to indemnify Cypress against all liability.
  */
 
-/** @file
- *
- * Concurrent APSTA Application
- *
- * This application snippet demonstrates how to use
- * the WICED Wi-Fi client and softAP interfaces at the same time.
- *
- * Features demonstrated
- *  - Wi-Fi client mode (to send a regular ICMP ping to an AP)
- *  - Wi-Fi softAP mode (to enable Wi-Fi clients to connect to the WICED webserver)
- *
- * To demonstrate the app, work through the following steps.
- *  1. Modify the CLIENT_AP_SSID/CLIENT_AP_PASSPHRASE Wi-Fi credentials
- *     in the wifi_config_dct.h header file to match your Wi-Fi access point
- *  2. Modify the SOFT_AP_SSID/SOFT_AP_PASSPHRASE Wi-Fi credentials
- *     as desired
- *  3. Plug the WICED eval board into your computer
- *  4. Open a terminal application and connect to the WICED eval board
- *  5. Build and download the application (to the WICED board)
- *
- * After the download completes, the terminal displays WICED startup
- * information and then :
- *  - Joins a Wi-Fi network and pings the gateway. Ping results are
- *    printed to the UART and appear on the terminal
- *  - Starts a softAP and a webserver on the AP interface
- *
- * To connect a Wi-Fi client (eg. computer) to the softAP webserver:
- *  - Connect your computer to the softAP SSID configured in wifi_config_dct.h
- *  - Open a web browser
- *  - Enter wiced.com as the URL; a simple web page appears
- *    (or alternately, enter 192.168.0.1 as the URL, this is the
- *     IP address of the softAP interface)
- *
- * TROUBLESHOOTING
- *   If you are having difficulty connecting the web browser to the
- *   WICED softAP webserver, try the following:
- *   1. Disconnect other network interfaces from the computer (eg. wired ethernet)
- *   2. Check that your computer received a valid IP address eg. 192.168.0.2
- *   3. Try clearing the web browser cache and try connecting again
- *
- */
 
 #include "wiced.h"
 #include "cy_pdl.h"
@@ -129,7 +88,7 @@ wiced_queue_t pumpCommandQueueHandle;
 #define MESSAGE_SIZE		(4)
 #define QUEUE_SIZE			(10)
 
-#define TEST_HARDWARE_ON_STARTUP
+#define TEST_HARDWARE_ON_STARTUP        //turn on switch LEDs and briefly kick pumps on start-up
 
 /******************************************************
  *                   Enumerations
@@ -170,7 +129,6 @@ typedef enum{
 /******************************************************
  *               Local Function Prototypes
  ******************************************************/
-void handleLiquidLevels(void);
 void handleRunLED(void);
 void handleHeartBeatLED(void);
 
@@ -185,25 +143,10 @@ void application_start(void)
     wiced_init();
     WPRINT_APP_INFO(("Starting project\n"));
     initGameConsole();
-
-//    wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
-
-    //init_cycfg_all();             //don't do this!!!
-    initAudioHW();
-
-    //initConsoleUART();        //was using this in the bare metal version, but WICED handles this UART
-    ledUARTinit();
+    ledUARTinit();          //this uart is handled by interrupt, no thread to init it in
 
     /* enable interrupts */
     __enable_irq();
-
-//    while(1)
-//         {
-//        			WPRINT_APP_INFO(("Hi\n"));
-//         		Cy_GPIO_Inv(BLUE_LED_PORT,BLUE_LED_PIN);
-//         		wiced_rtos_delay_milliseconds(500);
-//         }
-
 
     //initialize the pump queues
 	wiced_rtos_init_queue(&pumpRequestQueueHandle, "pumpRequestQueue", MESSAGE_SIZE, QUEUE_SIZE); /* Setup the queue for pump run requests  */

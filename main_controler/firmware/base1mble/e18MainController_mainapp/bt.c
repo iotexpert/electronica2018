@@ -1,10 +1,16 @@
 #include "wiced.h"
 #include "bt.h"
+#include "liquidlevel.h"
+
+#define BT_THREAD_DELAY	250
+
+typedef enum{
+	BT_UNINITIALIZED,
+	BT_INITIALIZED,
+	BT_ERROR
+}BT_STATE_T;
 
 extern uint8_t g_hello_client_cnt;
-
-extern uint8_t leftLevel;
-extern uint8_t rightLevel;
 
 static BT_STATE_T btState = BT_UNINITIALIZED;
 extern void startBLE(void);

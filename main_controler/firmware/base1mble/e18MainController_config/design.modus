@@ -28,6 +28,11 @@
         <Param id="fracDivider" value="0"/>
         <Param id="startOnReset" value="true"/>
       </Block>
+      <Block location="peri[0].div_16[3]" alias="" template="mxs40peripheralclock" version="1.0">
+        <Param id="intDivider" value="1"/>
+        <Param id="fracDivider" value="0"/>
+        <Param id="startOnReset" value="true"/>
+      </Block>
       <Block location="peri[0].div_8[1]" alias="" template="mxs40peripheralclock" version="1.0">
         <Param id="intDivider" value="109"/>
         <Param id="fracDivider" value="0"/>
@@ -1068,12 +1073,9 @@
       <Port name="tcpwm[1].cnt[0].clock[0]"/>
     </Net>
     <Net>
-      <Port name="peri[0].div_16[1].clk[0]"/>
-      <Port name="tcpwm[0].cnt[3].clock[0]"/>
-    </Net>
-    <Net>
       <Port name="peri[0].div_16[2].clk[0]"/>
       <Port name="tcpwm[0].cnt[1].clock[0]"/>
+      <Port name="tcpwm[0].cnt[3].clock[0]"/>
     </Net>
     <Net>
       <Port name="peri[0].div_8[1].clk[0]"/>

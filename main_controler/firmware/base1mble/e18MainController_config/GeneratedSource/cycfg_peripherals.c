@@ -215,7 +215,7 @@ void init_cycfg_peripherals(void)
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS1, CY_SYSCLK_DIV_16_BIT, 2U);
 
-	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS3, CY_SYSCLK_DIV_16_BIT, 1U);
+	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS3, CY_SYSCLK_DIV_16_BIT, 2U);
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM1_CLOCKS0, CY_SYSCLK_DIV_16_BIT, 0U);
 

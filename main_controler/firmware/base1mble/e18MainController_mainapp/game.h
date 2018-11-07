@@ -14,15 +14,6 @@
 #define FW_VERSION_MAJOR '0'
 #define FW_VERSION_MINOR '1'
 
-
-#define GAME_MACHINE_DELAY	125		//time in milliseconds of delay for game machine thread
-
-#define GAME_WIN_LEVEL	70			//percent water level for a win to be triggered
-
-//#define GAME_HARDWARE_TEST			//define this to start the pumps on game start for hardware test
-//#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
-
-
 typedef enum{
 	GAME_UNKNOWN,
 	GAME_INIT,

@@ -11,6 +11,8 @@
 #include "wiced.h"
 
 
+#define NUM_LEVEL_SENSORS 12
+
 //middle sensor threshold levels
 #define THRESHOLD_A_LEVEL   2430
 #define THRESHOLD_B_LEVEL   2100
@@ -43,8 +45,6 @@
 /*******************************************************************************
 * Interrupt configuration
 *******************************************************************************/
-static void CapSense_Interrupt(void);
-
 extern void csd_interrupt_IRQn_Handler(void);
 
 
@@ -117,7 +117,6 @@ void determineLevels(void)
     uint16_t rightHold = 0;
     uint8_t index;
     uint16_t weight;
-    WATER_LEVEL_T calculatedLevels;
 
     getRawSensorValues();
 

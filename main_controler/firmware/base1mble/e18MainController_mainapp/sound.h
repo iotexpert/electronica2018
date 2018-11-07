@@ -8,13 +8,7 @@
 #ifndef SRC_SOUND_H_
 #define SRC_SOUND_H_
 
-//#include "wiced.h"
 #include "cycfg.h"
-
-
-#define WAV_HEADER_SIZE 0x2C	//number of bytes to skip for wave header
-#define WAV_DATASIZE_OFFSET 0x28
-#define WAV_DATASIZE_SIZE 0x04
 
 typedef enum{
 	SOUND_IDLE,
@@ -27,35 +21,15 @@ typedef enum{
 	SOUND_WAVDATA_ERROR
 }SOUND_RETURN_T;
 
+extern void soundThread(wiced_thread_arg_t arg);		//sound thread
+extern SOUND_RETURN_T playSound(const char* sound);		//play sound, argument is pointer to sound wav file
+extern SOUND_STATE_T getSoundState(void);				//get the current sound state -- playing or idle
+extern void abortSound(void);							//abort any currently playing sound
 
-typedef struct{
-	uint8_t riffStr[4];
-	uint32_t riffSize;
-	uint8_t wavStr[4];
-	uint8_t fmtStr[4];
-	uint32_t wavChunk;
-	uint16_t wavFormat;
-	uint16_t wavMonoStereo;
-	uint32_t sampleFrequency;
-	uint32_t byteRate;
-	uint16_t blockAlignment;
-	uint16_t bitsPerSample;
-	uint8_t dataStr[4];
-	uint32_t dataSize;
-}WAV_TABLE_T;
-
-
-typedef union{
-	WAV_TABLE_T table;
-	uint8_t fullHeader[WAV_HEADER_SIZE];
-}WAV_HEADER_T;
-
-extern void soundThread(wiced_thread_arg_t arg);
-extern void initAudioHW(void);
-extern SOUND_RETURN_T playSound(const char* sound);
-extern SOUND_STATE_T getSoundState(void);
-void readWavHeader(WAV_HEADER_T* header, const uint8_t* soundArray);
-void soundTimerInterrupt(void);
-
+//Note on sounds:
+//This code is written to handle wave files saved as arrays of chars, including the wave file header.
+//The size of audio to play is pulled from the wave headers.
+//Sounds need to be mono unsigned 8-bit PCM, 11.025khz sample rate. To create a sound in Audacity, use mono 16-bit PCM recording
+//at 11.025khz Export as wav, "save as" "other uncompressed formats", header "Microsoft wave", encoding "unsigned 8-bit PCM".
 
 #endif /* SRC_SOUND_H_ */
