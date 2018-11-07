@@ -185,7 +185,7 @@ static void game_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, 
         /* Stop the scan if we will have max number of remotes connected after this one connects */
         if(remote_cnt >= REMOTE_MAX-1 )
         {
-            status = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_NONE, WICED_TRUE, game_scan_result_cback );
+            status = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_NONE, WICED_FALSE, game_scan_result_cback );
             WPRINT_APP_INFO(( "scan off status %d\n", status ));
         }
         start_scan = 0;
@@ -216,7 +216,7 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
             {
                 game_add_remote_info( p_conn_status->conn_id, p_conn_status->bd_addr );
 
-                WPRINT_APP_INFO(( "Connected to a new Remote: ID: %d, Addr:<%0X:%0X:%0X:%0X:%0X:%0X>\n ", p_conn_status->conn_id,
+                WPRINT_APP_INFO(( "Connected to a new Remote: ID: %d, Addr:<%02X:%02X:%02X:%02X:%02X:%02X>\n ", p_conn_status->conn_id,
                     p_conn_status->bd_addr[0], p_conn_status->bd_addr[1], p_conn_status->bd_addr[2],
                     p_conn_status->bd_addr[3], p_conn_status->bd_addr[4], p_conn_status->bd_addr[5]));
                 WPRINT_APP_INFO(( "Number of connected Remotes: %d\n", remote_cnt ));
@@ -225,7 +225,7 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
             {
                 game_remove_remote_info( p_conn_status->conn_id ); /* Remove the remote info */
 
-                WPRINT_APP_INFO(( "Disconnecting remote: ID: %d, Addr: <%0X:%0X:%0X:%0X:%0X:%0X>\n", p_conn_status->conn_id,
+                WPRINT_APP_INFO(( "Disconnecting remote: ID: %d, Addr: <%02X:%02X:%02X:%02X:%02X:%02X>\n", p_conn_status->conn_id,
                         p_conn_status->bd_addr[0], p_conn_status->bd_addr[1], p_conn_status->bd_addr[2],
                         p_conn_status->bd_addr[3], p_conn_status->bd_addr[4], p_conn_status->bd_addr[5]));
                 WPRINT_APP_INFO(( "Number of connected Remotes: %d\n", remote_cnt ));
@@ -233,7 +233,7 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                 /* If we have less than the max number of remotes, start scanning */
                 if(remote_cnt < REMOTE_MAX )
                 {
-                    wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_TRUE, game_scan_result_cback );
+                    wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
                 }
             }
             break;
@@ -322,7 +322,7 @@ wiced_result_t game_management_cback( wiced_bt_management_evt_t event,  wiced_bt
             start_scan = 1;
             if( wiced_bt_ble_get_current_scan_state() == BTM_BLE_SCAN_TYPE_NONE )
             {
-                result = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_TRUE, game_scan_result_cback );
+                result = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
                 WPRINT_APP_INFO(( "Start Scanning: %d\n", result ));
             }
 
