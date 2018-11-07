@@ -14,7 +14,7 @@
 #include "liquidlevel.h"
 #include "command_console.h"
 #include "aws.h"
-#include "bt.h"
+//#include "bt.h"
 #include "pumps.h"
 #include "cy_pdl.h"
 

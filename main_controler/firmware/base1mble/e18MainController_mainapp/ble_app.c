@@ -8,6 +8,8 @@
 #include "wiced_bt_cfg.h"
 #include "wiced_bt_stack.h"
 #include "ble_db.h"
+#include "pumps.h"
+#include "liquidlevel.h"
 
 /******************************************************************************
  *                          Macros
@@ -45,8 +47,8 @@ static wiced_timer_t notify_timer_handle; /* Thread to manage notifications */
 extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
 extern const wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[];
 
-extern uint8_t leftLevel = 0;
-extern uint8_t rightLevel = 0;
+//extern uint8_t leftLevel = 0;
+//extern uint8_t rightLevel = 0;
 
 /******************************************************************************
  *                          Function Definitions
@@ -202,6 +204,8 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
     wiced_bt_gatt_connection_status_t *p_conn_status = NULL;
     uint8_t remote_id;
     uint8_t i;
+    PUMP_REQUEST_T pumpRequest;
+    pumpRequest.pumpWord = 0x00000000;
 
     WPRINT_APP_INFO(( "game_gatt_callback event %d \n", event ));
 
@@ -253,9 +257,19 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                 {
                 case HDLC_CONTROLLER_PUMPLEFTBLE:
                     //GJL TODO - push p_attr_req->data.write_req.p_val[0] to PumpLeft queue
+                    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+                    {
+                        pumpRequest.pumpBytes.leftPumpRequest = p_attr_req->data.write_req.p_val[0];
+                        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
+                    }
                     break;
                 case HDLC_CONTROLLER_PUMPRIGHTBLE:
                     //GJL TODO - push p_attr_req->data.write_req.p_val[0] to PumpRight queue
+                    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
+                    {
+                        pumpRequest.pumpBytes.rightPumpRequest = p_attr_req->data.write_req.p_val[0];
+                        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
+                    }
                     break;
                 case HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION:
                     remote_id = game_get_remote_info(p_attr_req->conn_id);

@@ -40,17 +40,19 @@
 #include "cycfg_pins.h"
 #include "game.h"
 #include "aws.h"
-#include "bt.h"
+//#include "bt.h"
 #include "liquidlevel.h"
 #include "leduart.h"
 #include "game_console.h"
+#include "ble_app.h"
+
 
 /******************************************************
  *               Variable Definitions
  ******************************************************/
 static wiced_thread_t gameThreadHandle;
 static wiced_thread_t awsThreadHandle;
-static wiced_thread_t btThreadHandle;
+//static wiced_thread_t btThreadHandle;
 static wiced_thread_t soundThreadHandle;
 static wiced_thread_t pumpThreadHandle;
 static wiced_thread_t levelThreadHandle;
@@ -74,12 +76,12 @@ wiced_queue_t pumpCommandQueueHandle;
 #define LEVEL_THREAD_PRIORITY   6
 #define PUMP_THREAD_PRIORITY    6
 #define GAME_THREAD_PRIORITY	7
-#define BT_THREAD_PRIORITY		7
+//#define BT_THREAD_PRIORITY		7
 #define SOUND_THREAD_PRIORITY	8
 
 #define AWS_STACK_SIZE 6144
 #define GAME_STACK_SIZE 4096
-#define BT_STACK_SIZE 4096
+//#define BT_STACK_SIZE 4096
 #define LEVEL_STACK_SIZE 1024
 #define PUMP_STACK_SIZE 1024
 #define SOUND_STACK_SIZE 512
@@ -155,10 +157,12 @@ void application_start(void)
     //start the various threads
 	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, AWS_STACK_SIZE, NULL);
-	wiced_rtos_create_thread(&btThreadHandle, BT_THREAD_PRIORITY, "btThread", btThread, BT_STACK_SIZE, NULL);
+	//wiced_rtos_create_thread(&btThreadHandle, BT_THREAD_PRIORITY, "btThread", btThread, BT_STACK_SIZE, NULL);
 	wiced_rtos_create_thread(&soundThreadHandle, SOUND_THREAD_PRIORITY, "soundThread", soundThread, SOUND_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&levelThreadHandle, LEVEL_THREAD_PRIORITY, "levelThread", levelThread, LEVEL_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&pumpThreadHandle, PUMP_THREAD_PRIORITY, "pumpThread", pumpThread, PUMP_STACK_SIZE, NULL);
+
+    startBle();
 
     //needs to happen after pump thread is inited for pumps to work
 	#ifdef TEST_HARDWARE_ON_STARTUP
