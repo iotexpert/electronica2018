@@ -17,7 +17,7 @@ wiced_bt_cfg_settings_t wiced_bt_cfg_settings =
     .device_name               = (uint8_t*)"HELLO", /**< Local device name (NULL terminated) */
     .device_class              = { 0x00, 0x00, 0x00 },        /**< Local device class */
     .security_requirement_mask = BTM_SEC_NONE,                /**< Security requirements mask (BTM_SEC_NONE, or combination of BTM_SEC_IN_AUTHENTICATE, BTM_SEC_OUT_AUTHENTICATE, BTM_SEC_ENCRYPT (see #wiced_bt_sec_level_e)) */
-    .max_simultaneous_links    = 3,                           /**< Maximum number simultaneous links to different devices */
+    .max_simultaneous_links    = 2,                           /**< Maximum number simultaneous links to different devices */
 
     /* Scan and advertisement configuration */
     .br_edr_scan_cfg =                 /**< BR/EDR scan settings */
@@ -34,10 +34,10 @@ wiced_bt_cfg_settings_t wiced_bt_cfg_settings =
         .scan_mode                    = BTM_BLE_SCAN_MODE_ACTIVE,                         /**< BLE scan mode (BTM_BLE_SCAN_MODE_PASSIVE, BTM_BLE_SCAN_MODE_ACTIVE) */
         .high_duty_scan_interval      = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL,      /**< High duty scan interval (default: WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_INTERVAL) */
         .high_duty_scan_window        = WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_WINDOW,        /**< High duty scan window (default: WICED_BT_CFG_DEFAULT_HIGH_DUTY_SCAN_WINDOW) */
-        .high_duty_scan_duration      = 20,                                                 /**< High duty scan duration in seconds (0 for infinite) */
+        .high_duty_scan_duration      = 0,                                                 /**< High duty scan duration in seconds (0 for infinite) */
         .low_duty_scan_interval       = WICED_BT_CFG_DEFAULT_LOW_DUTY_SCAN_INTERVAL,       /**< Low duty scan interval (default: WICED_BT_CFG_DEFAULT_LOW_DUTY_SCAN_INTERVAL) */
         .low_duty_scan_window         = WICED_BT_CFG_DEFAULT_LOW_DUTY_SCAN_WINDOW,         /**< Low duty scan window (default: WICED_BT_CFG_DEFAULT_LOW_DUTY_SCAN_WINDOW) */
-        .low_duty_scan_duration       = 20,                                                 /**< Low duty scan duration in seconds (0 for infinite) */
+        .low_duty_scan_duration       = 0,                                                 /**< Low duty scan duration in seconds (0 for infinite) */
         .high_duty_conn_scan_interval = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_INTERVAL, /**< High duty cycle connection scan interval (default: WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_INTERVAL) */
         .high_duty_conn_scan_window   = WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_WINDOW,   /**< High duty cycle connection scan window (default: WICED_BT_CFG_DEFAULT_HIGH_DUTY_CONN_SCAN_WINDOW) */
         .high_duty_conn_duration      = 0,                                                 /**< High duty cycle connection duration in seconds (0 for infinite) */
@@ -76,7 +76,7 @@ wiced_bt_cfg_settings_t wiced_bt_cfg_settings =
     {
          .appearance       = APPEARANCE_GENERIC_TAG, /**< GATT appearance (see #gatt_appearance_e) */
          .client_max_links = 2,   /**< Client config: maximum number of servers that local client can connect to  */
-         .server_max_links = 0,   /**< Server config: maximum number of remote clients connections allowed by the local */
+         .server_max_links = 2,   /**< Server config: maximum number of remote clients connections allowed by the local */
          .max_attr_len     = 360, /**< Maximum attribute length; gki_cfg must have a corresponding buffer pool that can hold this length */
          .max_mtu_size     = 517, /**< Maxiimum MTU size;gki_cfg must have a corresponding buffer pool that can hold this length */
     },
