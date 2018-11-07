@@ -1,4 +1,4 @@
-/* Electronic game remote BLE */
+/* Electronic game BLE */
 
 #pragma once
 

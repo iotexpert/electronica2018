@@ -21,9 +21,14 @@ Thread to handle BLE operations
 #define BLE_SWIPE_PRIORITY (7)
 #define BLE_SWIPE_THREAD_STACK_SIZE (1*1024UL)
 
+#define BLE_TIMEOUT 500
+
 /******************************************************
  *               Variable Definitions
  ******************************************************/
+extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
+extern wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[WICED_BT_CFG_NUM_BUF_POOLS];
+
 static uint16_t conn_id=0; /* Connection ID */
 
 /* Water level % sent by the server */
@@ -31,6 +36,7 @@ static uint8_t waterLeft  = 0;
 static uint8_t waterRight = 0;
 
 static wiced_thread_t ble_swipe_thread_handle;
+static wiced_semaphore_t ble_semaphore_handle;
 
 static int8_t displayCommand[DISPLAY_MESSAGE_SIZE] = {0}; /* Array to send messages to the display thread */
 
@@ -44,7 +50,7 @@ void ble_adv_set_advertisement_data( void )
 	wiced_bt_ble_advert_elem_t adv_elem[3] = { 0 };
     uint8_t adv_flag = BTM_BLE_GENERAL_DISCOVERABLE_FLAG | BTM_BLE_BREDR_NOT_SUPPORTED;
     uint8_t num_elem = 0;
-    uint8_t manuf_data[] = {0x31, 0x01, 0x2A}; /* Cypress Manuf ID in Little Endian format followed by code of 0x2A (42) */
+    uint8_t manuf_data[] = {0x31, 0x01, 'R', 'e', 'm', 'o', 't', 'e'}; /* Cypress Manuf ID in Little Endian format followed by a code */
 
     /* Advertisement Element for Flags */
     adv_elem[num_elem].advert_type = BTM_BLE_ADVERT_TYPE_FLAG;
@@ -88,7 +94,10 @@ void writeVal( uint16_t handle, void* pval, uint8_t len )
 
 		status = wiced_bt_gatt_send_write ( conn_id, GATT_WRITE, p_write );
 
-		WPRINT_APP_INFO(("wiced_bt_gatt_send_write 0x%X\r\n", status));
+		WPRINT_APP_INFO(("wiced_bt_gatt_send_write status: 0x%02X, handle: 0x%02X, bytes: %d\r\n", status, p_write->handle, p_write->len));
+
+		/* Wait for semaphore to make sure the write happened before continuing */
+        wiced_rtos_get_semaphore(&ble_semaphore_handle, BLE_TIMEOUT);
 	}
 }
 
@@ -116,6 +125,8 @@ void bleSwipeThread( void )
 wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_event_data_t *p_data)
 {
     wiced_bt_gatt_status_t result = WICED_BT_SUCCESS;
+    wiced_bt_gatt_connection_status_t * p_conn_status = NULL;
+	uint16_t cccdNotify = GATT_CLIENT_CONFIG_NOTIFICATION;
 
     switch( event )
     {
@@ -123,7 +134,7 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
         if ( p_data->connection_status.connected )
         {
         	WPRINT_APP_INFO(("Connected\r\n"));
-            wiced_bt_gatt_connection_status_t *p_conn_status = &p_data->connection_status;
+            p_conn_status = &p_data->connection_status;
             conn_id         =  p_conn_status->conn_id;
             WPRINT_APP_INFO(("Connection ID=%d\r\n",conn_id));
 
@@ -135,9 +146,8 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
 			displayCommand[DISPLAY_TYPE] = REGISTER_NOTIFY;
 			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
 
-			uint16_t cccdNotify = GATT_CLIENT_CONFIG_NOTIFICATION;
-			writeVal(HDLD_CONTROLLER_WATERLEVELRIGHTBLE_CLIENT_CONFIGURATION, &cccdNotify, sizeof(GATT_CLIENT_CONFIG_NOTIFICATION));
-			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  &cccdNotify, sizeof(GATT_CLIENT_CONFIG_NOTIFICATION));
+			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  &cccdNotify, sizeof(cccdNotify));
+			writeVal(HDLD_CONTROLLER_WATERLEVELRIGHTBLE_CLIENT_CONFIGURATION, &cccdNotify, sizeof(cccdNotify));
 
             /* Display message */
 			wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
@@ -165,20 +175,22 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
                 p_data->operation_complete.response_data.att_value.len,
 				p_data->operation_complete.response_data.att_value.p_data[0]));
 
-        if(p_data->operation_complete.response_data.handle == HDLC_CONTROLLER_WATERLEVELRIGHTBLE_VALUE)
-        {
-        	waterRight = p_data->operation_complete.response_data.att_value.p_data[0];
-        }
         if(p_data->operation_complete.response_data.handle == HDLC_CONTROLLER_WATERLEVELLEFTBLE_VALUE)
 		{
 			waterRight = p_data->operation_complete.response_data.att_value.p_data[0];
 		}
+        if(p_data->operation_complete.response_data.handle == HDLC_CONTROLLER_WATERLEVELRIGHTBLE_VALUE)
+        {
+        	waterRight = p_data->operation_complete.response_data.att_value.p_data[0];
+        }
         /* Send value to display */
         displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
         displayCommand[DISPLAY_TYPE] = WATER_VALUE;
         displayCommand[DISPLAY_VAL1] = waterLeft;
         displayCommand[DISPLAY_VAL2] = waterRight;
         wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+
+        wiced_rtos_set_semaphore(&ble_semaphore_handle); /* This indicates to the writeVal function that the write is done */
         break;
 
     default:
@@ -194,7 +206,6 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
 wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, wiced_bt_management_evt_data_t *p_event_data )
 {
     wiced_bt_dev_status_t status = WICED_BT_SUCCESS;
-    wiced_bt_dev_ble_pairing_info_t *p_ble_info = NULL;
     wiced_bt_ble_advert_mode_t *p_adv_mode = NULL;
     wiced_bt_device_address_t bda;
     uint8_t i;
@@ -214,6 +225,9 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         		bda[i] = mac.octet[i];
         	}
         	wiced_bt_set_local_bdaddr( bda );
+
+        	/* Start a semaphore to control BLE write operations */
+        	wiced_rtos_init_semaphore(&ble_semaphore_handle);
 
         	/* Set up BLE Screen */
             displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
@@ -237,37 +251,14 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         }
         break;
 
-    case BTM_PAIRING_IO_CAPABILITIES_BLE_REQUEST_EVT:
-        /* Request for Pairing IO Capabilities (BLE) */
-    	WPRINT_APP_INFO(("BLE Pairing IO Capabilities Request\r\n"));
-        /* No IO Capabilities on this Platform */
-        p_event_data->pairing_io_capabilities_ble_request.local_io_cap = BTM_IO_CAPABILITIES_NONE;
-        p_event_data->pairing_io_capabilities_ble_request.oob_data = BTM_OOB_NONE;
-        p_event_data->pairing_io_capabilities_ble_request.auth_req = BTM_LE_AUTH_REQ_BOND|BTM_LE_AUTH_REQ_MITM;
-        p_event_data->pairing_io_capabilities_ble_request.max_key_size = 0x10;
-        p_event_data->pairing_io_capabilities_ble_request.init_keys = 0;
-        p_event_data->pairing_io_capabilities_ble_request.resp_keys = BTM_LE_KEY_PENC|BTM_LE_KEY_PID;
-        break;
-
-    case BTM_PAIRING_COMPLETE_EVT:
-        /* Pairing is Complete */
-        p_ble_info = &p_event_data->pairing_complete.pairing_complete_info.ble;
-    	WPRINT_APP_INFO(("Pairing Complete %d.\r\n", p_ble_info->reason));
-        break;
-
-    case BTM_SECURITY_REQUEST_EVT:
-        /* Security Request */
-    	WPRINT_APP_INFO(("Security Request\r\n"));
-        wiced_bt_ble_security_grant(p_event_data->security_request.bd_addr, WICED_BT_SUCCESS);
-        break;
+    case BTM_LOCAL_IDENTITY_KEYS_UPDATE_EVT:
+    	WPRINT_APP_INFO(("Local Keys Update\r\n"));
+    	/* No keys stored in NVRAM so no need to do anything here */
+    	break;
 
     case BTM_LOCAL_IDENTITY_KEYS_REQUEST_EVT:
     	WPRINT_APP_INFO(("Local Keys Request\r\n"));
     	status = WICED_BT_ERROR; /* No keys stored in NVRAM so indicate that there are no keys */
-    	break;
-
-    case BTM_LOCAL_IDENTITY_KEYS_UPDATE_EVT:
-    	/* No keys stored in NVRAM so no need to do anything here */
     	break;
 
     case BTM_BLE_ADVERT_STATE_CHANGED_EVT:
