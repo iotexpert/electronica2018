@@ -12,12 +12,39 @@
 #include "game.h"
 #include "liquidlevel.h"
 
-
+//constants
+#define PUMP_DIVISOR_FACTOR 3       // divisor of incoming pump request
+#define PUMP_DECAY_FACTOR 2         // -percent per 50ms
+#define PUMP_MINIMUM_SPEED 50       //pumps don't move much water below approx 40%
 #define MAX_WATER_LEVEL 90          //if water level exceeds this amount kill the pumps
 
+//typedefs
+typedef enum{
+	PUMP_BRAKE,
+	PUMP_CW,
+	PUMP_CCW
+}PUMP_DIRECTION_T;
+
+//see page 4 of TB6612FNG datasheet
+typedef enum{
+    PUMP_SHORT_BRAKE,
+    PUMP_RUN_CCW,
+    PUMP_RUN_CW,
+    PUMP_STOP
+}PUMP_CONTROL_T;
+
+//global variables
 static uint8_t leftSpeed = 0;       //pump speed in PWM percentage
 static uint8_t rightSpeed = 0;
 
+//local function prototypes
+void pumpDecay(void);
+void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay);
+void stopPump(PUMP_SELECT_T whichPump);
+void setPumpSpeed(PUMP_SELECT_T whichPump, uint8_t speed);
+void pumpControl(PUMP_SELECT_T pump, PUMP_CONTROL_T control);
+
+//code
 void pumpThread(wiced_thread_arg_t arg)
 {
     static uint8_t pumpEnableState = PUMPS_DISABLED;
@@ -45,17 +72,18 @@ void pumpThread(wiced_thread_arg_t arg)
             pumpEnableState = (uint8_t) message;
         }
 
-        if(pumpEnableState == PUMPS_ENABLED)
+        if(wiced_rtos_is_queue_empty(&pumpRequestQueueHandle) == WICED_ERROR)      //if queue is not empty...)
         {
-            if(wiced_rtos_is_queue_empty(&pumpRequestQueueHandle) == WICED_ERROR)      //if queue is not empty...)
+            wiced_rtos_pop_from_queue(&pumpRequestQueueHandle, &message, WICED_NO_WAIT);
+            PUMP_REQUEST_T pumpRequest;
+            pumpRequest.pumpWord = message;
+            if(pumpEnableState == PUMPS_ENABLED)
             {
-                wiced_rtos_pop_from_queue(&pumpRequestQueueHandle, &message, WICED_NO_WAIT);
-                PUMP_REQUEST_T pumpRequest;
-                pumpRequest.pumpWord = message;
                 kickPumps(&pumpRequest);
             }
         }
-        else
+
+        if(pumpEnableState == PUMPS_DISABLED)
         {
             stopAllPumps();                        
         }
@@ -129,22 +157,22 @@ void pumpDecay(void)
 }
 
 
-void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay)
-{
-	switch(whichPump)
-	{
-		case LEFT_PUMP:
+// void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay)
+// {
+// 	switch(whichPump)
+// 	{
+// 		case LEFT_PUMP:
 
-			break;
+// 			break;
 
-		case RIGHT_PUMP:
-			break;
+// 		case RIGHT_PUMP:
+// 			break;
 
-		default:
-			break;
-	}
+// 		default:
+// 			break;
+// 	}
 
-}
+// }
 
 void stopPump(PUMP_SELECT_T whichPump)
 {

@@ -8,6 +8,37 @@
 #include "liquidlevel.h"
 #include "pumps.h"
 
+#define DEMO_AWS_PUBLISHER_TOPIC "$aws/things/Electronica2018/shadow/update"
+#define DEMO_AWS_SUBSCRIBER_TOPIC "PumpAWS"
+
+#define AWS_THREAD_DELAY	250
+
+#define AWS_PUBLISH_LEVELS_ON_DELTA     //if defined, water levels on published when a change is detected, 
+                                        //otherwise published every AWS thread iteration
+
+typedef enum{
+	AWS_UNINITIALIZED,
+	AWS_INITIALIZED,
+    AWS_NETWORK_LOST,
+	AWS_ERROR
+}AWS_STATE_T;
+
+typedef enum{
+    AWS_INIT_BASE,
+    AWS_INIT_NETWORK,
+    AWS_INIT_AWSLIBRARY,
+    AWS_INIT_CONNECTION,
+    AWS_INIT_ENDPOINT,
+    AWS_INIT_WAITFORCONNECT,
+    AWS_INIT_SUBSCRIPTIONS
+}AWS_INIT_STATE_T;
+
+typedef enum{
+    AWS_INIT_ERROR,
+    AWS_INIT_IN_PROCESS,
+    AWS_INIT_COMPLETE
+}AWS_INIT_RESULT_T;
+
 
 /******************************************************
  *               Variable Definitions
@@ -18,8 +49,8 @@ static wiced_aws_handle_t my_app_aws_handle;
 static wiced_bool_t is_subscribed = WICED_FALSE;
 static wiced_aws_handle_t aws_connection = 0;
 static AWS_STATE_T awsState = AWS_UNINITIALIZED;
+static uint8_t previousLeftLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
 
-AWS_PUBREQ_T levelPublishRequest = NO_PENDING_AWS_PUBREQ;
 AWS_INIT_STATE_T awsInitState = AWS_INIT_BASE;
 
 static wiced_aws_thing_security_info_t my_publisher_security_creds =
@@ -46,14 +77,6 @@ static wiced_aws_thing_info_t aws_config = {
 };
 
 
-////static IP for testing in ORDC:
-//static const wiced_ip_setting_t device_static_ip_settings =
-//{
-//    INITIALISER_IPV4_ADDRESS( .ip_address,   MAKE_IPV4_ADDRESS(192, 168,   100,  7) ),
-//    INITIALISER_IPV4_ADDRESS( .gateway,      MAKE_IPV4_ADDRESS(192, 168,   100,  1) ),
-//    INITIALISER_IPV4_ADDRESS( .netmask,      MAKE_IPV4_ADDRESS(255, 255, 255,  0) ),
-//};
-
 #define PUBLISHER_CERTIFICATES_MAX_SIZE            (0x7fffffff)
 
 //function prototypes
@@ -61,9 +84,6 @@ static wiced_aws_thing_info_t aws_config = {
 static void aws_callback(wiced_aws_handle_t aws, wiced_aws_event_type_t event, wiced_aws_callback_data_t* data);
 static wiced_result_t get_aws_credentials_from_resources(void);
 static AWS_INIT_RESULT_T awsInitMachine(void);
-static uint8_t previousLeftLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
-
-
 
 
 //code
@@ -113,19 +133,12 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
 
             if(left && cJSON_IsNumber(left))
             {
-                //leftValue = left->valueint;
-                //pumpRequest.pumpBytes.leftPumpRequest = (uint8_t) cJSON_GetObjectItem(left,"Left")->valuedouble;
-                //leftPumpRequest += leftValue / 10;
-                //WPRINT_APP_INFO(("AWS incoming left: %d\n", leftValue));
                 pumpRequest.pumpBytes.leftPumpRequest = left->valueint;
                 WPRINT_APP_INFO(("AWS incoming left: %d\n", pumpRequest.pumpBytes.leftPumpRequest));
             }
 
             if(right && cJSON_IsNumber(right))
             {
-                //rightValue = right->valueint;
-                //rightPumpRequest += rightValue / 10;
-                //WPRINT_APP_INFO(("AWS incoming right: %d\n", rightValue));
                 pumpRequest.pumpBytes.rightPumpRequest = right->valueint;
                 WPRINT_APP_INFO(("AWS incoming right: %d\n", pumpRequest.pumpBytes.rightPumpRequest));
             }
@@ -135,20 +148,6 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
                 wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
             }
 
-
-
-            // if(left)
-            // {
-            //     pumpRequest.pumpBytes.leftValue = (uint8_t) cJSON_GetObjectItem(left,"Left")->valuedouble;
-            //     WPRINT_APP_INFO(("AWS incoming left: %d\n", leftValue));
-            // }
-
-            // if(right)
-            // {
-            //     pumpRequest.pumpBytes.rightValue = (uint8_t) cJSON_GetObjectItem(right,"Right")->valuedouble;
-            //     WPRINT_APP_INFO(("AWS incoming right: %d\n", rightValue));
-            // }
-
             break;
         }
 
@@ -156,7 +155,7 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
         case WICED_AWS_EVENT_SUBSCRIBED:
         case WICED_AWS_EVENT_UNSUBSCRIBED:
         default:
-            WPRINT_APP_INFO(( "AWS some other third thing\n" ));
+            WPRINT_APP_INFO(( "AWS default event\n" ));
             break;
     }
 
@@ -179,14 +178,10 @@ void awsThread(wiced_thread_arg_t arg)
                 {
                     awsState = AWS_INITIALIZED;
                 }
-
-                // if(aws_start() == WICED_SUCCESS)
-                // {
-                //     awsState = AWS_INITIALIZED;
-                // }
 				break;
 
 			case AWS_INITIALIZED:
+                #ifdef AWS_PUBLISH_LEVELS_ON_DELTA
                 if((previousLeftLevel != leftLevel) || (previousRightLevel != rightLevel))
                 {
                 	char topicBuffer[80];
@@ -195,6 +190,11 @@ void awsThread(wiced_thread_arg_t arg)
                     previousLeftLevel = leftLevel;
                     previousRightLevel = rightLevel;
                 }
+                #else
+                	char topicBuffer[80];
+                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", leftLevel, rightLevel);
+                    wiced_aws_publish( aws_connection, DEMO_AWS_PUBLISHER_TOPIC, (uint8_t *)topicBuffer, strlen(topicBuffer), WICED_AWS_QOS_ATLEAST_ONCE );
+				#endif
 				break;
 
             case AWS_NETWORK_LOST:
@@ -391,79 +391,3 @@ AWS_INIT_RESULT_T awsInitMachine(void)
     }
     return result;
 }
-
-// really didn't like this with all the while loops and inability to attempt to redo a state
-// wiced_result_t aws_start( void )
-// {
-// #define APPLICATION_DELAY_IN_MILLISECONDS          (1000)
-// #define APPLICATION_SUBSCRIBE_RETRY_COUNT 3
-
-// 	wiced_result_t ret = WICED_SUCCESS;
-//     uint8_t index;
-//     int retries = 0;
-
-// 	WPRINT_APP_INFO(("Starting AWS - \n"));
-
-// 	/* Disable roaming to other access points */
-// 	wiced_wifi_set_roam_trigger( -99 ); /* -99dBm ie. extremely low signal level */
-
-// 	/* Bring up the network interface */
-// 	do {
-// 		ret = wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
-// 		//ret = wiced_network_up(WICED_STA_INTERFACE, WICED_USE_STATIC_IP, &device_static_ip_settings);
-// 		if(ret != WICED_SUCCESS)
-// 			WPRINT_APP_INFO(("Failed to network up\n"));
-// 	} while(ret != WICED_SUCCESS);
-
-//     ret = get_aws_credentials_from_resources();
-//     if( ret != WICED_SUCCESS )
-//     {
-//         WPRINT_APP_INFO( ("[Application/AWS] Error fetching credentials from resources\n" ) );
-//         return WICED_ERROR;
-//     }
-
-//     ret = wiced_aws_init( &aws_config , aws_callback );
-//     if( ret != WICED_SUCCESS )
-//     {
-//         WPRINT_APP_INFO( ( "[Application/AWS] Failed to Initialize AWS library\n\n" ) );
-//     }
-
-//     aws_connection = (wiced_aws_handle_t)wiced_aws_create_endpoint(&my_publisher_aws_iot_endpoint);
-//     if( !aws_connection )
-//     {
-//         WPRINT_APP_INFO( ( "[Application/AWS] Failed to create AWS connection handle\n\n" ) );
-//         return WICED_ERROR;		//return WICED_EPIC_FAIL
-//     }
-
-//     my_app_aws_handle = aws_connection;
-
-//     WPRINT_APP_INFO(("[Application/AWS] Opening connection...\n"));
-//     ret = wiced_aws_connect(aws_connection);
-//     if ( ret != WICED_SUCCESS )
-//     {
-//         WPRINT_APP_INFO(("[Application/AWS] Connect Failed\r\n"));
-//         wiced_rtos_delay_milliseconds( APPLICATION_DELAY_IN_MILLISECONDS * 5 );
-//         return WICED_ERROR;
-//     }
-
-//     wiced_rtos_delay_milliseconds( APPLICATION_DELAY_IN_MILLISECONDS * 5 );
-//     WPRINT_APP_INFO(("[Application/AWS] Subscribing[ Topic %.*s ] ...",(int)strlen(DEMO_AWS_SUBSCRIBER_TOPIC), DEMO_AWS_SUBSCRIBER_TOPIC ) );
-//     do
-//     {
-//         ret = wiced_aws_subscribe( aws_connection, DEMO_AWS_SUBSCRIBER_TOPIC, WICED_AWS_QOS_ATMOST_ONCE);
-//         retries++ ;
-//     } while ( ( ret != WICED_SUCCESS ) && ( retries < APPLICATION_SUBSCRIBE_RETRY_COUNT ) );
-//     if ( ret != WICED_SUCCESS )
-//     {
-//         WPRINT_APP_INFO((" Failed\n"));
-//         is_subscribed = WICED_FALSE;
-//     }
-//     else
-//     {
-//         WPRINT_APP_INFO(("Success...\n"));
-//         is_subscribed = WICED_TRUE;
-//     }
-
-// 	is_connected = WICED_TRUE;
-// 	return WICED_SUCCESS;
-// }
