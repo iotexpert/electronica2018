@@ -296,7 +296,7 @@ void awsThread( void )
 			WPRINT_APP_INFO(("[Application/AWS] Publishing..."));
 			do
 			{
-				ret = wiced_aws_publish( aws_connection, PUMP_PUBLISH_TOPIC, (uint8_t *)msg, strlen( msg ), WICED_AWS_QOS_ATLEAST_ONCE );
+				ret = wiced_aws_publish( aws_connection, PUMP_PUBLISH_TOPIC, (uint8_t *)msg, strlen( msg ), WICED_AWS_QOS_ATMOST_ONCE );
 				pub_retries++ ;
 			} while ( ( ret != WICED_SUCCESS ) && ( pub_retries < APP_PUBLISH_RETRY_COUNT ) );
 			if ( ret != WICED_SUCCESS )

@@ -58,8 +58,10 @@ extern "C"
 #define SOFT_AP_PASSPHRASE   "WICED_PASSPHRASE"
 
 /* This is the default AP the device will connect to (as a client)*/
-#define CLIENT_AP_SSID       "CYFI_IOT_EXT"       /* Change this to your AP */
-#define CLIENT_AP_PASSPHRASE "cypresswicedwifi101"
+//#define CLIENT_AP_SSID       "CYFI_IOT_EXT"       /* Change this to your AP */
+//#define CLIENT_AP_PASSPHRASE "cypresswicedwifi101"
+#define CLIENT_AP_SSID       "landry_1"       /* Change this to your AP */
+#define CLIENT_AP_PASSPHRASE "8901234567"
 #define CLIENT_AP_BSS_TYPE   WICED_BSS_TYPE_INFRASTRUCTURE
 #define CLIENT_AP_SECURITY   WICED_SECURITY_WPA2_MIXED_PSK
 #define CLIENT_AP_CHANNEL    1
