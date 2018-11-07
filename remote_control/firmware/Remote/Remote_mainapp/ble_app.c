@@ -31,6 +31,7 @@ extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
 extern wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[WICED_BT_CFG_NUM_BUF_POOLS];
 
 static uint16_t conn_id=0; /* Connection ID */
+static enum {WRITE_CCCD, GAME_ON} bleState;
 
 /* Water level % sent by the server */
 static uint8_t waterLeft  = 0;
@@ -129,12 +130,11 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
     wiced_bt_gatt_status_t result = WICED_BT_SUCCESS;
     wiced_bt_gatt_connection_status_t * p_conn_status = NULL;
 	uint8_t cccdNotify[] = {GATT_CLIENT_CONFIG_NOTIFICATION & 0xff, (GATT_CLIENT_CONFIG_NOTIFICATION >> 8) & 0xff};
-	static enum {WRITE_CCCD, GAME_ON} bleState;
 
     switch( event )
     {
     case GATT_CONNECTION_STATUS_EVT:
-        if ( p_data->connection_status.connected )
+        if ( p_data->connection_status.connected ) /* New connection */
         {
         	WPRINT_APP_INFO(("Connected\r\n"));
             p_conn_status = &p_data->connection_status;
@@ -153,13 +153,18 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
 			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  cccdNotify, sizeof(cccdNotify));
 
         }
-        else
+        else /* disconnected */
         {
         	WPRINT_APP_INFO(("Disconnected\r\n"));
             conn_id = 0;	/* Reset connection ID */
-            /* Restart timer to enable notifications for the next connection */
-            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);	/* Restart advertising */
+            bleState = WRITE_CCCD; /* Reset state so that notifications are enabled on next connect */
 
+        	/* Go back to BLE Connection Screen */
+            displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
+            displayCommand[DISPLAY_TYPE] = BLE_START;
+            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
+
+            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);	/* Restart advertising */
         }
         break;
 
