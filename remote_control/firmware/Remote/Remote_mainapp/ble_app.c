@@ -21,7 +21,8 @@ Thread to handle BLE operations
 #define BLE_SWIPE_PRIORITY (7)
 #define BLE_SWIPE_THREAD_STACK_SIZE (1*1024UL)
 
-#define BLE_TIMEOUT 500
+#define BLE_TIMEOUT 	500
+#define CCCD_TIMER_TIME 500
 
 /******************************************************
  *               Variable Definitions
@@ -77,7 +78,7 @@ void ble_adv_set_advertisement_data( void )
 }
 
 
-void writeVal( uint16_t handle, void* pval, uint8_t len )
+void writeVal( uint16_t handle, uint8_t* pval, uint8_t len )
 {
 	uint8_t buf[sizeof(wiced_bt_gatt_value_t) + len - 1];
 	wiced_bt_gatt_value_t *p_write = ( wiced_bt_gatt_value_t* )buf;
@@ -122,11 +123,13 @@ void bleSwipeThread( void )
 	}
 }
 
+
 wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_event_data_t *p_data)
 {
     wiced_bt_gatt_status_t result = WICED_BT_SUCCESS;
     wiced_bt_gatt_connection_status_t * p_conn_status = NULL;
-	uint16_t cccdNotify = GATT_CLIENT_CONFIG_NOTIFICATION;
+	uint8_t cccdNotify[] = {GATT_CLIENT_CONFIG_NOTIFICATION & 0xff, (GATT_CLIENT_CONFIG_NOTIFICATION >> 8) & 0xff};
+	static enum {WRITE_CCCD, GAME_ON} bleState;
 
     switch( event )
     {
@@ -141,32 +144,28 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
             /* Stop advertisements */
         	wiced_bt_start_advertisements(BTM_BLE_ADVERT_OFF, 0, NULL);
 
-        	/* Send Notify Message to Screen and enable notifications  */
+        	/* Send Notify Message to Screen */
         	displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
 			displayCommand[DISPLAY_TYPE] = REGISTER_NOTIFY;
-			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
 
-			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  &cccdNotify, sizeof(cccdNotify));
-			writeVal(HDLD_CONTROLLER_WATERLEVELRIGHTBLE_CLIENT_CONFIGURATION, &cccdNotify, sizeof(cccdNotify));
+			/* Sign up for first notification. The second one will start in the gatt event complete callback */
+			writeVal(HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION,  cccdNotify, sizeof(cccdNotify));
 
-            /* Display message */
-			wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
-            displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
-            displayCommand[DISPLAY_TYPE] = INIT_BLE;
-            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
         }
         else
         {
         	WPRINT_APP_INFO(("Disconnected\r\n"));
-            conn_id = 0;
-            /* Restart advertising */
-            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);
+            conn_id = 0;	/* Reset connection ID */
+            /* Restart timer to enable notifications for the next connection */
+            wiced_bt_start_advertisements(BTM_BLE_ADVERT_UNDIRECTED_HIGH, 0, NULL);	/* Restart advertising */
+
         }
         break;
 
     case GATT_OPERATION_CPLT_EVT:
-        /* When you get something from the server, check to see if it is waterLevel data.
-           If so, send it to the display for printing. */
+        /* When you get something from the server, check to see if it is waterLevel data or CCCD write confirmation.
+           If it is water data, send it to the display for printing. */
     	WPRINT_APP_INFO(("Data Received Conn=%d Op=%d status=0x%X Handle=0x%X len=%d Data=%d\n",
                 p_data->operation_complete.conn_id,
                 p_data->operation_complete.op,
@@ -175,20 +174,37 @@ wiced_bt_gatt_status_t gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_gatt_e
                 p_data->operation_complete.response_data.att_value.len,
 				p_data->operation_complete.response_data.att_value.p_data[0]));
 
+    	/* Look for water level data */
         if(p_data->operation_complete.response_data.handle == HDLC_CONTROLLER_WATERLEVELLEFTBLE_VALUE)
 		{
-			waterRight = p_data->operation_complete.response_data.att_value.p_data[0];
+			waterLeft = p_data->operation_complete.response_data.att_value.p_data[0];
 		}
         if(p_data->operation_complete.response_data.handle == HDLC_CONTROLLER_WATERLEVELRIGHTBLE_VALUE)
         {
         	waterRight = p_data->operation_complete.response_data.att_value.p_data[0];
         }
-        /* Send value to display */
-        displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
-        displayCommand[DISPLAY_TYPE] = WATER_VALUE;
-        displayCommand[DISPLAY_VAL1] = waterLeft;
-        displayCommand[DISPLAY_VAL2] = waterRight;
-        wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+
+        /* State machine to sign up for notifications and switch game
+         * screens the first time and then send water data after that.
+         */
+        switch(bleState)
+        {
+        case WRITE_CCCD:
+			writeVal(HDLD_CONTROLLER_WATERLEVELRIGHTBLE_CLIENT_CONFIGURATION, cccdNotify, sizeof(cccdNotify));
+			bleState = GAME_ON;
+			/* Display game screen */
+			displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
+			displayCommand[DISPLAY_TYPE] = INIT_BLE;
+			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
+        	break;
+        case GAME_ON:
+            displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
+            displayCommand[DISPLAY_TYPE] = WATER_VALUE;
+			displayCommand[DISPLAY_VAL1] = waterLeft;
+			displayCommand[DISPLAY_VAL2] = waterRight;
+			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
+        	break;
+        }
 
         wiced_rtos_set_semaphore(&ble_semaphore_handle); /* This indicates to the writeVal function that the write is done */
         break;
@@ -232,7 +248,7 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         	/* Set up BLE Screen */
             displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
             displayCommand[DISPLAY_TYPE] = BLE_ADVERTISE;
-            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+            wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
 
             /* Register callback function for GATT events */
             wiced_bt_gatt_register( gatt_callback );
@@ -270,7 +286,7 @@ wiced_bt_dev_status_t ble_management_callback( wiced_bt_management_evt_t event, 
         	/* Send Advertising Message to Screen */
         	displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
 			displayCommand[DISPLAY_TYPE] = BLE_CONNECT;
-			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+			wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
         }
         break;
 
@@ -291,7 +307,7 @@ void startBle( void )
 	/* Set up BLE Screen */
     displayCommand[DISPLAY_CMD] =  BLE_SCREEN;
     displayCommand[DISPLAY_TYPE] = BLE_START;
-    wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+    wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, BLE_TIMEOUT);
 
     /* Start BLE stack - this starts 2 threads to manage BLE */
 	wiced_bt_stack_init( ble_management_callback, &wiced_bt_cfg_settings, wiced_bt_cfg_buf_pools);

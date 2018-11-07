@@ -218,7 +218,7 @@ void drawWiFi( int8_t type )
 
 		break;
 	case AWS_RESOURCES:
-		snprintf(msg, sizeof(msg), "Loading Resources");
+		snprintf(msg, sizeof(msg), "Loading Resource");
 		u8x8_DrawString(&u8x8,0,1,msg);
 		break;
 	case AWS_CONNECT:
