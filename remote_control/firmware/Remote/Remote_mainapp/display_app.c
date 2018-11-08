@@ -257,7 +257,7 @@ void drawGame( int8_t* message )
 		break;
 	case WATER_VALUE:
 		snprintf(msg, sizeof(msg), "L:%3d R:%3d",message[DISPLAY_VAL1], message[DISPLAY_VAL2]);
-		u8x8_DrawString(&u8x8,3,4,msg);
+		u8x8_DrawString(&u8x8,2,4,msg);
 		break;
 	}
 }

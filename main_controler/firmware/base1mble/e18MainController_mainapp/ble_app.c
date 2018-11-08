@@ -47,9 +47,6 @@ static wiced_timer_t notify_timer_handle; /* Thread to manage notifications */
 extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
 extern const wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[];
 
-//extern uint8_t leftLevel = 0;
-//extern uint8_t rightLevel = 0;
-
 /******************************************************************************
  *                          Function Definitions
  ******************************************************************************/

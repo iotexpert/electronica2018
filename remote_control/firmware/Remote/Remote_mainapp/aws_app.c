@@ -14,6 +14,9 @@ Thread to handle AWS operations
 /******************************************************
  *                      Macros
  ******************************************************/
+#define AWS_TIMEOUT 		500
+#define AWS_CONNECT_TIMEOUT 10000
+
 #define AWS_PUB_DELAY    					       (5000)
 #define PUBLISHER_CERTIFICATES_MAX_SIZE            (0x7fffffff)
 
@@ -174,7 +177,7 @@ static void my_publisher_aws_callback( wiced_aws_handle_t aws, wiced_aws_event_t
             displayCommand[DISPLAY_TYPE] = WATER_VALUE;
             displayCommand[DISPLAY_VAL1] = waterLeft;
             displayCommand[DISPLAY_VAL2] = waterRight;
-        	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+        	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
             break;
 
         case WICED_AWS_EVENT_PUBLISHED:
@@ -199,7 +202,7 @@ void awsThread( void )
     /* Set up WiFi Screen */
     displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
     displayCommand[DISPLAY_TYPE] = WIFI_CONNECT;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
 
     /* Bring up the network interface */
     do
@@ -217,105 +220,98 @@ void awsThread( void )
     /* Display message */
     displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
     displayCommand[DISPLAY_TYPE] = AWS_RESOURCES;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
 
     wiced_aws_thing_info_t my_publisher_aws_config = {
         .name            = thingName,
         .credentials     = &my_publisher_security_creds,
     };
 
-    ret = get_aws_credentials_from_resources();
-    if( ret != WICED_SUCCESS )
-    {
-        WPRINT_APP_INFO( ("[Application/AWS] Error fetching credentials from resources\n" ) );
-        return;
-    }
+    /* Load certificates and keys from the resources */
+    get_aws_credentials_from_resources();
 
     /* Display message */
     displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
     displayCommand[DISPLAY_TYPE] = AWS_CONNECT;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
+	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
 
-    ret = wiced_aws_init( &my_publisher_aws_config , my_publisher_aws_callback );
-    if( ret != WICED_SUCCESS )
-    {
-        WPRINT_APP_INFO( ( "[Application/AWS] Failed to Initialize AWS library\n\n" ) );
-        return;
-    }
+	/* This outer loop is used to attempt to reconnect if the connection is lost */
+	while(1)
+	{
 
-    aws_connection = (wiced_aws_handle_t)wiced_aws_create_endpoint(&my_publisher_aws_iot_endpoint);
-    if( !aws_connection )
-    {
-        WPRINT_APP_INFO( ( "[Application/AWS] Failed to create AWS connection handle\n\n" ) );
-        return;
-    }
+		/* Initialize AWS and set up connection handle */
+		wiced_aws_init( &my_publisher_aws_config , my_publisher_aws_callback );
+		aws_connection = (wiced_aws_handle_t)wiced_aws_create_endpoint(&my_publisher_aws_iot_endpoint);
+		my_app_aws_handle = aws_connection;
 
-    my_app_aws_handle = aws_connection;
-
-    WPRINT_APP_INFO(("[Application/AWS] Opening connection...\n"));
-    ret = wiced_aws_connect(aws_connection);
-    if ( ret != WICED_SUCCESS )
-    {
-        WPRINT_APP_INFO(("[Application/AWS] Connect Failed\r\n"));
-        return;
-    }
-
-    /* Wait until connection is done */
-    wiced_rtos_get_semaphore(&aws_semaphore_handle, WICED_WAIT_FOREVER);
-
-    /* Display message */
-    displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
-    displayCommand[DISPLAY_TYPE] = SUBSCRIBE_SHADOW;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
-
-    /* Subscribe to the shadow update topic (to get water level updates) */
-    ret = wiced_aws_subscribe( aws_connection, SHADOW_UPDATE_SUBSCRIBE_TOPIC,   WICED_AWS_QOS_ATLEAST_ONCE);
-
-    /* Display message */
-    wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
-    displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
-    displayCommand[DISPLAY_TYPE] = INIT_WIFI;
-	wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, WICED_NEVER_TIMEOUT);
-
-    while ( 1 )
-    {
-    	/* Wait for a new message in the queue */
-		wiced_rtos_pop_from_queue(&swipe_queue_handle, &queueMessage, WICED_WAIT_FOREVER);
-		if(queueMessage[0] == SWIPE_RIGHT)
+		/* Connect to the server. If the connection doesn't happen before AWS_CONNECT_TIMEOUT, disconnect and attempt to connect again */
+		WPRINT_APP_INFO(("[Application/AWS] Opening connection...\n"));
+		do
 		{
-			snprintf(msg, sizeof(msg), "{\"Right\" : %.0d}", queueMessage[1]);
-		}
-		else /* SWIPE_LEFT */
-		{
-			snprintf(msg, sizeof(msg), "{\"Left\" : %.0d}",  queueMessage[1]);
-		}
+			WPRINT_APP_INFO(("GJL: connect attempt...\n"));
+			wiced_aws_connect(aws_connection);
 
-        pub_retries = 0;
-        if ( is_connected != WICED_FALSE )
-        {
-			WPRINT_APP_INFO(("[Application/AWS] Publishing..."));
-			do
+			/* Wait until connection is done - the semaphore is set in the AWS connect callback */
+			ret = wiced_rtos_get_semaphore(&aws_semaphore_handle, AWS_CONNECT_TIMEOUT);
+		} while (ret != WICED_SUCCESS); /* We will stay in this loop until the AWS connection has been made */
+
+		/* Display message */
+		displayCommand[DISPLAY_CMD] =  WIFI_SCREEN;
+		displayCommand[DISPLAY_TYPE] = SUBSCRIBE_SHADOW;
+		wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
+
+		/* Subscribe to the shadow update topic (to get water level updates) */
+		wiced_aws_subscribe( aws_connection, SHADOW_UPDATE_SUBSCRIBE_TOPIC,   WICED_AWS_QOS_ATLEAST_ONCE);
+
+		/* Display message */
+		wiced_rtos_delay_milliseconds(250); /* Wait before switching screens */
+		displayCommand[DISPLAY_CMD] =  GAME_SCREEN;
+		displayCommand[DISPLAY_TYPE] = INIT_WIFI;
+		wiced_rtos_push_to_queue(&display_queue_handle, &displayCommand, AWS_TIMEOUT);
+
+		while ( 1 ) /* Loop to wait for swipe messages and publish to AWS */
+		{
+			/* Wait for a new message in the queue */
+			wiced_rtos_pop_from_queue(&swipe_queue_handle, &queueMessage, WICED_WAIT_FOREVER);
+			if(queueMessage[0] == SWIPE_RIGHT)
 			{
-				ret = wiced_aws_publish( aws_connection, PUMP_PUBLISH_TOPIC, (uint8_t *)msg, strlen( msg ), WICED_AWS_QOS_ATMOST_ONCE );
-				pub_retries++ ;
-			} while ( ( ret != WICED_SUCCESS ) && ( pub_retries < APP_PUBLISH_RETRY_COUNT ) );
-			if ( ret != WICED_SUCCESS )
+				snprintf(msg, sizeof(msg), "{\"Right\" : %.0d}", queueMessage[1]);
+			}
+			else /* SWIPE_LEFT */
 			{
-				WPRINT_APP_INFO((" Failed\r\n"));
-				break;
+				snprintf(msg, sizeof(msg), "{\"Left\" : %.0d}",  queueMessage[1]);
+			}
+
+			pub_retries = 0;
+			if ( is_connected != WICED_FALSE )
+			{
+				WPRINT_APP_INFO(("[Application/AWS] Publishing..."));
+				do
+				{
+					ret = wiced_aws_publish( aws_connection, PUMP_PUBLISH_TOPIC, (uint8_t *)msg, strlen( msg ), WICED_AWS_QOS_ATMOST_ONCE );
+					pub_retries++ ;
+				} while ( ( ret != WICED_SUCCESS ) && ( pub_retries < APP_PUBLISH_RETRY_COUNT ) );
+				if ( ret != WICED_SUCCESS )
+				{
+					WPRINT_APP_INFO((" Failed\r\n"));
+					break;
+				}
+				else
+				{
+					WPRINT_APP_INFO((" Success\r\n"));
+				}
 			}
 			else
 			{
-				WPRINT_APP_INFO((" Success\r\n"));
+				break; /* Exit to reconnect */
 			}
-        }
-    }
+		} /* End of inner while(1) loop that waits for swipe values and publishes them */
 
-    WPRINT_APP_INFO(("[Application/AWS] Closing connection...\r\n"));
-    wiced_aws_disconnect( aws_connection );
+		WPRINT_APP_INFO(("[Application/AWS] Closing connection...\r\n"));
+		wiced_aws_disconnect( aws_connection );
 
-    WPRINT_APP_INFO(("[Application/AWS] Deinitializing AWS library...\r\n"));
-    ret = wiced_aws_deinit( );
+		WPRINT_APP_INFO(("[Application/AWS] Deinitializing AWS library...\r\n"));
+		ret = wiced_aws_deinit( );
 
-    return;
+	} /* End of outer while(1) that will reconnect if the connection is lost */
 }
