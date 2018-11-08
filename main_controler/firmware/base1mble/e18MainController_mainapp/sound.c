@@ -12,11 +12,12 @@
 #include "cycfg.h"
 #include "cycfg_pins.h"
 
+#include "platform_isr_interface.h"			//needed for interrupt definition
+
+
 #define WAV_HEADER_SIZE 0x2C	//number of bytes to skip for wave header
 #define WAV_DATASIZE_OFFSET 0x28
 #define WAV_DATASIZE_SIZE 0x04
-
-#define BIT8_SOUND
 
 typedef struct{
 	uint8_t riffStr[4];
@@ -40,48 +41,79 @@ typedef union{
 	uint8_t fullHeader[WAV_HEADER_SIZE];
 }WAV_HEADER_T;
 
-#ifdef SOUND_16BIT
-static uint16_t* soundStartPtr;
-static uint16_t* soundEndPtr;
-#endif
 
-#ifdef BIT8_SOUND
-static uint8_t* soundStartPtr;
-static uint8_t* soundEndPtr;
-#endif
+enum{
+	AMP_MUTED = 0,
+	AMP_ON = 1
+};
+
+//for DMA interrupt     cpuss_interrupts_dw0_5_IRQn
+ cy_stc_sysint_t dmaIntrCfg =
+    {
+            .intrSrc = cpuss_interrupts_dw0_5_IRQn, /* Interrupt source is GPIO port 0 interrupt */
+            .intrPriority = 7UL                     /* Interrupt priority is 2 */
+    };
 
 
 SOUND_STATE_T soundPlayerState = SOUND_IDLE;
 void readWavHeader(WAV_HEADER_T* header, const uint8_t* soundArray);
+
+void initAudioHW(void)
+{
+	Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, AMP_MUTED);		//mute amplifier
+
+    //audio pwm
+    Cy_TCPWM_PWM_Init(audioPWM_HW, audioPWM_NUM, &audioPWM_config);
+    Cy_TCPWM_PWM_Enable(audioPWM_HW, audioPWM_NUM);
+    Cy_TCPWM_TriggerStart(audioPWM_HW, audioPWM_MASK);
+				
+    //audio sample interrupt
+    Cy_TCPWM_Counter_Init(audioSampleInt_HW, audioSampleInt_NUM, &audioSampleInt_config);
+    Cy_TCPWM_Counter_Enable(audioSampleInt_HW, audioSampleInt_NUM);
+
+  	Cy_DMA_Channel_SetInterruptMask (DW0, 5UL, CY_DMA_INTR_MASK);
+ 	Cy_SysInt_Init(&dmaIntrCfg, &cpuss_interrupts_dw0_5_IRQn_Handler);
+ 	NVIC_EnableIRQ(dmaIntrCfg.intrSrc);
+}
+
+
+//when the dma interrupt fires...
+void cpuss_interrupts_dw0_5_IRQn_Handler(void)
+{
+	soundPlayerState = SOUND_IDLE;							//we are done with the sound
+	Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 0);		//mute amplifier
+	Cy_DMA_Channel_Disable(TxDMA_HW, TxDMA_CHANNEL);
+	Cy_DMA_Channel_ClearInterrupt(DW0, 5UL);
+}
+
 
 //wave file reference:   https://www.isip.piconepress.com/projects/speech/software/tutorials/production/fundamentals/v1.0/section_02/s02_01_p05.html
 SOUND_RETURN_T playSound(const char* sound)
 {
 	WAV_HEADER_T wavHeader;
 	SOUND_RETURN_T returnValue;
+	uint8_t* soundStartPtr;
 
 	if(soundPlayerState == SOUND_IDLE)
 	{
 		readWavHeader(&wavHeader, sound);
+		soundStartPtr = sound + WAV_HEADER_SIZE;
+
+		//for DMA
+    	TxDMA_Descriptor_0_config.srcAddress = soundStartPtr;
+    	TxDMA_Descriptor_0_config.dstAddress = (uint32_t *) &TCPWM1_CNT2->CC;
+		TxDMA_Descriptor_0_config.yCount = wavHeader.table.dataSize/256;
+    	Cy_DMA_Descriptor_Init(&TxDMA_Descriptor_0, &TxDMA_Descriptor_0_config);
+    	Cy_DMA_Channel_Init(TxDMA_HW, TxDMA_CHANNEL, &TxDMA_channelConfig);
+    	Cy_DMA_Channel_SetDescriptor(TxDMA_HW, TxDMA_CHANNEL, &TxDMA_Descriptor_0);
+    	Cy_DMA_Channel_Enable(TxDMA_HW, TxDMA_CHANNEL);
+		Cy_DMA_Enable(TxDMA_HW);
+
 
 		Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 1);	//unmute amplifier
-
-#ifdef SOUND_16BIT
-		soundStartPtr = (uint16_t*)sound + WAV_HEADER_SIZE;
-		soundEndPtr = soundStartPtr + (wavHeader.table.dataSize/2);
-#endif
-
-#ifdef BIT8_SOUND
-		soundStartPtr = sound + WAV_HEADER_SIZE;
-		soundEndPtr = soundStartPtr + wavHeader.table.dataSize;
-#endif
+		Cy_TCPWM_TriggerStart(audioSampleInt_HW, audioSampleInt_MASK);
 
 		soundPlayerState = SOUND_PLAYING;
-
-		//could do a sanity check that wave file header sample size matches array size
-		//if(wavReportedSize%2) data chunk is not 16 bit
-		//if(wavReportedSize != sizeof(sound) - WAV_HEADER_SIZE
-
 		returnValue = SOUND_SUCCESS;
 	}
 	else
@@ -104,44 +136,9 @@ SOUND_STATE_T getSoundState(void)
 }
 
 
-void soundThread(wiced_thread_arg_t arg)
-{
-	Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 0);	//mute amplifier
-    //set up audio pwm
-    Cy_TCPWM_PWM_Init(audioPWM_HW, audioPWM_NUM, &audioPWM_config);
-    Cy_TCPWM_PWM_Enable(audioPWM_HW, audioPWM_NUM);
-    Cy_TCPWM_TriggerStart(audioPWM_HW, audioPWM_MASK);
-
-	while(1)
-	{
-		if(soundPlayerState == SOUND_PLAYING)
-		{
-#ifdef SOUND_16BIT
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, *soundStartPtr >> 7);
-#endif
-
-#ifdef BIT8_SOUND
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, *soundStartPtr);
-#endif
-			soundStartPtr++;
-			if(soundStartPtr == soundEndPtr)
-			{
-				Cy_GPIO_Write(audioMute_PORT, audioMute_PIN, 0);		//mute amplifier
-
-#ifdef BIT8_SOUND
-			 Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, 128);
-#endif
-				soundPlayerState = SOUND_IDLE;
-			}
-		}
-		
-		wiced_rtos_delay_microseconds(100);
-	}
-}
-
-
 
 void readWavHeader(WAV_HEADER_T* header, const uint8_t* soundArray)
 {
 	memcpy(header, soundArray, WAV_HEADER_SIZE);
 }
+

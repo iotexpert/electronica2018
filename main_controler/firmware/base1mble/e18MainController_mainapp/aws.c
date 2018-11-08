@@ -49,7 +49,6 @@ static wiced_aws_handle_t my_app_aws_handle;
 static wiced_bool_t is_subscribed = WICED_FALSE;
 static wiced_aws_handle_t aws_connection = 0;
 static AWS_STATE_T awsState = AWS_UNINITIALIZED;
-static uint8_t previousLeftLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
 
 AWS_INIT_STATE_T awsInitState = AWS_INIT_BASE;
 
@@ -95,8 +94,6 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
     cJSON *root;
     cJSON *left;
     cJSON *right;
-
-    uint8_t leftValue, rightValue;
 
     switch(event)
     {

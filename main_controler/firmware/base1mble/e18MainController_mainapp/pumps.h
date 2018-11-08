@@ -38,5 +38,5 @@ extern wiced_queue_t pumpCommandQueueHandle;
 extern void pumpThread(wiced_thread_arg_t arg);
 extern void stopAllPumps(void);                     //globally available so other threads can do pump halt if necessary
 extern void kickPumps(PUMP_REQUEST_T* pumpRequest); //globally available so command console can do low level pump testing
-
+extern void setPumpSpeed(PUMP_SELECT_T whichPump, uint8_t speed);   //globally available for start-up hardware test
 #endif /* SOURCE_PUMPS_H_ */

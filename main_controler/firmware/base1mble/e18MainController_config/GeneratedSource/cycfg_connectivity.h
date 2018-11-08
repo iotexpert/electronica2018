@@ -67,6 +67,13 @@ void init_cycfg_connectivity(void);
 #define ioss_0_port_9_pin_4_HSIOM HSIOM_SEL_AMUXB
 #define ioss_0_port_9_pin_5_HSIOM HSIOM_SEL_AMUXB
 
+#define audioSampleInt_tr_compare_match_0_TRIGGER_IN TRIG_IN_MUX_0_TCPWM0_TR_COMPARE_MATCH0
+#define TxDMA_tr_out_0_TRIGGER_IN TRIG_IN_MUX_2_PDMA0_TR_OUT5
+#define TxDMA_tr_in_0_TRIGGER_OUT TRIG_OUT_MUX_0_PDMA0_TR_IN5
+#define audioSampleInt_stop_0_TRIGGER_OUT TRIG_OUT_MUX_2_TCPWM0_TR_IN6
+
+#define TCPWM0_CNT0_STOP_VALUE 0x8
+
 #if defined(__cplusplus)
 }
 #endif

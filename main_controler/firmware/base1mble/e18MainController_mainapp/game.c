@@ -244,7 +244,7 @@ GAME_STATE_T gameStateIdle(void)
 	ledUARTsendColorValues(0, 0);			//set LED strips
 
 	idleTicks++;
-	if(idleTicks == 10)
+	if(idleTicks == 60)
 	{
 		idleTicks = 0;
 		//various debugging tests
@@ -253,16 +253,29 @@ GAME_STATE_T gameStateIdle(void)
 		//reportRawRightLevels();
 		//reportRawLeftLevels();
 		//reportRawLevels();
+
+		//sound test
+		#ifdef IDLE_SOUND_TEST_MODE
+		if(getSoundState() == SOUND_IDLE)
+		{
+			static uint8_t which = 0;
+			if(which == 0)
+			{
+				playSound(resources_fight_wav_data);
+				which = 1;
+			}
+			else
+			{
+				playSound(resources_winner_wav_data);
+				which = 0;
+			}
+
+		}
+		#endif
+
 	}
 
-	//sound test
-	#ifdef IDLE_SOUND_TEST_MODE
-	if(getSoundState() == SOUND_IDLE)
-	{
-		playSound(resources_fight_wav_data);
-	}
-	#endif
-
+	
 	if(startButtonPress || gameStateRequest == REQUEST_START)
 	{
 		playSound(resources_fight_wav_data);

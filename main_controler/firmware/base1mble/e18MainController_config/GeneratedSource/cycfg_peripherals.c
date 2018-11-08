@@ -15,9 +15,9 @@
 
 #include "cycfg_peripherals.h"
 
+#define audioSampleInt_INPUT_DISABLED 0x7U
 #define rightPump_INPUT_DISABLED 0x7U
 #define leftPump_INPUT_DISABLED 0x7U
-#define audioSampleInt_INPUT_DISABLED 0x7U
 #define audioPWM_INPUT_DISABLED 0x7U
 
 cy_stc_csd_context_t cy_csd_0_context = 
@@ -97,6 +97,28 @@ cy_stc_sd_host_sd_card_config_t sdhc_0_card_cfg =
 	.rca = &sdhc_0_rca,
 	.cardCapacity = &sdhc_0_cardCapacity,
 };
+const cy_stc_tcpwm_counter_config_t audioSampleInt_config = 
+{
+	.period = 1,
+	.clockPrescaler = CY_TCPWM_COUNTER_PRESCALER_DIVBY_1,
+	.runMode = CY_TCPWM_COUNTER_CONTINUOUS,
+	.countDirection = CY_TCPWM_COUNTER_COUNT_UP,
+	.compareOrCapture = CY_TCPWM_COUNTER_MODE_COMPARE,
+	.compare0 = 1,
+	.compare1 = 16384,
+	.enableCompareSwap = false,
+	.interruptSources = CY_TCPWM_INT_NONE,
+	.captureInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
+	.captureInput = CY_TCPWM_INPUT_0,
+	.reloadInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
+	.reloadInput = CY_TCPWM_INPUT_0,
+	.startInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
+	.startInput = CY_TCPWM_INPUT_0,
+	.stopInputMode = CY_TCPWM_INPUT_RISINGEDGE,
+	.stopInput = TCPWM0_CNT0_STOP_VALUE,
+	.countInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
+	.countInput = CY_TCPWM_INPUT_1,
+};
 const cy_stc_tcpwm_pwm_config_t rightPump_config = 
 {
 	.pwmMode = CY_TCPWM_PWM_MODE_PWM,
@@ -153,28 +175,6 @@ const cy_stc_tcpwm_pwm_config_t leftPump_config =
 	.countInputMode = leftPump_INPUT_DISABLED & 0x3U,
 	.countInput = CY_TCPWM_INPUT_1,
 };
-const cy_stc_tcpwm_counter_config_t audioSampleInt_config = 
-{
-	.period = 1,
-	.clockPrescaler = CY_TCPWM_COUNTER_PRESCALER_DIVBY_1,
-	.runMode = CY_TCPWM_COUNTER_CONTINUOUS,
-	.countDirection = CY_TCPWM_COUNTER_COUNT_UP,
-	.compareOrCapture = CY_TCPWM_COUNTER_MODE_CAPTURE,
-	.compare0 = 16384,
-	.compare1 = 16384,
-	.enableCompareSwap = false,
-	.interruptSources = CY_TCPWM_INT_ON_TC,
-	.captureInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
-	.captureInput = CY_TCPWM_INPUT_0,
-	.reloadInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
-	.reloadInput = CY_TCPWM_INPUT_0,
-	.startInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
-	.startInput = CY_TCPWM_INPUT_0,
-	.stopInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
-	.stopInput = CY_TCPWM_INPUT_0,
-	.countInputMode = audioSampleInt_INPUT_DISABLED & 0x3U,
-	.countInput = CY_TCPWM_INPUT_1,
-};
 const cy_stc_tcpwm_pwm_config_t audioPWM_config = 
 {
 	.pwmMode = CY_TCPWM_PWM_MODE_PWM,
@@ -213,11 +213,11 @@ void init_cycfg_peripherals(void)
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_SCB5_CLOCK, CY_SYSCLK_DIV_8_BIT, 1U);
 
+	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS0, CY_SYSCLK_DIV_16_BIT, 0U);
+
 	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS1, CY_SYSCLK_DIV_16_BIT, 2U);
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM0_CLOCKS3, CY_SYSCLK_DIV_16_BIT, 2U);
-
-	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM1_CLOCKS0, CY_SYSCLK_DIV_16_BIT, 0U);
 
 	Cy_SysClk_PeriphAssignDivider(PCLK_TCPWM1_CLOCKS2, CY_SYSCLK_DIV_8_BIT, 6U);
 }

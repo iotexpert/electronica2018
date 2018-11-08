@@ -21,9 +21,9 @@
 #include "cy_csd.h"
 #include "cy_scb_uart.h"
 #include "cy_sd_host.h"
-#include "cy_tcpwm_pwm.h"
-#include "cycfg_connectivity.h"
 #include "cy_tcpwm_counter.h"
+#include "cycfg_connectivity.h"
+#include "cy_tcpwm_pwm.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -101,16 +101,15 @@ extern "C" {
 #define scb_5_IRQ scb_5_interrupt_IRQn
 #define sdhc_0_HW SDHC0
 #define sdhc_0_IRQ sdhc_0_interrupt_general_IRQn
+#define audioSampleInt_HW TCPWM0
+#define audioSampleInt_NUM 0UL
+#define audioSampleInt_MASK (1UL << 0)
 #define rightPump_HW TCPWM0
 #define rightPump_NUM 1UL
 #define rightPump_MASK (1UL << 1)
 #define leftPump_HW TCPWM0
 #define leftPump_NUM 3UL
 #define leftPump_MASK (1UL << 3)
-#define audioSampleInt_HW TCPWM1
-#define audioSampleInt_NUM 0UL
-#define audioSampleInt_MASK (1UL << 0)
-#define audioSampleInt_IRQ tcpwm_1_interrupts_0_IRQn
 #define audioPWM_HW TCPWM1
 #define audioPWM_NUM 2UL
 #define audioPWM_MASK (1UL << 2)
@@ -123,9 +122,9 @@ extern cy_en_sd_host_card_type_t sdhc_0_cardType;
 extern uint32_t sdhc_0_rca;
 extern const cy_stc_sd_host_init_config_t sdhc_0_config;
 extern cy_stc_sd_host_sd_card_config_t sdhc_0_card_cfg;
+extern const cy_stc_tcpwm_counter_config_t audioSampleInt_config;
 extern const cy_stc_tcpwm_pwm_config_t rightPump_config;
 extern const cy_stc_tcpwm_pwm_config_t leftPump_config;
-extern const cy_stc_tcpwm_counter_config_t audioSampleInt_config;
 extern const cy_stc_tcpwm_pwm_config_t audioPWM_config;
 
 void init_cycfg_peripherals(void);

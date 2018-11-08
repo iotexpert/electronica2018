@@ -100,17 +100,6 @@ void levelThread(wiced_thread_arg_t arg)
 
 
 
-
-// void initLevelSense(void)
-// {
-// }
-
-
-// void handleLevelSense(void)
-// {
-// }
-
-
 void determineLevels(void)
 {
     uint16_t leftHold = 0;

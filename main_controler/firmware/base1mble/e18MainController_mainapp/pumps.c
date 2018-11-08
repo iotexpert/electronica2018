@@ -19,11 +19,6 @@
 #define MAX_WATER_LEVEL 90          //if water level exceeds this amount kill the pumps
 
 //typedefs
-typedef enum{
-	PUMP_BRAKE,
-	PUMP_CW,
-	PUMP_CCW
-}PUMP_DIRECTION_T;
 
 //see page 4 of TB6612FNG datasheet
 typedef enum{
@@ -39,9 +34,7 @@ static uint8_t rightSpeed = 0;
 
 //local function prototypes
 void pumpDecay(void);
-void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay);
 void stopPump(PUMP_SELECT_T whichPump);
-void setPumpSpeed(PUMP_SELECT_T whichPump, uint8_t speed);
 void pumpControl(PUMP_SELECT_T pump, PUMP_CONTROL_T control);
 
 //code
@@ -60,8 +53,8 @@ void pumpThread(wiced_thread_arg_t arg)
     Cy_TCPWM_TriggerStart(rightPump_HW, rightPump_MASK);
 
     //set correct h-bridge control outputs
-    pumpControl(LEFT_PUMP, PUMP_CW);
-    pumpControl(RIGHT_PUMP, PUMP_CW);
+    pumpControl(LEFT_PUMP, PUMP_RUN_CCW);
+    pumpControl(RIGHT_PUMP, PUMP_RUN_CCW);
 
     while(1)
     {
@@ -156,23 +149,6 @@ void pumpDecay(void)
     setPumpSpeed(RIGHT_PUMP, rightSpeed);
 }
 
-
-// void setPumpDirection(PUMP_SELECT_T whichPump, PUMP_DIRECTION_T whatWay)
-// {
-// 	switch(whichPump)
-// 	{
-// 		case LEFT_PUMP:
-
-// 			break;
-
-// 		case RIGHT_PUMP:
-// 			break;
-
-// 		default:
-// 			break;
-// 	}
-
-// }
 
 void stopPump(PUMP_SELECT_T whichPump)
 {

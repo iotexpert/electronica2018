@@ -40,7 +40,6 @@
 #include "cycfg_pins.h"
 #include "game.h"
 #include "aws.h"
-//#include "bt.h"
 #include "liquidlevel.h"
 #include "leduart.h"
 #include "game_console.h"
@@ -52,8 +51,6 @@
  ******************************************************/
 static wiced_thread_t gameThreadHandle;
 static wiced_thread_t awsThreadHandle;
-//static wiced_thread_t btThreadHandle;
-static wiced_thread_t soundThreadHandle;
 static wiced_thread_t pumpThreadHandle;
 static wiced_thread_t levelThreadHandle;
 
@@ -76,15 +73,11 @@ wiced_queue_t pumpCommandQueueHandle;
 #define LEVEL_THREAD_PRIORITY   6
 #define PUMP_THREAD_PRIORITY    6
 #define GAME_THREAD_PRIORITY	7
-//#define BT_THREAD_PRIORITY		7
-#define SOUND_THREAD_PRIORITY	8
 
 #define AWS_STACK_SIZE 6144
 #define GAME_STACK_SIZE 4096
-//#define BT_STACK_SIZE 4096
 #define LEVEL_STACK_SIZE 1024
 #define PUMP_STACK_SIZE 1024
-#define SOUND_STACK_SIZE 512
 
 /* The queue messages will be 4 bytes each (a 32 bit integer) */
 #define MESSAGE_SIZE		(4)
@@ -146,6 +139,7 @@ void application_start(void)
     WPRINT_APP_INFO(("Starting project\n"));
     initGameConsole();
     ledUARTinit();          //this uart is handled by interrupt, no thread to init it in
+    initAudioHW();          //audio is handled by DMA and PWM, no thread to initialize those
 
     /* enable interrupts */
     __enable_irq();
@@ -157,9 +151,7 @@ void application_start(void)
     //start the various threads
 	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, AWS_STACK_SIZE, NULL);
-	//wiced_rtos_create_thread(&btThreadHandle, BT_THREAD_PRIORITY, "btThread", btThread, BT_STACK_SIZE, NULL);
-	wiced_rtos_create_thread(&soundThreadHandle, SOUND_THREAD_PRIORITY, "soundThread", soundThread, SOUND_STACK_SIZE, NULL);
-    wiced_rtos_create_thread(&levelThreadHandle, LEVEL_THREAD_PRIORITY, "levelThread", levelThread, LEVEL_STACK_SIZE, NULL);
+	wiced_rtos_create_thread(&levelThreadHandle, LEVEL_THREAD_PRIORITY, "levelThread", levelThread, LEVEL_STACK_SIZE, NULL);
     wiced_rtos_create_thread(&pumpThreadHandle, PUMP_THREAD_PRIORITY, "pumpThread", pumpThread, PUMP_STACK_SIZE, NULL);
 
     startBle();
@@ -169,7 +161,7 @@ void application_start(void)
     Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
     Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
     wiced_rtos_delay_milliseconds(500);
-    setPumpSpeed(LEFT_PUMP, 100);
+    setPumpSpeed(LEFT_PUMP, 100);                       //low level pump test
     setPumpSpeed(RIGHT_PUMP, 100);
     wiced_rtos_delay_milliseconds(750);
     Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
