@@ -10,6 +10,7 @@
 #include "ble_db.h"
 #include "pumps.h"
 #include "liquidlevel.h"
+#include "globals.h"
 
 /******************************************************************************
  *                          Macros
@@ -199,11 +200,6 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
     wiced_bt_gatt_attribute_request_t *p_attr_req = NULL;
     wiced_bt_gatt_connection_status_t *p_conn_status = NULL;
     uint8_t remote_id;
-    uint8_t i;
-    PUMP_REQUEST_T pumpRequest;
-    pumpRequest.pumpWord = 0x00000000;
-
-    //WPRINT_APP_INFO(( "game_gatt_callback event %d \n", event ));
 
     switch( event )
     {
@@ -242,18 +238,11 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
                 switch(p_attr_req->data.write_req.handle)
                 {
                 case HDLC_CONTROLLER_PUMPLEFTBLE_VALUE:
-                    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
-                    {
-                        pumpRequest.pumpBytes.leftPumpRequest = p_attr_req->data.write_req.p_val[0];
-                        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
-                    }
-                    break;
+                   pumpsSendValues(p_attr_req->data.write_req.p_val[0],0);
+                break;
                 case HDLC_CONTROLLER_PUMPRIGHTBLE_VALUE:
-                    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
-                    {
-                        pumpRequest.pumpBytes.rightPumpRequest = p_attr_req->data.write_req.p_val[0];
-                        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
-                    }
+                        pumpsSendValues(0,p_attr_req->data.write_req.p_val[0]);
+
                     break;
                 case HDLD_CONTROLLER_WATERLEVELLEFTBLE_CLIENT_CONFIGURATION:
                     remote_id = game_get_remote_info(p_attr_req->conn_id);
@@ -322,17 +311,17 @@ wiced_result_t game_management_cback( wiced_bt_management_evt_t event,  wiced_bt
             break;
 
         case BTM_PAIRED_DEVICE_LINK_KEYS_REQUEST_EVT:
-            WPRINT_APP_INFO(("Paired Keys Request\r\n"));
+            //WPRINT_APP_INFO(("Paired Keys Request\r\n"));
             result = WICED_BT_ERROR; /* No keys stored in NVRAM so indicate that there are no keys */
             break;
 
         case BTM_LOCAL_IDENTITY_KEYS_UPDATE_EVT:
-            WPRINT_APP_INFO(("Local Keys Update\r\n"));
+            //WPRINT_APP_INFO(("Local Keys Update\r\n"));
             /* No keys stored in NVRAM so no need to do anything here */
             break;
 
         case BTM_LOCAL_IDENTITY_KEYS_REQUEST_EVT:
-             WPRINT_APP_INFO(("Local Keys Request\r\n"));
+             //WPRINT_APP_INFO(("Local Keys Request\r\n"));
              result = WICED_BT_ERROR; /* No keys stored in NVRAM so indicate that there are no keys */
              break;
 

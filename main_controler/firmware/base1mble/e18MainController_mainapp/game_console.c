@@ -16,6 +16,7 @@
 #include "aws.h"
 #include "pumps.h"
 #include "cy_pdl.h"
+#include "globals.h"
 
 
 //defines needed for wiced console
@@ -45,8 +46,8 @@ static int bleon_console_cmd( int argc, char *argv[] );
 static int bleoff_console_cmd( int argc, char *argv[] );
 static int pumpenable_console_cmd( int argc, char *argv[] );
 static int pumpdisable_console_cmd( int argc, char *argv[] );
+static int pumpDecay_console_cmd( int argc, char *argv[] );
 
-//     { (char*) "gamehelp",  help_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game command list"   }, \
 
 #define GAME_CONSOLE_COMMANDS \
     { (char*) "status",  status_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game status"   }, \
@@ -64,6 +65,8 @@ static int pumpdisable_console_cmd( int argc, char *argv[] );
     { (char*) "bleoff", bleoff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disable BLE"   }, \
     { (char*) "enablepumps", pumpenable_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable pumps"   }, \
     { (char*) "disablepumps", pumpdisable_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disable pumps"   }, \
+    { (char*) "decay", pumpDecay_console_cmd,      1, NULL, NULL, (char *)"", (char *)"Disable pumps"   }, \
+
 
 const command_t game_console_command_table[] =
 {
@@ -122,34 +125,14 @@ static int reset_console_cmd( int argc, char *argv[] )
 
 static int leftpump_console_cmd( int argc, char *argv[] )
 {
-    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
-    {
-        PUMP_REQUEST_T pumpRequest;
-
-        pumpRequest.pumpBytes.leftPumpRequest = 100;
-        pumpRequest.pumpBytes.rightPumpRequest = 0;
-        pumpRequest.pumpBytes.dummya = 0;
-        pumpRequest.pumpBytes.dummyb = 0;
-
-        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
-    }
-    return 0;
+	pumpsSendValues(100,0);
+	return 0;
 }
 
 static int rightpump_console_cmd( int argc, char *argv[] )
 {
-    if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
-    {
-        PUMP_REQUEST_T pumpRequest;
-
-        pumpRequest.pumpBytes.leftPumpRequest = 0;
-        pumpRequest.pumpBytes.rightPumpRequest = 100;
-        pumpRequest.pumpBytes.dummya = 0;
-        pumpRequest.pumpBytes.dummyb = 0;
-
-        wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
-    }
-    return 0;
+	pumpsSendValues(0,100);
+	return 0;
 }
 
 static int wifion_console_cmd( int argc, char *argv[] )
@@ -178,19 +161,25 @@ static int bleoff_console_cmd( int argc, char *argv[] )
 
 static int pumpenable_console_cmd( int argc, char *argv[] )
 {
-    uint32_t pumpCommand;
-	pumpCommand = (uint32_t) PUMPS_ENABLED;
-	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
+    	pumpsSendEnable();
     return 0;
 }
 
 static int pumpdisable_console_cmd( int argc, char *argv[] )
 {
-    uint32_t pumpCommand;
-	pumpCommand = (uint32_t) PUMPS_DISABLED;
-	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
+    pumpsSendDisable();
     return 0;
 }
+
+static int pumpDecay_console_cmd( int argc, char *argv[] )
+{
+	int val;
+	sscanf(argv[1],"%d",&val);
+
+	pumpsSendDecay((uint32_t)val);
+    return 0;
+}
+
 
 void initGameConsole(void)
 {

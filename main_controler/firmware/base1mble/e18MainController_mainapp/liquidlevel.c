@@ -9,7 +9,7 @@
 #include "liquidlevel.h"
 #include "pumps.h"
 #include "wiced.h"
-
+#include "globals.h"
 
 #define NUM_LEVEL_SENSORS 12
 
@@ -162,7 +162,7 @@ void determineLevels(void)
 
     if(leftLevel > MAX_WATER_LEVEL || rightLevel > MAX_WATER_LEVEL)
     {
-        stopAllPumps();
+        pumpsStopAll();
     }
 }
 

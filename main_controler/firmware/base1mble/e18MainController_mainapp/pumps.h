@@ -1,44 +1,41 @@
-/*
- * pumps.h
- *
- *  Created on: Sep 21, 2018
- *      Author: kmwh
- */
+#pragma once
 
-#ifndef SOURCE_PUMPS_H_
-#define SOURCE_PUMPS_H_
-
-#define MAX_WATER_LEVEL 70          //if water level exceeds this amount kill the pumps
 
 
 typedef union{
     struct{
         uint8_t leftPumpRequest;
         uint8_t rightPumpRequest;
-        uint8_t dummya;
+        uint8_t pumpsDecay;
         uint8_t dummyb;
     }pumpBytes;
         uint32_t pumpWord;
-}PUMP_REQUEST_T;
+} pumps_speed_request_t;
 
-enum{
-	PUMPS_DISABLED,
-	PUMPS_ENABLED
-};
+typedef enum{
+	PUMPS_DISABLE,
+	PUMPS_ENABLE,
+	PUMPS_DECAY,
+} pumps_command_t;
+
+typedef struct {
+	pumps_command_t pumpCommand;
+	uint32_t val;
+} pumps_command_request_t;
+
 
 typedef enum{
 	LEFT_PUMP,
 	RIGHT_PUMP
-}PUMP_SELECT_T;
+} pumps_select_t;
 
 
-//global queues for game 
-extern wiced_queue_t pumpRequestQueueHandle;
-extern wiced_queue_t pumpCommandQueueHandle;
 
 //globally available functions
-extern void pumpThread(wiced_thread_arg_t arg);
-extern void stopAllPumps(void);                     //globally available so other threads can do pump halt if necessary
-extern void kickPumps(PUMP_REQUEST_T* pumpRequest); //globally available so command console can do low level pump testing
-extern void setPumpSpeed(PUMP_SELECT_T whichPump, uint8_t speed);   //globally available for start-up hardware test
-#endif /* SOURCE_PUMPS_H_ */
+extern void pumpsThread(wiced_thread_arg_t arg);
+extern void pumpsStopAll(void);                     //globally available so other threads can do pump halt if necessary
+
+extern void pumpsSendDecay(uint32_t decayValue);
+extern void pumpsSendEnable(void);
+extern void pumpsSendDisable(void);
+extern void pumpsSendValues(uint8_t left, uint8_t right);

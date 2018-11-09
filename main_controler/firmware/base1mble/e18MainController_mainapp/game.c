@@ -15,6 +15,7 @@
 #include "leduart.h"
 #include "resources.h"
 #include "liquidlevel.h"
+#include "globals.h"
 
 
 //game state machine defines
@@ -46,7 +47,7 @@ void gameStateMachine(wiced_thread_arg_t arg)
 {
 	static volatile GAME_STATE_T previousState = GAME_UNKNOWN;
 	GAME_STATE_T subState;
-	uint32_t pumpCommand;
+	pumps_command_t pumpCommand;
 
 	//game state machine thread loop
 	while(1)
@@ -79,8 +80,10 @@ void gameStateMachine(wiced_thread_arg_t arg)
 			break;
 
 		case GAME_START:
-			if(getSoundState() == SOUND_IDLE) gameState = GAME_RUNNING;
-
+			if(getSoundState() == SOUND_IDLE)
+			{
+				gameState = GAME_RUNNING;
+			}
 			if(gameStateRequest == REQUEST_ABORT)
 			{
 				gameState = GAME_ABORT;
@@ -113,14 +116,13 @@ void gameStateMachine(wiced_thread_arg_t arg)
 				{
 					gameState = GAME_RUNNING;
 					startButtonPress = START_PRESS_NONE;
-					pumpCommand = (uint32_t) PUMPS_ENABLED;
-					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+					pumpsSendEnable();
+
 				}
 
 				if(gameStateRequest == REQUEST_ABORT)
 				{
-					pumpCommand = (uint32_t) PUMPS_DISABLED;
-					wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+					pumpsSendDisable();
 					gameState = GAME_ABORT;
 				}
 				break;
@@ -158,14 +160,13 @@ GAME_STATE_T gameStateInit(void)
 {
 	static uint16_t initTicks = 0;
 
-	uint32_t pumpCommand;	
+	pumps_command_t pumpCommand;
 	GAME_STATE_T returnValue = GAME_INIT;
 
 	switch(initTicks)
 	{
 	case 0:
-		pumpCommand = (uint32_t) PUMPS_DISABLED;
-		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+		pumpsSendDisable();
 		consolePrintWelcome();
 		leftColor.blue = 0xFF;
 		leftColor.red = 0xFF;
@@ -255,8 +256,10 @@ GAME_STATE_T gameStateIdle(void)
 		WPRINT_APP_INFO(("start button or gamestate request\n"));
 		playSound(resources_fight_wav_data);
 		startButtonPress = START_PRESS_NONE;
-		pumpCommand = (uint32_t) PUMPS_ENABLED;
+
+
 		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+		pumpsSendEnable();
 		returnValue = GAME_START;
 		idleTicks = 0;
 	}
@@ -281,23 +284,21 @@ GAME_STATE_T gameStateRunning(void)
 
 	if(startButtonPress || gameStateRequest == REQUEST_PAUSE)
 	{
-		pumpCommand = (uint32_t) PUMPS_DISABLED;
-		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+		pumpsSendDisable();
+
 		startButtonPress = START_PRESS_NONE;
 		returnValue = GAME_PAUSE;
 	}
 
 	if(leftLevel > GAME_WIN_LEVEL || rightLevel > GAME_WIN_LEVEL)
 	{
-		pumpCommand = (uint32_t) PUMPS_DISABLED;
-		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+		pumpsSendDisable();
 		returnValue = GAME_WIN;
 	}
 
 	if(gameStateRequest == REQUEST_ABORT)
 	{
-		pumpCommand = (uint32_t) PUMPS_DISABLED;
-		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
+		pumpsSendDisable();
 		returnValue = GAME_ABORT;					
 	}
 
@@ -367,7 +368,7 @@ GAME_STATE_T getGameState(void)
 	return gameState;
 }
 
-void getGameStateString(uint8_t* stateString)
+void getGameStateString(char *stateString)
 {
 	switch(gameState)
 	{

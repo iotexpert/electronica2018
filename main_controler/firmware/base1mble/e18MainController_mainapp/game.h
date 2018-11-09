@@ -46,7 +46,7 @@ extern volatile GAME_STATE_REQUEST_T gameStateRequest;
 extern START_PRESS_T startButtonPress;
 
 extern void gameStateMachine(wiced_thread_arg_t arg);
-extern void getGameStateString(uint8_t* stateString);
+extern void getGameStateString(char *stateString);
 extern GAME_STATE_T getGameState(void);
 
 #endif /* SRC_GAME_H_ */
