@@ -13,10 +13,9 @@
 #include "liquidlevel.h"
 
 //constants
-#define PUMP_DIVISOR_FACTOR 3       // divisor of incoming pump request
+#define PUMP_DIVISOR_FACTOR 1       // divisor of incoming pump request
 #define PUMP_DECAY_FACTOR 2         // -percent per 50ms
-#define PUMP_MINIMUM_SPEED 50       //pumps don't move much water below approx 40%
-#define MAX_WATER_LEVEL 90          //if water level exceeds this amount kill the pumps
+#define PUMP_MINIMUM_SPEED 60       //pumps don't move much water below approx 40%
 
 //typedefs
 
@@ -31,6 +30,8 @@ typedef enum{
 //global variables
 static uint8_t leftSpeed = 0;       //pump speed in PWM percentage
 static uint8_t rightSpeed = 0;
+static uint8_t pumpEnableState = PUMPS_DISABLED;
+
 
 //local function prototypes
 void pumpDecay(void);
@@ -40,7 +41,6 @@ void pumpControl(PUMP_SELECT_T pump, PUMP_CONTROL_T control);
 //code
 void pumpThread(wiced_thread_arg_t arg)
 {
-    static uint8_t pumpEnableState = PUMPS_DISABLED;
 
     //left pump pwm hardware
     Cy_TCPWM_PWM_Init(leftPump_HW, leftPump_NUM, &leftPump_config);
@@ -83,7 +83,6 @@ void pumpThread(wiced_thread_arg_t arg)
 
         if(leftLevel > MAX_WATER_LEVEL || rightLevel > MAX_WATER_LEVEL)
         {
-            pumpEnableState = PUMPS_DISABLED;
             stopAllPumps();            
         }
 
@@ -173,6 +172,8 @@ void stopAllPumps(void)
 {
 	stopPump(LEFT_PUMP);
 	stopPump(RIGHT_PUMP);
+    pumpEnableState = PUMPS_DISABLED;
+
 }
 
 void setPumpSpeed(PUMP_SELECT_T whichPump, uint8_t speed)

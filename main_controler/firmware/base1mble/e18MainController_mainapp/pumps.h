@@ -8,6 +8,8 @@
 #ifndef SOURCE_PUMPS_H_
 #define SOURCE_PUMPS_H_
 
+#define MAX_WATER_LEVEL 70          //if water level exceeds this amount kill the pumps
+
 
 typedef union{
     struct{

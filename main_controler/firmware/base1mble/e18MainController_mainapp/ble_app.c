@@ -110,8 +110,8 @@ static uint8_t game_get_remote_info( uint16_t conn_id )
 /* Timer to get messages about water level and send notifications to the connected remotes */
 void notifyTimer( void* arg )
 {
-    static uint8_t leftLevelPrev = 0;
-    static uint8_t rightLevelPrev = 0;
+    static uint8_t leftLevelPrev = 0xFF;
+    static uint8_t rightLevelPrev = 0xFF;
 
     uint8_t i;
 
@@ -203,7 +203,7 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
     PUMP_REQUEST_T pumpRequest;
     pumpRequest.pumpWord = 0x00000000;
 
-    WPRINT_APP_INFO(( "game_gatt_callback event %d \n", event ));
+    //WPRINT_APP_INFO(( "game_gatt_callback event %d \n", event ));
 
     switch( event )
     {
@@ -239,23 +239,16 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
             p_attr_req = &p_data->attribute_request;
             if( p_attr_req->request_type == GATTS_REQ_TYPE_WRITE)
             {
-                WPRINT_APP_INFO(("received GATT_ATTRIBUTE_REQUEST_EVT for ID %d, handle %04X, bytes: %d, value: 0x",
-                        p_attr_req->conn_id, p_attr_req->data.write_req.handle, p_attr_req->data.write_req.val_len));
-                for(i=0; i < p_attr_req->data.write_req.val_len; i++)
-                {
-                    WPRINT_APP_INFO(("%02X" ,p_attr_req->data.write_req.p_val[i]));
-                }
-                WPRINT_APP_INFO(("\n"));
                 switch(p_attr_req->data.write_req.handle)
                 {
-                case HDLC_CONTROLLER_PUMPLEFTBLE:
+                case HDLC_CONTROLLER_PUMPLEFTBLE_VALUE:
                     if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
                     {
                         pumpRequest.pumpBytes.leftPumpRequest = p_attr_req->data.write_req.p_val[0];
                         wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
                     }
                     break;
-                case HDLC_CONTROLLER_PUMPRIGHTBLE:
+                case HDLC_CONTROLLER_PUMPRIGHTBLE_VALUE:
                     if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
                     {
                         pumpRequest.pumpBytes.rightPumpRequest = p_attr_req->data.write_req.p_val[0];

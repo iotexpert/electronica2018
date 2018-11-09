@@ -14,7 +14,6 @@
 #include "liquidlevel.h"
 #include "command_console.h"
 #include "aws.h"
-//#include "bt.h"
 #include "pumps.h"
 #include "cy_pdl.h"
 
@@ -32,7 +31,6 @@ cy_stc_scb_uart_context_t consoleUARTcontext;
 
 //function prototypes
 static int status_console_cmd( int argc, char *argv[] );
-static int help_console_cmd( int argc, char *argv[] );
 static int levels_console_cmd( int argc, char *argv[] );
 static int start_console_cmd( int argc, char *argv[] );
 static int pause_console_cmd( int argc, char *argv[] );
@@ -48,14 +46,15 @@ static int bleoff_console_cmd( int argc, char *argv[] );
 static int pumpenable_console_cmd( int argc, char *argv[] );
 static int pumpdisable_console_cmd( int argc, char *argv[] );
 
+//     { (char*) "gamehelp",  help_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game command list"   }, \
+
 #define GAME_CONSOLE_COMMANDS \
     { (char*) "status",  status_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game status"   }, \
-    { (char*) "gamehelp",  help_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game command list"   }, \
     { (char*) "levels", levels_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Read liquid levels"   }, \
     { (char*) "start", start_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Start game"   }, \
     { (char*) "pause", pause_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Pause game"   }, \
     { (char*) "resume", resume_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Resume game"   }, \
-    { (char*) "abort", abort_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Abort game"   }, \
+    { (char*) "stop", abort_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Stop game"   }, \
     { (char*) "reset", reset_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Reset game"   }, \
     { (char*) "leftpump", leftpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick left pump"   }, \
     { (char*) "rightpump", rightpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick right pump"   }, \
@@ -81,49 +80,44 @@ void consolePrintGameState(void);
 static int status_console_cmd( int argc, char *argv[] )
 {
     consolePrintStatus();
-    return ERR_CMD_OK;
+    return 0;
 }
 
-static int help_console_cmd( int argc, char *argv[] )
-{
-    consolePrintHelp();
-    return ERR_CMD_OK;
-}
 
 static int levels_console_cmd( int argc, char *argv[] )
 {
     reportLevels();
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int start_console_cmd( int argc, char *argv[] )
 {
-    gameStateRequest = 	REQUEST_START;
-    return ERR_CMD_OK;
+	gameStateRequest = 	REQUEST_START;
+    return 0;
 }
 
 static int pause_console_cmd( int argc, char *argv[] )
 {
     gameStateRequest = 	REQUEST_PAUSE;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int resume_console_cmd( int argc, char *argv[] )
 {
     gameStateRequest = REQUEST_RESUME;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int abort_console_cmd( int argc, char *argv[] )
 {
     gameStateRequest = REQUEST_ABORT;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int reset_console_cmd( int argc, char *argv[] )
 {
     gameStateRequest = REQUEST_RESET;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int leftpump_console_cmd( int argc, char *argv[] )
@@ -139,7 +133,7 @@ static int leftpump_console_cmd( int argc, char *argv[] )
 
         wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
     }
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int rightpump_console_cmd( int argc, char *argv[] )
@@ -155,31 +149,31 @@ static int rightpump_console_cmd( int argc, char *argv[] )
 
         wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
     }
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int wifion_console_cmd( int argc, char *argv[] )
 {
     //awsEnableStatus = AWS_ENABLE;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int wifioff_console_cmd( int argc, char *argv[] )
 {
     //awsEnableStatus = AWS_DISABLE;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int bleon_console_cmd( int argc, char *argv[] )
 {
     //btEnableStatus = BT_ENABLE;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int bleoff_console_cmd( int argc, char *argv[] )
 {
     //btEnableStatus = BT_DISABLE;
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int pumpenable_console_cmd( int argc, char *argv[] )
@@ -187,7 +181,7 @@ static int pumpenable_console_cmd( int argc, char *argv[] )
     uint32_t pumpCommand;
 	pumpCommand = (uint32_t) PUMPS_ENABLED;
 	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
-    return ERR_CMD_OK;
+    return 0;
 }
 
 static int pumpdisable_console_cmd( int argc, char *argv[] )
@@ -195,7 +189,7 @@ static int pumpdisable_console_cmd( int argc, char *argv[] )
     uint32_t pumpCommand;
 	pumpCommand = (uint32_t) PUMPS_DISABLED;
 	wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/    
-    return ERR_CMD_OK;
+    return 0;
 }
 
 void initGameConsole(void)
@@ -215,13 +209,9 @@ void consolePrintWelcome(void)
     WPRINT_APP_INFO(("*********************************************\n"));
     WPRINT_APP_INFO(("Shall we play a game?\n"));
     consolePrintVersion();
+    WPRINT_APP_INFO(("*********************************************\n"));
 }
 
-// void consolePrintSystick(void)
-// {
-// 	uint32_t systicks = 0x00;     //tx_get_time();
-//     WPRINT_APP_INFO(("System tick count: %lu\n", systicks));
-// }
 
 void consolePrintVersion(void)
 {
@@ -248,7 +238,6 @@ void consolePrintHelp(void)
     WPRINT_APP_INFO(("Available game commands:\n"));
     WPRINT_APP_INFO(("     status     get game status\n"));
     WPRINT_APP_INFO(("     version    get firmware version\n"));
-    WPRINT_APP_INFO(("     gamehelp   print this command list\n"));
     WPRINT_APP_INFO(("     levels     get liquid levels\n"));
     WPRINT_APP_INFO(("     start      start/resume game\n"));
     WPRINT_APP_INFO(("     pause      pause game\n"));

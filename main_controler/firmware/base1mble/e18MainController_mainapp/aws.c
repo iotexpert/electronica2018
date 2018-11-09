@@ -122,7 +122,7 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
             PUMP_REQUEST_T pumpRequest;
             pumpRequest.pumpWord = 0x00000000;
 
-            WPRINT_APP_INFO( ("[Application/AWS] Payload Received[ Topic: %.*s ]:\n", (int)data->message.topic_length, data->message.topic ) );
+            //WPRINT_APP_INFO( ("[Application/AWS] Payload Received[ Topic: %.*s ]:\n", (int)data->message.topic_length, data->message.topic ) );
 
         	root = cJSON_Parse((char*) data->message.data);
         	left = cJSON_GetObjectItem(root,"left");
@@ -131,13 +131,13 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
             if(left && cJSON_IsNumber(left))
             {
                 pumpRequest.pumpBytes.leftPumpRequest = left->valueint;
-                WPRINT_APP_INFO(("AWS incoming left: %d\n", pumpRequest.pumpBytes.leftPumpRequest));
+                //WPRINT_APP_INFO(("AWS incoming left: %d\n", pumpRequest.pumpBytes.leftPumpRequest));
             }
 
             if(right && cJSON_IsNumber(right))
             {
                 pumpRequest.pumpBytes.rightPumpRequest = right->valueint;
-                WPRINT_APP_INFO(("AWS incoming right: %d\n", pumpRequest.pumpBytes.rightPumpRequest));
+                //WPRINT_APP_INFO(("AWS incoming right: %d\n", pumpRequest.pumpBytes.rightPumpRequest));
             }
 
             if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
@@ -305,6 +305,7 @@ AWS_INIT_RESULT_T awsInitMachine(void)
             break;
 
         case AWS_INIT_NETWORK:
+#if 0
     		ret = wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
 		    //ret = wiced_network_up(WICED_STA_INTERFACE, WICED_USE_STATIC_IP, &device_static_ip_settings);
             if(ret == WICED_SUCCESS )
@@ -316,6 +317,9 @@ AWS_INIT_RESULT_T awsInitMachine(void)
             {
 			    WPRINT_APP_INFO(("Failed to network up\n"));
             }
+#endif
+            awsInitState = AWS_INIT_AWSLIBRARY;
+                           result = AWS_INIT_IN_PROCESS;
             break;
 
         case AWS_INIT_AWSLIBRARY:
