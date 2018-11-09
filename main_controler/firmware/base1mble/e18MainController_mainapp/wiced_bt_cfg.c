@@ -129,7 +129,7 @@ wiced_bt_cfg_settings_t wiced_bt_cfg_settings =
 const wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[WICED_BT_CFG_NUM_BUF_POOLS] =
 {
 /*  { buf_size, buf_count } */
-    { 64,       4   },      /* Small Buffer Pool */
+    { 64,       16   },      /* Small Buffer Pool */
     { 360,      4   },      /* Medium Buffer Pool (used for HCI & RFCOMM control messages, min recommended size is 360) */
     { 360,      12  },      /* Large Buffer Pool  (used for HCI ACL messages) */
     { 360,      0   },      /* Extra Large Buffer Pool - Used for avdt media packets and miscellaneous (if not needed, set buf_count to 0) */

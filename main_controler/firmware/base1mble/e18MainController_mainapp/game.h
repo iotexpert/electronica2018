@@ -42,7 +42,7 @@ typedef enum{
 	START_PRESS_TRUE
 }START_PRESS_T;
 
-extern GAME_STATE_REQUEST_T gameStateRequest;
+extern volatile GAME_STATE_REQUEST_T gameStateRequest;
 extern START_PRESS_T startButtonPress;
 
 extern void gameStateMachine(wiced_thread_arg_t arg);

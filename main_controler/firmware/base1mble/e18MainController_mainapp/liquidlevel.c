@@ -7,7 +7,7 @@
 #include "stdio.h"
 #include "game.h"
 #include "liquidlevel.h"
-
+#include "pumps.h"
 #include "wiced.h"
 
 
@@ -38,7 +38,7 @@
 #define SENSOR_D_WEIGHT     83
 //with this weighting, max full is 99.6%
 
-#define LEVEL_THREAD_DELAY 100
+#define LEVEL_THREAD_DELAY 50
 
 
 
@@ -159,6 +159,11 @@ void determineLevels(void)
 
     leftLevel = (uint8_t) (leftHold/10);
     rightLevel = (uint8_t) (rightHold/10);
+
+    if(leftLevel > MAX_WATER_LEVEL || rightLevel > MAX_WATER_LEVEL)
+    {
+        stopAllPumps();
+    }
 }
 
 //Note: previous versions of capsense "components" supplied a Cy_GetRaw... function which was
