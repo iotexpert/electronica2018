@@ -1,37 +1,3 @@
-/*
- * Copyright 2018, Cypress Semiconductor Corporation or a subsidiary of
- * Cypress Semiconductor Corporation. All Rights Reserved.
- *
- * This software, including source code, documentation and related
- * materials ("Software"), is owned by Cypress Semiconductor Corporation
- * or one of its subsidiaries ("Cypress") and is protected by and subject to
- * worldwide patent protection (United States and foreign),
- * United States copyright laws and international treaty provisions.
- * Therefore, you may use this Software only as provided in the license
- * agreement accompanying the software package from which you
- * obtained this Software ("EULA").
- * If no EULA applies, Cypress hereby grants you a personal, non-exclusive,
- * non-transferable license to copy, modify, and compile the Software
- * source code solely for use in connection with Cypress's
- * integrated circuit products. Any reproduction, modification, translation,
- * compilation, or representation of this Software except as specified
- * above is prohibited without the express written permission of Cypress.
- *
- * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress
- * reserves the right to make changes to the Software without notice. Cypress
- * does not assume any liability arising out of the application or use of the
- * Software or any product or circuit described in the Software. Cypress does
- * not authorize its products for use in any products where a malfunction or
- * failure of the Cypress product may reasonably be expected to result in
- * significant property damage, injury or death ("High Risk Product"). By
- * including Cypress's product in a High Risk Product, the manufacturer
- * of such system or application assumes all risk of such use and in doing
- * so agrees to indemnify Cypress against all liability.
- */
-
-
 #include "wiced.h"
 #include "cy_pdl.h"
 #include "cycfg.h"
@@ -156,14 +122,14 @@ void application_start(void)
 	__enable_irq();
 
 	//initialize the pump queues
-	wiced_rtos_init_queue(&pumpRequestQueueHandle, "pumpRequestQueue", MESSAGE_SIZE, QUEUE_SIZE); /* Setup the queue for pump run requests  */
-	wiced_rtos_init_queue(&pumpCommandQueueHandle, "blinkQueue", MESSAGE_SIZE, QUEUE_SIZE); /* Setup the queue for pump commands */
+	wiced_rtos_init_queue(&pumpRequestQueueHandle, "pumpRequestQueue", sizeof(pumps_speed_request_t), QUEUE_SIZE); /* Setup the queue for pump run requests  */
+	wiced_rtos_init_queue(&pumpCommandQueueHandle, "blinkQueue", sizeof(pumps_command_request_t), QUEUE_SIZE); /* Setup the queue for pump commands */
 
 	//start the various threads
 	wiced_rtos_create_thread(&gameThreadHandle, GAME_THREAD_PRIORITY, "gameThread", gameStateMachine, GAME_STACK_SIZE, NULL);
 	wiced_rtos_create_thread(&awsThreadHandle, AWS_THREAD_PRIORITY, "awsThread", awsThread, AWS_STACK_SIZE, NULL);
 	wiced_rtos_create_thread(&levelThreadHandle, LEVEL_THREAD_PRIORITY, "levelThread", levelThread, LEVEL_STACK_SIZE, NULL);
-	wiced_rtos_create_thread(&pumpThreadHandle, PUMP_THREAD_PRIORITY, "pumpThread", pumpThread, PUMP_STACK_SIZE, NULL);
+	wiced_rtos_create_thread(&pumpThreadHandle, PUMP_THREAD_PRIORITY, "pumpThread", pumpsThread, PUMP_STACK_SIZE, NULL);
 
 	startBle();
 
@@ -172,13 +138,15 @@ void application_start(void)
 	Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
 	Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
 	wiced_rtos_delay_milliseconds(500);
-	setPumpSpeed(LEFT_PUMP, 100);                       //low level pump test
-	setPumpSpeed(RIGHT_PUMP, 100);
+
+	pumpsSendEnable();
+	pumpsSendValues(100,100);
+
 	wiced_rtos_delay_milliseconds(750);
 	Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
 	Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
-	setPumpSpeed(LEFT_PUMP, 0);
-	setPumpSpeed(RIGHT_PUMP, 0);
+	pumpsSendDisable();
+
 #endif
 
 	WPRINT_APP_INFO(("Initializing stuff done\n"));
@@ -189,15 +157,16 @@ void application_start(void)
 		//read and handle the arm/abort switch
 		if(Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN) == SWITCH_ON)
 		{
-			Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 1);	//enable pump h-bridge
+			pumpsSendEnable();
+
 			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
 			if(getGameState() == GAME_ABORT)
 				gameStateRequest = REQUEST_RESET;
 		}
 		else
 		{
-			Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 0);	//disable pump h-bridge, and...
-			stopAllPumps();                                     //set the pump PWMs to zero
+			pumpsStopAll();                                     //set the pump PWMs to zero
+			pumpsSendDisable();
 			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn off arm switch LED
 			gameStateRequest = REQUEST_ABORT;                   //"request" game abort
 		}

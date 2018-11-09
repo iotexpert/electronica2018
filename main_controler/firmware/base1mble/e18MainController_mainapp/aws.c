@@ -7,6 +7,7 @@
 #include "game.h"
 #include "liquidlevel.h"
 #include "pumps.h"
+#include "globals.h"
 
 #define DEMO_AWS_PUBLISHER_TOPIC "$aws/things/Electronica2018/shadow/update"
 #define DEMO_AWS_SUBSCRIBER_TOPIC "PumpAWS"
@@ -119,7 +120,7 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
 
         case WICED_AWS_EVENT_PAYLOAD_RECEIVED:
         {
-            PUMP_REQUEST_T pumpRequest;
+            pumps_speed_request_t pumpRequest;
             pumpRequest.pumpWord = 0x00000000;
 
             //WPRINT_APP_INFO( ("[Application/AWS] Payload Received[ Topic: %.*s ]:\n", (int)data->message.topic_length, data->message.topic ) );
@@ -128,22 +129,20 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
         	left = cJSON_GetObjectItem(root,"left");
         	right = cJSON_GetObjectItem(root,"right");
 
+        		uint8_t leftValue=0;
+        		uint8_t rightValue= 0;
+
             if(left && cJSON_IsNumber(left))
             {
-                pumpRequest.pumpBytes.leftPumpRequest = left->valueint;
-                //WPRINT_APP_INFO(("AWS incoming left: %d\n", pumpRequest.pumpBytes.leftPumpRequest));
+            		leftValue = left->valueint;
             }
 
             if(right && cJSON_IsNumber(right))
             {
-                pumpRequest.pumpBytes.rightPumpRequest = right->valueint;
-                //WPRINT_APP_INFO(("AWS incoming right: %d\n", pumpRequest.pumpBytes.rightPumpRequest));
+            		rightValue = right->valueint;
             }
 
-            if(wiced_rtos_is_queue_full(&pumpRequestQueueHandle) != WICED_SUCCESS)     //this means if the queue isn't full
-            {
-                wiced_rtos_push_to_queue(&pumpRequestQueueHandle, &pumpRequest.pumpWord, WICED_NO_WAIT); /* Push value onto queue*/
-            }
+            pumpsSendValues(leftValue,rightValue);
 
             break;
         }
@@ -182,14 +181,14 @@ void awsThread(wiced_thread_arg_t arg)
                 if((previousLeftLevel != leftLevel) || (previousRightLevel != rightLevel))
                 {
                 	char topicBuffer[80];
-                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", leftLevel, rightLevel);
+                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)leftLevel, (int)rightLevel);
                     wiced_aws_publish( aws_connection, DEMO_AWS_PUBLISHER_TOPIC, (uint8_t *)topicBuffer, strlen(topicBuffer), WICED_AWS_QOS_ATLEAST_ONCE );                    
                     previousLeftLevel = leftLevel;
                     previousRightLevel = rightLevel;
                 }
                 #else
                 	char topicBuffer[80];
-                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", leftLevel, rightLevel);
+                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)leftLevel, (int)rightLevel);
                     wiced_aws_publish( aws_connection, DEMO_AWS_PUBLISHER_TOPIC, (uint8_t *)topicBuffer, strlen(topicBuffer), WICED_AWS_QOS_ATLEAST_ONCE );
 				#endif
 				break;
