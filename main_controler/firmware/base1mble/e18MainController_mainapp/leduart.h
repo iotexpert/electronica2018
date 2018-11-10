@@ -1,25 +1,13 @@
-/*
- * command_console.h
- *
- *  Created on: Sep 21, 2018
- *      Author: kmwh
- */
-
-
-#ifndef LED_UART_H
-#define LED_UART_H
+#pragma once
 
 typedef struct {
     uint8_t red;
     uint8_t green;
     uint8_t blue;
-}LED_COLOR_T;
+}led_color_t;
 
-extern LED_COLOR_T leftColor;
-extern LED_COLOR_T rightColor;
+extern led_color_t leftColor;
+extern led_color_t rightColor;
 
 extern void ledUARTinit(void);
 extern void ledUARTsendColorValues(uint8_t leftValue, uint8_t rightValue);
-
-#endif
-

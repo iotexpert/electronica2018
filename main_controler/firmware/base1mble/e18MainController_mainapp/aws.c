@@ -120,10 +120,6 @@ static void aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, 
 
         case WICED_AWS_EVENT_PAYLOAD_RECEIVED:
         {
-            pumps_speed_request_t pumpRequest;
-            pumpRequest.pumpWord = 0x00000000;
-
-            //WPRINT_APP_INFO( ("[Application/AWS] Payload Received[ Topic: %.*s ]:\n", (int)data->message.topic_length, data->message.topic ) );
 
         	root = cJSON_Parse((char*) data->message.data);
         	left = cJSON_GetObjectItem(root,"left");
@@ -164,6 +160,12 @@ void awsThread(wiced_thread_arg_t arg)
     static uint8_t previousLeftLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
     static uint8_t previousRightLevel = 255;         //set outside normal range 255 so it will trigger update on first connected iteration
 
+    // Wait for the BLE to Start
+    uint32_t tempFlags;
+	wiced_rtos_wait_for_event_flags(&startFlags,(uint32_t)(START_FLAG_BLE),&tempFlags,WICED_FALSE,WAIT_FOR_ALL_EVENTS,WICED_WAIT_FOREVER);
+
+	wiced_rtos_set_event_flags(	&startFlags,	START_FLAG_AWS);
+
 	while(1)
 	{
 
@@ -178,17 +180,17 @@ void awsThread(wiced_thread_arg_t arg)
 
 			case AWS_INITIALIZED:
                 #ifdef AWS_PUBLISH_LEVELS_ON_DELTA
-                if((previousLeftLevel != leftLevel) || (previousRightLevel != rightLevel))
+                if((previousLeftLevel != levelGetLeft()) || (previousRightLevel != levelGetRight()))
                 {
                 	char topicBuffer[80];
-                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)leftLevel, (int)rightLevel);
+                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)levelGetLeft(), (int)levelGetRight());
                     wiced_aws_publish( aws_connection, DEMO_AWS_PUBLISHER_TOPIC, (uint8_t *)topicBuffer, strlen(topicBuffer), WICED_AWS_QOS_ATLEAST_ONCE );                    
-                    previousLeftLevel = leftLevel;
-                    previousRightLevel = rightLevel;
+                    previousLeftLevel = levelGetLeft();
+                    previousRightLevel = levelGetRight();
                 }
                 #else
                 	char topicBuffer[80];
-                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)leftLevel, (int)rightLevel);
+                    sprintf(topicBuffer, "{\"state\" : {\"reported\" : {\"WaterLevelLeftAWS\" : %d.0, \"WaterLevelRightAWS\" : %d.0}}}", (int)levelGetLeft(), (int)levelGetRight());
                     wiced_aws_publish( aws_connection, DEMO_AWS_PUBLISHER_TOPIC, (uint8_t *)topicBuffer, strlen(topicBuffer), WICED_AWS_QOS_ATLEAST_ONCE );
 				#endif
 				break;
@@ -304,7 +306,7 @@ AWS_INIT_RESULT_T awsInitMachine(void)
             break;
 
         case AWS_INIT_NETWORK:
-#if 0
+
     		ret = wiced_network_up( WICED_STA_INTERFACE, WICED_USE_EXTERNAL_DHCP_SERVER, NULL );
 		    //ret = wiced_network_up(WICED_STA_INTERFACE, WICED_USE_STATIC_IP, &device_static_ip_settings);
             if(ret == WICED_SUCCESS )
@@ -316,7 +318,7 @@ AWS_INIT_RESULT_T awsInitMachine(void)
             {
 			    WPRINT_APP_INFO(("Failed to network up\n"));
             }
-#endif
+
             awsInitState = AWS_INIT_AWSLIBRARY;
                            result = AWS_INIT_IN_PROCESS;
             break;

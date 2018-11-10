@@ -1,9 +1,5 @@
-#ifndef LIQUID_LEVEL_H
-#define LIQUID_LEVEL_H
+#pragma once
 
-//two globals:  left and right water level
-extern uint8_t leftLevel;
-extern uint8_t rightLevel;
 
 extern void levelThread(wiced_thread_arg_t arg);
 
@@ -13,4 +9,5 @@ extern void reportLevels(void);
 extern void reportRawLeftLevels(void);
 extern void reportRawRightLevels(void);
 
-#endif
+extern uint32_t levelGetLeft();
+extern uint32_t levelGetRight();

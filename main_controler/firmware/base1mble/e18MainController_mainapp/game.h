@@ -15,38 +15,21 @@
 #define FW_VERSION_MINOR '1'
 
 typedef enum{
-	GAME_UNKNOWN,
 	GAME_INIT,
 	GAME_IDLE,
 	GAME_START,
 	GAME_RUNNING,
 	GAME_PAUSE,
-	GAME_ABORT,
 	GAME_WIN
-}GAME_STATE_T;
+} game_state_t;
 
-typedef enum{
-	REQUEST_NONE,
-	REQUEST_START,
-	REQUEST_PAUSE,
-	REQUEST_RESUME,
-	REQUEST_ABORT,
-	REQUEST_RESET,
-	REQUEST_DEMO_1,
-	REQUEST_DEMO_2,
-	REQUEST_STOP_DEMO
-}GAME_STATE_REQUEST_T;
+typedef struct {
+	game_state_t desiredState;
+} game_command_request_t;
 
-typedef enum{
-	START_PRESS_NONE,
-	START_PRESS_TRUE
-}START_PRESS_T;
-
-extern volatile GAME_STATE_REQUEST_T gameStateRequest;
-extern START_PRESS_T startButtonPress;
-
-extern void gameStateMachine(wiced_thread_arg_t arg);
-extern void getGameStateString(char *stateString);
-extern GAME_STATE_T getGameState(void);
+extern void gameThread(wiced_thread_arg_t arg);
+extern void gameGetString(char *stateString);
+extern game_state_t gameGetState(void);
+extern void gameStateRequest(game_state_t);
 
 #endif /* SRC_GAME_H_ */

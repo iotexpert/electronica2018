@@ -34,10 +34,9 @@ cy_stc_scb_uart_context_t consoleUARTcontext;
 static int status_console_cmd( int argc, char *argv[] );
 static int levels_console_cmd( int argc, char *argv[] );
 static int start_console_cmd( int argc, char *argv[] );
+static int stop_console_cmd( int argc, char *argv[] );
 static int pause_console_cmd( int argc, char *argv[] );
 static int resume_console_cmd( int argc, char *argv[] );
-static int abort_console_cmd( int argc, char *argv[] );
-static int reset_console_cmd( int argc, char *argv[] );
 static int leftpump_console_cmd( int argc, char *argv[] );
 static int rightpump_console_cmd( int argc, char *argv[] );
 static int wifion_console_cmd( int argc, char *argv[] );
@@ -53,10 +52,9 @@ static int pumpDecay_console_cmd( int argc, char *argv[] );
     { (char*) "status",  status_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Print game status"   }, \
     { (char*) "levels", levels_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Read liquid levels"   }, \
     { (char*) "start", start_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Start game"   }, \
+    { (char*) "stop", stop_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Stop game"   }, \
     { (char*) "pause", pause_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Pause game"   }, \
     { (char*) "resume", resume_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Resume game"   }, \
-    { (char*) "stop", abort_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Stop game"   }, \
-    { (char*) "reset", reset_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Reset game"   }, \
     { (char*) "leftpump", leftpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick left pump"   }, \
     { (char*) "rightpump", rightpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick right pump"   }, \
     { (char*) "wifion", wifion_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable wifi and connect"   }, \
@@ -95,32 +93,26 @@ static int levels_console_cmd( int argc, char *argv[] )
 
 static int start_console_cmd( int argc, char *argv[] )
 {
-	gameStateRequest = 	REQUEST_START;
-    return 0;
+	gameStateRequest(GAME_START);
+	return 0;
 }
 
 static int pause_console_cmd( int argc, char *argv[] )
 {
-    gameStateRequest = 	REQUEST_PAUSE;
+	gameStateRequest(GAME_PAUSE);
     return 0;
 }
 
 static int resume_console_cmd( int argc, char *argv[] )
 {
-    gameStateRequest = REQUEST_RESUME;
-    return 0;
+	gameStateRequest(GAME_RUNNING);
+	return 0;
 }
 
-static int abort_console_cmd( int argc, char *argv[] )
+static int stop_console_cmd( int argc, char *argv[] )
 {
-    gameStateRequest = REQUEST_ABORT;
-    return 0;
-}
-
-static int reset_console_cmd( int argc, char *argv[] )
-{
-    gameStateRequest = REQUEST_RESET;
-    return 0;
+	gameStateRequest(GAME_IDLE);
+	return 0;
 }
 
 static int leftpump_console_cmd( int argc, char *argv[] )
@@ -217,7 +209,7 @@ void consolePrintStatus(void)
 void consolePrintGameState(void)
 {
     char stateString[40];
-    getGameStateString(stateString);
+    gameGetString(stateString);
     WPRINT_APP_INFO(("Game master state: %s\n", stateString));
 }
 
@@ -244,7 +236,7 @@ void consolePrintWin(void)
 {
     WPRINT_APP_INFO(("*********************************************\n"));
     WPRINT_APP_INFO((" GAME WIN\n"));
-   if(leftLevel > rightLevel)
+   if(levelGetLeft() > levelGetRight())
    {
        WPRINT_APP_INFO(( "    Left team wins!\n"));
    }

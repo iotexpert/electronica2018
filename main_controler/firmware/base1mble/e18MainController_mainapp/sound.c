@@ -55,7 +55,7 @@ enum{
     };
 
 
-SOUND_STATE_T soundPlayerState = SOUND_IDLE;
+sound_state_t soundPlayerState = SOUND_IDLE;
 void readWavHeader(WAV_HEADER_T* header, const uint8_t* soundArray);
 
 void initAudioHW(void)
@@ -88,10 +88,10 @@ void cpuss_interrupts_dw0_5_IRQn_Handler(void)
 
 
 //wave file reference:   https://www.isip.piconepress.com/projects/speech/software/tutorials/production/fundamentals/v1.0/section_02/s02_01_p05.html
-SOUND_RETURN_T playSound(const char* sound)
+sound_return_t soundPlay(const char* sound)
 {
 	WAV_HEADER_T wavHeader;
-	SOUND_RETURN_T returnValue;
+	sound_return_t returnValue;
 	uint8_t* soundStartPtr;
 
 	if(soundPlayerState == SOUND_IDLE)
@@ -130,7 +130,7 @@ void abortSound(void)
 	Cy_TCPWM_Counter_SetCompare0(audioPWM_HW, audioPWM_NUM, 128);
 }
 
-SOUND_STATE_T getSoundState(void)
+sound_state_t getSoundState(void)
 {
 	return soundPlayerState;
 }

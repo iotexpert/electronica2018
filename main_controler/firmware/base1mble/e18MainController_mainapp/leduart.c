@@ -25,8 +25,8 @@ uint8_t* ledtxEndPtr = ledtxBuffer;
 uint8_t* ledtxSendPtr = ledtxBuffer;
 uint8_t ledTXenabled;
 static uint8_t ledtxWriteLock = 0;
-LED_COLOR_T leftColor;
-LED_COLOR_T rightColor;
+led_color_t leftColor;
+led_color_t rightColor;
 
 //local function declarations
 void kickledTX(void);

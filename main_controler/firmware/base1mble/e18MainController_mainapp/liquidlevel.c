@@ -58,14 +58,23 @@ const cy_stc_sysint_t CapSense_ISR_cfg =
 
 
 //global liquid levels, reported as 0 to 100 (percent)
-uint8_t leftLevel = 0;
-uint8_t rightLevel = 0;
+uint32_t leftLevel = 0;
+uint32_t rightLevel = 0;
 
 
 //local static variables
 static uint32_t rawDataLeft[NUM_LEVEL_SENSORS];
 static uint32_t rawDataRight[NUM_LEVEL_SENSORS];
 
+
+uint32_t levelGetLeft()
+{
+	return leftLevel;
+}
+uint32_t levelGetRight()
+{
+	return rightLevel;
+}
 
 //local function prototypes
 void getRawSensorValues(void);
@@ -80,6 +89,9 @@ void levelThread(wiced_thread_arg_t arg)
     NVIC_ClearPendingIRQ(CapSense_ISR_cfg.intrSrc);
     NVIC_EnableIRQ(CapSense_ISR_cfg.intrSrc);
     Cy_CapSense_Enable(&cy_capsense_context);
+
+	wiced_rtos_set_event_flags(	&startFlags,	START_FLAG_LEVEL);
+
 
     while(1)
     {

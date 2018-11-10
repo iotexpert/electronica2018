@@ -13,20 +13,20 @@
 typedef enum{
 	SOUND_IDLE,
 	SOUND_PLAYING
-}SOUND_STATE_T;
+}sound_state_t;
 
 typedef enum{
 	SOUND_SUCCESS,
 	SOUND_ALREADY_PLAYING,
 	SOUND_WAVDATA_ERROR
-}SOUND_RETURN_T;
+}sound_return_t;
 
 
 extern void initAudioHW(void);
 
 extern void soundThread(wiced_thread_arg_t arg);		//sound thread
-extern SOUND_RETURN_T playSound(const char* sound);		//play sound, argument is pointer to sound wav file
-extern SOUND_STATE_T getSoundState(void);				//get the current sound state -- playing or idle
+extern sound_return_t soundPlay(const char* sound);		//play sound, argument is pointer to sound wav file
+extern sound_state_t getSoundState(void);				//get the current sound state -- playing or idle
 extern void abortSound(void);							//abort any currently playing sound
 
 //Note on sounds:

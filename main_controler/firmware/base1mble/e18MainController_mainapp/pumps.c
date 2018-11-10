@@ -38,7 +38,7 @@ static void pumpsKick(pumps_speed_request_t* pumpRequest);
 static void pumpDecay(void);
 static void stopPump(pumps_select_t whichPump);
 static void pumpsEnable(void);
-static void pumpsDisable(void);
+//static void pumpsDisable(void);
 static void pumpsSetSpeed(pumps_select_t whichPump, uint8_t speed);
 static void pumpControl(pumps_select_t pump, PUMP_CONTROL_T control);
 
@@ -60,6 +60,8 @@ void pumpsThread(wiced_thread_arg_t arg)
 	//set correct h-bridge control outputs
 	pumpControl(LEFT_PUMP, PUMP_RUN_CCW);
 	pumpControl(RIGHT_PUMP, PUMP_RUN_CCW);
+
+	wiced_rtos_set_event_flags(	&startFlags,	START_FLAG_PUMP);
 
 	while(1)
 	{
@@ -181,11 +183,14 @@ static void pumpsEnable(void)
 
 }
 
+#if 0
 static void pumpsDisable(void)
 {
-	Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 0);	//enable pump h-bridge
+	Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 0);	//disable pump h-bridge
 
 }
+#endif
+
 
 void pumpsStopAll(void)
 {

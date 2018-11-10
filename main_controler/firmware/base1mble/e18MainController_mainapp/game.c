@@ -5,7 +5,6 @@
  *      Author: kmwh
  */
 
-
 #include "wiced.h"
 #include "game.h"
 #include "sound.h"
@@ -16,359 +15,53 @@
 #include "resources.h"
 #include "liquidlevel.h"
 #include "globals.h"
+#include "sound.h"
+
+typedef enum{
+	ONBOARD_LED_ON,
+	ONBOARD_LED_OFF
+}ONBOARD_LED_ONOFF_T;
+
+typedef enum{
+	SWITCH_ON,
+	SWITCH_OFF
+}SWITCH_INPUT_T;
+
+typedef enum{
+	EXTERNAL_LED_OFF,
+	EXTERNAL_LED_ON
+}EXTERNAL_LED_ONOFF_T;
+
 
 
 //game state machine defines
-#define GAME_MACHINE_DELAY	125		//time in milliseconds of delay for game machine thread
-#define GAME_WIN_LEVEL	70			//percent water level for a win to be triggered
-
-//#define GAME_HARDWARE_TEST			//define this to start the pumps on game start for hardware test
-//#define IDLE_SOUND_TEST_MODE		//repeatedly plays sound in idle mode
-
+#define GAME_MACHINE_DELAY	100		//time in milliseconds of delay for game machine thread
 
 //variables
-static volatile GAME_STATE_T gameState = GAME_INIT;			//the game state
+static game_state_t gameState = GAME_INIT;			    //the game state
+static game_state_t gameStateNext = GAME_INIT;			//the next game state
 
-START_PRESS_T startButtonPress = START_PRESS_NONE;			//used by gui handler to indicate a start button press
+typedef enum {
+	WINNER_NONE,
+	WINNER_LEFT,
+	WINNER_RIGHT
+} game_winner_t;
 
-volatile GAME_STATE_REQUEST_T gameStateRequest = REQUEST_NONE;		//used by external events to request a game state change
+static game_winner_t gameWinner;
 
-
-//function prototypes
-//making game states their own functions to clarify game state machine thread
-GAME_STATE_T gameStateInit(void);			//has its own state machine to do start-up LED check and print help info
-GAME_STATE_T gameStateIdle(void);
-GAME_STATE_T gameStateRunning(void);
-GAME_STATE_T gameStateWin(void);
-
-//code
-//game state machine thread
-void gameStateMachine(wiced_thread_arg_t arg)
+void gameStateRequest(game_state_t state)
 {
-	static volatile GAME_STATE_T previousState = GAME_UNKNOWN;
-	GAME_STATE_T subState;
-	pumps_command_t pumpCommand;
+	game_command_request_t request;
+	request.desiredState = state;
+	wiced_rtos_push_to_queue(&gameCommandQueueHandle, &request, 0);
 
-	//game state machine thread loop
-	while(1)
-	{
-		//check to see if a state change has occurred, if so print to serial port
-		if(previousState != gameState)
-		{
-			uint8_t stateString[40];
-			getGameStateString(stateString);
-			WPRINT_APP_INFO(("Changing to state: %s\n", stateString));
-			previousState = gameState;
-
-		}
-
-		//and run the game state machine
-		switch(gameState)
-		{
-		case GAME_INIT:
-			if(gameStateInit() == GAME_IDLE)
-			{
-				gameState = GAME_IDLE;
-			}
-			break;
-
-		case GAME_IDLE:
-			if(gameStateIdle() == GAME_START)
-			{
-				gameState = GAME_START;
-			}
-			break;
-
-		case GAME_START:
-			if(getSoundState() == SOUND_IDLE)
-			{
-				gameState = GAME_RUNNING;
-			}
-			if(gameStateRequest == REQUEST_ABORT)
-			{
-				gameState = GAME_ABORT;
-			}
-			break;
-
-		case GAME_RUNNING:
-			subState = gameStateRunning();
-			switch(subState)
-			{
-			case GAME_RUNNING:
-				break;
-
-			case GAME_PAUSE:
-				gameState = GAME_PAUSE;
-				break;
-
-			case GAME_WIN:
-				gameState = GAME_WIN;
-				break;
-
-			case GAME_ABORT:
-				gameState = GAME_ABORT;
-				break;
-			}
-			break;
-
-			case GAME_PAUSE:
-				if(startButtonPress || gameStateRequest == REQUEST_RESUME)
-				{
-					gameState = GAME_RUNNING;
-					startButtonPress = START_PRESS_NONE;
-					pumpsSendEnable();
-
-				}
-
-				if(gameStateRequest == REQUEST_ABORT)
-				{
-					pumpsSendDisable();
-					gameState = GAME_ABORT;
-				}
-				break;
-
-			case GAME_WIN:
-				if(gameStateWin() == GAME_IDLE)
-				{
-					gameState = GAME_IDLE;
-				}
-				break;
-
-			default:
-			case GAME_UNKNOWN:
-			case GAME_ABORT:
-				leftColor.blue = 0x00;
-				leftColor.red = 0x00;
-				leftColor.green = 0x00;
-				rightColor.blue = 0x00;
-				rightColor.red = 0x00;
-				rightColor.green = 0x00;
-				ledUARTsendColorValues(0, 0);			//turn off LED strips					
-
-				if(gameStateRequest == REQUEST_RESET)	//wait for a reset
-				{
-					gameState = GAME_IDLE;
-					gameStateRequest = REQUEST_NONE;
-				}				
-				break;
-		}
-		wiced_rtos_delay_milliseconds(GAME_MACHINE_DELAY);
-	}
 }
-
-GAME_STATE_T gameStateInit(void)
-{
-	static uint16_t initTicks = 0;
-
-	pumps_command_t pumpCommand;
-	GAME_STATE_T returnValue = GAME_INIT;
-
-	switch(initTicks)
-	{
-	case 0:
-		pumpsSendDisable();
-		consolePrintWelcome();
-		leftColor.blue = 0xFF;
-		leftColor.red = 0xFF;
-		leftColor.green = 0x00;
-		rightColor.blue = 0xFF;
-		rightColor.red = 0x00;
-		rightColor.green = 0xFF;
-		ledUARTsendColorValues(50, 50);			//set LED strips
-		break;
-
-	case 4:
-		leftColor.blue = 0xFF;
-		leftColor.red = 0xFF;
-		leftColor.green = 0x00;
-		rightColor.blue = 0xFF;
-		rightColor.red = 0x00;
-		rightColor.green = 0xFF;
-		ledUARTsendColorValues(70, 70);			//set LED strips
-		break;
-
-	case 8:
-		consolePrintStatus();
-		leftColor.blue = 0xFF;
-		leftColor.red = 0xFF;
-		leftColor.green = 0x00;
-		rightColor.blue = 0xFF;
-		rightColor.red = 0x00;
-		rightColor.green = 0xFF;
-		ledUARTsendColorValues(85, 85);			//set LED strips
-		break;
-
-	case 10:
-		leftColor.blue = 0xFF;
-		leftColor.red = 0xFF;
-		leftColor.green = 0x00;
-		rightColor.blue = 0xFF;
-		rightColor.red = 0x00;
-		rightColor.green = 0xFF;
-		ledUARTsendColorValues(100, 100);			//set LED strips
-		break;
-
-	case 20:
-		consolePrintHelp();
-		leftColor.blue = 0x00;
-		leftColor.red = 0x00;
-		leftColor.green = 0x00;
-		rightColor.blue = 0x00;
-		rightColor.red = 0x00;
-		rightColor.green = 0x00;
-		ledUARTsendColorValues(0, 0);			//set LED strips
-		initTicks = 0;
-		returnValue = GAME_IDLE;
-		break;
-
-	default:
-		break;
-	}
-
-	initTicks++;
-	return returnValue;
-}
-
-GAME_STATE_T gameStateIdle(void)
-{
-	static uint16_t idleTicks = 0;
-	uint32_t pumpCommand;
-
-	GAME_STATE_T returnValue = GAME_IDLE;
-
-	leftColor.blue = 0x00;
-	leftColor.red = 0x00;
-	leftColor.green = 0x00;
-	rightColor.blue = 0x00;
-	rightColor.red = 0x00;
-	rightColor.green = 0x00;
-	ledUARTsendColorValues(0, 0);			//set LED strips
-
-	idleTicks++;
-	if(idleTicks == 60)
-	{
-		idleTicks = 0;
-	}
-
-
-	if(startButtonPress || gameStateRequest == REQUEST_START)
-	{
-		WPRINT_APP_INFO(("start button or gamestate request\n"));
-		playSound(resources_fight_wav_data);
-		startButtonPress = START_PRESS_NONE;
-
-
-		wiced_rtos_push_to_queue(&pumpCommandQueueHandle, &pumpCommand, WICED_NO_WAIT); /* Push value onto queue*/
-		pumpsSendEnable();
-		returnValue = GAME_START;
-		idleTicks = 0;
-	}
-
-	return returnValue;
-}
-
-
-//this function handles the game running state
-GAME_STATE_T gameStateRunning(void)
-{
-	GAME_STATE_T returnValue = GAME_RUNNING;
-	uint32_t pumpCommand;
-
-	leftColor.blue = 0xFF;
-	leftColor.red = 0x00;
-	leftColor.green = 0x00;
-	rightColor.blue = 0x00;
-	rightColor.red = 0x00;
-	rightColor.green = 0xFF;
-	ledUARTsendColorValues(leftLevel, rightLevel);			//set LED strips
-
-	if(startButtonPress || gameStateRequest == REQUEST_PAUSE)
-	{
-		pumpsSendDisable();
-
-		startButtonPress = START_PRESS_NONE;
-		returnValue = GAME_PAUSE;
-	}
-
-	if(leftLevel > GAME_WIN_LEVEL || rightLevel > GAME_WIN_LEVEL)
-	{
-		pumpsSendDisable();
-		returnValue = GAME_WIN;
-	}
-
-	if(gameStateRequest == REQUEST_ABORT)
-	{
-		pumpsSendDisable();
-		returnValue = GAME_ABORT;					
-	}
-
-	return returnValue;
-}
-
-//this function handles the game win state
-GAME_STATE_T gameStateWin(void)
-{
-	static uint16_t winTicks = 0;
-	GAME_STATE_T returnValue = GAME_WIN;
-	static uint8_t leftLED, rightLED;
-
-	if(winTicks == 0)
-	{
-		consolePrintWin();
-		playSound(resources_winner_wav_data);
-		if(leftLevel > rightLevel)
-		{
-			leftColor.blue = 0xFF;
-			leftColor.red = 0x00;
-			leftColor.green = 0x00;
-			rightColor.blue = 0x00;
-			rightColor.red = 0x00;
-			rightColor.green = 0x00;
-			leftLED = 144;
-			rightLED = 0;
-		}
-		else
-		{
-			leftColor.blue = 0x00;
-			leftColor.red = 0x00;
-			leftColor.green = 0x00;
-			rightColor.blue = 0x00;
-			rightColor.red = 0x00;
-			rightColor.green = 0xFF;
-			leftLED = 0;
-			rightLED = 144;
-		}
-	}
-
-	if(winTicks > 20)
-	{
-		leftColor.blue = 0x00;
-		leftColor.red = 0x00;
-		leftColor.green = 0x00;
-		rightColor.blue = 0x00;
-		rightColor.red = 0x00;
-		rightColor.green = 0x00;
-		leftLED = 0;				//to turn off LED strips
-		rightLED = 0;
-		returnValue = GAME_IDLE;
-		winTicks = 0;
-	}
-	else
-	{
-		winTicks++;
-	}
-
-	ledUARTsendColorValues(leftLED, rightLED);			//set LED strips
-
-	return returnValue;
-}
-
-GAME_STATE_T getGameState(void)
+game_state_t gameGetState(void)
 {
 	return gameState;
 }
 
-void getGameStateString(char *stateString)
+void gameGetString(char *stateString)
 {
 	switch(gameState)
 	{
@@ -392,19 +85,175 @@ void getGameStateString(char *stateString)
 		sprintf(stateString, "Game Pause");
 		break;
 
-	case GAME_ABORT:
-		sprintf(stateString, "Game Abort");
-		break;
-
 	case GAME_WIN:
 		sprintf(stateString, "Game Win");
-		break;
-
-	default:
-	case GAME_UNKNOWN:
-		sprintf(stateString, "Bad game state!");
 		break;
 
 	}
 }
 
+void gameLedTimerHandler(void *arg)
+{
+	static uint32_t counter=0;
+
+	counter += 1;
+
+	switch(gameState)
+	{
+	case GAME_START:
+	case GAME_RUNNING:
+	case GAME_PAUSE:
+		leftColor.blue = 0xFF;
+		leftColor.red = 0x00;
+		leftColor.green = 0x00;
+		rightColor.blue = 0x00;
+		rightColor.red = 0xFF;
+		rightColor.green = 0x00;
+		ledUARTsendColorValues(levelGetLeft(), levelGetRight());
+		break;
+
+	case GAME_WIN:
+		leftColor.blue = (gameWinner == WINNER_LEFT)?0xFF:0;
+		leftColor.red = 0x00;
+		leftColor.green = 0x00;
+		rightColor.blue = 0x00;
+		rightColor.red = (gameWinner == WINNER_LEFT)?0:0xFF;
+		rightColor.green = 0x00;
+
+		if(counter % 2)
+			ledUARTsendColorValues((gameWinner == WINNER_LEFT)?100:0, (gameWinner == WINNER_LEFT)?0:100);
+		else
+			ledUARTsendColorValues(0,0);
+		break;
+
+	case GAME_INIT:
+		break;
+	case GAME_IDLE:
+		leftColor.blue = rand() % 0xFF;
+		leftColor.red = rand() % 0xFF;
+		leftColor.green = rand() % 0xFF ;
+		rightColor.blue = rand() % 0xFF;
+		rightColor.red = rand() % 0xFF ;
+		rightColor.green = rand() % 0xFF;
+		ledUARTsendColorValues(rand() % 100,rand() % 100);
+		break;
+
+	}
+}
+
+
+void gameThread(wiced_thread_arg_t arg)
+{
+	gameState = GAME_INIT;
+	gameStateNext = GAME_INIT;
+
+	srand(tx_time_get());
+
+	uint32_t loopCounter=0;
+
+	wiced_timer_t ledTimerHandle;
+	wiced_rtos_init_timer (&ledTimerHandle, 100, gameLedTimerHandler, 0);
+	wiced_rtos_start_timer(&ledTimerHandle);
+
+
+	while(1)
+	{
+
+		if(wiced_rtos_is_queue_empty(&gameCommandQueueHandle) == WICED_ERROR)      //if queue is not empty...
+		{
+			game_command_request_t gameCommandRequest;
+			wiced_rtos_pop_from_queue(&gameCommandQueueHandle, &gameCommandRequest, WICED_NO_WAIT);
+			gameStateNext = gameCommandRequest.desiredState;
+			if(gameStateNext == GAME_RUNNING)
+				pumpsSendEnable();
+			else
+				pumpsSendDisable();
+		}
+
+		gameState = gameStateNext;
+
+		switch(gameState)
+		{
+		case GAME_INIT:
+			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+			Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+			wiced_rtos_delay_milliseconds(500);
+			pumpsSendEnable();
+			pumpsSendValues(100,100);
+			wiced_rtos_delay_milliseconds(750);
+			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
+			Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
+			pumpsSendDisable();
+			gameStateNext = GAME_IDLE;
+			break;
+		case GAME_IDLE:
+			Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_OFF);
+			if(Cy_GPIO_Read(startButton_PORT, startButton_PIN) == SWITCH_ON && Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN) == SWITCH_ON)
+			{
+				soundPlay(resources_fight_wav_data);
+				gameStateNext = GAME_START;
+			}
+			break;
+		case GAME_START:
+			srand(tx_time_get());
+
+			Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);
+			if(getSoundState() == SOUND_IDLE)
+			{
+				pumpsSendEnable();
+				gameStateNext = GAME_RUNNING;
+			}
+			break;
+		case GAME_RUNNING:
+			Cy_GPIO_Write(startLED_PORT, startLED_PIN, EXTERNAL_LED_ON);
+
+			if(levelGetLeft()>GAME_WIN_LEVEL || levelGetRight()>GAME_WIN_LEVEL)
+			{
+				pumpsSendDisable();
+				soundPlay(resources_winner_wav_data);
+				gameStateNext = GAME_WIN;
+			}
+
+			if(Cy_GPIO_Read(startButton_PORT, startButton_PIN) == SWITCH_ON)
+			{
+				pumpsSendDisable();
+				gameStateNext = GAME_PAUSE;
+			}
+			break;
+		case GAME_PAUSE:
+			if(loopCounter % 3 == 0) // blink every third time through the loop
+				Cy_GPIO_Inv(startLED_PORT, startLED_PIN);
+
+			if(Cy_GPIO_Read(startButton_PORT, startButton_PIN) == SWITCH_ON)
+			{
+				pumpsSendEnable();
+				gameStateNext = GAME_RUNNING;
+			}
+			break;
+
+		case GAME_WIN:
+			if(getSoundState() == SOUND_IDLE)
+			{
+				wiced_rtos_delay_milliseconds(5000); // hold for 2 seconds to leave lights on.
+				gameStateNext = GAME_IDLE;
+			}
+			break;
+		}
+
+		// This is wasteful to do every time through the loop... but oh well
+		if(Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN) == SWITCH_ON)
+			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_ON);	//turn on arm switch LED
+		else
+			Cy_GPIO_Write(armLED_PORT, armLED_PIN, EXTERNAL_LED_OFF);	//turn on arm switch LED
+
+		// Whatever happens if the switch is off... turn everything off.
+		if(Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN) == SWITCH_OFF && gameState != GAME_IDLE)
+		{
+			pumpsStopAll();
+			gameStateNext = GAME_IDLE;
+		}
+
+		loopCounter += 1;
+		wiced_rtos_delay_milliseconds(GAME_MACHINE_DELAY);
+	}
+}
