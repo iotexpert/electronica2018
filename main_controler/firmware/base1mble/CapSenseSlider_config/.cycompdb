@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component_data>
-  <File wkspFile="GeneratedSource/cycfg_capsense.h" installFile="GeneratedSource/cycfg_capsense.h" checksum="33E8EA7ADB7EC648A6E196BD784C44A320160404"/>
-  <File wkspFile="design.modus" installFile="design.modus" checksum="EC12B769D8776DBAA737A220990F0617C47B037B"/>
-  <File wkspFile="GeneratedSource/cycfg_capsense.c" installFile="GeneratedSource/cycfg_capsense.c" checksum="3924C85757A95F123DDF126AD481183F2696F155"/>
-  <artifact name="config"/>
-</component_data>
