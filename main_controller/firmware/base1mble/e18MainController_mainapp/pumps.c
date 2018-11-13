@@ -66,7 +66,7 @@ void pumpsThread(wiced_thread_arg_t arg)
 	while(1)
 	{
 		pumps_command_request_t pumpsCommandRequest;
-		if(wiced_rtos_is_queue_empty(&pumpCommandQueueHandle) == WICED_ERROR)      //if queue is not empty...
+		while(wiced_rtos_is_queue_empty(&pumpCommandQueueHandle) == WICED_ERROR)      //if queue is not empty...
 		{
 			wiced_rtos_pop_from_queue(&pumpCommandQueueHandle, &pumpsCommandRequest, WICED_NO_WAIT);
 			switch(pumpsCommandRequest.pumpCommand)
@@ -177,11 +177,14 @@ static void stopPump(pumps_select_t whichPump)
 
 static void pumpsEnable(void)
 {
+	WPRINT_APP_INFO(("Enable Pumps\n"));
 	Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 1);	//enable pump h-bridge
 }
 
 static void pumpsDisable(void)
 {
+	WPRINT_APP_INFO(("Enable Disable\n"));
+
 	Cy_GPIO_Write(pumpEnable_PORT, pumpEnable_PIN, 0);	//disable pump h-bridge
 }
 

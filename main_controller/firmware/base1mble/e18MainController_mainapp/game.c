@@ -141,16 +141,25 @@ void gameLedTimerHandler(void *arg)
 
 void buttonArmHandler(void *arg)
 {
-	pumpsStopAll();
-	wiced_rtos_set_event_flags(	&buttonFlags,BUTTON_FLAG_ARM);
-	WPRINT_APP_INFO(("ARM Button Press\n"));
+
+//	WPRINT_APP_INFO(("arm = %d\n",Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN)));
+
+	if(Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN))
+	{
+		pumpsStopAll();
+	}
 }
 
 void buttonStartHandler(void *arg)
 {
+	static uint32_t lastPress=0;
+	if(Cy_GPIO_Read(startButton_PORT, startButton_PIN))
+			return;
 
+	if(tx_time_get()<lastPress+100)
+		return;
+	lastPress = tx_time_get();
 	wiced_rtos_set_event_flags(	&buttonFlags,BUTTON_FLAG_START);
-	WPRINT_APP_INFO(("Start Button Press\n"));
 }
 
 void gameThread(wiced_thread_arg_t arg)
@@ -166,8 +175,8 @@ void gameThread(wiced_thread_arg_t arg)
 	wiced_rtos_init_timer (&ledTimerHandle, 100, gameLedTimerHandler, 0);
 	wiced_rtos_start_timer(&ledTimerHandle);
 
-    wiced_gpio_input_irq_enable(	WICED_GPIO_49,IRQ_TRIGGER_FALLING_EDGE,buttonArmHandler,0);
-    wiced_gpio_input_irq_enable(	WICED_GPIO_50,IRQ_TRIGGER_FALLING_EDGE,buttonStartHandler,0);
+    wiced_gpio_input_irq_enable(	WICED_GPIO_50,IRQ_TRIGGER_FALLING_EDGE,buttonArmHandler,0);
+    wiced_gpio_input_irq_enable(	WICED_GPIO_49,IRQ_TRIGGER_RISING_EDGE,buttonStartHandler,0);
 
 	while(1)
 	{
@@ -187,6 +196,7 @@ void gameThread(wiced_thread_arg_t arg)
 		gameState = gameStateNext;
 
 		// Get the button Event Flag to see if the start button was pressed
+		tempButtonFlags = 0;
 		wiced_rtos_wait_for_event_flags(&buttonFlags,(uint32_t)(BUTTON_FLAG_START),&tempButtonFlags,WICED_TRUE,WAIT_FOR_ANY_EVENT,0);
 
 		switch(gameState)
@@ -210,7 +220,9 @@ void gameThread(wiced_thread_arg_t arg)
 			{
 				soundPlay(resources_fight_wav_data);
 				gameStateNext = GAME_START;
+				WPRINT_APP_INFO(("switching to start\n"));
 			}
+			gameWinner = WINNER_NONE;
 			break;
 		case GAME_START:
 			srand(tx_time_get());
@@ -219,6 +231,8 @@ void gameThread(wiced_thread_arg_t arg)
 			if(getSoundState() == SOUND_IDLE)
 			{
 				pumpsSendEnable();
+				WPRINT_APP_INFO(("switching to running\n"));
+
 				gameStateNext = GAME_RUNNING;
 			}
 			break;
@@ -227,6 +241,11 @@ void gameThread(wiced_thread_arg_t arg)
 
 			if(levelGetLeft()>GAME_WIN_LEVEL || levelGetRight()>GAME_WIN_LEVEL)
 			{
+				if(levelGetLeft()>GAME_WIN_LEVEL)
+					gameWinner = WINNER_LEFT;
+				else
+					gameWinner = WINNER_RIGHT;
+
 				pumpsSendDisable();
 				soundPlay(resources_winner_wav_data);
 				gameStateNext = GAME_WIN;
@@ -234,6 +253,7 @@ void gameThread(wiced_thread_arg_t arg)
 
 			if(tempButtonFlags & BUTTON_FLAG_START) // Did they press the start button
 			{
+				WPRINT_APP_INFO(("switching to pause\n"));
 				pumpsSendDisable();
 				gameStateNext = GAME_PAUSE;
 			}
@@ -244,6 +264,7 @@ void gameThread(wiced_thread_arg_t arg)
 
 			if(tempButtonFlags & BUTTON_FLAG_START) // Did they press the start button
 			{
+				WPRINT_APP_INFO(("switching to running\n"));
 				pumpsSendEnable();
 				gameStateNext = GAME_RUNNING;
 			}

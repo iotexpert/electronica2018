@@ -10,6 +10,7 @@
 #include "game_console.h"
 #include "string.h"
 #include "stdio.h"
+#include "cycfg.h"
 #include "cycfg_peripherals.h"
 #include "liquidlevel.h"
 #include "command_console.h"
@@ -312,6 +313,8 @@ void consolePrintStatus(void)
     WPRINT_APP_INFO(("Game status:\n"));
     consolePrintGameState();
     reportLevels();
+	WPRINT_APP_INFO(("arm = %d\n",Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN)));
+
 }
 
 void consolePrintGameState(void)
