@@ -161,5 +161,6 @@ void capSenseThread( void )
 			} /* End of lift off event */
 		} /* End of slider not being touched */
 		Cy_CapSense_ScanAllWidgets(&cy_capsense_context); // Start the next scan
+		//wiced_rtos_delay_milliseconds(100);
 	} /* End of while(1) */
 }
