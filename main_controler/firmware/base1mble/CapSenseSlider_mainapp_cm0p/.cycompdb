@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component_data>
-  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/gcc/startup_psoc6_01_cm0plus.S" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/gcc/startup_psoc6_01_cm0plus.S" checksum="63D644E9C6747F757473A5CCE5C3CFA63AE0D69E"/>
-  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm0plus.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm0plus.c" checksum="F3E4713D96D99C969B20AA8F6B26887C373F5D52"/>
-  <File wkspFile="cy8c6xx7_cm0plus.ld" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/linker/gcc/cy8c6xx7_cm0plus.ld" checksum="7F59859F120E64C0A2C8D58D6AB3DEC7347DB498"/>
-  <File wkspFile="./Source_cm0p/main.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/cm0p/main.c" checksum="79561E7675F286AB7F376ADDDB4E2E5F6D266119"/>
-  <artifact name="mainapp_cm0p"/>
-</component_data>
