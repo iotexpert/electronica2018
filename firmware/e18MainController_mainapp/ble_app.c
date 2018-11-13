@@ -40,13 +40,13 @@ typedef struct
 remote_info_t   remote_info[REMOTE_MAX];  /* Hold info for up to 2 remotes */
 uint8_t         remote_cnt=0;    /* Keep track of the number of remotes connected */
 
-/* Variable to indicate if the scan has to be started. This will be true until we have 2 connected remotes */
-uint8_t start_scan = 0;
-
 static wiced_timer_t notify_timer_handle; /* Thread to manage notifications */
 
 extern const wiced_bt_cfg_settings_t wiced_bt_cfg_settings;
 extern const wiced_bt_cfg_buf_pool_t wiced_bt_cfg_buf_pools[];
+
+/* GJL: add variable to allow enable/disable of scanning from command console and during a game */
+wiced_bool_t enableBleScanning = WICED_TRUE;
 
 /******************************************************************************
  *                          Function Definitions
@@ -180,17 +180,19 @@ static void game_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, 
 				p_scan_result->remote_bd_addr[0], p_scan_result->remote_bd_addr[1], p_scan_result->remote_bd_addr[2],
 				p_scan_result->remote_bd_addr[3], p_scan_result->remote_bd_addr[4], p_scan_result->remote_bd_addr[5] ));
 #endif
-		/* Stop the scan if we will have max number of remotes connected after this one connects */
-		if(remote_cnt >= REMOTE_MAX-1 )
+		/* Stop the scan if we will have max number of remotes connected after this one connects or if scan is disabled */
+		/* GJL: add check for enableBleScanning */
+		if((remote_cnt >= REMOTE_MAX-1) || (enableBleScanning == WICED_FALSE ))
 		{
-			status = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_NONE, WICED_FALSE, game_scan_result_cback );
-			WPRINT_APP_INFO(( "scan off status %d\n", status ));
+			if( wiced_bt_ble_get_current_scan_state() != BTM_BLE_SCAN_TYPE_NONE )
+			{
+				status = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_NONE, WICED_FALSE, game_scan_result_cback );
+				WPRINT_APP_INFO(( "scan off status %d\n", status ));
+			}
 		}
-		start_scan = 0;
 		/* Initiate the connection */
 		ret_status = wiced_bt_gatt_le_connect( p_scan_result->remote_bd_addr, p_scan_result->ble_addr_type, BLE_CONN_MODE_HIGH_DUTY, TRUE );
-
-		//WPRINT_APP_INFO(( "wiced_bt_gatt_le_connect status %d\n", ret_status ));
+		WPRINT_APP_INFO(( "wiced_bt_gatt_le_connect status %d\n", ret_status ));
 	}
 }
 
@@ -224,11 +226,13 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
 			WPRINT_APP_INFO(( "Number of connected Remotes: %d\n", remote_cnt ));
 
 			/* If we have less than the max number of remotes, start scanning */
-			if(remote_cnt < REMOTE_MAX )
+			/* GJL: Add check for enableBleScanning variable */
+			if((remote_cnt < REMOTE_MAX) && (enableBleScanning == WICED_TRUE))
 			{
-				//BTM_BLE_SCAN_TYPE_LOW_DUTY
-				//BTM_BLE_SCAN_TYPE_HIGH_DUTY
-				wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_LOW_DUTY, WICED_FALSE, game_scan_result_cback );
+				if( wiced_bt_ble_get_current_scan_state() == BTM_BLE_SCAN_TYPE_NONE )
+				{
+					wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
+				}
 			}
 		}
 		break;
@@ -303,8 +307,8 @@ wiced_result_t game_management_cback( wiced_bt_management_evt_t event,  wiced_bt
 		memset( &remote_info, 0, sizeof( remote_info ) );
 
 		/* Start looking for remotes */
-		start_scan = 1;
-		if( wiced_bt_ble_get_current_scan_state() == BTM_BLE_SCAN_TYPE_NONE )
+		/* GJL: add check for enableBleScanning */
+		if((wiced_bt_ble_get_current_scan_state() == BTM_BLE_SCAN_TYPE_NONE) && (enableBleScanning == WICED_TRUE))
 		{
 			result = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
 			WPRINT_APP_INFO(( "Start Scanning: %d\n", result ));
@@ -350,4 +354,32 @@ void startBle( void )
 {
 	wiced_bt_stack_init( game_management_cback,
 			&wiced_bt_cfg_settings, wiced_bt_cfg_buf_pools );
+}
+
+
+/* GJL: add this function to turn BLE scanning on/off */
+/* Scanning is turned off when a game starts and is turned on when the game ends */
+/* The command console can also be used to turn scanning on/off */
+void bleScanMode(wiced_bool_t mode)
+{
+	wiced_result_t result;
+
+	if(mode == WICED_TRUE)
+	{
+		enableBleScanning = WICED_TRUE;
+		if( wiced_bt_ble_get_current_scan_state() == BTM_BLE_SCAN_TYPE_NONE )
+		{
+			result = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
+			WPRINT_APP_INFO(( "Start Scanning: %d\n", result ));
+		}
+	}
+	else
+	{
+		enableBleScanning = WICED_FALSE;
+		if( wiced_bt_ble_get_current_scan_state() != BTM_BLE_SCAN_TYPE_NONE )
+		{
+			result = wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_NONE, WICED_FALSE, game_scan_result_cback );
+			WPRINT_APP_INFO(( "Stop BLE Scanning: %d\n", result ));
+		}
+	}
 }

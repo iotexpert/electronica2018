@@ -26,8 +26,8 @@
 #define PUBLISHER_CERTIFICATES_MAX_SIZE            (0x7fffffff)
 
 #define AWS_IOT_MQTT_BROKER_ADDRESS                	"amk6m51qrxr2u-ats.iot.us-east-1.amazonaws.com"
-#define SUBSCRIBE_PUBLISH_TOPIC                          "PumpAWS"
-#define SHADOW_UPDATE_SUBSCRIBE_TOPIC				"$aws/things/Electronica2018/shadow/update/accepted"
+#define SUBSCRIBE_TOPIC                     		"PumpAWS"
+#define SHADOW_PUBLISH_TOPIC						"$aws/things/Electronica2018/shadow/update"
 
 #define APP_PUBLISH_RETRY_COUNT                    (5)
 
@@ -139,8 +139,9 @@ _fail_aws_certificate:
 static void my_publisher_aws_callback( wiced_aws_handle_t aws, wiced_aws_event_type_t event, wiced_aws_callback_data_t* data )
 {
     if( !aws || !data || (aws != my_app_aws_handle) )
+    {
         return;
-
+    }
 
 	cJSON *root;
 	cJSON *left;
@@ -203,8 +204,11 @@ void awsThread(wiced_thread_arg_t arg)
     wiced_aws_handle_t aws_connection = 0;
     wiced_result_t ret = WICED_SUCCESS;
     int pub_retries;
-    char msg[18]; /* This will hold the JSON message to be published */
+    char msg[100]; /* This will hold the JSON message to be published */
     char thingName[] = "remote001122334455"; /* This gets replaced with the MAC address */
+
+    uint32_t waterLevelLeft  = 0;
+    uint32_t waterLevelRight = 0;
 
     wiced_wifi_get_mac_address(&mac);
 
@@ -258,15 +262,42 @@ void awsThread(wiced_thread_arg_t arg)
 		} while (ret != WICED_SUCCESS); /* We will stay in this loop until the AWS connection has been made */
 
 		/* Subscribe to the shadow update topic (to get water level updates) */
-		wiced_aws_subscribe( aws_connection, SUBSCRIBE_PUBLISH_TOPIC,   WICED_AWS_QOS_ATMOST_ONCE);
+		wiced_aws_subscribe( aws_connection, SUBSCRIBE_TOPIC,   WICED_AWS_QOS_ATMOST_ONCE);
 
-		/* Display message */
 
-		while ( 1 ) /* Loop to wait for swipe messages and publish to AWS */
+		while ( 1 ) /* Loop to publish water level every 500ms to AWS */
 		{
-			wiced_rtos_delay_milliseconds(200);
+			wiced_rtos_delay_milliseconds(500);
 
-		} /* End of inner while(1) loop that waits for swipe values and publishes them */
+			/* GJL: Add section to publish water levels every 500ms and to attempt reconnect if we are not connected or publish fails */
+			/* Get water levels */
+			waterLevelLeft  = levelGetLeft();
+			waterLevelRight = levelGetRight();
+
+			/* Create JSON message with the water levels */
+			snprintf(msg, sizeof(msg), "{\"state\":{\"reported\":{\"WaterLevelLeftAWS\":%.0d,\"WaterLevelRightAWS\":%.0d}}}", (uint8_t) waterLevelLeft, (uint8_t) waterLevelRight);
+
+			/* Publish water levels to AWS */
+			pub_retries = 0;
+			if ( is_connected != WICED_FALSE )
+			{
+				do
+				{
+					ret = wiced_aws_publish( aws_connection, SHADOW_PUBLISH_TOPIC, (uint8_t *)msg, strlen( msg ), WICED_AWS_QOS_ATMOST_ONCE );
+					pub_retries++ ;
+				} while ( ( ret != WICED_SUCCESS ) && ( pub_retries < APP_PUBLISH_RETRY_COUNT ) );
+				if ( ret != WICED_SUCCESS )
+				{
+					WPRINT_APP_INFO(("Publish of Water Level Failed\r\n"));
+					break; /* Break out of loop to try reconnecting */
+				}
+			}
+			else
+			{
+				break; /* Exit to reconnect */
+			}
+
+		} /* End of inner while(1) loop that publishes water level every 500ms */
 
 		WPRINT_APP_INFO(("[Application/AWS] Closing connection...\r\n"));
 		wiced_aws_disconnect( aws_connection );
