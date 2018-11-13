@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component_data>
-  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm0plus.c" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/system_psoc6_cm0plus.c" checksum="F3E4713D96D99C969B20AA8F6B26887C373F5D52"/>
-  <File wkspFile="wiced_base-1.0/components/WIFI-SDK/apps/waf/cm0/main.c" installFile="wiced_base-1.0/components/WIFI-SDK/apps/waf/cm0/main.c" checksum="AA49B1D042CEEFCF9E11CFC459ADD569309AADD1"/>
-  <File wkspFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/gcc/startup_psoc6_02_cm0plus.S" installFile="psoc6sw-1.0/components/psoc6pdl/devices/psoc6/startup/gcc/startup_psoc6_02_cm0plus.S" checksum="9B8075EBF743680D77828B68D32F3C1E29E94FE4"/>
-  <artifact name="mainapp_cm0p"/>
-</component_data>
