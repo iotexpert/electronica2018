@@ -7,12 +7,6 @@
 #include "liquidlevel.h"
 #include "pumps.h"
 #include "globals.h"
-
-
-#include "globals.h"
-#include "wiced.h"
-#include "wiced_aws.h"
-#include "aws_common.h"
 #include "resources.h"
 #include "cJSON.h"
 
@@ -214,8 +208,6 @@ void awsThread(wiced_thread_arg_t arg)
 
     wiced_rtos_init_semaphore(&aws_semaphore_handle);
 
-    /* Set up WiFi Screen */
-
     /* Bring up the network interface */
     do
     {
@@ -228,8 +220,6 @@ void awsThread(wiced_thread_arg_t arg)
     		"remote%02X%02X%02X%02X%02X%02X",
 			mac.octet[0], mac.octet[1], mac.octet[2],
 			mac.octet[3], mac.octet[4], mac.octet[5]);
-
-    /* Display message */
 
     wiced_aws_thing_info_t my_publisher_aws_config = {
         .name            = thingName,
