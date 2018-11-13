@@ -175,11 +175,11 @@ static void game_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, 
 			// Not a matching device
 			return;
 		}
-
+#if 0
 		WPRINT_APP_INFO((" Found Device: %02X:%02X:%02X:%02X:%02X:%02X \n",
 				p_scan_result->remote_bd_addr[0], p_scan_result->remote_bd_addr[1], p_scan_result->remote_bd_addr[2],
 				p_scan_result->remote_bd_addr[3], p_scan_result->remote_bd_addr[4], p_scan_result->remote_bd_addr[5] ));
-
+#endif
 		/* Stop the scan if we will have max number of remotes connected after this one connects */
 		if(remote_cnt >= REMOTE_MAX-1 )
 		{
@@ -190,7 +190,7 @@ static void game_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, 
 		/* Initiate the connection */
 		ret_status = wiced_bt_gatt_le_connect( p_scan_result->remote_bd_addr, p_scan_result->ble_addr_type, BLE_CONN_MODE_HIGH_DUTY, TRUE );
 
-		WPRINT_APP_INFO(( "wiced_bt_gatt_le_connect status %d\n", ret_status ));
+		//WPRINT_APP_INFO(( "wiced_bt_gatt_le_connect status %d\n", ret_status ));
 	}
 }
 
@@ -226,7 +226,9 @@ wiced_bt_gatt_status_t game_gatt_callback( wiced_bt_gatt_evt_t event, wiced_bt_g
 			/* If we have less than the max number of remotes, start scanning */
 			if(remote_cnt < REMOTE_MAX )
 			{
-				wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_HIGH_DUTY, WICED_FALSE, game_scan_result_cback );
+				//BTM_BLE_SCAN_TYPE_LOW_DUTY
+				//BTM_BLE_SCAN_TYPE_HIGH_DUTY
+				wiced_bt_ble_scan( BTM_BLE_SCAN_TYPE_LOW_DUTY, WICED_FALSE, game_scan_result_cback );
 			}
 		}
 		break;
