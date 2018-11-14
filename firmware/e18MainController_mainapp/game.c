@@ -194,6 +194,11 @@ void gameThread(wiced_thread_arg_t arg)
 				pumpsSendDisable();
 		}
 
+		if((gameState != GAME_IDLE) && (gameStateNext == GAME_IDLE)) /* turn on ble scanning when we first enter idle */
+		{
+			bleScanMode(WICED_TRUE);
+		}
+
 		gameState = gameStateNext;
 
 		// Get the button Event Flag to see if the start button was pressed
@@ -277,8 +282,6 @@ void gameThread(wiced_thread_arg_t arg)
 			if(getSoundState() == SOUND_IDLE)
 			{
 				wiced_rtos_delay_milliseconds(5000); // hold for 2 seconds to leave lights on.
-				/* GJL: Allow BLE scanning again once the game is done */
-				bleScanMode(WICED_TRUE);
 				gameStateNext = GAME_IDLE;
 			}
 			break;
