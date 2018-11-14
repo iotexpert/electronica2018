@@ -65,7 +65,6 @@ extern "C" {
 #define CLIENT_AP_SSID       "CYFI_IOT_EXT"
 #define CLIENT_AP_PASSPHRASE "cypresswicedwifi101"
 
-
 //#define CLIENT_AP_SSID       "CY-EW2"
 //#define CLIENT_AP_PASSPHRASE "March.07"
 

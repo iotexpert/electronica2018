@@ -9,6 +9,7 @@
 #include "game.h"
 #include "sound.h"
 #include "aws.h"
+#include "ble_app.h" /* GJL */
 #include "pumps.h"
 #include "game_console.h"
 #include "leduart.h"
@@ -219,6 +220,8 @@ void gameThread(wiced_thread_arg_t arg)
 			if((tempButtonFlags & BUTTON_FLAG_START) && Cy_GPIO_Read(armSwitch_PORT, armSwitch_PIN) == SWITCH_ON)
 			{
 				soundPlay(resources_fight_wav_data);
+				/* GJL: Disable BLE scanning during the game */
+				bleScanMode(WICED_FALSE);
 				gameStateNext = GAME_START;
 				WPRINT_APP_INFO(("switching to start\n"));
 			}
@@ -274,6 +277,8 @@ void gameThread(wiced_thread_arg_t arg)
 			if(getSoundState() == SOUND_IDLE)
 			{
 				wiced_rtos_delay_milliseconds(5000); // hold for 2 seconds to leave lights on.
+				/* GJL: Allow BLE scanning again once the game is done */
+				bleScanMode(WICED_TRUE);
 				gameStateNext = GAME_IDLE;
 			}
 			break;

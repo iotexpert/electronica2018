@@ -66,7 +66,7 @@ static const char wifi_nvram_image[] =
         "boardnum=22"                                                        "\x00"
         "xtalfreq=37400"                                                     "\x00"
         "sromrev=11"                                                         "\x00"
-        "boardflags=0x00404201"                                              "\x00"
+        "boardflags=0x00404001"                                              "\x00"
         "boardflags3=0x08000000"                                             "\x00"
         NVRAM_GENERATED_MAC_ADDRESS                                          "\x00"
         "nocrc=1"                                                            "\x00"

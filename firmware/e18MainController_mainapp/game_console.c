@@ -15,10 +15,10 @@
 #include "liquidlevel.h"
 #include "command_console.h"
 #include "aws.h"
+#include "ble_app.h" /* GJL */
 #include "pumps.h"
 #include "cy_pdl.h"
 #include "globals.h"
-
 
 //defines needed for wiced console
 #define GAME_COMMAND_HISTORY_LENGTH  (10)
@@ -60,7 +60,7 @@ static int consoleThreads_cmd( int argc, char *argv[] );
     { (char*) "leftpump", leftpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick left pump"   }, \
     { (char*) "rightpump", rightpump_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Kick right pump"   }, \
     { (char*) "wifion", wifion_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable wifi and connect"   }, \
-    { (char*) "wifioff", wifioff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disconnect and disable wifi"   }, \
+    { (char*) "wifioff", wifioff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disconnect and disable wiii"   }, \
     { (char*) "bleon", bleon_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable BLE"   }, \
     { (char*) "bleoff", bleoff_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Disable BLE"   }, \
     { (char*) "enablepumps", pumpenable_console_cmd,      0, NULL, NULL, (char *)"", (char *)"Enable pumps"   }, \
@@ -144,13 +144,13 @@ static int wifioff_console_cmd( int argc, char *argv[] )
 
 static int bleon_console_cmd( int argc, char *argv[] )
 {
-    //btEnableStatus = BT_ENABLE;
-    return 0;
+	bleScanMode(WICED_TRUE); /* GJL */
+	return 0;
 }
 
 static int bleoff_console_cmd( int argc, char *argv[] )
 {
-    //btEnableStatus = BT_DISABLE;
+	bleScanMode(WICED_FALSE); /* GJL */
     return 0;
 }
 
@@ -339,8 +339,8 @@ void consolePrintHelp(void)
     WPRINT_APP_INFO(("     abort      abort game and reset system\n"));
     WPRINT_APP_INFO(("     wifion     enable wifi\n"));
     WPRINT_APP_INFO(("     wifioff    disable wifi\n"));
-    WPRINT_APP_INFO(("     bleon       enable ble\n"));
-    WPRINT_APP_INFO(("     bleoff      disable ble\n"));
+    WPRINT_APP_INFO(("     bleon       enable ble scanning\n"));
+    WPRINT_APP_INFO(("     bleoff      disable ble scanning\n"));
 }
 
 void consolePrintWin(void)
