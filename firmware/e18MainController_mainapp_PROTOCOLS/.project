@@ -51,11 +51,6 @@
 			<locationURI>CY_SDK_INSTALL_DIR/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_internal.h</locationURI>
 		</link>
 		<link>
-			<name>wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_mqtt.c</name>
-			<type>1</type>
-			<locationURI>CY_SDK_INSTALL_DIR/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/aws_mqtt.c</locationURI>
-		</link>
-		<link>
 			<name>wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/wiced_aws.c</name>
 			<type>1</type>
 			<locationURI>CY_SDK_INSTALL_DIR/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/AWS/wiced_aws.c</locationURI>
@@ -149,11 +144,6 @@
 			<name>wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT/mqtt_manager.h</name>
 			<type>1</type>
 			<locationURI>CY_SDK_INSTALL_DIR/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT/mqtt_manager.h</locationURI>
-		</link>
-		<link>
-			<name>wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT/mqtt_network.c</name>
-			<type>1</type>
-			<locationURI>CY_SDK_INSTALL_DIR/libraries/wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT/mqtt_network.c</locationURI>
 		</link>
 		<link>
 			<name>wiced_base-1.0/components/WIFI-SDK/libraries/protocols/MQTT/mqtt_network.h</name>

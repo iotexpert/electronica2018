@@ -31,8 +31,8 @@ wiced_event_flags_t buttonFlags;
  *                      Macros
  ******************************************************/
 
-#define AWS_THREAD_PRIORITY     6
-#define LEVEL_THREAD_PRIORITY   6
+#define AWS_THREAD_PRIORITY     7
+#define LEVEL_THREAD_PRIORITY   5
 #define PUMP_THREAD_PRIORITY    6
 #define GAME_THREAD_PRIORITY    6
 
