@@ -12,10 +12,10 @@ extern const char resources_fight_wav_data[18604];
 extern const resource_hnd_t resources_winner_wav;
 extern const char resources_winner_wav_data[24492];
 extern const resource_hnd_t resources_aws_client_cer;
-extern const char resources_aws_client_cer_data[1225];
+extern const char resources_aws_client_cer_data[1245];
 extern const resource_hnd_t resources_aws_privkey_cer;
-extern const char resources_aws_privkey_cer_data[1676];
+extern const char resources_aws_privkey_cer_data[1703];
 extern const resource_hnd_t resources_rootca_cer;
-extern const char resources_rootca_cer_data[1189];
+extern const char resources_rootca_cer_data[1209];
 
 #endif /* ifndef INCLUDED_RESOURCES_H_ */
